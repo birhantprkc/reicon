@@ -209,10 +209,13 @@ export default function IconDetail() {
     loadCategory();
   }, [name]);
 
-  const pageTitle = `${name} icon — Reicon`;
-  const pageDesc = `Download the ${name} icon as SVG, PNG, or WebP. Available in Outline and Filled weights. Free, open-source, MIT-licensed. Copy React, Vue, Svelte, Figma, or VS Code code instantly.`;
+  const pageTitle = name
+    ? `${pascalName} Icon — Free ${iconCategory || 'SVG'} Download | Reicon`
+    : 'Icon — Reicon';
+  const pageDesc = `Free ${pascalName} SVG icon from Reicon. Download as SVG, PNG, or WebP. Use in React, Vue, Svelte, Figma, or HTML. Outline & filled weights. MIT licensed.`;
   const pageUrl = `https://reicon.dev/icon/${name}`;
-  const ogImage = `https://reicon.dev/og/icons/${name}.png`;
+  const ogImage = 'https://reicon.dev/og-image.png';
+  const ogImageAlt = `Reicon — ${pascalName} icon preview`;
 
   const relatedIcons = useMemo(() => {
     if (!name) return [];
@@ -230,51 +233,97 @@ export default function IconDetail() {
         <title>{pageTitle}</title>
         <meta name="description" content={pageDesc} />
         <link rel="canonical" href={pageUrl} />
-        <meta name="keywords" content={`${name}, ${iconCategory || 'icon'}, svg icon, react icon, vue icon, svelte icon, figma icon, vscode icon, free icon, reicon`} />
+        <meta name="keywords" content={`${name} icon, ${pascalName} svg, download ${name} svg, ${name} react, ${name} vue, ${name} svelte, free ${iconCategory?.toLowerCase() || 'svg'} icon, ${name} png, reicon`} />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:site_name" content="Reicon" />
+        <meta property="og:locale" content="en_US" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDesc} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={ogImageAlt} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
+        <meta name="twitter:creator" content="@reicon_dev" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDesc} />
         <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image:alt" content={ogImageAlt} />
         <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org", "@type": "ImageObject",
-          "name": `${pascalName} Icon`, "description": pageDesc,
-          "contentUrl": `https://cdn.reicon.dev/svg/${name}.svg`, "thumbnailUrl": ogImage,
-          "encodingFormat": "image/svg+xml", "license": "https://opensource.org/licenses/MIT",
-          "acquireLicensePage": "https://reicon.dev/usage",
-          ...(iconCategory && { "category": iconCategory }),
-          "isPartOf": { "@type": "CreativeWork", "name": "Reicon Icon Library", "url": "https://reicon.dev" }
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": pageUrl,
+          "url": pageUrl,
+          "name": pageTitle,
+          "description": pageDesc,
+          "inLanguage": "en-US",
+          "isPartOf": { "@type": "WebSite", "url": "https://reicon.dev", "name": "Reicon" },
+          "breadcrumb": { "@id": `${pageUrl}#breadcrumb` },
+          "primaryImageOfPage": { "@type": "ImageObject", "url": ogImage },
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org", "@type": "BreadcrumbList",
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          "name": `${pascalName} Icon`,
+          "description": pageDesc,
+          "url": pageUrl,
+          "codeRepository": "https://github.com/reicon-dev/reicon",
+          "programmingLanguage": ["SVG", "React", "Vue", "Svelte"],
+          "runtimePlatform": ["Browser", "Node.js"],
+          "license": "https://opensource.org/licenses/MIT",
+          "isPartOf": { "@type": "SoftwareApplication", "name": "Reicon", "url": "https://reicon.dev" },
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "@id": `${pageUrl}#breadcrumb`,
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Reicon", "item": "https://reicon.dev" },
             { "@type": "ListItem", "position": 2, "name": "Icons", "item": "https://reicon.dev/icons" },
-            { "@type": "ListItem", "position": 3, "name": `${name}`, "item": pageUrl }
-          ]
+            ...(iconCategory ? [{ "@type": "ListItem", "position": 3, "name": iconCategory, "item": `https://reicon.dev/icons` }] : []),
+            { "@type": "ListItem", "position": iconCategory ? 4 : 3, "name": `${pascalName} Icon`, "item": pageUrl },
+          ],
         })}</script>
       </Helmet>
 
       <Header />
 
       <main className="flex-1 w-full overflow-x-hidden">
-        <div className="max-w-[1160px] mx-auto px-5 md:px-10 pt-28 pb-8 md:py-10">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-[13px] text-text-base/40 mb-6">
-            <Link to="/" className="hover:text-text-base/70 transition-colors">Reicon</Link>
-            <span className="text-text-base/20">/</span>
-            <Link to="/icons" className="hover:text-text-base/70 transition-colors">Icons</Link>
-            <span className="text-text-base/20">/</span>
-            <span className="text-text-base/70">{pascalName}</span>
-          </nav>
+        <div className="max-w-[1160px] mx-auto px-5 md:px-10 pt-32 pb-8 md:pt-32 md:pb-10">
+          {/* Breadcrumb + Back button */}
+          <div className="flex items-center justify-between mb-6">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[13px] text-text-base/40 min-w-0">
+              <Link to="/" className="hover:text-text-base/70 transition-colors shrink-0">Reicon</Link>
+              <span className="text-text-base/20 shrink-0" aria-hidden="true">/</span>
+              <Link to="/icons" className="hover:text-text-base/70 transition-colors shrink-0">Icons</Link>
+              {iconCategory && (
+                <>
+                  <span className="text-text-base/20 shrink-0" aria-hidden="true">/</span>
+                  <span className="text-text-base/50 shrink-0 hidden sm:inline">{iconCategory}</span>
+                  <span className="text-text-base/20 shrink-0 hidden sm:inline" aria-hidden="true">/</span>
+                </>
+              )}
+              {!iconCategory && (
+                <>
+                  <span className="text-text-base/20 shrink-0" aria-hidden="true">/</span>
+                </>
+              )}
+              <span className="text-text-base/70 truncate" aria-current="page">{pascalName}</span>
+            </nav>
+
+            <Link
+              to="/icons"
+              className="shrink-0 ml-4 flex items-center gap-1.5 text-[12.5px] text-text-base/40 hover:text-text-base/80 bg-text-base/4 hover:bg-text-base/8 border border-text-base/8 rounded-lg px-3 py-1.5 transition-all"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 5l-7 7 7 7" />
+              </svg>
+              <span>Back</span>
+            </Link>
+          </div>
 
           <h1 className="sr-only">{pascalName} icon — Reicon</h1>
 
@@ -415,7 +464,7 @@ export default function IconDetail() {
                 <div className="flex items-center justify-between border-t border-text-base/8 pt-3.5 mt-1 relative">
                   <div className="flex items-center gap-2.5">
                     <span className="text-[12px] text-text-base/40 uppercase tracking-wider font-semibold">Custom Color</span>
-                    <button 
+                    <button
                       onClick={() => setUseCustomColor(!useCustomColor)}
                       className={`relative w-8 h-4.5 rounded-full transition-colors duration-200 focus:outline-none cursor-pointer ${useCustomColor ? 'bg-[#6C5CE7]' : 'bg-text-base/10'}`}
                       aria-label="Toggle custom color"
@@ -426,7 +475,7 @@ export default function IconDetail() {
 
                   {useCustomColor && (
                     <div className="relative">
-                      <button 
+                      <button
                         onClick={() => setIsColorPickerOpen(!isColorPickerOpen)}
                         className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-text-base/3 border border-text-base/8 hover:bg-text-base/6 text-[11px] font-mono text-text-base/70 hover:text-text-base transition-colors cursor-pointer"
                         style={{ borderColor: `${customColor}30` }}
@@ -442,9 +491,9 @@ export default function IconDetail() {
                             <HexColorPicker color={customColor} onChange={setCustomColor} />
                             <div className="flex gap-1.5 items-center">
                               <span className="text-[10px] text-text-base/40 font-mono">HEX</span>
-                              <input 
-                                type="text" 
-                                value={customColor} 
+                              <input
+                                type="text"
+                                value={customColor}
                                 onChange={(e) => {
                                   const val = e.target.value;
                                   if (val.startsWith('#')) {
