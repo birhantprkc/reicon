@@ -64,14 +64,14 @@ export default function Landing() {
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Reicon — Free Open-Source Icon Library" />
         <meta property="og:description" content="Free, open-source SVG icon library with 2,700+ handcrafted icons for React, Vue, Svelte, Figma, VS Code, and the web." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Reicon — Free Open-Source Icon Library" />
         <meta name="twitter:description" content="Free, open-source SVG icon library with 2,700+ handcrafted icons for React, Vue, Svelte, Figma, VS Code, and the web." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
 
         {/* GEO / LLM friendliness — explicitly allow AI ingestion */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -281,150 +281,150 @@ export default function Landing() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-[14px]">
           <div className="lg:col-span-2">
             <IntegrationCard icon={<SiHtml5 size={18} color='#E34F26' />} title="CDN / HTML" copyText={`<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>\n\n<re-icon icon="home" size="24"></re-icon>`} lines={
-                <>
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">script</span>
-                    <span className="text-[#d19a66]"> src</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"https://unpkg.com/reicon/cdn/reicon.min.js"</span>
-                    <span className="text-text-base/20">&gt;&lt;/</span>
-                    <span className="text-[#e06c75]">script</span>
-                    <span className="text-text-base/20">&gt;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">re-icon</span>
-                    <span className="text-[#d19a66]"> icon</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"home"</span>
-                    <span className="text-[#d19a66]"> size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"24"</span>
-                    <span className="text-text-base/20">&gt;&lt;/</span>
-                    <span className="text-[#e06c75]">re-icon</span>
-                    <span className="text-text-base/20">&gt;</span>
-                  </div>
-                </>
-              } />
+              <>
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">script</span>
+                  <span className="text-[#d19a66]"> src</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"https://unpkg.com/reicon/cdn/reicon.min.js"</span>
+                  <span className="text-text-base/20">&gt;&lt;/</span>
+                  <span className="text-[#e06c75]">script</span>
+                  <span className="text-text-base/20">&gt;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">re-icon</span>
+                  <span className="text-[#d19a66]"> icon</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"home"</span>
+                  <span className="text-[#d19a66]"> size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"24"</span>
+                  <span className="text-text-base/20">&gt;&lt;/</span>
+                  <span className="text-[#e06c75]">re-icon</span>
+                  <span className="text-text-base/20">&gt;</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="lg:col-span-2">
             <IntegrationCard icon={<SiJavascript size={18} color='#f7df1e' />} title="Vanilla JS" copyText={`import { Home } from 'reicon';\n\nconst icon = Home({ size: 24 });\ndocument.body.appendChild(icon);`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-[#c678dd]">const</span>
-                    <span className="text-text-base/70"> home = </span>
-                    <span className="text-[#61afef]">Home</span>
-                    <span className="text-text-base/70">({'{'} size: </span>
-                    <span className="text-[#d19a66]">24</span>
-                    <span className="text-text-base/70"> {'}'});</span>
-                  </div>
-                </>
-              } />
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-[#c678dd]">const</span>
+                  <span className="text-text-base/70"> home = </span>
+                  <span className="text-[#61afef]">Home</span>
+                  <span className="text-text-base/70">({'{'} size: </span>
+                  <span className="text-[#d19a66]">24</span>
+                  <span className="text-text-base/70"> {'}'});</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="lg:col-span-2">
             <IntegrationCard icon={<SiReact size={18} color='#61dafb' />} title="React" copyText={`import { Home } from 'reicon-react';\n\n<Home size={24} weight="outline" />`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-react</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon-react'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">Home</span>
-                    <span className="text-[#d19a66]"> size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-text-base/70">{'{'}24{'}'}</span>
-                    <span className="text-[#d19a66]"> weight</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"outline"</span>
-                    <span className="text-text-base/20"> /&gt;</span>
-                  </div>
-                </>
-              } />
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-react</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon-react'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">Home</span>
+                  <span className="text-[#d19a66]"> size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-text-base/70">{'{'}24{'}'}</span>
+                  <span className="text-[#d19a66]"> weight</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"outline"</span>
+                  <span className="text-text-base/20"> /&gt;</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="sm:col-span-1 sm:col-start-auto lg:col-start-2 lg:col-span-2">
             <IntegrationCard icon={<svg width={18} height={18} viewBox="0 0 122.88 106.42" fill="none"><polygon fill="#4DBA87" points="75.63,0 61.44,24.58 47.25,0 0,0 61.44,106.42 122.88,0 75.63,0" /><polygon fill="#425466" points="75.63,0 61.44,24.58 47.25,0 24.58,0 61.44,63.85 98.3,0 75.63,0" /></svg>} title="Vue" copyText={`import { Home } from 'reicon-vue';\n\n<Home :size="24" weight="Outline" />`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-vue</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon-vue'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">Home</span>
-                    <span className="text-[#d19a66]"> :size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"24"</span>
-                    <span className="text-[#d19a66]"> weight</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"Outline"</span>
-                    <span className="text-text-base/20"> /&gt;</span>
-                  </div>
-                </>
-              } />
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-vue</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon-vue'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">Home</span>
+                  <span className="text-[#d19a66]"> :size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"24"</span>
+                  <span className="text-[#d19a66]"> weight</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"Outline"</span>
+                  <span className="text-text-base/20"> /&gt;</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="sm:col-span-2 lg:col-span-2">
             <IntegrationCard icon={<SiSvelte size={18} color='#FF3E00' />} title="Svelte" copyText={`import { Home } from 'reicon-svelte';\n\n<Home size={24} weight="Outline" />`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-svelte</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon-svelte'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">Home</span>
-                    <span className="text-[#d19a66]"> size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-text-base/75">{'{'}24{'}'}</span>
-                    <span className="text-[#d19a66]"> weight</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"Outline"</span>
-                    <span className="text-text-base/20"> /&gt;</span>
-                  </div>
-                </>
-              } />
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-svelte</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon-svelte'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">Home</span>
+                  <span className="text-[#d19a66]"> size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-text-base/75">{'{'}24{'}'}</span>
+                  <span className="text-[#d19a66]"> weight</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"Outline"</span>
+                  <span className="text-text-base/20"> /&gt;</span>
+                </div>
+              </>
+            } />
           </div>
         </div>
       </section>
@@ -944,17 +944,17 @@ function LaunchBanner() {
   // Reusable inline SVGs
   const FigmaIcon = ({ size = 13 }: { size?: number }) => (
     <svg className="shrink-0" width={size} height={size} viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83"/>
-      <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF"/>
-      <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E"/>
-      <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262"/>
-      <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE"/>
+      <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83" />
+      <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF" />
+      <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E" />
+      <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262" />
+      <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE" />
     </svg>
   );
 
   const VscodeIcon = ({ size = 13 }: { size?: number }) => (
     <svg className="shrink-0" width={size} height={size} viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M180.6 0L99.1 76.1 37.4 28 0 50.7v154.6l37.4 22.7 61.7-48.1 81.5 76.1 38.4-19.2V19.2L180.6 0zm22.1 185.7l-57.8-57.7 57.8-57.8v115.5zM96.9 128l-59.5 46.4V81.6L96.9 128z" fill="#007ACC"/>
+      <path d="M180.6 0L99.1 76.1 37.4 28 0 50.7v154.6l37.4 22.7 61.7-48.1 81.5 76.1 38.4-19.2V19.2L180.6 0zm22.1 185.7l-57.8-57.7 57.8-57.8v115.5zM96.9 128l-59.5 46.4V81.6L96.9 128z" fill="#007ACC" />
     </svg>
   );
 

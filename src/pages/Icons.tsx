@@ -183,14 +183,14 @@ export default function IconsPage() {
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Browse 2,700+ Free Icons — Reicon" />
         <meta property="og:description" content="Browse and search 2,700+ free, open-source SVG icons. Copy React, Vue, Svelte, Figma, or VS Code code instantly." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Browse 2,700+ Free Icons — Reicon" />
         <meta name="twitter:description" content="Browse and search 2,700+ free, open-source SVG icons. Copy React, Vue, Svelte, Figma, or VS Code code instantly." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
