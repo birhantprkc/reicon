@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://reicon.dev">
+    <img src="public/readme-banner.png" alt="Reicon — Free Open-Source Icon Library" width="100%" />
+  </a>
+</p>
+
 # Contributing to Reicon 💜
 
 Welcome! Thank you for helping to make Reicon better. This guide provides a direct, concise reference for setting up the project, understanding the codebase structure, using key scripts, and submitting contributions.
@@ -29,19 +35,19 @@ Reicon is organized as a monorepo. Here is a breakdown of what each folder conta
 
 | Directory / File | Description |
 | :--- | :--- |
-| [`data/icon-data.json`](../data/icon-data.json) | **Single source of truth.** Every icon's raw SVG markup (Outline & Filled weights) and metadata live here. |
-| [`packages/`](../packages) | Framework packages rebuilt automatically from `data/icon-data.json`. |
-| ├─ [`reicon/`](../packages/reicon) | Vanilla JS & CDN core library. |
-| ├─ [`reicon-react/`](../packages/reicon-react) | React wrapper components. |
-| ├─ [`reicon-vue/`](../packages/reicon-vue) | Vue 3 wrapper components. |
-| ├─ [`reicon-svelte/`](../packages/reicon-svelte) | Svelte wrapper components. |
-| ├─ [`reicon-figma/`](../packages/reicon-figma) | Figma plugin build environment. |
-| └─ [`reicon-vscode/`](../packages/reicon-vscode) | VS Code Extension helper. |
-| [`scripts/`](../scripts) | Build and tooling utilities (Sitemap, SEO auditing, OG image generation). |
-| [`src/`](../src) | Reicon documentation website source (Vite + React). |
-| [`public/`](../public) | Website static assets, favicons, `robots.txt`, and `llms.txt`. |
-| [`docs/`](../docs) | Additional guides and design system references. |
-| [`cdn/`](../cdn) | Generated CDN bundles (git-ignored, compiled from JS build). |
+| [`data/icon-data.json`](file:///Users/devchauhan/Documents/Website/reicon/data/icon-data.json) | **Single source of truth.** Every icon's raw SVG markup (Outline & Filled weights) and metadata live here. |
+| [`packages/`](file:///Users/devchauhan/Documents/Website/reicon/packages) | Framework packages rebuilt automatically from `data/icon-data.json`. |
+| ├─ [`reicon/`](file:///Users/devchauhan/Documents/Website/reicon/packages/reicon) | Vanilla JS & CDN core library. |
+| ├─ [`reicon-react/`](file:///Users/devchauhan/Documents/Website/reicon/packages/reicon-react) | React wrapper components. |
+| ├─ [`reicon-vue/`](file:///Users/devchauhan/Documents/Website/reicon/packages/reicon-vue) | Vue 3 wrapper components. |
+| ├─ [`reicon-svelte/`](file:///Users/devchauhan/Documents/Website/reicon/packages/reicon-svelte) | Svelte wrapper components. |
+| ├─ [`reicon-figma/`](file:///Users/devchauhan/Documents/Website/reicon/packages/reicon-figma) | Figma plugin build environment. |
+| └─ [`reicon-vscode/`](file:///Users/devchauhan/Documents/Website/reicon/packages/reicon-vscode) | VS Code Extension helper. |
+| [`scripts/`](file:///Users/devchauhan/Documents/Website/reicon/scripts) | Build and tooling utilities (Sitemap, SEO auditing, OG image generation). |
+| [`src/`](file:///Users/devchauhan/Documents/Website/reicon/src) | Reicon documentation website source (Vite + React). |
+| [`public/`](file:///Users/devchauhan/Documents/Website/reicon/public) | Website static assets, favicons, `robots.txt`, and `llms.txt`. |
+| [`docs/`](file:///Users/devchauhan/Documents/Website/reicon/docs) | Additional guides and design system references. |
+| [`cdn/`](file:///Users/devchauhan/Documents/Website/reicon/cdn) | Generated CDN bundles (git-ignored, compiled from JS build). |
 
 > [!WARNING]
 > Never manually edit files inside the `packages/` or `cdn/` output directories. They are automatically regenerated from `data/icon-data.json`.
@@ -101,7 +107,7 @@ Reicon maintains strict design guidelines for consistency:
 5. **Optimization**: Optimize SVGs (e.g. using `svgo`) to strip editor metadata and minimize path codes.
 
 ### Step-by-Step Icon Integration:
-1. Open [`data/icon-data.json`](../data/icon-data.json).
+1. Open [`data/icon-data.json`](file:///Users/devchauhan/Documents/Website/reicon/data/icon-data.json).
 2. Insert your new icon inside the appropriate category using lowercase `kebab-case`:
    ```json
    "my-new-icon": {
