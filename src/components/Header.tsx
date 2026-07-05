@@ -11,6 +11,18 @@ interface HeaderProps {
 const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className = '' }, ref) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const [stars, setStars] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/dqev/reicon')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stargazers_count) {
+          setStars(data.stargazers_count);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -60,9 +72,15 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
             href="https://github.com/dqev/reicon"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-base/60 hover:text-text-base text-sm transition-colors px-3 py-1.5 mr-2"
+            className="text-text-base/60 hover:text-text-base text-sm transition-colors px-3 py-1.5 mr-2 flex items-center gap-1"
           >
             GitHub
+            {stars !== null && (
+              <span className="flex items-center gap-0.5 text-text-base/40 text-[11px] font-medium border-l border-text-base/10 pl-1.5 ml-0.5">
+                <Star size={11} weight="Filled" color="#eab308" className="shrink-0 relative -top-[0.5px]" />
+                {stars}
+              </span>
+            )}
           </a>
           <button
             onClick={toggleTheme}
@@ -135,9 +153,15 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="text-text-base/60 hover:text-text-base text-sm py-2 transition-colors"
+            className="text-text-base/60 hover:text-text-base text-sm py-2 transition-colors flex items-center gap-1.5"
           >
             GitHub
+            {stars !== null && (
+              <span className="flex items-center gap-0.5 text-text-base/40 text-[11px] font-medium border-l border-text-base/10 pl-1.5">
+                <Star size={11} weight="Filled" color="#eab308" className="shrink-0 relative -top-[0.5px]" />
+                {stars}
+              </span>
+            )}
           </a>
 
           <ClayButton to="/icons" variant="accent" size="sm" onClick={() => setMenuOpen(false)} className="w-full justify-center mt-1">

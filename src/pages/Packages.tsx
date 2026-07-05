@@ -113,9 +113,9 @@ export default function PackagesPage() {
                   key={pkg.id}
                   className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4"
                 >
-                  <div className="w-16 h-16 flex items-center justify-center mb-4">
+                  <Link to={pkg.guideUrl} className="w-16 h-16 flex items-center justify-center mb-4 hover:scale-105 transition-transform duration-200">
                     {pkg.icon}
-                  </div>
+                  </Link>
                   <h3 className="text-text-base font-semibold text-lg mb-2">{pkg.name}</h3>
                   <div className="flex items-center gap-2 flex-wrap mb-4">
                     <img
@@ -163,7 +163,7 @@ export default function PackagesPage() {
 
               {/* Raw SVG Assets Card */}
               <div className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4">
-                <div className="w-16 h-16 flex items-center justify-center mb-4">
+                <Link to="/usage/svg" className="w-16 h-16 flex items-center justify-center mb-4 hover:scale-105 transition-transform duration-200">
                   <svg className="w-12 h-12" viewBox="0 0 300 300">
                     <g stroke="#000" strokeWidth="38.009">
                       <g id="svgstar" transform="translate(150 150)">
@@ -175,7 +175,7 @@ export default function PackagesPage() {
                     </g>
                     <use href="#svgstar" />
                   </svg>
-                </div>
+                </Link>
                 <h3 className="text-text-base font-semibold text-lg mb-2">reicon-svg</h3>
                 <div className="flex items-center gap-2 flex-wrap mb-4">
                   <span className="bg-[#4285F4]/10 text-[#4285F4] border border-[#4285F4]/20 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">SVG (.zip)</span>
@@ -213,7 +213,7 @@ export default function PackagesPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Figma Card */}
               <div className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4">
-                <div className="w-16 h-16 flex items-center justify-center mb-4">
+                <Link to="/usage/figma" className="w-16 h-16 flex items-center justify-center mb-4 hover:scale-105 transition-transform duration-200">
                   <svg className="h-12 w-auto" viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_912_3)">
                       <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83" />
@@ -228,7 +228,7 @@ export default function PackagesPage() {
                       </clipPath>
                     </defs>
                   </svg>
-                </div>
+                </Link>
                 <h3 className="text-text-base font-semibold text-lg mb-2">reicon-figma</h3>
                 <div className="flex items-center gap-2 flex-wrap mb-4">
                   <span className="bg-[#F24E1E]/10 text-[#F24E1E] border border-[#F24E1E]/20 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Figma Plugin</span>
@@ -265,9 +265,9 @@ export default function PackagesPage() {
 
               {/* VS Code Card */}
               <div className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4">
-                <div className="w-16 h-16 flex items-center justify-center mb-4 text-[#007ACC]">
+                <Link to="/usage/vscode" className="w-16 h-16 flex items-center justify-center mb-4 text-[#007ACC] hover:scale-105 transition-transform duration-200">
                   <VscVscodeInsiders size={48} />
-                </div>
+                </Link>
                 <h3 className="text-text-base font-semibold text-lg mb-2">reicon-vscode</h3>
                 <div className="flex items-center gap-2 flex-wrap mb-4">
                   <span className="bg-[#007ACC]/10 text-[#007ACC] border border-[#007ACC]/20 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">VS Code Extension</span>
