@@ -71,7 +71,7 @@ export default function LicensePage() {
         <div className="space-y-8 text-[15px] text-text-base/60 leading-relaxed">
           <section>
             <h2 className="text-lg font-semibold text-text-base mb-3">MIT License</h2>
-            <p>Reicon icons and the <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[13px]">reicon-react</code> package are released under the MIT License — one of the most permissive open-source licenses available.</p>
+            <p>Reicon icons and the <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[13px]">reicon</code> package are released under the MIT License — one of the most permissive open-source licenses available.</p>
           </section>
 
           <section>
@@ -104,6 +104,35 @@ export default function LicensePage() {
               </button>
             </div>
             <pre className="bg-text-base/3 rounded-xl p-5 text-[13px] text-text-base/50 leading-relaxed overflow-x-auto whitespace-pre-wrap">{LICENSE_TEXT}</pre>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-text-base mb-3">Credits & Attribution</h2>
+            <p className="mb-3">
+              Reicon is built using the base icon sets from the following libraries:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-text-base/60">
+              <li>
+                <a href="https://solar-icons.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline font-medium">
+                  Solar Icons
+                </a>{' '}
+                designed by{' '}
+                <span className="text-text-base/80">480 Design</span> and package maintained by{' '}
+                <a href="https://github.com/saoudi-h/solar-icons" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline">
+                  Saoudi H.
+                </a>{' '}
+                (released under CC BY 4.0 and MIT Licenses).
+              </li>
+              <li>
+                <a href="https://zappicon.com" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline font-medium">
+                  Zappicon
+                </a>{' '}
+                (subject to the{' '}
+                <a href="https://zappicon.com/license" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline">
+                  Zappicon License
+                </a>).
+              </li>
+            </ul>
           </section>
 
           <section>
