@@ -78,14 +78,14 @@ export default function PackagesPage() {
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Packages & Integrations — Reicon" />
         <meta property="og:description" content="Get official Reicon integrations. Install wrappers for React, Vue 3, Svelte, download raw SVG assets, or get the official Figma plugin and VS Code extension." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Packages & Integrations — Reicon" />
         <meta name="twitter:description" content="Get official Reicon integrations. Install wrappers for React, Vue 3, Svelte, download raw SVG assets, or get the official Figma plugin and VS Code extension." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
@@ -113,9 +113,9 @@ export default function PackagesPage() {
                   key={pkg.id}
                   className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4"
                 >
-                  <div className="w-16 h-16 flex items-center justify-center mb-4">
+                  <Link to={pkg.guideUrl} className="w-16 h-16 flex items-center justify-center mb-4 hover:scale-105 transition-transform duration-200">
                     {pkg.icon}
-                  </div>
+                  </Link>
                   <h3 className="text-text-base font-semibold text-lg mb-2">{pkg.name}</h3>
                   <div className="flex items-center gap-2 flex-wrap mb-4">
                     <img
@@ -163,19 +163,19 @@ export default function PackagesPage() {
 
               {/* Raw SVG Assets Card */}
               <div className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4">
-                <div className="w-16 h-16 flex items-center justify-center mb-4">
+                <Link to="/usage/svg" className="w-16 h-16 flex items-center justify-center mb-4 hover:scale-105 transition-transform duration-200">
                   <svg className="w-12 h-12" viewBox="0 0 300 300">
                     <g stroke="#000" strokeWidth="38.009">
                       <g id="svgstar" transform="translate(150 150)">
-                        <path id="svgbar" fill="#ffb13b" d="M-84.149-15.851a22.417 22.417 0 1 0 0 31.702H84.15a22.417 22.417 0 1 0 0-31.702Z"/>
-                        <use href="#svgbar" transform="rotate(45)"/>
-                        <use href="#svgbar" transform="rotate(90)"/>
-                        <use href="#svgbar" transform="rotate(135)"/>
+                        <path id="svgbar" fill="#ffb13b" d="M-84.149-15.851a22.417 22.417 0 1 0 0 31.702H84.15a22.417 22.417 0 1 0 0-31.702Z" />
+                        <use href="#svgbar" transform="rotate(45)" />
+                        <use href="#svgbar" transform="rotate(90)" />
+                        <use href="#svgbar" transform="rotate(135)" />
                       </g>
                     </g>
-                    <use href="#svgstar"/>
+                    <use href="#svgstar" />
                   </svg>
-                </div>
+                </Link>
                 <h3 className="text-text-base font-semibold text-lg mb-2">reicon-svg</h3>
                 <div className="flex items-center gap-2 flex-wrap mb-4">
                   <span className="bg-[#4285F4]/10 text-[#4285F4] border border-[#4285F4]/20 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">SVG (.zip)</span>
@@ -213,22 +213,22 @@ export default function PackagesPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Figma Card */}
               <div className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4">
-                <div className="w-16 h-16 flex items-center justify-center mb-4">
+                <Link to="/usage/figma" className="w-16 h-16 flex items-center justify-center mb-4 hover:scale-105 transition-transform duration-200">
                   <svg className="h-12 w-auto" viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_912_3)">
-                      <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83"/>
-                      <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF"/>
-                      <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E"/>
-                      <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262"/>
-                      <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE"/>
+                      <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83" />
+                      <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF" />
+                      <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E" />
+                      <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262" />
+                      <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE" />
                     </g>
                     <defs>
                       <clipPath id="clip0_912_3">
-                        <rect width="53.3333" height="80" fill="white"/>
+                        <rect width="53.3333" height="80" fill="white" />
                       </clipPath>
                     </defs>
                   </svg>
-                </div>
+                </Link>
                 <h3 className="text-text-base font-semibold text-lg mb-2">reicon-figma</h3>
                 <div className="flex items-center gap-2 flex-wrap mb-4">
                   <span className="bg-[#F24E1E]/10 text-[#F24E1E] border border-[#F24E1E]/20 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">Figma Plugin</span>
@@ -265,9 +265,9 @@ export default function PackagesPage() {
 
               {/* VS Code Card */}
               <div className="bg-text-base/3 rounded-2xl p-6 flex flex-col transition-all hover:bg-text-base/4">
-                <div className="w-16 h-16 flex items-center justify-center mb-4 text-[#007ACC]">
+                <Link to="/usage/vscode" className="w-16 h-16 flex items-center justify-center mb-4 text-[#007ACC] hover:scale-105 transition-transform duration-200">
                   <VscVscodeInsiders size={48} />
-                </div>
+                </Link>
                 <h3 className="text-text-base font-semibold text-lg mb-2">reicon-vscode</h3>
                 <div className="flex items-center gap-2 flex-wrap mb-4">
                   <span className="bg-[#007ACC]/10 text-[#007ACC] border border-[#007ACC]/20 text-[11px] font-semibold px-2.5 py-0.5 rounded-full">VS Code Extension</span>

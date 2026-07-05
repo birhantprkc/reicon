@@ -29,5 +29,5 @@ export default function ClayButton({
   if (href) {
     return <a href={href} target="_blank" rel="noopener noreferrer" className={base} onClick={onClick}>{children}</a>;
   }
-  return <button className={base} onClick={onClick}>{children}</button>;
+  return <button type="button" className={base} onClick={onClick}>{children}</button>;
 }

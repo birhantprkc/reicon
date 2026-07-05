@@ -12,10 +12,55 @@ import newIconsData from '../data/new-icons-added.json';
 import { HexColorPicker } from 'react-colorful';
 import { useTheme } from '../components/ThemeContext';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Reusable Eco-system Icons (hoisted to top-level)
+// ─────────────────────────────────────────────────────────────────────────────
+const FigmaIcon = ({ size = 13 }: { size?: number }) => (
+  <svg className="shrink-0" width={size} height={size} viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83" />
+    <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF" />
+    <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E" />
+    <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262" />
+    <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE" />
+  </svg>
+);
+
+const VscodeIcon = ({ size = 13 }: { size?: number }) => (
+  <svg className="shrink-0" width={size} height={size} viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M180.6 0L99.1 76.1 37.4 28 0 50.7v154.6l37.4 22.7 61.7-48.1 81.5 76.1 38.4-19.2V19.2L180.6 0zm22.1 185.7l-57.8-57.7 57.8-57.8v115.5zM96.9 128l-59.5 46.4V81.6L96.9 128z" fill="#007ACC" />
+  </svg>
+);
+
+const VueIcon = ({ size = 14 }: { size?: number }) => (
+  <svg className="shrink-0" width={size} height={size} viewBox="0 0 122.88 106.42" fill="none">
+    <polygon fill="#4DBA87" points="75.63,0 61.44,24.58 47.25,0 0,0 61.44,106.42 122.88,0 75.63,0" />
+    <polygon fill="#425466" points="75.63,0 61.44,24.58 47.25,0 24.58,0 61.44,63.85 98.3,0 75.63,0" />
+  </svg>
+);
+
+const SvelteIcon = ({ size = 14 }: { size?: number }) => (
+  <svg className="shrink-0" width={size} height={size} viewBox="0 0 98.1 118" fill="none">
+    <path d="M91.8 15.6C80.9-.1 59.2-4.7 43.6 5.2L16.1 22.8C8.6 27.5 3.4 35.2 1.9 43.9c-1.3 7.3-.2 14.8 3.3 21.3-2.4 3.6-4 7.6-4.7 11.8-1.6 8.9.5 18.1 5.7 25.4 11 15.7 32.6 20.3 48.2 10.4l27.5-17.5c7.5-4.7 12.7-12.4 14.2-21.1 1.3-7.3.2-14.8-3.3-21.3 2.4-3.6 4-7.6 4.7-11.8 1.7-9-.4-18.2-5.7-25.5" fill="#FF3E00" />
+    <path d="M40.9 103.9c-8.9 2.3-18.2-1.2-23.4-8.7-3.2-4.4-4.4-9.9-3.5-15.3.2-.9.4-1.7.6-2.6l.5-1.6 1.4 1c3.3 2.4 6.9 4.2 10.8 5.4l1 .3-.1 1c-.1 1.4.3 2.9 1.1 4.1 1.6 2.3 4.4 3.4 7.1 2.7.6-.2 1.2-.4 1.7-.8L65.4 72c1.4-.9 2.3-2.2 2.6-3.8.3-1.6-.1-3.3-1.1-4.6-1.6-2.3-4.4-3.3-7.1-2.6-.6.2-1.2.4-1.7.8l-10.5 6.7c-1.7 1.1-3.6 1.9-5.6 2.4-8.9 2.3-18.2-1.2-23.4-8.7-3.2-4.4-4.4-9.9-3.5-15.3.8-5.3 3.9-10 8.5-12.8l27.5-17.5c1.7-1.1 3.6-1.9 5.6-2.4 8.9-2.3 18.2 1.2 23.4 8.7 3.2 4.4 4.4 9.9 3.5 15.3-.2.9-.4 1.7-.6 2.6l-.5 1.6-1.4-1c-3.3-2.4-6.9-4.2-10.8-5.4l-1-.3.1-1c.1-1.4-.3-2.9-1.1-4.1-1.6-2.3-4.4-3.4-7.1-2.7-.6.2-1.2.4-1.7.8L32.4 46.1c-1.4.9-2.3 2.2-2.6 3.8s.1 3.3 1.1 4.6c1.6 2.3 4.4 3.3 7.1 2.6.6-.2 1.2-.4 1.7-.8l10.5-6.7c1.7-1.1 3.6-1.9 5.6-2.4 8.9-2.3 18.2 1.2 23.4 8.7 3.2 4.4 4.4 9.9 3.5 15.3-.8 5.3-3.9 10-8.5 12.8L47.3 101.6c-1.7 1.1-3.6 1.9-5.6 2.4l-.8-.1z" fill="#fff" />
+  </svg>
+);
+
 export default function Landing() {
   const { theme, toggleTheme } = useTheme();
   const heroCardRef = useRef<HTMLDivElement>(null);
   const fixedNavRef = useRef<HTMLElement>(null);
+  const [stars, setStars] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/dqev/reicon')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stargazers_count) {
+          setStars(data.stargazers_count);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     const card = heroCardRef.current;
@@ -64,14 +109,14 @@ export default function Landing() {
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Reicon — Free Open-Source Icon Library" />
         <meta property="og:description" content="Free, open-source SVG icon library with 2,700+ handcrafted icons for React, Vue, Svelte, Figma, VS Code, and the web." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Reicon — Free Open-Source Icon Library" />
         <meta name="twitter:description" content="Free, open-source SVG icon library with 2,700+ handcrafted icons for React, Vue, Svelte, Figma, VS Code, and the web." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
 
         {/* GEO / LLM friendliness — explicitly allow AI ingestion */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -172,9 +217,15 @@ export default function Landing() {
                     href="https://github.com/dqev/reicon"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[13px] text-text-base/80 border border-white/20 bg-white/5 backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-white/10 transition-colors cursor-pointer"
+                    className="text-[13px] text-text-base/80 border border-white/20 bg-white/5 backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-white/10 transition-colors cursor-pointer flex items-center gap-1.5"
                   >
                     GitHub
+                    {stars !== null && (
+                      <span className="flex items-center gap-0.5 text-text-base/50 text-[11px] font-medium border-l border-white/15 pl-1.5">
+                        <Star size={11} weight="Filled" color="#eab308" className="shrink-0 relative -top-[0.5px]" />
+                        {stars}
+                      </span>
+                    )}
                   </a>
                   <ClayButton to="/icons" variant="primary" size="sm">
                     Browse Icons
@@ -217,6 +268,67 @@ export default function Landing() {
                   <Book3 size={16} color="currentColor" />
                   Usage Guide
                 </Link>
+              </div>
+
+              {/* Ecosystem integration links */}
+              <div className="mt-14 flex flex-col items-center justify-center gap-3.5 select-none">
+                <span className="text-[10px] tracking-[0.15em] text-white/35 dark:text-white/30 uppercase font-semibold">Integrations</span>
+                <div className="flex items-center justify-center gap-4 sm:gap-7 flex-wrap max-w-[600px]">
+                  {/* React */}
+                  <Link
+                    to="/usage/react"
+                    title="React"
+                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                  >
+                    <SiReact className="text-[#61DAFB]/70 hover:text-[#61DAFB] transition-colors" size={18} />
+                    <span className="hidden sm:inline">React</span>
+                  </Link>
+                  {/* Vue */}
+                  <Link
+                    to="/usage/vue"
+                    title="Vue 3"
+                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                  >
+                    <VueIcon size={17} />
+                    <span className="hidden sm:inline">Vue</span>
+                  </Link>
+                  {/* Svelte */}
+                  <Link
+                    to="/usage/svelte"
+                    title="Svelte"
+                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                  >
+                    <SvelteIcon size={16} />
+                    <span className="hidden sm:inline">Svelte</span>
+                  </Link>
+                  {/* JavaScript */}
+                  <Link
+                    to="/usage/vanilla"
+                    title="Vanilla JavaScript"
+                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                  >
+                    <SiJavascript className="text-[#F7DF1E]/80 hover:text-[#F7DF1E] transition-colors" size={16} />
+                    <span className="hidden sm:inline">JavaScript</span>
+                  </Link>
+                  {/* Figma */}
+                  <Link
+                    to="/usage/figma"
+                    title="Figma"
+                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                  >
+                    <FigmaIcon size={16} />
+                    <span className="hidden sm:inline">Figma</span>
+                  </Link>
+                  {/* VS Code */}
+                  <Link
+                    to="/usage/vscode"
+                    title="VS Code"
+                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                  >
+                    <VscodeIcon size={17} />
+                    <span className="hidden sm:inline">VS Code</span>
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -280,151 +392,151 @@ export default function Landing() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-[14px]">
           <div className="lg:col-span-2">
-            <IntegrationCard icon={<SiHtml5 size={18} color='#E34F26' />} title="CDN / HTML" copyText={`<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>\n\n<re-icon icon="home" size="24"></re-icon>`} lines={
-                <>
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">script</span>
-                    <span className="text-[#d19a66]"> src</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"https://unpkg.com/reicon/cdn/reicon.min.js"</span>
-                    <span className="text-text-base/20">&gt;&lt;/</span>
-                    <span className="text-[#e06c75]">script</span>
-                    <span className="text-text-base/20">&gt;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">re-icon</span>
-                    <span className="text-[#d19a66]"> icon</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"home"</span>
-                    <span className="text-[#d19a66]"> size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"24"</span>
-                    <span className="text-text-base/20">&gt;&lt;/</span>
-                    <span className="text-[#e06c75]">re-icon</span>
-                    <span className="text-text-base/20">&gt;</span>
-                  </div>
-                </>
-              } />
+            <IntegrationCard icon={<SiHtml5 size={18} color='#E34F26' />} title="CDN / HTML" guideUrl="/usage/vanilla" copyText={`<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>\n\n<re-icon icon="home" size="24"></re-icon>`} lines={
+              <>
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">script</span>
+                  <span className="text-[#d19a66]"> src</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"https://unpkg.com/reicon/cdn/reicon.min.js"</span>
+                  <span className="text-text-base/20">&gt;&lt;/</span>
+                  <span className="text-[#e06c75]">script</span>
+                  <span className="text-text-base/20">&gt;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">re-icon</span>
+                  <span className="text-[#d19a66]"> icon</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"home"</span>
+                  <span className="text-[#d19a66]"> size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"24"</span>
+                  <span className="text-text-base/20">&gt;&lt;/</span>
+                  <span className="text-[#e06c75]">re-icon</span>
+                  <span className="text-text-base/20">&gt;</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="lg:col-span-2">
-            <IntegrationCard icon={<SiJavascript size={18} color='#f7df1e' />} title="Vanilla JS" copyText={`import { Home } from 'reicon';\n\nconst icon = Home({ size: 24 });\ndocument.body.appendChild(icon);`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-[#c678dd]">const</span>
-                    <span className="text-text-base/70"> home = </span>
-                    <span className="text-[#61afef]">Home</span>
-                    <span className="text-text-base/70">({'{'} size: </span>
-                    <span className="text-[#d19a66]">24</span>
-                    <span className="text-text-base/70"> {'}'});</span>
-                  </div>
-                </>
-              } />
+            <IntegrationCard icon={<SiJavascript size={18} color='#f7df1e' />} title="Vanilla JS" guideUrl="/usage/vanilla" copyText={`import { Home } from 'reicon';\n\nconst icon = Home({ size: 24 });\ndocument.body.appendChild(icon);`} lines={
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-[#c678dd]">const</span>
+                  <span className="text-text-base/70"> home = </span>
+                  <span className="text-[#61afef]">Home</span>
+                  <span className="text-text-base/70">({'{'} size: </span>
+                  <span className="text-[#d19a66]">24</span>
+                  <span className="text-text-base/70"> {'}'});</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="lg:col-span-2">
-            <IntegrationCard icon={<SiReact size={18} color='#61dafb' />} title="React" copyText={`import { Home } from 'reicon-react';\n\n<Home size={24} weight="outline" />`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-react</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon-react'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">Home</span>
-                    <span className="text-[#d19a66]"> size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-text-base/70">{'{'}24{'}'}</span>
-                    <span className="text-[#d19a66]"> weight</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"outline"</span>
-                    <span className="text-text-base/20"> /&gt;</span>
-                  </div>
-                </>
-              } />
+            <IntegrationCard icon={<SiReact size={18} color='#61dafb' />} title="React" guideUrl="/usage/react" copyText={`import { Home } from 'reicon-react';\n\n<Home size={24} weight="outline" />`} lines={
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-react</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon-react'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">Home</span>
+                  <span className="text-[#d19a66]"> size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-text-base/70">{'{'}24{'}'}</span>
+                  <span className="text-[#d19a66]"> weight</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"outline"</span>
+                  <span className="text-text-base/20"> /&gt;</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="sm:col-span-1 sm:col-start-auto lg:col-start-2 lg:col-span-2">
-            <IntegrationCard icon={<svg width={18} height={18} viewBox="0 0 122.88 106.42" fill="none"><polygon fill="#4DBA87" points="75.63,0 61.44,24.58 47.25,0 0,0 61.44,106.42 122.88,0 75.63,0" /><polygon fill="#425466" points="75.63,0 61.44,24.58 47.25,0 24.58,0 61.44,63.85 98.3,0 75.63,0" /></svg>} title="Vue" copyText={`import { Home } from 'reicon-vue';\n\n<Home :size="24" weight="Outline" />`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-vue</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon-vue'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">Home</span>
-                    <span className="text-[#d19a66]"> :size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"24"</span>
-                    <span className="text-[#d19a66]"> weight</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"Outline"</span>
-                    <span className="text-text-base/20"> /&gt;</span>
-                  </div>
-                </>
-              } />
+            <IntegrationCard icon={<svg width={18} height={18} viewBox="0 0 122.88 106.42" fill="none"><polygon fill="#4DBA87" points="75.63,0 61.44,24.58 47.25,0 0,0 61.44,106.42 122.88,0 75.63,0" /><polygon fill="#425466" points="75.63,0 61.44,24.58 47.25,0 24.58,0 61.44,63.85 98.3,0 75.63,0" /></svg>} title="Vue" guideUrl="/usage/vue" copyText={`import { Home } from 'reicon-vue';\n\n<Home :size="24" weight="Outline" />`} lines={
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-vue</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon-vue'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">Home</span>
+                  <span className="text-[#d19a66]"> :size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"24"</span>
+                  <span className="text-[#d19a66]"> weight</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"Outline"</span>
+                  <span className="text-text-base/20"> /&gt;</span>
+                </div>
+              </>
+            } />
           </div>
 
           <div className="sm:col-span-2 lg:col-span-2">
-            <IntegrationCard icon={<SiSvelte size={18} color='#FF3E00' />} title="Svelte" copyText={`import { Home } from 'reicon-svelte';\n\n<Home size={24} weight="Outline" />`} lines={
-                <>
-                  <div>
-                    <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-svelte</span></div>
-                    <div className="h-2" />
-                    <span className="text-[#c678dd]">import</span>
-                    <span className="text-text-base/70"> {'{ '}</span>
-                    <span className="text-[#e5c07b]">Home</span>
-                    <span className="text-text-base/70">{' }'} </span>
-                    <span className="text-[#c678dd]">from</span>
-                    <span className="text-[#98c379]"> 'reicon-svelte'</span>
-                    <span className="text-text-base/30">;</span>
-                  </div>
-                  <div className="h-3" />
-                  <div>
-                    <span className="text-text-base/20">&lt;</span>
-                    <span className="text-[#e06c75]">Home</span>
-                    <span className="text-[#d19a66]"> size</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-text-base/75">{'{'}24{'}'}</span>
-                    <span className="text-[#d19a66]"> weight</span>
-                    <span className="text-text-base/30">=</span>
-                    <span className="text-[#98c379]">"Outline"</span>
-                    <span className="text-text-base/20"> /&gt;</span>
-                  </div>
-                </>
-              } />
+            <IntegrationCard icon={<SiSvelte size={18} color='#FF3E00' />} title="Svelte" guideUrl="/usage/svelte" copyText={`import { Home } from 'reicon-svelte';\n\n<Home size={24} weight="Outline" />`} lines={
+              <>
+                <div>
+                  <div><span className="text-[#ffbd2e]">$</span><span className="text-[#e06c75]"> npm</span> <span className="text-text-base/70"> i reicon-svelte</span></div>
+                  <div className="h-2" />
+                  <span className="text-[#c678dd]">import</span>
+                  <span className="text-text-base/70"> {'{ '}</span>
+                  <span className="text-[#e5c07b]">Home</span>
+                  <span className="text-text-base/70">{' }'} </span>
+                  <span className="text-[#c678dd]">from</span>
+                  <span className="text-[#98c379]"> 'reicon-svelte'</span>
+                  <span className="text-text-base/30">;</span>
+                </div>
+                <div className="h-3" />
+                <div>
+                  <span className="text-text-base/20">&lt;</span>
+                  <span className="text-[#e06c75]">Home</span>
+                  <span className="text-[#d19a66]"> size</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-text-base/75">{'{'}24{'}'}</span>
+                  <span className="text-[#d19a66]"> weight</span>
+                  <span className="text-text-base/30">=</span>
+                  <span className="text-[#98c379]">"Outline"</span>
+                  <span className="text-text-base/20"> /&gt;</span>
+                </div>
+              </>
+            } />
           </div>
         </div>
       </section>
@@ -633,7 +745,7 @@ function FeatureBlock({ icon, title, description }: { icon: React.ReactNode; tit
   );
 }
 
-function IntegrationCard({ icon, title, lines, copyText }: { icon: React.ReactNode; title: string; lines: React.ReactNode; copyText: string }) {
+function IntegrationCard({ icon, title, lines, copyText, guideUrl }: { icon: React.ReactNode; title: string; lines: React.ReactNode; copyText: string; guideUrl?: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -647,10 +759,24 @@ function IntegrationCard({ icon, title, lines, copyText }: { icon: React.ReactNo
     <div className="bg-text-base/3 rounded-[14px] overflow-hidden">
       <div className="flex items-center justify-between px-5 py-3 border-b border-text-base/6">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 flex items-center justify-center">
-            {icon}
-          </div>
-          <h3 className="text-[14px] font-semibold text-text-base">{title}</h3>
+          {guideUrl ? (
+            <Link to={guideUrl} className="flex items-center gap-2 group/title hover:opacity-80 transition-opacity">
+              <div className="w-6 h-6 flex items-center justify-center">
+                {icon}
+              </div>
+              <h3 className="text-[14px] font-semibold text-text-base flex items-center gap-0.5">
+                {title}
+                <re-icon icon="arrow-up-right2" size={10} className="text-text-base/30 group-hover/title:text-text-base/60 transition-colors relative -top-[0.5px]" />
+              </h3>
+            </Link>
+          ) : (
+            <>
+              <div className="w-6 h-6 flex items-center justify-center">
+                {icon}
+              </div>
+              <h3 className="text-[14px] font-semibold text-text-base">{title}</h3>
+            </>
+          )}
         </div>
         <button
           onClick={handleCopy}
@@ -941,23 +1067,6 @@ function LaunchBanner() {
     try { localStorage.setItem('reicon-launch-banner-v2', 'dismissed'); } catch { }
   };
 
-  // Reusable inline SVGs
-  const FigmaIcon = ({ size = 13 }: { size?: number }) => (
-    <svg className="shrink-0" width={size} height={size} viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83"/>
-      <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF"/>
-      <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E"/>
-      <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262"/>
-      <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE"/>
-    </svg>
-  );
-
-  const VscodeIcon = ({ size = 13 }: { size?: number }) => (
-    <svg className="shrink-0" width={size} height={size} viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M180.6 0L99.1 76.1 37.4 28 0 50.7v154.6l37.4 22.7 61.7-48.1 81.5 76.1 38.4-19.2V19.2L180.6 0zm22.1 185.7l-57.8-57.7 57.8-57.8v115.5zM96.9 128l-59.5 46.4V81.6L96.9 128z" fill="#007ACC"/>
-    </svg>
-  );
-
   return (
     <div className="relative z-[300] flex items-center justify-center px-10 py-1.5 bg-bg-base transition-colors duration-300">
       {/* Desktop */}
@@ -1027,3 +1136,6 @@ function LaunchBanner() {
     </div>
   );
 }
+
+
+

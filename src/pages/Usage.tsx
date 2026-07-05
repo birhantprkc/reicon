@@ -107,56 +107,56 @@ export default function UsagePage() {
     framework === 'react'
       ? 'react-usage'
       : framework === 'vue'
-      ? 'vue-usage'
-      : framework === 'svelte'
-      ? 'svelte-usage'
-      : framework === 'figma'
-      ? 'figma'
-      : framework === 'vscode'
-      ? 'vscode'
-      : framework === 'svg'
-      ? 'svg-usage'
-      : 'cdn';
+        ? 'vue-usage'
+        : framework === 'svelte'
+          ? 'svelte-usage'
+          : framework === 'figma'
+            ? 'figma'
+            : framework === 'vscode'
+              ? 'vscode'
+              : framework === 'svg'
+                ? 'svg-usage'
+                : 'cdn';
   const frameworkLabel =
     framework === 'react'
       ? 'React'
       : framework === 'vue'
-      ? 'Vue'
-      : framework === 'svelte'
-      ? 'Svelte'
-      : framework === 'figma'
-      ? 'Figma'
-      : framework === 'vscode'
-      ? 'VS Code'
-      : framework === 'svg'
-      ? 'Raw SVGs'
-      : 'Vanilla JS / CDN';
+        ? 'Vue'
+        : framework === 'svelte'
+          ? 'Svelte'
+          : framework === 'figma'
+            ? 'Figma'
+            : framework === 'vscode'
+              ? 'VS Code'
+              : framework === 'svg'
+                ? 'Raw SVGs'
+                : 'Vanilla JS / CDN';
 
   const onThisPage = !fwParam
     ? [
-        { id: 'what-is-reicon', label: 'What is Reicon?' },
-        { id: 'props', label: 'Props' },
-        { id: 'weights', label: 'Icon Weights' },
-        { id: 'styling', label: 'Styling & Color' },
-        { id: 'accessibility', label: 'Accessibility' },
-        { id: 'performance', label: 'Performance' },
-        { id: 'typescript', label: 'TypeScript' },
-        { id: 'troubleshooting', label: 'Troubleshooting' },
-      ]
+      { id: 'what-is-reicon', label: 'What is Reicon?' },
+      { id: 'props', label: 'Props' },
+      { id: 'weights', label: 'Icon Weights' },
+      { id: 'styling', label: 'Styling & Color' },
+      { id: 'accessibility', label: 'Accessibility' },
+      { id: 'performance', label: 'Performance' },
+      { id: 'typescript', label: 'TypeScript' },
+      { id: 'troubleshooting', label: 'Troubleshooting' },
+    ]
     : [
-        { id: frameworkSectionId, label: frameworkLabel },
-        ...(framework !== 'figma' && framework !== 'vscode' && framework !== 'svg'
-          ? [
-              { id: 'props', label: 'Props' },
-              { id: 'weights', label: 'Icon Weights' },
-              { id: 'styling', label: 'Styling & Color' },
-              { id: 'accessibility', label: 'Accessibility' },
-              { id: 'performance', label: 'Performance' },
-              { id: 'typescript', label: 'TypeScript' },
-              { id: 'troubleshooting', label: 'Troubleshooting' },
-            ]
-          : []),
-      ];
+      { id: frameworkSectionId, label: frameworkLabel },
+      ...(framework !== 'figma' && framework !== 'vscode' && framework !== 'svg'
+        ? [
+          { id: 'props', label: 'Props' },
+          { id: 'weights', label: 'Icon Weights' },
+          { id: 'styling', label: 'Styling & Color' },
+          { id: 'accessibility', label: 'Accessibility' },
+          { id: 'performance', label: 'Performance' },
+          { id: 'typescript', label: 'TypeScript' },
+          { id: 'troubleshooting', label: 'Troubleshooting' },
+        ]
+        : []),
+    ];
 
   const copyToClipboard = async (text: string, field: string) => {
     try {
@@ -224,9 +224,26 @@ export default function UsagePage() {
     setTimeout(() => setToastMessage(null), 3000);
   };
 
+  /** Returns the markdown docs appropriate for the currently selected framework. */
+  const getActiveFwDocs = () => {
+    switch (framework) {
+      case 'react': return reactDocs;
+      case 'vue': return vueDocs;
+      case 'svelte': return svelteDocs;
+      case 'figma': return figmaDocs;
+      case 'vscode': return vscodeDocs;
+      case 'svg': return svgDocs;
+      default: return vanillaDocs; // 'vanilla'
+    }
+  };
+
   const handleCopyPageMarkdown = async () => {
-    const activeFwDocs = framework === 'vanilla' ? vanillaDocs : framework === 'react' ? reactDocs : framework === 'vue' ? vueDocs : svelteDocs;
-    const fullMarkdown = `${activeFwDocs}\n\n${propsDocs}\n\n${weightsDocs}\n\n${stylingDocs}\n\n${accessibilityDocs}\n\n${performanceDocs}\n\n${typescriptDocs}\n\n${troubleshootingDocs}`;
+    const activeFwDocs = getActiveFwDocs();
+    // Figma / VS Code / SVG are self-contained guides; omit the shared reference sections
+    const isStandalone = framework === 'figma' || framework === 'vscode' || framework === 'svg';
+    const fullMarkdown = isStandalone
+      ? activeFwDocs
+      : `${activeFwDocs}\n\n${propsDocs}\n\n${weightsDocs}\n\n${stylingDocs}\n\n${accessibilityDocs}\n\n${performanceDocs}\n\n${typescriptDocs}\n\n${troubleshootingDocs}`;
     try {
       await navigator.clipboard.writeText(fullMarkdown);
       setCopiedPage(true);
@@ -238,17 +255,20 @@ export default function UsagePage() {
   };
 
   const openInLLM = async (platform: 'chatgpt' | 'claude' | 't3') => {
-    const activeFwDocs = framework === 'vanilla' ? vanillaDocs : framework === 'react' ? reactDocs : framework === 'vue' ? vueDocs : svelteDocs;
-    const fullMarkdown = `${activeFwDocs}\n\n${propsDocs}\n\n${weightsDocs}\n\n${stylingDocs}\n\n${accessibilityDocs}\n\n${performanceDocs}\n\n${typescriptDocs}\n\n${troubleshootingDocs}`;
-    
+    const activeFwDocs = getActiveFwDocs();
+    const isStandalone = framework === 'figma' || framework === 'vscode' || framework === 'svg';
+    const fullMarkdown = isStandalone
+      ? activeFwDocs
+      : `${activeFwDocs}\n\n${propsDocs}\n\n${weightsDocs}\n\n${stylingDocs}\n\n${accessibilityDocs}\n\n${performanceDocs}\n\n${typescriptDocs}\n\n${troubleshootingDocs}`;
+
     try {
       await navigator.clipboard.writeText(fullMarkdown);
     } catch (e) {
       console.error('Failed to copy to clipboard', e);
     }
 
-    const promptText = `Here is the Reicon documentation for ${framework === 'vanilla' ? 'Vanilla JS / CDN' : framework === 'react' ? 'React' : framework === 'vue' ? 'Vue' : 'Svelte'}. Please read it and help me use the library:\n\n${fullMarkdown}`;
-    
+    const promptText = `Here is the Reicon documentation for ${frameworkLabel}. Please read it and help me use the library:\n\n${fullMarkdown}`;
+
     let url = '';
     if (platform === 'chatgpt') {
       url = `https://chatgpt.com/?hints=search&q=${encodeURIComponent(promptText)}`;
@@ -317,17 +337,17 @@ export default function UsagePage() {
   );
 
   const FigmaIcon = ({ size = 16 }: { size?: number }) => (
-    <svg width={size * (54/80)} height={size} viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={size * (54 / 80)} height={size} viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_912_3)">
-        <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83"/>
-        <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF"/>
-        <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E"/>
-        <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262"/>
-        <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE"/>
+        <path d="M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z" fill="#0ACF83" />
+        <path d="M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z" fill="#A259FF" />
+        <path d="M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z" fill="#F24E1E" />
+        <path d="M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z" fill="#FF7262" />
+        <path d="M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z" fill="#1ABCFE" />
       </g>
       <defs>
         <clipPath id="clip0_912_3">
-          <rect width="53.3333" height="80" fill="white"/>
+          <rect width="53.3333" height="80" fill="white" />
         </clipPath>
       </defs>
     </svg>
@@ -337,13 +357,13 @@ export default function UsagePage() {
     <svg width={size} height={size} viewBox="0 0 300 300">
       <g stroke="#000" strokeWidth="38.009">
         <g id="svgstar-usage" transform="translate(150 150)">
-          <path id="svgbar-usage" fill="#ffb13b" d="M-84.149-15.851a22.417 22.417 0 1 0 0 31.702H84.15a22.417 22.417 0 1 0 0-31.702Z"/>
-          <use href="#svgbar-usage" transform="rotate(45)"/>
-          <use href="#svgbar-usage" transform="rotate(90)"/>
-          <use href="#svgbar-usage" transform="rotate(135)"/>
+          <path id="svgbar-usage" fill="#ffb13b" d="M-84.149-15.851a22.417 22.417 0 1 0 0 31.702H84.15a22.417 22.417 0 1 0 0-31.702Z" />
+          <use href="#svgbar-usage" transform="rotate(45)" />
+          <use href="#svgbar-usage" transform="rotate(90)" />
+          <use href="#svgbar-usage" transform="rotate(135)" />
         </g>
       </g>
-      <use href="#svgstar-usage"/>
+      <use href="#svgstar-usage" />
     </svg>
   );
 
@@ -391,14 +411,14 @@ export default function UsagePage() {
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Usage Guide & Documentation — Reicon" />
         <meta property="og:description" content="Integrate Reicon icons into your project. Complete documentation for Vanilla JS, React, Vue, Svelte, Figma, VS Code, and direct SVG integration." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Usage Guide — Reicon" />
         <meta name="twitter:description" content="Integrate Reicon icons into your project. Complete documentation for Vanilla JS, React, Vue, Svelte, Figma, VS Code, and direct SVG integration." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
@@ -783,172 +803,172 @@ export default function UsagePage() {
           <div className="max-w-3xl">
 
 
-          {/* What is Reicon */}
-          {!fwParam && (
-            <>
-              <section id="what-is-reicon" data-section className="mb-12 scroll-mt-24">
-                <SectionHeader id="what-is-reicon" title="What is Reicon?" level="h2" markdownContent={framework === 'vanilla' ? vanillaDocs : framework === 'react' ? reactDocs : vueDocs} />
-                <p className="text-text-base/60 text-[15px] leading-[1.8] mb-6">
-                  Reicon is an open-source icon library that provides beautifully crafted vector (SVG) icons for displaying
-                  icons and symbols in digital projects. The library aims to make it easier for designers and developers to
-                  incorporate icons into their projects by providing the core <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon</code> package for JavaScript and CDN usage, along with framework-specific packages for React (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-react</code>), Vue (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-vue</code>), and Svelte (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-svelte</code>).
-                </p>
-                <p className="text-text-base/60 text-[15px] leading-[1.8]">
-                  Every icon comes in two weights — Outline and Filled — and is fully customizable with size, color, and
-                  custom attributes/props. Icons are tree-shakeable when used with bundlers or framework packages, ensuring minimal bundle size.
-                </p>
+            {/* What is Reicon */}
+            {!fwParam && (
+              <>
+                <section id="what-is-reicon" data-section className="mb-12 scroll-mt-24">
+                  <SectionHeader id="what-is-reicon" title="What is Reicon?" level="h2" markdownContent={framework === 'vanilla' ? vanillaDocs : framework === 'react' ? reactDocs : vueDocs} />
+                  <p className="text-text-base/60 text-[15px] leading-[1.8] mb-6">
+                    Reicon is an open-source icon library that provides beautifully crafted vector (SVG) icons for displaying
+                    icons and symbols in digital projects. The library aims to make it easier for designers and developers to
+                    incorporate icons into their projects by providing the core <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon</code> package for JavaScript and CDN usage, along with framework-specific packages for React (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-react</code>), Vue (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-vue</code>), and Svelte (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-svelte</code>).
+                  </p>
+                  <p className="text-text-base/60 text-[15px] leading-[1.8]">
+                    Every icon comes in two weights — Outline and Filled — and is fully customizable with size, color, and
+                    custom attributes/props. Icons are tree-shakeable when used with bundlers or framework packages, ensuring minimal bundle size.
+                  </p>
+                </section>
+
+                <hr className="border-text-base/6 mb-12" />
+              </>
+            )}
+
+            {!fwParam ? (
+              <section className="mb-12">
+                <h2 className="text-lg font-serif text-text-base mb-6">Choose an Integration</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {FRAMEWORKS.map((fw) => {
+                    const Icon = fw.icon === 'react' ? FaReact : fw.icon === 'js' ? IoLogoJavascript : fw.icon === 'vscode' ? VscVscodeInsiders : null;
+                    return (
+                      <button
+                        key={fw.id}
+                        onClick={() => switchFramework(fw.id)}
+                        className="flex items-center gap-4 p-5 rounded-2xl bg-text-base/3 hover:bg-text-base/6 text-left transition-all border border-transparent hover:border-text-base/5 cursor-pointer"
+                      >
+                        <div className="w-10 h-10 rounded-xl bg-text-base/5 flex items-center justify-center text-lg shrink-0">
+                          {Icon ? (
+                            <Icon size={20} style={{ color: fw.color }} />
+                          ) : (
+                            <FrameworkIcon id={fw.id} size={20} />
+                          )}
+                        </div>
+                        <div>
+                          <h3 className="text-[14px] font-semibold text-text-base mb-0.5">{fw.label}</h3>
+                          <p className="text-[12px] text-text-base/40">View the {fw.label} integration guide</p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
               </section>
+            ) : framework === 'react' ? (
+              <ReactUsage markdownContent={reactDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            ) : framework === 'vue' ? (
+              <VueUsage markdownContent={vueDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            ) : framework === 'svelte' ? (
+              <SvelteUsage markdownContent={svelteDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            ) : framework === 'figma' ? (
+              <FigmaUsage markdownContent={figmaDocs} />
+            ) : framework === 'vscode' ? (
+              <VscodeUsage markdownContent={vscodeDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            ) : framework === 'svg' ? (
+              <SvgUsage markdownContent={svgDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            ) : (
+              <CdnUsage markdownContent={vanillaDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            )}
 
-              <hr className="border-text-base/6 mb-12" />
-            </>
-          )}
+            {framework !== 'figma' && framework !== 'vscode' && framework !== 'svg' && (
+              <>
+                <hr className="border-text-base/6 mb-12" />
+                <PropsTable markdownContent={propsDocs} />
 
-          {!fwParam ? (
-            <section className="mb-12">
-              <h2 className="text-lg font-serif text-text-base mb-6">Choose an Integration</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {FRAMEWORKS.map((fw) => {
-                  const Icon = fw.icon === 'react' ? FaReact : fw.icon === 'js' ? IoLogoJavascript : fw.icon === 'vscode' ? VscVscodeInsiders : null;
-                  return (
-                    <button
-                      key={fw.id}
-                      onClick={() => switchFramework(fw.id)}
-                      className="flex items-center gap-4 p-5 rounded-2xl bg-text-base/3 hover:bg-text-base/6 text-left transition-all border border-transparent hover:border-text-base/5 cursor-pointer"
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-text-base/5 flex items-center justify-center text-lg shrink-0">
-                        {Icon ? (
-                          <Icon size={20} style={{ color: fw.color }} />
-                        ) : (
-                          <FrameworkIcon id={fw.id} size={20} />
-                        )}
-                      </div>
-                      <div>
-                        <h3 className="text-[14px] font-semibold text-text-base mb-0.5">{fw.label}</h3>
-                        <p className="text-[12px] text-text-base/40">View the {fw.label} integration guide</p>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
-          ) : framework === 'react' ? (
-            <ReactUsage markdownContent={reactDocs} copiedField={copiedField} onCopy={copyToClipboard} />
-          ) : framework === 'vue' ? (
-            <VueUsage markdownContent={vueDocs} copiedField={copiedField} onCopy={copyToClipboard} />
-          ) : framework === 'svelte' ? (
-            <SvelteUsage markdownContent={svelteDocs} copiedField={copiedField} onCopy={copyToClipboard} />
-          ) : framework === 'figma' ? (
-            <FigmaUsage markdownContent={figmaDocs} />
-          ) : framework === 'vscode' ? (
-            <VscodeUsage markdownContent={vscodeDocs} copiedField={copiedField} onCopy={copyToClipboard} />
-          ) : framework === 'svg' ? (
-            <SvgUsage markdownContent={svgDocs} copiedField={copiedField} onCopy={copyToClipboard} />
-          ) : (
-            <CdnUsage markdownContent={vanillaDocs} copiedField={copiedField} onCopy={copyToClipboard} />
-          )}
+                <hr className="border-text-base/6 mb-12" />
+                <Weights markdownContent={weightsDocs} copiedField={copiedField} onCopy={copyToClipboard} />
 
-          {framework !== 'figma' && framework !== 'vscode' && framework !== 'svg' && (
-            <>
-              <hr className="border-text-base/6 mb-12" />
-              <PropsTable markdownContent={propsDocs} />
+                <hr className="border-text-base/6 mb-12" />
+                <TypeScriptSection markdownContent={typescriptDocs} copiedField={copiedField} onCopy={copyToClipboard} />
 
-              <hr className="border-text-base/6 mb-12" />
-              <Weights markdownContent={weightsDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+                <hr className="border-text-base/6 mb-12" />
+                <Styling markdownContent={stylingDocs} copiedField={copiedField} onCopy={copyToClipboard} />
 
-              <hr className="border-text-base/6 mb-12" />
-              <TypeScriptSection markdownContent={typescriptDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+                <hr className="border-text-base/6 mb-12" />
+                <Accessibility markdownContent={accessibilityDocs} copiedField={copiedField} onCopy={copyToClipboard} />
 
-              <hr className="border-text-base/6 mb-12" />
-              <Styling markdownContent={stylingDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+                <hr className="border-text-base/6 mb-12" />
+                <Performance markdownContent={performanceDocs} copiedField={copiedField} onCopy={copyToClipboard} />
 
-              <hr className="border-text-base/6 mb-12" />
-              <Accessibility markdownContent={accessibilityDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+                <hr className="border-text-base/6 mb-12" />
+                <Troubleshooting markdownContent={troubleshootingDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+              </>
+            )}
 
-              <hr className="border-text-base/6 mb-12" />
-              <Performance markdownContent={performanceDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            <hr className="border-text-base/6 my-12" />
 
-              <hr className="border-text-base/6 mb-12" />
-              <Troubleshooting markdownContent={troubleshootingDocs} copiedField={copiedField} onCopy={copyToClipboard} />
-            </>
-          )}
-
-          <hr className="border-text-base/6 my-12" />
-
-          {/* Actions Bar */}
-          <div className="relative grid grid-cols-2 gap-2.5 w-full sm:flex sm:w-auto sm:items-center">
-            <div className="flex justify-end sm:justify-start w-full sm:w-auto">
-              <a
-                href={githubEditUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-[13px] font-medium text-text-base/70 hover:text-text-base bg-text-base/4 border border-text-base/10 hover:bg-text-base/8 transition-colors whitespace-nowrap"
-              >
-                <re-icon icon="pen" size={14}></re-icon>
-                Edit on GitHub
-              </a>
-            </div>
-            <div className="flex justify-start w-full sm:w-auto">
-              <button
-                onClick={handleCopyPageMarkdown}
-                className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-[13px] font-medium text-text-base/70 hover:text-text-base bg-text-base/4 border border-text-base/10 hover:bg-text-base/8 transition-colors cursor-pointer whitespace-nowrap"
-              >
-                {copiedPage ? (
-                  <svg className="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                ) : (
-                  <re-icon icon="copy" size={14}></re-icon>
-                )}
-                Copy Markdown
-              </button>
-            </div>
-            
-            {/* Open dropdown wrapper */}
-            <div ref={openDropdownRef} className="col-span-2 flex justify-center sm:block relative">
-              <button
-                onClick={() => setOpenDropdown(!openDropdown)}
-                className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-[13px] font-medium text-text-base/70 hover:text-text-base bg-text-base/4 border border-text-base/10 hover:bg-text-base/8 transition-colors cursor-pointer whitespace-nowrap"
-              >
-                Open
-                <ChevronExpandY size={14} className="text-text-base/40" />
-              </button>
-              {openDropdown && (
-                <div
-                  className="absolute left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-0 mb-2 bottom-full w-52 bg-[var(--dropdown-bg)] border border-text-base/8 rounded-xl shadow-none z-50 overflow-hidden py-1"
+            {/* Actions Bar */}
+            <div className="relative grid grid-cols-2 gap-2.5 w-full sm:flex sm:w-auto sm:items-center">
+              <div className="flex justify-end sm:justify-start w-full sm:w-auto">
+                <a
+                  href={githubEditUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-[13px] font-medium text-text-base/70 hover:text-text-base bg-text-base/4 border border-text-base/10 hover:bg-text-base/8 transition-colors whitespace-nowrap"
                 >
-                  <a
-                    href={githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors"
+                  <re-icon icon="pen" size={14}></re-icon>
+                  Edit on GitHub
+                </a>
+              </div>
+              <div className="flex justify-start w-full sm:w-auto">
+                <button
+                  onClick={handleCopyPageMarkdown}
+                  className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-[13px] font-medium text-text-base/70 hover:text-text-base bg-text-base/4 border border-text-base/10 hover:bg-text-base/8 transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  {copiedPage ? (
+                    <svg className="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                  ) : (
+                    <re-icon icon="copy" size={14}></re-icon>
+                  )}
+                  Copy Markdown
+                </button>
+              </div>
+
+              {/* Open dropdown wrapper */}
+              <div ref={openDropdownRef} className="col-span-2 flex justify-center sm:block relative">
+                <button
+                  onClick={() => setOpenDropdown(!openDropdown)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-[13px] font-medium text-text-base/70 hover:text-text-base bg-text-base/4 border border-text-base/10 hover:bg-text-base/8 transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  Open
+                  <ChevronExpandY size={14} className="text-text-base/40" />
+                </button>
+                {openDropdown && (
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-0 mb-2 bottom-full w-52 bg-[var(--dropdown-bg)] border border-text-base/8 rounded-xl shadow-none z-50 overflow-hidden py-1"
                   >
-                    <span className="flex items-center gap-2">
-                      <SiGithub size={14}></SiGithub>
-                      Open in GitHub
-                    </span>
-                    <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
-                  </a>
-                  <button
-                    onClick={() => openInLLM('chatgpt')}
-                    className="w-full flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors text-left cursor-pointer"
-                  >
-                    <span className="flex items-center gap-2">
-                      <SiOpenai size={14}></SiOpenai>
-                      Open in ChatGPT
-                    </span>
-                    <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
-                  </button>
-                  <button
-                    onClick={() => openInLLM('claude')}
-                    className="w-full flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors text-left cursor-pointer"
-                  >
-                    <span className="flex items-center gap-2">
-                      <SiClaude size={14}></SiClaude>
-                      Open in Claude
-                    </span>
-                    <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
-                  </button>
-                  <button
-                    onClick={() => openInLLM('t3')}
-                    className="w-full flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors text-left cursor-pointer"
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors"
+                    >
+                      <span className="flex items-center gap-2">
+                        <SiGithub size={14}></SiGithub>
+                        Open in GitHub
+                      </span>
+                      <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
+                    </a>
+                    <button
+                      onClick={() => openInLLM('chatgpt')}
+                      className="w-full flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors text-left cursor-pointer"
+                    >
+                      <span className="flex items-center gap-2">
+                        <SiOpenai size={14}></SiOpenai>
+                        Open in ChatGPT
+                      </span>
+                      <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
+                    </button>
+                    <button
+                      onClick={() => openInLLM('claude')}
+                      className="w-full flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors text-left cursor-pointer"
+                    >
+                      <span className="flex items-center gap-2">
+                        <SiClaude size={14}></SiClaude>
+                        Open in Claude
+                      </span>
+                      <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
+                    </button>
+                    <button
+                      onClick={() => openInLLM('t3')}
+                      className="w-full flex items-center justify-between px-4 py-2 text-[13px] text-text-base/70 hover:text-text-base hover:bg-text-base/4 transition-colors text-left cursor-pointer"
                     >
                       <span className="flex items-center gap-2">
                         <re-icon icon="chat" size={14}></re-icon>
@@ -960,14 +980,14 @@ export default function UsagePage() {
                 )}
               </div>
             </div>
-          
-          {/* Toast Notification */}
-          {toastMessage && (
-            <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl shadow-none flex items-center gap-2 transition-all duration-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{toastMessage}</span>
-            </div>
-          )}
+
+            {/* Toast Notification */}
+            {toastMessage && (
+              <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl shadow-none flex items-center gap-2 transition-all duration-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>{toastMessage}</span>
+              </div>
+            )}
           </div>
         </main>
 
@@ -982,7 +1002,8 @@ export default function UsagePage() {
             </svg>
             <span>On this page</span>
           </div>
-          <ul className="otp-list" ref={otpListRef}>
+          {/* Wrapper provides a positioned container for the animated track indicator */}
+          <div className="relative">
             <div
               className="otp-indicator"
               style={{
@@ -991,20 +1012,22 @@ export default function UsagePage() {
                 opacity: otpIndicatorStyle.opacity,
               }}
             />
-            {onThisPage.map((s) => {
-              const isActive = activeSection === s.id;
-              return (
-                <li key={s.id} className={`otp-item ${isActive ? 'active' : ''}`}>
-                  <button
-                    onClick={() => scrollTo(s.id)}
-                    className="otp-button"
-                  >
-                    {s.label}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+            <ul className="otp-list" ref={otpListRef}>
+              {onThisPage.map((s) => {
+                const isActive = activeSection === s.id;
+                return (
+                  <li key={s.id} className={`otp-item ${isActive ? 'active' : ''}`}>
+                    <button
+                      onClick={() => scrollTo(s.id)}
+                      className="otp-button"
+                    >
+                      {s.label}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </aside>
       </div>
 

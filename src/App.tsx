@@ -16,6 +16,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const Terms = lazy(() => import('./pages/Terms'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const LicensePage = lazy(() => import('./pages/LicensePage'));
+const PackPage = lazy(() => import('./pages/Pack'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -43,6 +44,7 @@ export default function App() {
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/license" element={<LicensePage />} />
+              <Route path="/pack" element={<PackPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

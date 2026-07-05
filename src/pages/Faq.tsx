@@ -107,14 +107,14 @@ export default function FaqPage() {
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Frequently Asked Questions — Reicon" />
         <meta property="og:description" content="Frequently asked questions about Reicon icon library. License, Figma integration, VS Code extension, React/Vue/Svelte support, custom request, and contribution guidelines." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Frequently Asked Questions — Reicon" />
         <meta name="twitter:description" content="Frequently asked questions about Reicon icon library. License, Figma integration, VS Code extension, React/Vue/Svelte support, custom request, and contribution guidelines." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=2" />
+        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
@@ -468,7 +468,8 @@ export default function FaqPage() {
             </svg>
             <span>On this page</span>
           </div>
-          <ul className="otp-list" ref={otpListRef}>
+          {/* Wrapper provides a positioned container for the animated track indicator */}
+          <div className="relative">
             <div
               className="otp-indicator"
               style={{
@@ -477,20 +478,22 @@ export default function FaqPage() {
                 opacity: otpIndicatorStyle.opacity,
               }}
             />
-            {onThisPage.map((s) => {
-              const isActive = activeSection === s.id;
-              return (
-                <li key={s.id} className={`otp-item ${isActive ? 'active' : ''}`}>
-                  <button
-                    onClick={() => scrollTo(s.id)}
-                    className="otp-button"
-                  >
-                    {s.label}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+            <ul className="otp-list" ref={otpListRef}>
+              {onThisPage.map((s) => {
+                const isActive = activeSection === s.id;
+                return (
+                  <li key={s.id} className={`otp-item ${isActive ? 'active' : ''}`}>
+                    <button
+                      onClick={() => scrollTo(s.id)}
+                      className="otp-button"
+                    >
+                      {s.label}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </aside>
       </div>
 
