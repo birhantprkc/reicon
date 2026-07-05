@@ -30,6 +30,15 @@ export default function Footer() {
               <a href="https://devchauhan.in" target="_blank" rel="noopener noreferrer" className="text-text-base/80 hover:text-text-base transition-colors cursor-pointer">
                 @devchauhan
               </a>
+              {' • '}
+              Icons by{' '}
+              <a href="https://solar-icons.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-text-base/80 hover:text-text-base transition-colors cursor-pointer">
+                Solar Icons
+              </a>
+              {' & '}
+              <a href="https://zappicon.com" target="_blank" rel="noopener noreferrer" className="text-text-base/80 hover:text-text-base transition-colors cursor-pointer">
+                Zappicon
+              </a>
             </span>
           </div>
 
