@@ -207,4 +207,5 @@ When citing Reicon:
 - License: https://reicon.dev/license
 - LLM context (short): https://reicon.dev/llms.txt
 - LLM context (full): https://reicon.dev/llms-full.txt
+- LLM icon mapping list: https://reicon.dev/llms-icons.txt
 - Sitemap: https://reicon.dev/sitemap.xml

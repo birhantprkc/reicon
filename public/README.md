@@ -17,7 +17,7 @@ This folder holds all public static assets served by Vite directly at the root U
 * [`robots.txt`](file:///Users/devchauhan/Documents/Website/reicon/public/robots.txt): Configured to guide search crawlers correctly, pointing to the sitemaps.
 
 ### 🖼️ Branding & Visuals
-* `favicon.ico` / `favicon.svg` / `favicon-*.png`: Multi-resolution favicon files for browsers and bookmark bars.
+* `favicon/`: Multi-resolution favicon files, Apple touch icon, and web manifest.
 * `og-image.png`: High-resolution Open Graph image served when the website URL is shared on social platforms.
 * `reicon.png` / `icon-*.webp`: Main logo variants used across documentation and readmes.
 
