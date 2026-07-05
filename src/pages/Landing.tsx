@@ -875,8 +875,9 @@ function ColorPicker({ color, onChange, theme }: { color: string; onChange: (c: 
 }
 
 function IconPlayground({ theme }: { theme: string }) {
-  const icons = useMemo(() => getShuffledIcons(), []);
-  const [selected, setSelected] = useState(() => icons[0]);
+  const initialShuffled = useMemo(() => getShuffledIcons(), []);
+  const [icons, setIcons] = useState<string[]>(initialShuffled);
+  const [selected, setSelected] = useState(() => initialShuffled[0] || 'home');
   const isLight = theme === 'light';
   const [color, setColor] = useState(isLight ? '#111111' : '#ffffff');
   const [size, setSize] = useState(32);
@@ -889,6 +890,46 @@ function IconPlayground({ theme }: { theme: string }) {
       setColor('#ffffff');
     }
   }, [theme, color]);
+
+  useEffect(() => {
+    let active = true;
+    function filterIcons() {
+      if (!active) return;
+      if (typeof window !== 'undefined' && (window as any).Reicon?.icons) {
+        const available = (window as any).Reicon.icons as string[];
+        const availableSet = new Set(available);
+        
+        // Filter out any icons that are not loaded by the CDN script
+        const filtered = initialShuffled.filter(name => availableSet.has(name));
+        
+        // If we don't have enough icons, backfill with other available ones from the CDN
+        if (filtered.length < CONSISTENCY_COUNT && available.length > 0) {
+          const remaining = available.filter(name => !filtered.includes(name));
+          const shuffledRemaining = [...remaining];
+          for (let i = shuffledRemaining.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledRemaining[i], shuffledRemaining[j]] = [shuffledRemaining[j], shuffledRemaining[i]];
+          }
+          const toAdd = shuffledRemaining.slice(0, CONSISTENCY_COUNT - filtered.length);
+          filtered.push(...toAdd);
+        }
+        
+        const finalIcons = filtered.slice(0, CONSISTENCY_COUNT);
+        setIcons(finalIcons);
+        
+        // If the current selected icon is not available, switch to a valid one
+        if (!availableSet.has(selected) && finalIcons.length > 0) {
+          setSelected(finalIcons[0]);
+        }
+      } else if (typeof window !== 'undefined') {
+        setTimeout(filterIcons, 50);
+      }
+    }
+    filterIcons();
+    return () => {
+      active = false;
+    };
+  }, [initialShuffled, selected]);
 
   const displayColor = HEX_RE.test(color) ? color : (isLight ? '#111111' : '#ffffff');
   const pascalName = (iconNamesData as Record<string, string>)[selected] || selected;
