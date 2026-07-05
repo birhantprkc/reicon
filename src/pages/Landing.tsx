@@ -272,13 +272,13 @@ export default function Landing() {
 
               {/* Ecosystem integration links */}
               <div className="mt-14 flex flex-col items-center justify-center gap-3.5 select-none">
-                <span className="text-[10px] tracking-[0.15em] text-white/35 dark:text-white/30 uppercase font-semibold">Integrations</span>
+                <span className="text-[10px] tracking-[0.15em] text-text-base/35 dark:text-text-base/30 uppercase font-semibold">Integrations</span>
                 <div className="flex items-center justify-center gap-4 sm:gap-7 flex-wrap max-w-[600px]">
                   {/* React */}
                   <Link
                     to="/usage/react"
                     title="React"
-                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                    className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
                   >
                     <SiReact className="text-[#61DAFB]/70 hover:text-[#61DAFB] transition-colors" size={18} />
                     <span className="hidden sm:inline">React</span>
@@ -287,7 +287,7 @@ export default function Landing() {
                   <Link
                     to="/usage/vue"
                     title="Vue 3"
-                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                    className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
                   >
                     <VueIcon size={17} />
                     <span className="hidden sm:inline">Vue</span>
@@ -296,7 +296,7 @@ export default function Landing() {
                   <Link
                     to="/usage/svelte"
                     title="Svelte"
-                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                    className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
                   >
                     <SvelteIcon size={16} />
                     <span className="hidden sm:inline">Svelte</span>
@@ -305,7 +305,7 @@ export default function Landing() {
                   <Link
                     to="/usage/vanilla"
                     title="Vanilla JavaScript"
-                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                    className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
                   >
                     <SiJavascript className="text-[#F7DF1E]/80 hover:text-[#F7DF1E] transition-colors" size={16} />
                     <span className="hidden sm:inline">JavaScript</span>
@@ -314,7 +314,7 @@ export default function Landing() {
                   <Link
                     to="/usage/figma"
                     title="Figma"
-                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                    className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
                   >
                     <FigmaIcon size={16} />
                     <span className="hidden sm:inline">Figma</span>
@@ -323,7 +323,7 @@ export default function Landing() {
                   <Link
                     to="/usage/vscode"
                     title="VS Code"
-                    className="flex items-center gap-1.5 text-white/50 hover:text-white/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
+                    className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium"
                   >
                     <VscodeIcon size={17} />
                     <span className="hidden sm:inline">VS Code</span>
