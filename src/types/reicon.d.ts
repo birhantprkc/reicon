@@ -39,6 +39,8 @@ declare global {
       preload: (names: string[]) => void;
       categoryOf: (name: string) => string | null;
       categoryMap: Record<string, string>;
+      /** Returns the GitHub username of the contributor who designed this icon, or null if it's a core icon. */
+      contributorOf: (name: string) => string | null;
     };
   }
 }

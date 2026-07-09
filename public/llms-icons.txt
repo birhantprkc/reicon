@@ -546,21 +546,6 @@ import { [ComponentName] } from 'reicon-vue';
 - wineglass -> Wineglass
 - wineglass2 -> Wineglass2
 
-### General
-- 24-hour-support2 -> 24HourSupport2
-- 3-squares2 -> 3Squares2
-- 3d-cube-scan2 -> 3dCubeScan2
-- 3d-rotate2 -> 3dRotate2
-- 3d-square2 -> 3dSquare2
-- 3dcube2 -> 3dcube2
-- 3square2 -> 3square2
-- convert-3d-cube2 -> Convert3dCube2
-- house2 -> House2
-- location2 -> Location2
-- musicnote2 -> Musicnote2
-- ticket4 -> Ticket4
-- timer2 -> Timer2
-
 ### Hands
 - hand-dollar -> HandDollar
 - hand-heart -> HandHeart
@@ -1206,6 +1191,7 @@ import { [ComponentName] } from 'reicon-vue';
 - component2 -> Component2
 - computing2 -> Computing2
 - convert-card2 -> ConvertCard2
+- convert-three-d-cube -> ConvertThreeDCube
 - convert2 -> Convert2
 - convertshape-22 -> Convertshape22
 - convertshape2 -> Convertshape2
@@ -1427,6 +1413,7 @@ import { [ComponentName] } from 'reicon-vue';
 - home8 -> Home8
 - hospital3 -> Hospital3
 - house-23 -> House23
+- house-alt -> HouseAlt
 - icon-12 -> Icon12
 - icon-22 -> Icon22
 - icon-32 -> Icon32
@@ -1467,6 +1454,7 @@ import { [ComponentName] } from 'reicon-vue';
 - link-square3 -> LinkSquare3
 - link8 -> Link8
 - location-add2 -> LocationAdd2
+- location-alt -> LocationAlt
 - location-cross2 -> LocationCross2
 - location-minus2 -> LocationMinus2
 - location-slash2 -> LocationSlash2
@@ -1569,6 +1557,7 @@ import { [ComponentName] } from 'reicon-vue';
 - music-dashboard2 -> MusicDashboard2
 - music-filter2 -> MusicFilter2
 - music-library-22 -> MusicLibrary22
+- music-note-variant -> MusicNoteVariant
 - music-play2 -> MusicPlay2
 - music-playlist2 -> MusicPlaylist2
 - music-square-add2 -> MusicSquareAdd2
@@ -1819,13 +1808,21 @@ import { [ComponentName] } from 'reicon-vue';
 - textalign-justifyright2 -> TextalignJustifyright2
 - textalign-left2 -> TextalignLeft2
 - textalign-right2 -> TextalignRight2
+- three-d-cube -> ThreeDCube
+- three-d-cube-scan -> ThreeDCubeScan
+- three-d-rotate -> ThreeDRotate
+- three-d-square -> ThreeDSquare
+- three-square -> ThreeSquare
+- three-squares -> ThreeSquares
 - tick-circle2 -> TickCircle2
 - tick-square2 -> TickSquare2
 - ticket-22 -> Ticket22
+- ticket-alt -> TicketAlt
 - ticket-discount2 -> TicketDiscount2
 - ticket-expired2 -> TicketExpired2
 - ticket-star2 -> TicketStar2
 - timer-12 -> Timer12
+- timer-alt -> TimerAlt
 - timer-pause2 -> TimerPause2
 - timer-start2 -> TimerStart2
 - toggle-off-circle2 -> ToggleOffCircle2
@@ -1846,6 +1843,7 @@ import { [ComponentName] } from 'reicon-vue';
 - truck-time2 -> TruckTime2
 - truck3 -> Truck3
 - trush-square2 -> TrushSquare2
+- twenty-four-hour-support -> TwentyFourHourSupport
 - undo3 -> Undo3
 - unlimited2 -> Unlimited2
 - unlock3 -> Unlock3
