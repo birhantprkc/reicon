@@ -26,6 +26,7 @@ export default function IconDetail() {
   const [exportSize, setExportSize] = useState(64);
   const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'vue' | 'svelte' | 'direct'>('vanilla');
   const [iconCategory, setIconCategory] = useState('');
+  const [contributorGithub, setContributorGithub] = useState<string | null>(null);
   const [useCustomColor, setUseCustomColor] = useState(false);
   const [customColor, setCustomColor] = useState('#6C5CE7');
   const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
@@ -209,6 +210,19 @@ export default function IconDetail() {
     loadCategory();
   }, [name]);
 
+  useEffect(() => {
+    if (!name) return;
+    function loadContributor() {
+      if (window.Reicon?.contributorOf !== undefined) {
+        const gh = window.Reicon.contributorOf(name!);
+        setContributorGithub(gh);
+      } else {
+        setTimeout(loadContributor, 100);
+      }
+    }
+    loadContributor();
+  }, [name]);
+
   const pageTitle = name
     ? `${pascalName} Icon — Free ${iconCategory || 'SVG'} Download | Reicon`
     : 'Icon — Reicon';
@@ -381,7 +395,30 @@ export default function IconDetail() {
                   <h2 className="text-[18px] font-serif text-text-base truncate">{pascalName}</h2>
                   {iconCategory && <p className="text-[12px] text-text-base/40 mt-0.5">{iconCategory}</p>}
                 </div>
-                <code className="shrink-0 text-[11px] text-text-base/40 bg-text-base/4 border border-text-base/6 rounded-md px-2 py-1 font-mono">{name}</code>
+                <div className="flex items-center gap-2 shrink-0">
+                  {contributorGithub && (
+                    <a
+                      href={`https://github.com/${contributorGithub}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`Contributed by @${contributorGithub}`}
+                      className="group flex items-center gap-1.5 bg-text-base/4 hover:bg-text-base/8 border border-text-base/8 hover:border-text-base/15 rounded-lg px-2 py-1 transition-all"
+                    >
+                      <img
+                        src={`https://github.com/${contributorGithub}.png?size=32`}
+                        alt={`@${contributorGithub}`}
+                        width={18}
+                        height={18}
+                        className="rounded-full"
+                        loading="lazy"
+                      />
+                      <span className="text-[11px] text-text-base/40 group-hover:text-text-base/70 transition-colors font-mono leading-none">
+                        @{contributorGithub}
+                      </span>
+                    </a>
+                  )}
+                  <code className="text-[11px] text-text-base/40 bg-text-base/4 border border-text-base/6 rounded-md px-2 py-1 font-mono">{name}</code>
+                </div>
               </div>
 
               {/* Customizer */}
