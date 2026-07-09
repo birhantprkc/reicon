@@ -24,7 +24,7 @@ export default function IconDetail() {
   const [previewSize, setPreviewSize] = useState(96);
   const [toast, setToast] = useState<string | null>(null);
   const [exportSize, setExportSize] = useState(64);
-  const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'vue' | 'svelte' | 'direct'>('vanilla');
+  const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'react-native' | 'vue' | 'svelte' | 'direct'>('vanilla');
   const [iconCategory, setIconCategory] = useState('');
   const [contributorGithub, setContributorGithub] = useState<string | null>(null);
   const [useCustomColor, setUseCustomColor] = useState(false);
@@ -178,6 +178,7 @@ export default function IconDetail() {
   const vanillaRaw = `import { ${pascalName} } from 'reicon';\n\nconst icon = ${pascalName}({ size: 24${fw ? ", weight: 'Filled'" : ''} });\ndocument.body.appendChild(icon);`;
   const cdnRaw = `<script src="https://unpkg.com/reicon@latest/cdn/reicon.min.js"><\/script>\n<re-icon icon="${name}"${fw ? ' weight="filled"' : ''}></re-icon>`;
   const reactRaw = `import { ${pascalName} } from 'reicon-react';\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
+  const reactNativeRaw = `import { ${pascalName} } from 'reicon-react-native';\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
   const vueRaw = `import { ${pascalName} } from 'reicon-vue';\n\n<${pascalName} :size="24"${fw ? ' weight="Filled"' : ''} />`;
   const svelteRaw = `<script>\n  import { ${pascalName} } from 'reicon-svelte';\n</script>\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
   const directRaw = `import ${pascalName} from 'reicon-react/icons/${pascalName}';`;
@@ -186,6 +187,7 @@ export default function IconDetail() {
     { id: 'vanilla' as const, label: 'Vanilla JS', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: vanillaRaw },
     { id: 'cdn' as const, label: 'CDN', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: cdnRaw },
     { id: 'react' as const, label: 'React', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactRaw },
+    { id: 'react-native' as const, label: 'React Native', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactNativeRaw },
     { id: 'vue' as const, label: 'Vue', icon: <VueLogo />, raw: vueRaw },
     { id: 'svelte' as const, label: 'Svelte', icon: <SiSvelte className="text-[#FF3E00]" size={14} />, raw: svelteRaw },
     { id: 'direct' as const, label: 'Direct', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: directRaw },
@@ -589,6 +591,7 @@ export default function IconDetail() {
                         {codeTab === 'vanilla' && <VanillaSnippet pascalName={pascalName} filled={fw} />}
                         {codeTab === 'cdn' && <CdnSnippet name={name || ''} filled={fw} />}
                         {codeTab === 'react' && <ReactSnippet pascalName={pascalName} filled={fw} />}
+                        {codeTab === 'react-native' && <ReactNativeSnippet pascalName={pascalName} filled={fw} />}
                         {codeTab === 'vue' && <VueSnippet pascalName={pascalName} filled={fw} />}
                         {codeTab === 'svelte' && <SvelteSnippet pascalName={pascalName} filled={fw} />}
                         {codeTab === 'direct' && <DirectSnippet pascalName={pascalName} />}
@@ -836,6 +839,21 @@ function ReactSnippet({ pascalName, filled }: { pascalName: string; filled: bool
       <span className="text-[#c678dd]">import</span><span className="text-text-base/70">{' { '}</span>
       <span className="text-[#e5c07b]">{pascalName}</span><span className="text-text-base/70">{' } '}</span>
       <span className="text-[#c678dd]">from</span><span className="text-[#98c379]"> 'reicon-react'</span><span className="text-text-base/30">;</span>
+      {'\n\n'}
+      <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">{pascalName}</span>
+      <span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}24{'}'}</span>
+      {filled && (<><span className="text-[#d19a66]"> weight</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"Filled"</span></>)}
+      <span className="text-text-base/70"> /{'>'}</span>
+    </>
+  );
+}
+
+function ReactNativeSnippet({ pascalName, filled }: { pascalName: string; filled: boolean }) {
+  return (
+    <>
+      <span className="text-[#c678dd]">import</span><span className="text-text-base/70">{' { '}</span>
+      <span className="text-[#e5c07b]">{pascalName}</span><span className="text-text-base/70">{' } '}</span>
+      <span className="text-[#c678dd]">from</span><span className="text-[#98c379]"> 'reicon-react-native'</span><span className="text-text-base/30">;</span>
       {'\n\n'}
       <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">{pascalName}</span>
       <span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}24{'}'}</span>
