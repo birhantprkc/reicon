@@ -229,15 +229,19 @@ export default function Integrations() {
                     guideUrl="/usage/mcp"
                     copyText={`{\n  "mcpServers": {\n    "reicon": {\n      "command": "npx",\n      "args": ["reicon-mcp"]\n    }\n  }\n}`}
                     lines={<>
-                        <div className="text-text-base/45 text-[12px] mb-2">MCP client config</div>
-                        <div><span className="text-text-base/70">{'{'}</span></div>
-                        <div className="pl-4"><span className="text-[#e5c07b]">"mcpServers"</span><span className="text-text-base/70">: {'{'}</span></div>
-                        <div className="pl-8"><span className="text-[#e5c07b]">"reicon"</span><span className="text-text-base/70">: {'{'}</span></div>
-                        <div className="pl-12"><span className="text-[#e5c07b]">"command"</span><span className="text-text-base/70">: </span><span className="text-[#98c379]">"npx"</span></div>
-                        <div className="pl-12"><span className="text-[#e5c07b]">"args"</span><span className="text-text-base/70">: [</span><span className="text-[#98c379]">"reicon-mcp"</span><span className="text-text-base/70">]</span></div>
-                        <div className="pl-8"><span className="text-text-base/70">{'}'}</span></div>
-                        <div className="pl-4"><span className="text-text-base/70">{'}'}</span></div>
-                        <div><span className="text-text-base/70">{'}'}</span></div>
+                        <div className="mb-2">
+                            <span className="text-[#ffbd2e]">$</span>
+                            <span className="text-[#e06c75]"> npx</span>
+                            <span className="text-text-base/70"> reicon-mcp</span>
+                        </div>
+                        <div><span className="text-text-base/30">{'{'}</span></div>
+                        <div className="pl-4"><span className="text-[#e5c07b]">"mcpServers"</span><span className="text-text-base/30">: {'{'}</span></div>
+                        <div className="pl-8"><span className="text-[#e5c07b]">"reicon"</span><span className="text-text-base/30">: {'{'}</span></div>
+                        <div className="pl-12"><span className="text-[#e5c07b]">"command"</span><span className="text-text-base/30">: </span><span className="text-[#98c379]">"npx"</span><span className="text-text-base/30">,</span></div>
+                        <div className="pl-12"><span className="text-[#e5c07b]">"args"</span><span className="text-text-base/30">: [</span><span className="text-[#98c379]">"reicon-mcp"</span><span className="text-text-base/30">]</span></div>
+                        <div className="pl-8"><span className="text-text-base/30">{'}'}</span></div>
+                        <div className="pl-4"><span className="text-text-base/30">{'}'}</span></div>
+                        <div><span className="text-text-base/30">{'}'}</span></div>
                     </>}
                 />
 

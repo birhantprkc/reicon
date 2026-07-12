@@ -33,5 +33,5 @@ export const SvelteIcon = ({ size = 14 }: { size?: number }) => (
 import { SiModelcontextprotocol } from 'react-icons/si';
 
 export const McpIcon = ({ size = 14 }: { size?: number }) => (
-    <SiModelcontextprotocol className="text-[#6C5CE7] shrink-0" size={size} />
+    <SiModelcontextprotocol className="shrink-0" size={size} />
 );

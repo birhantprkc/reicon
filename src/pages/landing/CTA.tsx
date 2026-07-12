@@ -1,17 +1,92 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Search3, Copy, Pointer } from 'reicon-react';
 import ClayButton from '../../components/ClayButton';
 
-function CopyButton({ text }: { text: string }) {
+const PACKAGES = [
+    'reicon',
+    'reicon-react',
+    'reicon-react-native',
+    'reicon-vue',
+    'reicon-svelte',
+    'reicon-mcp',
+];
+
+const TRANSITION = 'filter 0.28s ease, opacity 0.28s ease, transform 0.28s ease';
+
+function AnimatedPackageName({ onIndexChange }: { onIndexChange: (i: number) => void }) {
+    const [index, setIndex] = useState(0);
+    // Three visual states: shown | exitingUp | enterFromBelow
+    const [shown, setShown] = useState(true);
+    const [enterFromBelow, setEnterFromBelow] = useState(false);
+
+    useEffect(() => {
+        // Hold visible for 2.2s then begin exit
+        const holdTimer = setTimeout(() => {
+            setShown(false); // blur out, slide up
+
+            // After transition completes, swap text and reposition below (no transition)
+            const swapTimer = setTimeout(() => {
+                const next = (index + 1) % PACKAGES.length;
+                setIndex(next);
+                onIndexChange(next);
+                setEnterFromBelow(true); // snap to below — no animation yet
+
+                // Next paint: animate in from below
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        setEnterFromBelow(false);
+                        setShown(true);
+                    });
+                });
+            }, 310); // just after 0.28s transition
+
+            return () => clearTimeout(swapTimer);
+        }, 2200);
+
+        return () => clearTimeout(holdTimer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [index]);
+
+    // enterFromBelow = instantly snap below with NO transition (so it starts from there)
+    const noTransition = enterFromBelow;
+    const blurred = !shown || enterFromBelow;
+    let translateY = '0px';
+    if (!shown && !enterFromBelow) translateY = '-7px'; // exit goes up
+    if (enterFromBelow) translateY = '7px';             // enter starts from below
+
+    return (
+        <span
+            style={{
+                display: 'inline-block',
+                transition: noTransition ? 'none' : TRANSITION,
+                filter: blurred ? 'blur(8px)' : 'blur(0px)',
+                opacity: blurred ? 0 : 1,
+                transform: `translateY(${translateY})`,
+                willChange: 'filter, opacity, transform',
+            }}
+        >
+            {PACKAGES[index]}
+        </span>
+    );
+}
+
+function CopyButton({ getText }: { getText: () => string }) {
     const [copied, setCopied] = useState(false);
     return (
         <button
-            onClick={() => navigator.clipboard.writeText(text).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500); })}
-            className="text-text-base/30 hover:text-text-base/60 transition-colors cursor-pointer"
+            onClick={() =>
+                navigator.clipboard.writeText(getText()).then(() => {
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 1500);
+                })
+            }
+            className="text-text-base/30 hover:text-text-base/60 transition-colors cursor-pointer shrink-0"
         >
             {copied ? (
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                </svg>
             ) : (
                 <Copy size={14} />
             )}
@@ -20,6 +95,8 @@ function CopyButton({ text }: { text: string }) {
 }
 
 export default function CTA() {
+    const [pkgIndex, setPkgIndex] = useState(0);
+
     return (
         <section className="reveal max-w-[1160px] mx-auto px-5 md:px-10 py-13">
             <div className="relative bg-text-base/3 rounded-[14px] overflow-hidden">
@@ -40,10 +117,15 @@ export default function CTA() {
                         <p className="text-[15px] text-text-base/40 leading-[1.65] max-w-[420px] mx-auto md:mx-0 mb-6">
                             2700+ handcrafted, pixel-perfect SVG icons. MIT licensed. Zero dependencies. Two weights. Ready to ship.
                         </p>
+
+                        {/* Animated install pill */}
                         <div className="inline-flex items-center gap-3 bg-text-base/4 border border-text-base/6 rounded-xl px-4 py-2.5">
-                            <span className="text-[#6C5CE7] text-[13px] font-mono font-medium">$</span>
-                            <code className="text-[13px] font-mono text-text-base/50">npm i reicon</code>
-                            <CopyButton text="npm i reicon" />
+                            <span className="text-[#6C5CE7] text-[13px] font-mono font-medium shrink-0">$</span>
+                            <code className="text-[13px] font-mono text-text-base/50 whitespace-nowrap">
+                                <span className="text-text-base/35">npm i </span>
+                                <AnimatedPackageName onIndexChange={setPkgIndex} />
+                            </code>
+                            <CopyButton getText={() => `npm i ${PACKAGES[pkgIndex]}`} />
                         </div>
                     </div>
 
