@@ -54,7 +54,7 @@ export default function BrandsOverlay() {
         {/* Hero image */}
         <div className="relative aspect-[1200/400] overflow-hidden bg-gradient-to-br from-[#6C5CE7]/20 to-transparent">
           <img
-            src="/new-launch.png"
+            src="/new-launch.jpg"
             alt="brands.reicon.dev"
             className="w-full h-full object-cover"
           />
