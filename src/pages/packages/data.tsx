@@ -110,7 +110,7 @@ export const TOOLS: ToolItem[] = [
         description: 'Search, preview, and apply Reicon icons from AI agents and automation tools via MCP or CLI.',
         icon: <McpIcon size={48} />,
         guideUrl: '/usage/mcp',
-        primaryAction: { label: 'Guide', href: '/usage/mcp' },
+        primaryAction: { label: 'npm', href: 'https://www.npmjs.com/package/reicon-mcp' },
         sourceUrl: 'https://github.com/dqev/reicon/tree/main/packages/reicon-mcp',
     },
 ];

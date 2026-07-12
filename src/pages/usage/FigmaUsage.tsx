@@ -36,71 +36,69 @@ export default function FigmaUsage({ markdownContent }: Props) {
         Integrate Reicon directly into your design system workspace using the official Figma plugin. Search, customize stroke weights, and drag-and-drop vector icons directly onto your active canvases.
       </p>
 
-      <div className="mt-8 border-b border-text-base/6 pb-4">
-        <h3 className="text-xl font-serif text-text-base mb-2">1. Installation</h3>
-        <p className="text-text-base/60 text-[15px] leading-[1.8]">
-          Find and install the official plugin from the Figma Community page.
-        </p>
-      </div>
+      {/* Installation */}
+      <h3 id="figma-installation" data-section className="text-lg font-serif text-text-base mb-4 mt-10 scroll-mt-24">
+        Installation
+      </h3>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-4">
+        Visit the official plugin page on the Figma Community to install the extension to your workspace:
+      </p>
 
-      <div className="bg-text-base/3 rounded-2xl p-6 border border-text-base/4 mb-8">
-        <h4 className="text-text-base font-medium text-[15px] mb-3">Install via Figma Community:</h4>
-        <p className="text-text-base/50 text-[14px] leading-relaxed mb-4">
-          Visit the plugin page to duplicate and install it directly to your Figma account:
-        </p>
+      <div className="mb-8">
         <a
           href="https://www.figma.com/community/plugin/1652983191908763066"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center bg-[#6C5CE7] hover:bg-[#5A4BD1] text-text-base text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors"
+          className="inline-flex items-center bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
         >
           Open Figma Community Plugin
         </a>
       </div>
 
-      <div className="mt-10 mb-6 border-b border-text-base/6 pb-4">
-        <h3 className="text-xl font-serif text-text-base mb-2">2. Workflow & Guide</h3>
-        <p className="text-text-base/60 text-[15px] leading-[1.8]">
-          How to open and insert vector components inside a design file.
-        </p>
-      </div>
+      {/* Workflow & Guide */}
+      <h3 id="figma-workflow" data-section className="text-lg font-serif text-text-base mb-4 mt-10 scroll-mt-24">
+        Workflow & Guide
+      </h3>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-6">
+        How to open and insert vector components inside a design file:
+      </p>
 
-      <div className="space-y-6 text-[14px] text-text-base/50 leading-relaxed">
+      <div className="space-y-6 text-[14px] text-text-base/50 leading-relaxed mb-12">
         <div className="flex gap-4">
-          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs">
+          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs mt-1">
             1
           </div>
-          <div>
+          <div className="flex-1">
             <h4 className="text-text-base font-medium mb-1">Open the plugin panel</h4>
             <p>Right-click inside any Figma project canvas, select <strong>Plugins</strong> &rarr; <strong>Reicon</strong>, or search for "Reicon" in the resource panel (Cmd/Ctrl + I).</p>
           </div>
         </div>
 
         <div className="flex gap-4">
-          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs">
+          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs mt-1">
             2
           </div>
-          <div>
+          <div className="flex-1">
             <h4 className="text-text-base font-medium mb-1">Search or Filter</h4>
             <p>Browse through categories (Arrows, Communication, System, etc.) or type keywords in the search bar to locate specific shapes instantly.</p>
           </div>
         </div>
 
         <div className="flex gap-4">
-          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs">
+          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs mt-1">
             3
           </div>
-          <div>
+          <div className="flex-1">
             <h4 className="text-text-base font-medium mb-1">Select Weight and Color</h4>
             <p>Choose between <strong>Outline</strong> and <strong>Filled</strong> styles using the toggle swatches, and set a custom hex color.</p>
           </div>
         </div>
 
         <div className="flex gap-4">
-          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs">
+          <div className="w-6 h-6 rounded-full bg-text-base/10 text-text-base font-bold flex items-center justify-center shrink-0 text-xs mt-1">
             4
           </div>
-          <div>
+          <div className="flex-1">
             <h4 className="text-text-base font-medium mb-1">Insert Vector Shape</h4>
             <p>Click on any icon grid card to instantly spawn the vector group at the center of your viewport or active frames.</p>
           </div>

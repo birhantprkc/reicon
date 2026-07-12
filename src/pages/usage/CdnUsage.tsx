@@ -34,12 +34,12 @@ export default function CdnUsage({ markdownContent, copiedField, onCopy }: Props
       </ul>
 
       {/* Vanilla JS Package Section */}
-      <div className="mt-10 mb-8 border-b border-text-base/6 pb-4">
-        <h3 className="text-xl font-serif text-text-base mb-2">1. Vanilla JS / Bundler (NPM)</h3>
-        <p className="text-text-base/60 text-[15px] leading-[1.8]">
-          Install the package using your preferred package manager and import tree-shakeable icons directly in your application code.
-        </p>
-      </div>
+      <h3 id="cdn-npm" data-section className="text-lg font-serif text-text-base mb-4 mt-10 scroll-mt-24">
+        Vanilla JS / Bundler (NPM)
+      </h3>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-4">
+        Install the package using your preferred package manager and import tree-shakeable icons directly in your application code.
+      </p>
 
       {/* Installation */}
       <h4 className="text-md font-medium text-text-base mb-4">Installation</h4>
@@ -176,12 +176,12 @@ export default function CdnUsage({ markdownContent, copiedField, onCopy }: Props
       </SyntaxBlock>
 
       {/* CDN / HTML Section */}
-      <div className="mt-16 mb-8 border-b border-text-base/6 pb-4">
-        <h3 className="text-xl font-serif text-text-base mb-2">2. CDN & HTML (No Build Tools)</h3>
-        <p className="text-text-base/60 text-[15px] leading-[1.8]">
-          Perfect for static HTML websites, legacy applications, and prototyping. Include a script tag and render icons instantly.
-        </p>
-      </div>
+      <h3 id="cdn-html" data-section className="text-lg font-serif text-text-base mb-4 mt-16 scroll-mt-24">
+        CDN & HTML (No Build Tools)
+      </h3>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-4">
+        Perfect for static HTML websites, legacy applications, and prototyping. Include a script tag and render icons instantly.
+      </p>
 
       {/* Getting Started CDN */}
       <h4 className="text-md font-medium text-text-base mb-4">Register Custom Element (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">{'<re-icon>'}</code>)</h4>

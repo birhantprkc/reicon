@@ -4,7 +4,7 @@ import { SiJavascript, SiReact } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
 import Background from '../../components/Background';
 import ClayButton from '../../components/ClayButton';
-import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon } from './icons';
+import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon } from './icons';
 import newIconsData from '../../data/new-icons-added.json';
 
 interface Props {
@@ -129,6 +129,10 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                                 <Link to="/usage/vscode" title="VS Code" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <VscodeIcon size={17} />
                                     <span className="hidden sm:inline">VS Code</span>
+                                </Link>
+                                <Link to="/usage/mcp" title="MCP Server" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
+                                    <McpIcon size={16} />
+                                    <span className="hidden sm:inline">MCP Server</span>
                                 </Link>
                             </div>
                         </div>

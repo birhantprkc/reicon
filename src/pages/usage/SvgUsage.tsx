@@ -37,36 +37,34 @@ export default function SvgUsage({ markdownContent, copiedField, onCopy }: Props
         Download and integrate raw SVG vector files directly into vanilla HTML layouts, static sites, or design platforms. We provide pre-compiled, optimized icon sheets in both Outline and Filled weights.
       </p>
 
-      <div className="mt-8 border-b border-text-base/6 pb-4">
-        <h3 className="text-xl font-serif text-text-base mb-2">1. Download ZIP Archive</h3>
-        <p className="text-text-base/60 text-[15px] leading-[1.8]">
-          Get the complete, compressed package containing all 2,700+ icons in both Outline and Filled weights (total 5,400+ vectors).
-        </p>
-      </div>
+      {/* Download ZIP Archive */}
+      <h3 id="svg-download" data-section className="text-lg font-serif text-text-base mb-4 mt-10 scroll-mt-24">
+        Download ZIP Archive
+      </h3>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-4">
+        Get the complete, compressed package containing all 2,700+ icons in both Outline and Filled weights (total 5,400+ vectors). All icons are compressed and optimized for lightweight load speeds, pre-colored in black (#000000) for standard vector previews.
+      </p>
 
-      <div className="bg-text-base/3 rounded-2xl p-6 border border-text-base/4 mb-8">
-        <h4 className="text-text-base font-medium text-[15px] mb-3">Complete SVG Assets Pack:</h4>
-        <p className="text-text-base/50 text-[14px] leading-relaxed mb-4">
-          All icons are compressed and optimized for lightweight load speeds, pre-colored in black (#000000) for standard vector previews.
-        </p>
+      <div className="mb-8">
         <a
           href="/reicon-icons.zip"
           download
-          className="inline-flex items-center gap-2 bg-[#6C5CE7] hover:bg-[#5A4BD1] text-text-base text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors"
+          className="inline-flex items-center gap-2 bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
         >
           <FiDownload size={15} />
           Download SVG Assets (.zip)
         </a>
       </div>
 
-      <div className="mt-10 mb-6 border-b border-text-base/6 pb-4">
-        <h3 className="text-xl font-serif text-text-base mb-2">2. Embedding in HTML</h3>
-        <p className="text-text-base/60 text-[15px] leading-[1.8]">
-          Use raw SVG code directly in your HTML documents. This allows you to style them dynamically using CSS.
-        </p>
-      </div>
+      {/* Embedding in HTML */}
+      <h3 id="svg-embedding" data-section className="text-lg font-serif text-text-base mb-4 mt-10 scroll-mt-24">
+        Embedding in HTML
+      </h3>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-6">
+        Use raw SVG code directly in your HTML documents. This allows you to style them dynamically using CSS.
+      </p>
 
-      <div className="space-y-6">
+      <div className="space-y-6 mb-8">
         <div>
           <h4 className="text-md font-medium text-text-base mb-3">Outline Style Integration:</h4>
           <SyntaxBlock
@@ -143,43 +141,44 @@ export default function SvgUsage({ markdownContent, copiedField, onCopy }: Props
         </div>
       </div>
 
-      <div className="mt-12 mb-6 border-b border-text-base/6 pb-4">
-        <h3 className="text-xl font-serif text-text-base mb-2">3. Dynamic Styling via CSS</h3>
-        <p className="text-text-base/60 text-[15px] leading-[1.8]">
-          Since Reicon SVGs use <code>currentColor</code> for stroke and fill mapping, you can colorize them dynamically by setting the color on parent elements.
-        </p>
-      </div>
+      {/* Dynamic Styling via CSS */}
+      <h3 id="svg-styling" data-section className="text-lg font-serif text-text-base mb-4 mt-10 scroll-mt-24">
+        Dynamic Styling via CSS
+      </h3>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-4">
+        Since Reicon SVGs use <code>currentColor</code> for stroke and fill mapping, you can colorize them dynamically by setting the color on parent elements.
+      </p>
 
-      <div className="bg-text-base/3 rounded-2xl p-6 border border-text-base/4 space-y-4">
-        <p className="text-text-base/50 text-[14px] leading-relaxed">
-          Set custom dimensions and hover effects using standard CSS:
-        </p>
-        <SyntaxBlock
-          title="CSS Styling Example"
-          onCopy={() => onCopy(".icon-container {\n  color: #6C5CE7;\n  width: 32px;\n  height: 32px;\n  transition: color 0.2s;\n}\n.icon-container:hover {\n  color: #5A4BD1;\n}", "svg-css-code")}
-          copied={copiedField === 'svg-css-code'}
-        >
-          <span className="text-[#e5c07b]">.icon-container</span>
-          <span className="text-text-base/70"> {'{'}</span>
-          {'\n  '}
-          <span className="text-[#e06c75]">color</span>
-          <span className="text-text-base/50">:</span>
-          <span className="text-[#98c379]"> #6C5CE7</span>
-          <span className="text-text-base/30">;</span>
-          {'\n  '}
-          <span className="text-[#e06c75]">width</span>
-          <span className="text-text-base/50">:</span>
-          <span className="text-[#d19a66]"> 32px</span>
-          <span className="text-text-base/30">;</span>
-          {'\n  '}
-          <span className="text-[#e06c75]">height</span>
-          <span className="text-text-base/50">:</span>
-          <span className="text-[#d19a66]"> 32px</span>
-          <span className="text-text-base/30">;</span>
-          {'\n'}
-          <span className="text-text-base/70">{'}'}</span>
-        </SyntaxBlock>
-      </div>
+      <p className="text-text-base/60 text-[15px] leading-[1.8] mb-4 mt-6">
+        Set custom dimensions and hover effects using standard CSS:
+      </p>
+
+      <SyntaxBlock
+        title="CSS Styling Example"
+        onCopy={() => onCopy(".icon-container {\n  color: #6C5CE7;\n  width: 32px;\n  height: 32px;\n  transition: color 0.2s;\n}\n.icon-container:hover {\n  color: #5A4BD1;\n}", "svg-css-code")}
+        copied={copiedField === 'svg-css-code'}
+      >
+        <span className="text-[#e5c07b]">.icon-container</span>
+        <span className="text-text-base/70"> {'{'}</span>
+        {'\n  '}
+        <span className="text-[#e06c75]">color</span>
+        <span className="text-text-base/50">:</span>
+        <span className="text-[#98c379]"> #6C5CE7</span>
+        <span className="text-text-base/30">;</span>
+        {'\n  '}
+        <span className="text-[#e06c75]">width</span>
+        <span className="text-text-base/50">:</span>
+        <span className="text-[#d19a66]"> 32px</span>
+        <span className="text-text-base/30">;</span>
+        {'\n  '}
+        <span className="text-[#e06c75]">height</span>
+        <span className="text-text-base/50">:</span>
+        <span className="text-[#d19a66]"> 32px</span>
+        <span className="text-text-base/30">;</span>
+        {'\n'}
+        <span className="text-text-base/70">{'}'}</span>
+      </SyntaxBlock>
+      <div className="mb-12" />
     </section>
   );
 }

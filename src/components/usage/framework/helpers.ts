@@ -43,13 +43,35 @@ export const MCP_ON_THIS_PAGE = [
   { id: 'mcp-offline-operation', label: 'Offline Operation' },
 ] as const;
 
+export const VSCODE_ON_THIS_PAGE = [
+  { id: 'vscode', label: 'VS Code' },
+  { id: 'vscode-installation', label: 'Installation' },
+  { id: 'vscode-workflow', label: 'Workflow & Sidebar Panel' },
+] as const;
+
+export const FIGMA_ON_THIS_PAGE = [
+  { id: 'figma', label: 'Figma' },
+  { id: 'figma-installation', label: 'Installation' },
+  { id: 'figma-workflow', label: 'Workflow & Guide' },
+] as const;
+
+export const SVG_ON_THIS_PAGE = [
+  { id: 'svg-usage', label: 'Raw SVGs' },
+  { id: 'svg-download', label: 'Download ZIP Archive' },
+  { id: 'svg-embedding', label: 'Embedding in HTML' },
+  { id: 'svg-styling', label: 'Dynamic Styling via CSS' },
+] as const;
+
 export function getOnThisPageSections(framework: Framework): { id: string; label: string }[] {
+  if (framework === 'mcp') return [...MCP_ON_THIS_PAGE];
+  if (framework === 'vscode') return [...VSCODE_ON_THIS_PAGE];
+  if (framework === 'figma') return [...FIGMA_ON_THIS_PAGE];
+  if (framework === 'svg') return [...SVG_ON_THIS_PAGE];
+
   const frameworkEntry = {
     id: getFrameworkSectionId(framework),
     label: getFrameworkLabel(framework),
   };
-
-  if (framework === 'mcp') return [...MCP_ON_THIS_PAGE];
 
   if (isStandaloneFramework(framework)) return [frameworkEntry];
 
