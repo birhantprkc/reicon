@@ -22,21 +22,27 @@ export default function BrandsOverlay() {
       <div className="absolute inset-0 bg-bg-base/70 backdrop-blur-xl" />
 
       {/* Card */}
-      <div className="relative w-full max-w-[560px] bg-bg-base border border-text-base/10 rounded-[20px] overflow-hidden shadow-2xl">
-        {/* Decorative gradient blob */}
-        <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[#6C5CE7]/20 blur-[80px] pointer-events-none" />
-        <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#6C5CE7]/10 blur-[70px] pointer-events-none" />
+      <div className="relative w-full max-w-[520px] bg-bg-base border border-text-base/10 rounded-[20px] overflow-hidden shadow-2xl">
+        {/* Close button */}
+        <button
+          onClick={dismiss}
+          aria-label="Close"
+          className="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-md hover:bg-black/50 transition-colors text-white/80 hover:text-white cursor-pointer"
+        >
+          <re-icon icon="x" size="14" color="currentColor" />
+        </button>
 
-        <div className="relative z-10 p-8 md:p-10">
-          {/* Close button */}
-          <button
-            onClick={dismiss}
-            aria-label="Close"
-            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-text-base/5 hover:bg-text-base/10 transition-colors text-text-base/40 hover:text-text-base/70 cursor-pointer"
-          >
-            <re-icon icon="x" size="14" color="currentColor" />
-          </button>
+        {/* Hero image */}
+        <div className="relative aspect-[1200/500] bg-gradient-to-br from-[#6C5CE7]/30 to-[#6C5CE7]/5 overflow-hidden">
+          <img
+            src="/new-launch.png"
+            alt="brands.reicon.dev"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-base via-bg-base/20 to-transparent" />
+        </div>
 
+        <div className="relative -mt-1 z-10 p-8 md:p-10 pt-6">
           {/* Label */}
           <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#6C5CE7] mb-3">
             New Launch
