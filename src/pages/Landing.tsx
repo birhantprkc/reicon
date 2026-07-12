@@ -4,13 +4,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useTheme } from '../components/ThemeContext';
 
+import BrandsOverlay from './landing/BrandsOverlay';
 import LaunchBanner from './landing/LaunchBanner';
 import Hero from './landing/Hero';
 import Features from './landing/Features';
 import Integrations from './landing/Integrations';
 import IconShowcase from './landing/IconShowcase';
 import Playground from './landing/Playground';
-import Brands from './landing/Brands';
 import CTA from './landing/CTA';
 
 export default function Landing() {
@@ -112,6 +112,8 @@ export default function Landing() {
         className="opacity-0 pointer-events-none transition-opacity duration-300 z-[200]"
       />
 
+      <BrandsOverlay />
+
       <LaunchBanner />
 
       <Hero
@@ -128,8 +130,6 @@ export default function Landing() {
       <Integrations />
 
       <IconShowcase theme={theme} />
-
-      <Brands />
 
       <CTA />
 
