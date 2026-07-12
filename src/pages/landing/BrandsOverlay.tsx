@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowRightUp } from 'reicon-react';
 
 const STORAGE_KEY = 'reicon-brands-overlay-v2';
@@ -7,15 +7,17 @@ const COOKIE_KEY = 'reicon_cookie_consent';
 export default function BrandsOverlay() {
   const [visible, setVisible] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
+  const dismissedRef = useRef(false);
 
   useEffect(() => {
     const ownDismissed = (() => {
       try { return localStorage.getItem(STORAGE_KEY) === 'dismissed'; }
       catch { return false; }
     })();
-    if (ownDismissed) return;
+    if (ownDismissed) { dismissedRef.current = true; return; }
 
     const checkCookie = () => {
+      if (dismissedRef.current) return;
       const consented = (() => {
         try { return localStorage.getItem(COOKIE_KEY) !== null; }
         catch { return false; }
@@ -28,7 +30,6 @@ export default function BrandsOverlay() {
       }
     };
 
-    // Check immediately and on storage changes
     checkCookie();
     window.addEventListener('storage', checkCookie);
     const interval = setInterval(checkCookie, 500);
@@ -39,6 +40,7 @@ export default function BrandsOverlay() {
   }, []);
 
   const dismiss = () => {
+    dismissedRef.current = true;
     setAnimateIn(false);
     setTimeout(() => setVisible(false), 400);
     try { localStorage.setItem(STORAGE_KEY, 'dismissed'); } catch {}
