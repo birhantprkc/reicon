@@ -10,6 +10,7 @@ import Features from './landing/Features';
 import Integrations from './landing/Integrations';
 import IconShowcase from './landing/IconShowcase';
 import Playground from './landing/Playground';
+import Brands from './landing/Brands';
 import CTA from './landing/CTA';
 
 export default function Landing() {
@@ -127,6 +128,8 @@ export default function Landing() {
       <Integrations />
 
       <IconShowcase theme={theme} />
+
+      <Brands />
 
       <CTA />
 
