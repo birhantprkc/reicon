@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useTheme } from '../components/ThemeContext';
 
-import BrandsOverlay from './landing/BrandsOverlay';
 import LaunchBanner from './landing/LaunchBanner';
 import Hero from './landing/Hero';
 import Features from './landing/Features';
@@ -111,8 +110,6 @@ export default function Landing() {
         ref={fixedNavRef}
         className="opacity-0 pointer-events-none transition-opacity duration-300 z-[200]"
       />
-
-      <BrandsOverlay />
 
       <LaunchBanner />
 

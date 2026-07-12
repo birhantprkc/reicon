@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import SmoothScroll from './components/SmoothScroll';
 import CookieConsent from './components/CookieConsent';
+import BrandsOverlay from './pages/landing/BrandsOverlay';
 import { ThemeProvider } from './components/ThemeContext';
 
 // Route-level code splitting — each page ships as its own chunk, shrinking the
@@ -49,6 +50,7 @@ export default function App() {
             </Routes>
           </Suspense>
           <CookieConsent />
+          <BrandsOverlay />
         </SmoothScroll>
       </BrowserRouter>
     </ThemeProvider>
