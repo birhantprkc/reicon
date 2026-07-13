@@ -184,7 +184,7 @@ export default function IconDetail() {
   const directRaw = `import ${pascalName} from 'reicon-react/icons/${pascalName}';`;
 
   const CODE_TABS = [
-    { id: 'vanilla' as const, label: 'Vanilla JS', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: vanillaRaw },
+    { id: 'vanilla' as const, label: 'JS', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: vanillaRaw },
     { id: 'cdn' as const, label: 'CDN', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: cdnRaw },
     { id: 'react' as const, label: 'React', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactRaw },
     { id: 'react-native' as const, label: 'React Native', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactNativeRaw },
@@ -553,14 +553,15 @@ export default function IconDetail() {
               </div>
 
               {/* Code tabs */}
-              <figure className="relative overflow-hidden rounded-xl bg-text-base/3 border border-text-base/8 text-sm">
-                <div className="flex items-center justify-between w-full h-11 pl-3 pr-1.5 border-b border-text-base/8">
-                  <div className="flex items-center h-full gap-1">
+              {/* Code tabs */}
+              <figure className="relative rounded-xl bg-text-base/3 border border-text-base/8 text-sm">
+                <div className="flex items-center w-full h-11 pl-3 border-b border-text-base/8 overflow-x-auto">
+                  <div className="flex items-center h-full gap-1 shrink-0">
                     {CODE_TABS.map((tab) => {
                       const isActive = codeTab === tab.id;
                       return (
                         <button key={tab.id} onClick={() => setCodeTab(tab.id)}
-                          className={`relative flex items-center gap-1.5 h-full px-2.5 text-[13px] font-medium transition-colors cursor-pointer ${isActive ? 'text-text-base' : 'text-text-base/40 hover:text-text-base/70'}`}>
+                          className={`relative flex items-center gap-1.5 h-full px-2.5 text-[13px] font-medium whitespace-nowrap transition-colors cursor-pointer ${isActive ? 'text-text-base' : 'text-text-base/40 hover:text-text-base/70'}`}>
                           <span className={isActive ? '' : 'opacity-50'}>{tab.icon}</span>
                           {tab.label}
                           {isActive && <motion.span layoutId="code-tab-underline" className="absolute bottom-0 left-2 right-2 h-[2px] rounded-t-full bg-[#6C5CE7]" style={{ boxShadow: '0 0 8px rgba(108,92,231,0.45)' }} />}
@@ -568,17 +569,17 @@ export default function IconDetail() {
                       );
                     })}
                   </div>
-                  <button onClick={() => copyToClipboard(activeTab.raw, `code-${codeTab}`)} aria-label="Copy code"
-                    className="inline-flex items-center justify-center w-7 h-7 rounded-md text-text-base/40 hover:text-text-base hover:bg-text-base/8 transition-colors cursor-pointer">
-                    {copiedField === `code-${codeTab}` ? (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                    ) : (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>
-                    )}
-                  </button>
                 </div>
-                <div className="px-1.5 py-1.5">
-                  <div className="bg-bg-base rounded-md min-h-[92px]">
+                <div className="px-1.5 py-1.5 overflow-x-auto">
+                  <div className="bg-bg-base rounded-md min-h-[92px] min-w-[360px] relative">
+                    <button onClick={() => copyToClipboard(activeTab.raw, `code-${codeTab}`)} aria-label="Copy code"
+                      className="absolute top-1.5 right-1.5 z-10 inline-flex items-center justify-center w-7 h-7 rounded-md bg-bg-base text-text-base/30 hover:text-text-base hover:bg-text-base/8 transition-colors cursor-pointer">
+                      {copiedField === `code-${codeTab}` ? (
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                      ) : (
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>
+                      )}
+                    </button>
                     <AnimatePresence mode="wait">
                       <motion.pre
                         key={codeTab}
@@ -586,7 +587,7 @@ export default function IconDetail() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -4 }}
                         transition={{ duration: 0.18, ease: EASE }}
-                        className="p-4 text-[13px] font-mono leading-[1.7] overflow-x-auto whitespace-pre-wrap break-all focus-visible:outline-none text-text-base"
+                        className="p-4 text-[13px] font-mono leading-[1.7] overflow-x-auto whitespace-pre focus-visible:outline-none text-text-base"
                       >
                         {codeTab === 'vanilla' && <VanillaSnippet pascalName={pascalName} filled={fw} />}
                         {codeTab === 'cdn' && <CdnSnippet name={name || ''} filled={fw} />}
@@ -695,21 +696,24 @@ function Mockup({ i, children }: { i: number; children: React.ReactNode }) {
   );
 }
 
-/* ── Individual mockups (use the real icon) ───────────────────────────────── */
+/* ── Interactive mockups ──────────────────────────────────────────────────── */
 function AppNavMockup({ name, pascalName, weight }: { name?: string; pascalName: string; weight: string }) {
+  const [active, setActive] = useState(pascalName);
+  const items = [
+    { key: pascalName, label: pascalName, icon: name },
+    { key: 'overview', label: 'Overview', icon: 'chart' },
+    { key: 'activity', label: 'Activity', icon: 'clock' },
+  ] as const;
   return (
     <div className="flex flex-col flex-1">
       <span className="text-[10px] uppercase tracking-wider text-text-base/25 font-semibold mb-3">Sidebar nav</span>
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2.5 bg-[#6C5CE7]/15 text-[#6C5CE7] rounded-lg px-3 py-2">
-          <re-icon icon={name} weight={weight} size={16} color="currentColor" />
-          <span className="text-[13px] font-medium">{pascalName}</span>
-        </div>
-        {['Overview', 'Activity'].map((l) => (
-          <div key={l} className="flex items-center gap-2.5 text-text-base/40 rounded-lg px-3 py-2">
-            <span className="w-4 h-4 rounded bg-text-base/7" />
-            <span className="text-[13px]">{l}</span>
-          </div>
+        {items.map((item) => (
+          <button key={item.key} onClick={() => setActive(item.key)}
+            className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-[13px] font-medium transition-all cursor-pointer text-left w-full ${active === item.key ? 'bg-[#6C5CE7]/15 text-[#6C5CE7]' : 'text-text-base/40 hover:text-text-base/60 hover:bg-text-base/5'}`}>
+            <re-icon icon={active === item.key ? name : item.icon} weight={weight} size={16} color="currentColor" />
+            {item.label}
+          </button>
         ))}
       </div>
     </div>
@@ -717,14 +721,17 @@ function AppNavMockup({ name, pascalName, weight }: { name?: string; pascalName:
 }
 
 function ButtonsMockup({ name, weight }: { name?: string; weight: string }) {
+  const [clicked, setClicked] = useState<'primary' | 'secondary' | null>(null);
   return (
     <div className="flex flex-col flex-1">
       <span className="text-[10px] uppercase tracking-wider text-text-base/25 font-semibold mb-3">Buttons</span>
       <div className="flex flex-col gap-2.5 mt-auto">
-        <button className="flex items-center justify-center gap-2 bg-[#6C5CE7] text-white text-[13px] font-medium px-4 py-2.5 rounded-lg cursor-pointer">
-          <re-icon icon={name} weight={weight} size={16} color="white" /> Primary action
+        <button onClick={() => { setClicked('primary'); setTimeout(() => setClicked(null), 400); }}
+          className={`flex items-center justify-center gap-2 text-white text-[13px] font-medium px-4 py-2.5 rounded-lg transition-all cursor-pointer ${clicked === 'primary' ? 'bg-[#4A3DB8] scale-95' : 'bg-[#6C5CE7] hover:bg-[#5A4BD1] active:scale-95'}`}>
+          <re-icon icon={name} weight={weight} size={16} color="white" /> Click me
         </button>
-        <button className="flex items-center justify-center gap-2 bg-text-base/6 text-text-base/70 text-[13px] font-medium px-4 py-2.5 rounded-lg border border-text-base/10 cursor-pointer">
+        <button onClick={() => { setClicked('secondary'); setTimeout(() => setClicked(null), 400); }}
+          className={`flex items-center justify-center gap-2 text-[13px] font-medium px-4 py-2.5 rounded-lg border transition-all cursor-pointer ${clicked === 'secondary' ? 'bg-[#6C5CE7]/15 border-[#6C5CE7]/30 text-[#6C5CE7] scale-95' : 'bg-text-base/6 text-text-base/70 border-text-base/10 hover:bg-text-base/10 hover:text-text-base active:scale-95'}`}>
           <re-icon icon={name} weight={weight} size={16} color="currentColor" /> Secondary
         </button>
       </div>
@@ -733,26 +740,47 @@ function ButtonsMockup({ name, weight }: { name?: string; weight: string }) {
 }
 
 function StatMockup({ name, weight }: { name?: string; weight: string }) {
+  const [count, setCount] = useState(12480);
+  const trend = useMemo(() => {
+    const pct = ((Math.random() * 24) - 2).toFixed(1);
+    return { value: Number(pct), up: Number(pct) >= 0 };
+  }, [count]);
   return (
     <div className="flex flex-col flex-1">
       <span className="text-[10px] uppercase tracking-wider text-text-base/25 font-semibold mb-3">Metric card</span>
-      <div className="flex items-start gap-3 mt-auto">
-        <div className="w-11 h-11 rounded-xl bg-[#6C5CE7]/15 flex items-center justify-center shrink-0">
+      <button onClick={() => setCount(c => c + Math.floor(Math.random() * 50))}
+        className="flex items-start gap-3 mt-auto text-left w-full group cursor-pointer">
+        <div className="w-11 h-11 rounded-xl bg-[#6C5CE7]/15 flex items-center justify-center shrink-0 group-hover:bg-[#6C5CE7]/25 transition-colors">
           <re-icon icon={name} weight={weight} size={20} color="#6C5CE7" />
         </div>
         <div>
-          <div className="text-[22px] font-serif text-text-base leading-tight">12,480</div>
+          <div className="text-[22px] font-serif text-text-base leading-tight">{count.toLocaleString()}</div>
           <div className="text-[12px] text-text-base/40">Total this month</div>
         </div>
-      </div>
-      <div className="mt-3 flex items-center gap-1 text-[11px] text-green-400">
-        <re-icon icon="alt-arrow-up" size={12} color="currentColor" /> 12.5% vs last month
+      </button>
+      <div className={`mt-3 flex items-center gap-1 text-[11px] ${trend.up ? 'text-green-400' : 'text-red-400'}`}>
+        <re-icon icon={trend.up ? 'arrow-up' : 'arrow-down'} size={12} color="currentColor" />
+        {Math.abs(trend.value)}% vs last month
       </div>
     </div>
   );
 }
 
 function ToastMockup({ name, weight }: { name?: string; weight: string }) {
+  const [dismissed, setDismissed] = useState(false);
+  if (dismissed) {
+    return (
+      <div className="flex flex-col flex-1">
+        <span className="text-[10px] uppercase tracking-wider text-text-base/25 font-semibold mb-3">Notification</span>
+        <div className="mt-auto flex items-center justify-center">
+          <button onClick={() => setDismissed(false)}
+            className="text-[12px] text-text-base/30 hover:text-text-base/60 underline underline-offset-2 cursor-pointer transition-colors">
+            Show notification
+          </button>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col flex-1">
       <span className="text-[10px] uppercase tracking-wider text-text-base/25 font-semibold mb-3">Notification</span>
@@ -760,28 +788,42 @@ function ToastMockup({ name, weight }: { name?: string; weight: string }) {
         <div className="w-8 h-8 rounded-lg bg-[#6C5CE7]/15 flex items-center justify-center shrink-0">
           <re-icon icon={name} weight={weight} size={16} color="#6C5CE7" />
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <div className="text-[13px] font-medium text-text-base/90">All changes saved</div>
           <div className="text-[12px] text-text-base/40 truncate">Your workspace is up to date.</div>
         </div>
+        <button onClick={() => setDismissed(true)}
+          className="shrink-0 w-6 h-6 flex items-center justify-center rounded-md text-text-base/30 hover:text-text-base hover:bg-text-base/8 transition-colors cursor-pointer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </button>
       </div>
     </div>
   );
 }
 
 function InputMockup({ name, weight }: { name?: string; weight: string }) {
+  const [focused, setFocused] = useState(false);
+  const [value, setValue] = useState('');
   return (
     <div className="flex flex-col flex-1">
       <span className="text-[10px] uppercase tracking-wider text-text-base/25 font-semibold mb-3">Input field</span>
       <div className="flex flex-col gap-2.5 mt-auto">
-        <div className="flex items-center gap-2.5 bg-text-base/4 border border-[#6C5CE7]/40 rounded-lg px-3 py-2.5">
-          <re-icon icon={name} weight={weight} size={18} color="currentColor" className="text-text-base/50" />
-          <span className="text-text-base/70 text-[13px]">Focused field</span>
-          <span className="ml-auto w-px h-4 bg-[#6C5CE7] animate-pulse" />
-        </div>
+        <label className={`flex items-center gap-2.5 rounded-lg px-3 py-2.5 transition-all cursor-text ${focused ? 'bg-text-base/5 border border-[#6C5CE7]/50' : 'bg-text-base/4 border border-text-base/8'}`}>
+          <re-icon icon={name} weight={weight} size={18} color="currentColor" className={focused ? 'text-[#6C5CE7]' : 'text-text-base/40'} />
+          <input
+            type="text"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            placeholder={focused ? '' : 'Type something…'}
+            className="bg-transparent text-[13px] text-text-base placeholder:text-text-base/25 outline-none flex-1 min-w-0"
+          />
+          {focused && <span className="w-px h-4 bg-[#6C5CE7] animate-pulse" />}
+        </label>
         <div className="flex items-center gap-2.5 bg-text-base/4 border border-text-base/8 rounded-lg px-3 py-2.5">
           <re-icon icon={name} weight={weight} size={18} color="currentColor" className="text-text-base/30" />
-          <span className="text-text-base/25 text-[13px]">Placeholder…</span>
+          <span className="text-text-base/25 text-[13px]">Disabled</span>
         </div>
       </div>
     </div>
@@ -789,18 +831,24 @@ function InputMockup({ name, weight }: { name?: string; weight: string }) {
 }
 
 function MobileBarMockup({ name, weight }: { name?: string; weight: string }) {
+  const [tab, setTab] = useState(0);
+  const label = name?.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('') || '';
+  const tabs = [
+    { icon: name, label },
+    { icon: 'home-smile2', label: 'Home' },
+    { icon: 'magnifier', label: 'Search' },
+    { icon: 'user', label: 'Profile' },
+  ];
   return (
     <div className="flex flex-col flex-1">
       <span className="text-[10px] uppercase tracking-wider text-text-base/25 font-semibold mb-3">Bottom tab bar</span>
-      <div className="mt-auto flex items-center justify-around bg-text-base/4 border border-text-base/8 rounded-2xl px-2 py-3">
-        <div className="flex flex-col items-center gap-1 text-[#6C5CE7]">
-          <re-icon icon={name} weight={weight} size={20} color="currentColor" />
-          <span className="w-1 h-1 rounded-full bg-[#6C5CE7]" />
-        </div>
-        {['home-2', 'magnifer', 'user'].map((ic) => (
-          <div key={ic} className="text-text-base/30">
-            <re-icon icon={ic} size={20} color="currentColor" />
-          </div>
+      <div className="mt-auto flex items-center justify-around bg-text-base/4 border border-text-base/8 rounded-2xl px-2 py-2">
+        {tabs.map((t, i) => (
+          <button key={t.icon} onClick={() => setTab(i)}
+            className={`flex flex-col items-center gap-1 px-3 py-1 rounded-lg transition-all cursor-pointer ${tab === i ? 'text-[#6C5CE7]' : 'text-text-base/30 hover:text-text-base/50'}`}>
+            <re-icon icon={t.icon} weight={tab === i ? 'filled' : 'outline'} size={20} color="currentColor" />
+            {tab === i && <span className="w-1 h-1 rounded-full bg-[#6C5CE7]" />}
+          </button>
         ))}
       </div>
     </div>
