@@ -1,10 +1,22 @@
-import type { IconEntry, IconIndex, IconWeight, SearchResult } from './types.js';
+import searchIndex from './search-index.json';
 
-// Only flag clearly conversational strings — short "add home icon" should be fine
+export interface SearchIndexEntry {
+  n: string;
+  c: string;
+  t: string[];
+}
+
+export interface SearchResult {
+  name: string;
+  category: string;
+  tags: string[];
+  score: number;
+}
+
 const SENTENCE_MARKERS = /\?|!|\.{2,}/;
 const SENTENCE_WORDS = /\b(please|could|would|want|need|show|find|give|get me|looking for|i am|i'm|can you|help me|what is)\b/i;
 
-const SYNONYMS: Record<string, string[]> = {
+const SYNONYM_EXPANSION: Record<string, string[]> = {
   x: ['x', 'close', 'dismiss', 'cancel', 'remove'],
   trash: ['trash', 'delete', 'remove', 'bin', 'clear', 'erase', 'rubbish', 'garbage'],
   delete: ['delete', 'trash', 'remove', 'bin', 'clear', 'erase'],
@@ -1147,6 +1159,8 @@ const SYNONYMS: Record<string, string[]> = {
   writng: ['writing', 'write', 'type', 'author', 'content'],
 };
 
+const index: SearchIndexEntry[] = searchIndex as SearchIndexEntry[];
+
 function normalize(text: string): string {
   return text.toLowerCase().trim().replace(/\s+/g, ' ');
 }
@@ -1155,14 +1169,22 @@ function tokenize(text: string): string[] {
   return normalize(text).split(' ').filter(Boolean);
 }
 
-export function isSentenceQuery(query: string): boolean {
+function expandToken(token: string): string[] {
+  const expanded = new Set<string>();
+  expanded.add(token);
+  const syns = SYNONYM_EXPANSION[token];
+  if (syns) {
+    for (const s of syns) expanded.add(s);
+  }
+  return [...expanded];
+}
+
+function isSentenceQuery(query: string): boolean {
   const trimmed = query.trim();
   if (!trimmed) return true;
   if (SENTENCE_MARKERS.test(trimmed)) return true;
   const words = tokenize(trimmed);
-  // Only flag > 7 words as a sentence (was 6, which was too aggressive)
   if (words.length > 7) return true;
-  // Only flag if sentence words appear AND query is 5+ words
   if (words.length >= 5 && SENTENCE_WORDS.test(trimmed)) return true;
   if (/^(how|what|where|which|why|when)\b/i.test(trimmed)) return true;
   return false;
@@ -1170,14 +1192,15 @@ export function isSentenceQuery(query: string): boolean {
 
 function synonymBoost(query: string, name: string): number {
   const key = normalize(query);
-  const list = SYNONYMS[key];
-  if (!list) return 0;
-  const idx = list.indexOf(name);
-  if (idx === -1) return 0;
-  return 3000 - idx * 100;
+  const expanded = SYNONYM_EXPANSION[key];
+  if (!expanded) return 0;
+  const idx = expanded.indexOf(name);
+  if (idx !== -1) return Math.max(500, 2500 - idx * 50);
+  const spaceName = name.replace(/-/g, ' ');
+  if (expanded.includes(spaceName)) return 1200;
+  return 0;
 }
 
-// Fuzzy partial match — how many chars of `token` appear sequentially in `str`
 function fuzzyScore(str: string, token: string): number {
   let ti = 0;
   let hits = 0;
@@ -1187,98 +1210,159 @@ function fuzzyScore(str: string, token: string): number {
   return ti === token.length ? Math.round((hits / str.length) * 100) : 0;
 }
 
-function scoreIcon(icon: IconEntry, query: string, tokens: string[], weight?: IconWeight): number {
+function scoreIcon(entry: SearchIndexEntry, query: string, tokens: string[]): number {
   const q = normalize(query);
-  const name = icon.name;
+  const name = entry.n;
+  const nameParts = name.split('-');
   const nameNorm = name.replace(/-/g, ' ');
-  const catNorm = icon.category.replace(/-/g, ' ').toLowerCase();
-  const tagsNorm = icon.tags.map((t) => normalize(t));
+  const catNorm = entry.c.replace(/-/g, ' ').toLowerCase();
+  const tagsNorm = entry.t.map((t) => normalize(t));
   let score = 0;
 
-  // Synonym boost
   score += synonymBoost(query, name);
 
-  // Exact name match
   if (name === q || name === q.replace(/ /g, '-')) {
     score += 10000;
   }
 
-  // Single token exact match
   if (tokens.length === 1 && name === tokens[0]) {
     score += 5000;
   }
 
-  // All tokens appear in name
-  if (tokens.every((t) => name.includes(t) || nameNorm.includes(t))) {
-    score += 2000;
+  const allTokensMatch = tokens.every((token) => {
+    const expanded = expandToken(token);
+    return expanded.some((et) =>
+      nameParts.some((part) => part === et || part.startsWith(et) || part.includes(et)) ||
+      name.includes(et) ||
+      nameNorm.includes(et)
+    );
+  });
+  if (allTokensMatch) {
+    const allOriginalMatch = tokens.every((token) => {
+      const expanded = expandToken(token);
+      return expanded.some((et) => et === token &&
+        (nameParts.some((part) => part === et || part.startsWith(et) || part.includes(et)) ||
+         name.includes(et) || nameNorm.includes(et))
+      );
+    });
+    score += allOriginalMatch ? 3000 : 1500;
   }
 
-  // Full tag exact match
   if (tagsNorm.some((t) => t === q)) {
     score += 1500;
   }
 
   for (const token of tokens) {
-    // Exact tag match
-    if (tagsNorm.some((t) => t === token)) score += 800;
-    // Name includes token
-    if (name.includes(token)) score += 600;
-    // Name starts with token (prefix boost)
-    if (name.startsWith(token)) score += 400;
-    // Tag includes token
-    if (tagsNorm.some((t) => t.includes(token))) score += 300;
-    // Category match
-    if (catNorm.includes(token)) score += 150;
-    // Fuzzy fallback — only if no direct match
-    const directMatch = name.includes(token) || tagsNorm.some((t) => t.includes(token));
-    if (!directMatch) {
+    const expanded = expandToken(token);
+    let tokenMatchedInName = false;
+    let tokenMatchedInTag = false;
+    let tokenMatchedInCategory = false;
+    let tokenMatchedFuzzy = false;
+    let anyMatched = false;
+
+    for (const et of expanded) {
+      const isOriginal = et === token;
+      const mult = isOriginal ? 1.0 : 0.45;
+
+      if (tagsNorm.some((t) => t === et)) {
+        score += Math.round(800 * mult);
+        anyMatched = true;
+        if (isOriginal) tokenMatchedInTag = true;
+      }
+
+      if (name.includes(et)) {
+        score += Math.round(400 * mult);
+        anyMatched = true;
+        if (isOriginal) tokenMatchedInName = true;
+      }
+
+      if (nameParts.some((part) => part === et)) {
+        score += Math.round(700 * mult);
+        anyMatched = true;
+        if (isOriginal) tokenMatchedInName = true;
+      }
+
+      if (nameParts.some((part) => part.startsWith(et) && part !== et)) {
+        score += Math.round(500 * mult);
+        anyMatched = true;
+        if (isOriginal) tokenMatchedInName = true;
+      }
+
+      if (nameParts.some((part) => part.includes(et) && !part.startsWith(et) && part !== et)) {
+        score += Math.round(200 * mult);
+        anyMatched = true;
+        if (isOriginal) tokenMatchedInName = true;
+      }
+
+      if (tagsNorm.some((t) => t.includes(et))) {
+        score += Math.round(300 * mult);
+        anyMatched = true;
+        if (isOriginal) tokenMatchedInTag = true;
+      }
+
+      if (catNorm.includes(et)) {
+        score += Math.round(150 * mult);
+        anyMatched = true;
+        if (isOriginal) tokenMatchedInCategory = true;
+      }
+    }
+
+    if (!tokenMatchedInName && !anyMatched) {
       const fuzz = fuzzyScore(name, token);
-      if (fuzz > 70) score += Math.round(fuzz * 0.8);
+      if (fuzz > 70) {
+        score += Math.round(fuzz * 0.6);
+        tokenMatchedFuzzy = true;
+      }
+    }
+
+    if (!anyMatched && !tokenMatchedFuzzy) {
+      score -= 500;
     }
   }
 
-  // Prefer shorter names (more specific)
-  score += Math.max(0, 50 - name.length);
-
-  // Weight filter
-  if (weight) {
-    if (icon.weights[weight]) score += 10;
-    else score -= 1000;
+  const matchedTokenCount = tokens.filter((token) => {
+    const expanded = expandToken(token);
+    return expanded.some((et) => et === token &&
+      (nameParts.some((part) => part.startsWith(et) || part.includes(et)) ||
+       name.includes(et) ||
+       tagsNorm.some((t) => t.includes(et)))
+    );
+  }).length;
+  if (matchedTokenCount >= 2) {
+    score += matchedTokenCount * 500;
   }
 
-  return score;
+  score += Math.max(0, 50 - name.length);
+
+  return Math.max(0, score);
+}
+
+export function getSearchIndex(): SearchIndexEntry[] {
+  return index;
 }
 
 export function searchIcons(
-  index: IconIndex,
   query: string,
-  options: { weight?: IconWeight; limit?: number } = {},
-): { results: SearchResult[]; instruction: string } | { error: string } {
-  if (isSentenceQuery(query)) {
-    return {
-      error: 'Query looks like a full sentence. Use concise keywords instead, such as "cart", "user", or "settings".',
-    };
-  }
+  options: { limit?: number } = {},
+): SearchResult[] {
+  const trimmed = query.trim();
+  if (!trimmed) return [];
 
-  // Default limit raised from 5 → 8 for better agent context
-  const limit = options.limit ?? 8;
-  const tokens = tokenize(query);
-  const weights: IconWeight[] = options.weight ? [options.weight] : ['Outline', 'Filled'];
+  if (isSentenceQuery(trimmed)) return [];
+
+  const limit = options.limit ?? 24;
+  const tokens = tokenize(trimmed);
   const results: SearchResult[] = [];
 
-  for (const icon of index.icons) {
-    for (const weight of weights) {
-      if (!icon.weights[weight]) continue;
-      const score = scoreIcon(icon, query, tokens, weight);
-      if (score > 0) {
-        results.push({
-          name: icon.name,
-          weight,
-          category: icon.category,
-          tags: icon.tags,
-          score,
-        });
-      }
+  for (const entry of index) {
+    const score = scoreIcon(entry, query, tokens);
+    if (score > 0) {
+      results.push({
+        name: entry.n,
+        category: entry.c,
+        tags: entry.t,
+        score,
+      });
     }
   }
 
@@ -1287,30 +1371,11 @@ export function searchIcons(
   const seen = new Set<string>();
   const deduped: SearchResult[] = [];
   for (const r of results) {
-    const key = `${r.name}:${r.weight}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
+    if (seen.has(r.name)) continue;
+    seen.add(r.name);
     deduped.push(r);
     if (deduped.length >= limit) break;
   }
 
-  if (deduped.length === 0) {
-    return {
-      error: `No icons found for "${query}". Try a shorter or different keyword.`,
-    };
-  }
-
-  return {
-    results: deduped,
-    instruction:
-      'Pick exactly one result from the list above. Prefer the highest score. Then call view_icon to confirm the SVG, or apply_icon to generate ready-to-use code. Do not ask the user to choose.',
-  };
-}
-
-export function findIcon(index: IconIndex, name: string): IconEntry | undefined {
-  return index.icons.find((i) => i.name === name);
-}
-
-export function listCategories(index: IconIndex): string[] {
-  return index.categories;
+  return deduped;
 }

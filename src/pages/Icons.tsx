@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useDeferredValue, useRef, useCallback } from 'react';
+import { useIconSearch } from '../hooks/useIconSearch';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header';
@@ -63,6 +64,7 @@ export default function IconsPage() {
   const totalCardsRef = useRef(0);
 
   const deferredQuery = useDeferredValue(searchQuery);
+  const searchResults = useIconSearch(searchQuery, 500);
 
   useEffect(() => {
     function loadIcons() {
@@ -89,10 +91,13 @@ export default function IconsPage() {
     }
     const q = deferredQuery.trim().toLowerCase();
     if (q) {
-      icons = icons.filter((name) => name.toLowerCase().includes(q));
+      const ranked = new Map(searchResults.map((r, i) => [r.name, i]));
+      icons = icons
+        .filter((name) => ranked.has(name))
+        .sort((a, b) => (ranked.get(a) ?? Infinity) - (ranked.get(b) ?? Infinity));
     }
     return icons;
-  }, [deferredQuery, allIcons, activeSet, categoryMap, showNew]);
+  }, [deferredQuery, allIcons, activeSet, categoryMap, showNew, searchResults]);
 
   // Reset visible count whenever the filtered set changes
   useEffect(() => {
