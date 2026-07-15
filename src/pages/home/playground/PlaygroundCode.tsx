@@ -1,0 +1,71 @@
+import { Copy } from 'reicon-react';
+import { useState } from 'react';
+
+export default function PlaygroundCode({
+    selected,
+    size,
+    weight,
+    displayColor,
+    icons,
+    onSelect,
+    pascalName,
+    iconNamesData,
+}: {
+    selected: string;
+    size: number;
+    weight: 'outline' | 'filled';
+    displayColor: string;
+    icons: string[];
+    onSelect: (name: string) => void;
+    pascalName: string;
+    iconNamesData: Record<string, string>;
+}) {
+    const markup = `<re-icon icon="${selected}" size={${size}} weight="${weight}" color="${displayColor}" />`;
+    const [copied, setCopied] = useState(false);
+
+    const handleCopy = async () => {
+        await navigator.clipboard.writeText(markup);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+    };
+
+    return (
+        <div className="flex flex-col gap-4">
+            <div className="bg-text-base/5 border border-text-base/10 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-2">
+                    <span className="text-[11px] uppercase tracking-[0.08em] text-text-base/30 font-semibold">Code</span>
+                    <button
+                        onClick={handleCopy}
+                        className="text-text-base/30 hover:text-text-base/60 transition-colors cursor-pointer"
+                        title="Copy markup"
+                        aria-label="Copy markup"
+                    >
+                        {copied ? <span className="text-[11px] text-green-500">Copied!</span> : <Copy size={14} />}
+                    </button>
+                </div>
+                <pre className="text-[12px] font-mono text-text-base/60 whitespace-pre-wrap overflow-x-auto">{
+                    `<re-icon icon="${selected}" size={${size}} weight="${weight}" color="${displayColor}" />`}
+                </pre>
+            </div>
+
+            <div>
+                <span className="text-[11px] uppercase tracking-[0.08em] text-text-base/30 font-semibold mb-3 block">Icons</span>
+                <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 border-l border-t border-text-base/4">
+                    {icons.map((name) => (
+                        <button
+                            key={name}
+                            onClick={() => onSelect(name)}
+                            title={(iconNamesData as Record<string, string>)[name] || name}
+                            className={`aspect-square flex items-center justify-center border-r border-b transition-colors cursor-pointer ${name === selected
+                                ? 'bg-[#6C5CE7]/10 border-[#6C5CE7]/25'
+                                : 'border-text-base/4 hover:bg-text-base/3'
+                                }`}
+                        >
+                            <re-icon icon={name} size={size} weight={weight} color={displayColor} />
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}

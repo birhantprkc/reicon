@@ -10,15 +10,15 @@
 
 ## Documentation
 
-- [Usage Guide](https://reicon.dev/usage): Overview of using Reicon.
-- [React Guide](https://reicon.dev/usage/react): Detailed instructions and examples for React components (`reicon-react`).
-- [Vue Guide](https://reicon.dev/usage/vue): Detailed instructions and examples for Vue 3 components (`reicon-vue`).
-- [Svelte Guide](https://reicon.dev/usage/svelte): Detailed instructions and examples for Svelte components (`reicon-svelte`).
-- [Vanilla HTML/CDN Guide](https://reicon.dev/usage/vanilla): How to load Reicon via unpkg CDN and use custom element `<re-icon>`.
-- [Figma Plugin](https://reicon.dev/usage/figma): How to use Reicon inside Figma.
-- [VS Code Extension](https://reicon.dev/usage/vscode): Productivity extension for Reicon.
-- [MCP Server](https://reicon.dev/usage/mcp): Agent-facing MCP server and CLI for icon search and code generation (`reicon-mcp`).
-- [Raw SVG Assets](https://reicon.dev/usage/svg): Downloading and using raw SVG paths.
+- [Docs](https://reicon.dev/docs): Overview of using Reicon.
+- [React Guide](https://reicon.dev/docs/react): Detailed instructions and examples for React components (`reicon-react`).
+- [Vue Guide](https://reicon.dev/docs/vue): Detailed instructions and examples for Vue 3 components (`reicon-vue`).
+- [Svelte Guide](https://reicon.dev/docs/svelte): Detailed instructions and examples for Svelte components (`reicon-svelte`).
+- [Vanilla HTML/CDN Guide](https://reicon.dev/docs/vanilla): How to load Reicon via unpkg CDN and use custom element `<re-icon>`.
+- [Figma Plugin](https://reicon.dev/docs/figma): How to use Reicon inside Figma.
+- [VS Code Extension](https://reicon.dev/docs/vscode): Productivity extension for Reicon.
+- [MCP Server](https://reicon.dev/docs/mcp): Agent-facing MCP server and CLI for icon search and code generation (`reicon-mcp`).
+- [Raw SVG Assets](https://reicon.dev/docs/svg): Downloading and using raw SVG paths.
 
 ## References
 

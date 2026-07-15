@@ -1,0 +1,169 @@
+import { useParams, useSearchParams } from 'react-router-dom';
+import { useState, useMemo, useEffect, useCallback } from 'react';
+import { FaReact } from 'react-icons/fa';
+import { IoLogoJavascript } from 'react-icons/io5';
+import { SiSvelte } from 'react-icons/si';
+import { VueLogo } from './Snippets';
+import { loadIconData } from '../../lib/icon-data';
+import { waitForReicon } from '../../lib/reicon-loader';
+import {
+  copyToClipboard as copyUtils,
+  copySvg as copySvgUtils,
+  downloadSvg as downloadSvgUtils,
+  downloadAsPng as downloadPngUtils,
+  downloadAsWebp as downloadWebpUtils,
+} from './utils';
+
+export default function useIconDetail() {
+  const { name } = useParams<{ name: string }>();
+  const [searchParams] = useSearchParams();
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [activeWeight, setActiveWeight] = useState<'outline' | 'filled'>(
+    searchParams.get('weight') === 'filled' ? 'filled' : 'outline'
+  );
+  const [previewSize, setPreviewSize] = useState(96);
+  const [toast, setToast] = useState<string | null>(null);
+  const [exportSize, setExportSize] = useState(64);
+  const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'react-native' | 'vue' | 'svelte' | 'direct'>('vanilla');
+  const [iconCategory, setIconCategory] = useState('');
+  const [contributorGithub, setContributorGithub] = useState<string | null>(null);
+  const [useCustomColor, setUseCustomColor] = useState(false);
+  const [customColor, setCustomColor] = useState('#6C5CE7');
+  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
+  const [iconNames, setIconNames] = useState<Record<string, string> | null>(null);
+
+  const pascalName = useMemo(() => name
+    ? name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join('')
+    : '', [name]);
+
+  const flashToast = useCallback((msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2500);
+  }, []);
+
+  const handleCopy = useCallback((text: string, field: string) => {
+    return copyUtils(text, field, setCopiedField, flashToast);
+  }, [flashToast]);
+
+  const handleCopySvg = useCallback(() => {
+    return copySvgUtils(name || '', activeWeight, useCustomColor, customColor, setCopiedField, flashToast);
+  }, [name, activeWeight, useCustomColor, customColor, flashToast]);
+
+  const handleDownloadSvg = useCallback(() => {
+    return downloadSvgUtils(name || '', activeWeight, exportSize, useCustomColor, customColor, flashToast);
+  }, [name, activeWeight, exportSize, useCustomColor, customColor, flashToast]);
+
+  const handleDownloadPng = useCallback(() => {
+    return downloadPngUtils(name || '', activeWeight, exportSize, useCustomColor, customColor, flashToast);
+  }, [name, activeWeight, exportSize, useCustomColor, customColor, flashToast]);
+
+  const handleDownloadWebp = useCallback(() => {
+    return downloadWebpUtils(name || '', activeWeight, exportSize, useCustomColor, customColor, flashToast);
+  }, [name, activeWeight, exportSize, useCustomColor, customColor, flashToast]);
+
+  const reset = useCallback(() => {
+    setActiveWeight('outline');
+    setPreviewSize(96);
+    setUseCustomColor(false);
+    setCustomColor('#6C5CE7');
+    setIsColorPickerOpen(false);
+  }, []);
+
+  const fw = activeWeight === 'filled';
+
+  const vanillaRaw = `import { ${pascalName} } from 'reicon';\n\nconst icon = ${pascalName}({ size: 24${fw ? ", weight: 'Filled'" : ''} });\ndocument.body.appendChild(icon);`;
+  const cdnRaw = `<script src="https://unpkg.com/reicon@latest/cdn/reicon.min.js"><\/script>\n<re-icon icon="${name}"${fw ? ' weight="filled"' : ''}></re-icon>`;
+  const reactRaw = `import { ${pascalName} } from 'reicon-react';\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
+  const reactNativeRaw = `import { ${pascalName} } from 'reicon-react-native';\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
+  const vueRaw = `import { ${pascalName} } from 'reicon-vue';\n\n<${pascalName} :size="24"${fw ? ' weight="Filled"' : ''} />`;
+  const svelteRaw = `<script>\n  import { ${pascalName} } from 'reicon-svelte';\n</script>\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
+  const directRaw = `import ${pascalName} from 'reicon-react/icons/${pascalName}';`;
+
+  const CODE_TABS = useMemo(() => [
+    { id: 'vanilla' as const, label: 'JS', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: vanillaRaw },
+    { id: 'cdn' as const, label: 'CDN', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: cdnRaw },
+    { id: 'react' as const, label: 'React', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactRaw },
+    { id: 'react-native' as const, label: 'React Native', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactNativeRaw },
+    { id: 'vue' as const, label: 'Vue', icon: <VueLogo />, raw: vueRaw },
+    { id: 'svelte' as const, label: 'Svelte', icon: <SiSvelte className="text-[#FF3E00]" size={14} />, raw: svelteRaw },
+    { id: 'direct' as const, label: 'Direct', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: directRaw },
+  ], [vanillaRaw, cdnRaw, reactRaw, reactNativeRaw, vueRaw, svelteRaw, directRaw]);
+
+  const activeTab = CODE_TABS.find((t) => t.id === codeTab)!;
+
+  useEffect(() => {
+    setActiveWeight(searchParams.get('weight') === 'filled' ? 'filled' : 'outline');
+  }, [name, searchParams]);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const data = await loadIconData();
+        if (!cancelled) setIconNames(data.iconNames);
+      } catch {}
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    if (!name) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        await waitForReicon();
+        if (cancelled) return;
+        const cat = window.Reicon?.categoryOf?.(name);
+        if (cat) setIconCategory(cat.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '));
+      } catch {}
+    })();
+    return () => { cancelled = true; };
+  }, [name]);
+
+  useEffect(() => {
+    if (!name) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        await waitForReicon();
+        if (cancelled) return;
+        const gh = window.Reicon?.contributorOf?.(name);
+        setContributorGithub(gh ?? null);
+      } catch {}
+    })();
+    return () => { cancelled = true; };
+  }, [name]);
+
+  const pageTitle = name
+    ? `${pascalName} Icon \u2014 Free ${iconCategory || 'SVG'} Download | Reicon`
+    : 'Icon \u2014 Reicon';
+  const pageDesc = `Free ${pascalName} SVG icon from Reicon. Download as SVG, PNG, or WebP. Use in React, Vue, Svelte, Figma, or HTML. Outline & filled weights. MIT licensed.`;
+  const pageUrl = `https://reicon.dev/icon/${name}`;
+  const ogImage = 'https://reicon.dev/og-image.png?v=4';
+  const ogImageAlt = `Reicon \u2014 ${pascalName} icon preview`;
+
+  const relatedIcons = useMemo(() => {
+    if (!name || !iconNames) return [];
+    const allNames = Object.keys(iconNames) as string[];
+    const prefix = name.replace(/-?\d+$/, '').replace(/-[^-]+$/, '');
+    const related = allNames.filter(
+      (n) => n !== name && (n.startsWith(prefix + '-') || n.startsWith(prefix) || name.startsWith(n.replace(/-?\d+$/, '')))
+    );
+    return related.sort(() => 0.5 - Math.random()).slice(0, 14);
+  }, [name, iconNames]);
+
+  return {
+    name,
+    copiedField, activeWeight, previewSize, toast, exportSize,
+    codeTab, iconCategory, contributorGithub, useCustomColor, customColor,
+    isColorPickerOpen, pascalName, fw, relatedIcons,
+    setCopiedField, setActiveWeight, setPreviewSize, setExportSize,
+    setCodeTab, setUseCustomColor, setCustomColor, setIsColorPickerOpen,
+    setToast,
+    flashToast, handleCopy, handleCopySvg,
+    handleDownloadSvg, handleDownloadPng, handleDownloadWebp,
+    reset, CODE_TABS, activeTab,
+    pageTitle, pageDesc, pageUrl, ogImage, ogImageAlt,
+    iconNames,
+  };
+}

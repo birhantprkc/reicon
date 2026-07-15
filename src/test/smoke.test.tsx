@@ -4,10 +4,10 @@ import {MemoryRouter} from 'react-router-dom';
 import {describe, expect, it} from 'vitest';
 
 import App from '@/src/App';
-import Footer from '@/src/components/Footer';
-import Header from '@/src/components/Header';
-import {ThemeProvider} from '@/src/components/ThemeContext';
-import ReIcon from '@/src/components/ReIcon';
+import Footer from '@/src/components/layout/Footer';
+import Header from '@/src/components/layout/Header';
+import {ThemeProvider} from '@/src/components/layout/ThemeContext';
+import ReIcon from '@/src/components/ui/ReIcon';
 
 describe('App smoke test', () => {
   it('renders without crashing', () => {

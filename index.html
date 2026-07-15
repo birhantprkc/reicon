@@ -7,8 +7,11 @@
     (function () {
       try {
         var t = localStorage.getItem('reicon-theme');
-        document.documentElement.classList.add(t === 'light' ? 'light' : 'dark');
-        document.documentElement.classList.remove(t === 'light' ? 'dark' : 'light');
+        if (!t) { t = 'dark'; localStorage.setItem('reicon-theme', 'dark'); }
+        var isLight = t === 'light';
+        document.documentElement.classList.add(isLight ? 'light' : 'dark');
+        document.documentElement.classList.remove(isLight ? 'dark' : 'light');
+        document.body.style.backgroundColor = isLight ? '#ffffff' : '#09090b';
       } catch (e) { }
     })();
   </script>
@@ -139,7 +142,7 @@
       {
         "@type": "Question",
         "name": "How do I install Reicon?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Run 'npm install reicon-react' for React, 'npm install reicon-react-native' for React Native, or use the CDN. See reicon.dev/usage." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Run 'npm install reicon-react' for React, 'npm install reicon-react-native' for React Native, or use the CDN. See reicon.dev/docs." }
       },
       {
         "@type": "Question",
@@ -157,23 +160,6 @@
     gtag('js', new Date());
     gtag('config', 'G-09W3508CC9');
   </script>
-
-  <script>
-    window.op = window.op || function () {
-      var n = [];
-      return new Proxy(function () { arguments.length && n.push([].slice.call(arguments)); }, {
-        get: function (t, r) { return 'q' === r ? n : function () { n.push([r].concat([].slice.call(arguments))); }; },
-        has: function (t, r) { return 'q' === r; }
-      });
-    }();
-    window.op('init', {
-      clientId: '41d1d4c6-d2fc-4b1c-8f30-a11e84771c80',
-      trackScreenViews: true,
-      trackOutgoingLinks: true,
-      trackAttributes: true,
-    });
-  </script>
-  <script src="https://openpanel.dev/op1.js" defer async></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -207,7 +193,7 @@
         open-source SVG icons. Free for UI design, React, React Native, Vue, Svelte, and Figma.</p>
       <p style="margin-top:2rem;color:rgba(255,255,255,0.4);font-size:0.875rem">
         <a href="https://reicon.dev/icons" style="color:rgba(255,255,255,0.7)">Browse 2700+ icons</a> ·
-        <a href="https://reicon.dev/usage" style="color:rgba(255,255,255,0.7)">Usage guide</a>
+        <a href="https://reicon.dev/docs" style="color:rgba(255,255,255,0.7)">Docs</a>
       </p>
     </div>
   </noscript>

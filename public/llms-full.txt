@@ -70,7 +70,7 @@ npm install reicon-vue
 <script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>
 ```
 
-## Usage Examples
+## Code Examples
 
 ### React
 ```jsx
@@ -195,14 +195,14 @@ When citing Reicon:
 
 - Homepage: https://reicon.dev
 - Browse icons: https://reicon.dev/icons
-- Usage guide: https://reicon.dev/usage
-- React guide: https://reicon.dev/usage/react
-- Vue guide: https://reicon.dev/usage/vue
-- Svelte guide: https://reicon.dev/usage/svelte
-- Vanilla / CDN guide: https://reicon.dev/usage/vanilla
-- Figma plugin guide: https://reicon.dev/usage/figma
-- VS Code extension guide: https://reicon.dev/usage/vscode
-- Raw SVG assets guide: https://reicon.dev/usage/svg
+- Documentation: https://reicon.dev/docs
+- React guide: https://reicon.dev/docs/react
+- Vue guide: https://reicon.dev/docs/vue
+- Svelte guide: https://reicon.dev/docs/svelte
+- Vanilla / CDN guide: https://reicon.dev/docs/vanilla
+- Figma plugin guide: https://reicon.dev/docs/figma
+- VS Code extension guide: https://reicon.dev/docs/vscode
+- Raw SVG assets guide: https://reicon.dev/docs/svg
 - Packages: https://reicon.dev/packages
 - License: https://reicon.dev/license
 - LLM context (short): https://reicon.dev/llms.txt

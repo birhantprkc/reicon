@@ -1,30 +1,59 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
-import SmoothScroll from './components/SmoothScroll';
-import CookieConsent from './components/CookieConsent';
-import BrandsOverlay from './pages/landing/BrandsOverlay';
-import { ThemeProvider } from './components/ThemeContext';
+import SmoothScroll from './components/layout/SmoothScroll';
+import CookieConsent from './components/layout/CookieConsent';
+import BrandsOverlay from './pages/home/BrandsOverlay';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import ErrorBoundary from './components/ui/ErrorBoundary';
+import { ThemeProvider } from './components/layout/ThemeContext';
 
-// Route-level code splitting — each page ships as its own chunk, shrinking the
-// initial bundle (the Usage page alone pulls in 10+ sub-sections + react-icons).
-const Landing = lazy(() => import('./pages/Landing'));
-const IconsPage = lazy(() => import('./pages/Icons'));
-const IconDetail = lazy(() => import('./pages/IconDetail'));
-const UsagePage = lazy(() => import('./pages/Usage'));
-const PackagesPage = lazy(() => import('./pages/Packages'));
-const FaqPage = lazy(() => import('./pages/Faq'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const Terms = lazy(() => import('./pages/Terms'));
-const Privacy = lazy(() => import('./pages/Privacy'));
-const LicensePage = lazy(() => import('./pages/LicensePage'));
-const PackPage = lazy(() => import('./pages/Pack'));
+const HomePage = lazy(() => import('./pages/home/Home'));
+const IconsPage = lazy(() => import('./pages/icons/IconsPage'));
+const IconDetail = lazy(() => import('./pages/icon/IconDetail'));
+const DocsPage = lazy(() => import('./pages/docs/DocsPage'));
+const PackagesPage = lazy(() => import('./pages/packages/PackagesPage'));
+const FaqPage = lazy(() => import('./pages/faq/FaqPage'));
+const NotFound = lazy(() => import('./pages/not-found/NotFound'));
+const Terms = lazy(() => import('./pages/terms/Terms'));
+const Privacy = lazy(() => import('./pages/privacy/Privacy'));
+const LicensePage = lazy(() => import('./pages/license/LicensePage'));
+const PackPage = lazy(() => import('./pages/pack/PackPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
+}
+
+function Layout() {
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
+
+  return (
+    <div className="min-h-screen bg-bg-base flex flex-col">
+      {!isHome && <Header />}
+      <ErrorBoundary>
+        <Suspense fallback={<div className="flex-1" />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/icons" element={<IconsPage />} />
+            <Route path="/icon/:name" element={<IconDetail />} />
+            <Route path="/docs" element={<DocsPage />} />
+            <Route path="/docs/:framework" element={<DocsPage />} />
+            <Route path="/packages" element={<PackagesPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/license" element={<LicensePage />} />
+            <Route path="/pack" element={<PackPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
+      <Footer />
+    </div>
+  );
 }
 
 export default function App() {
@@ -33,22 +62,7 @@ export default function App() {
       <BrowserRouter>
         <SmoothScroll>
           <ScrollToTop />
-          <Suspense fallback={<div className="min-h-screen bg-bg-base" />}>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/icons" element={<IconsPage />} />
-              <Route path="/icon/:name" element={<IconDetail />} />
-              <Route path="/usage" element={<UsagePage />} />
-              <Route path="/usage/:framework" element={<UsagePage />} />
-              <Route path="/packages" element={<PackagesPage />} />
-              <Route path="/faq" element={<FaqPage />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/license" element={<LicensePage />} />
-              <Route path="/pack" element={<PackPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          <Layout />
           <CookieConsent />
           <BrandsOverlay />
         </SmoothScroll>

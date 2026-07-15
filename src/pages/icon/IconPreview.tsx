@@ -1,0 +1,129 @@
+import { motion, AnimatePresence } from 'motion/react';
+import { EASE } from './utils';
+
+interface IconPreviewProps {
+  pascalName: string;
+  iconCategory: string;
+  contributorGithub: string | null;
+  name?: string;
+  activeWeight: string;
+  previewSize: number;
+  useCustomColor: boolean;
+  customColor: string;
+  onSetActiveWeight: (w: 'outline' | 'filled') => void;
+  onSetPreviewSize: (s: number) => void;
+  onReset: () => void;
+}
+
+export default function IconPreview({
+  pascalName, iconCategory, contributorGithub, name,
+  activeWeight, previewSize, useCustomColor, customColor,
+  onSetActiveWeight, onSetPreviewSize, onReset,
+}: IconPreviewProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: EASE }}
+      className="lg:sticky lg:top-20 lg:self-start flex flex-col gap-4"
+    >
+      <div className="relative w-full aspect-square bg-text-base/2 border border-text-base/8 rounded-2xl flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: 'linear-gradient(to right, var(--border-muted) 1px, transparent 1px), linear-gradient(to bottom, var(--border-muted) 1px, transparent 1px)',
+          backgroundSize: 'calc(100%/12) calc(100%/12)',
+          maskImage: 'radial-gradient(circle at center, #000 60%, transparent 92%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, #000 60%, transparent 92%)',
+        }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at center, rgba(108,92,231,0.12), transparent 58%)' }} />
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" fill="none">
+          <rect x="9" y="9" width="82" height="82" rx="7" stroke="var(--border-base)" strokeWidth="0.4" strokeDasharray="2.5 2.5" />
+          <rect x="20" y="20" width="60" height="60" rx="7" stroke="#6C5CE7" strokeOpacity="0.22" strokeWidth="0.4" />
+          <circle cx="50" cy="50" r="35" stroke="#6C5CE7" strokeOpacity="0.22" strokeWidth="0.4" />
+          <line x1="50" y1="6" x2="50" y2="94" stroke="#6C5CE7" strokeOpacity="0.25" strokeWidth="0.3" />
+          <line x1="6" y1="50" x2="94" y2="50" stroke="#6C5CE7" strokeOpacity="0.25" strokeWidth="0.3" />
+        </svg>
+        <div className="absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t border-l border-[#6C5CE7]/35" />
+        <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t border-r border-[#6C5CE7]/35" />
+        <div className="absolute bottom-2.5 left-2.5 w-2.5 h-2.5 border-b border-l border-[#6C5CE7]/35" />
+        <div className="absolute bottom-2.5 right-2.5 w-2.5 h-2.5 border-b border-r border-[#6C5CE7]/35" />
+        <span className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[7.5px] font-mono text-[#6C5CE7]/45 select-none tracking-wider">24<span className="text-text-base/20"> \u00D7 </span>24</span>
+        <span className="absolute bottom-2.5 right-3 text-[8px] font-mono text-text-base/35 tabular-nums select-none">{previewSize}px</span>
+        <span className="absolute bottom-2.5 left-3 text-[8px] font-mono text-text-base/25 select-none lowercase">{activeWeight}</span>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeWeight}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.22, ease: EASE }}
+            className="flex items-center justify-center"
+          >
+            <re-icon icon={name} weight={activeWeight} size={previewSize} color={useCustomColor ? customColor : 'var(--text-base)'} aria-label={`${pascalName} icon preview`} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <div className="flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <h2 className="text-[18px] font-serif text-text-base truncate">{pascalName}</h2>
+          {iconCategory && <p className="text-[12px] text-text-base/40 mt-0.5">{iconCategory}</p>}
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          {contributorGithub && (
+            <a
+              href={`https://github.com/${contributorGithub}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Contributed by @${contributorGithub}`}
+              className="group flex items-center gap-1.5 bg-text-base/4 hover:bg-text-base/8 border border-text-base/8 hover:border-text-base/15 rounded-lg px-2 py-1 transition-all"
+            >
+              <img
+                src={`https://github.com/${contributorGithub}.png?size=32`}
+                alt={`@${contributorGithub}`}
+                width={18}
+                height={18}
+                className="rounded-full"
+                loading="lazy"
+              />
+              <span className="text-[11px] text-text-base/40 group-hover:text-text-base/70 transition-colors font-mono leading-none">
+                @{contributorGithub}
+              </span>
+            </a>
+          )}
+          <code className="text-[11px] text-text-base/40 bg-text-base/4 border border-text-base/6 rounded-md px-2 py-1 font-mono">{name}</code>
+        </div>
+      </div>
+
+      <div className="bg-text-base/3 border border-text-base/8 rounded-2xl p-4 flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <span className="text-[11px] uppercase tracking-[0.08em] text-text-base/35 font-semibold">Customize</span>
+          <button onClick={onReset} title="Reset" aria-label="Reset" className="w-7 h-7 flex items-center justify-center rounded-md text-text-base/30 hover:text-text-base/75 hover:bg-text-base/6 transition-colors cursor-pointer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6.5 2.8L3 8" /><path d="M3 3v5h5" /></svg>
+          </button>
+        </div>
+
+        <div>
+          <label className="text-[12px] text-text-base/50 mb-2 block">Weight</label>
+          <div className="flex gap-2">
+            {(['outline', 'filled'] as const).map((w) => (
+              <button key={w} onClick={() => onSetActiveWeight(w)}
+                className={`flex-1 px-3 py-2 rounded-lg text-[13px] font-medium transition-all cursor-pointer ${activeWeight === w ? 'bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30' : 'bg-text-base/5 text-text-base/40 border border-text-base/10 hover:text-text-base/60'}`}>
+                {w.charAt(0).toUpperCase() + w.slice(1)}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="flex justify-between mb-2">
+            <label className="text-[12px] text-text-base/50">Size</label>
+            <span className="text-[12px] text-text-base/40 font-mono">{previewSize}px</span>
+          </div>
+          <input type="range" min={16} max={128} value={previewSize} onChange={(e) => onSetPreviewSize(Number(e.target.value))}
+            className="w-full h-1.5 rounded-full appearance-none bg-text-base/10 accent-[#6C5CE7] cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#6C5CE7] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(108,92,231,0.5)]" />
+        </div>
+      </div>
+    </motion.div>
+  );
+}

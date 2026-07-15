@@ -1,7 +1,7 @@
 import { FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { VscVscodeInsiders } from 'react-icons/vsc';
-import { FigmaIcon, McpIcon, SvelteIcon, VueIcon, SvgIcon } from '../../components/usage/framework/icons';
+import { FigmaIcon, McpIcon, SvelteIcon, VueIcon, SvgIcon } from '../../components/docs/framework/icons';
 
 export interface PackageItem {
     id: string;
@@ -23,7 +23,7 @@ export const PACKAGES: PackageItem[] = [
         icon: <IoLogoJavascript className="text-yellow-400" size={48} />,
         npmUrl: 'https://www.npmjs.com/package/reicon',
         sourceUrl: 'https://github.com/dqev/reicon',
-        guideUrl: '/usage/vanilla',
+        guideUrl: '/docs/vanilla',
     },
     {
         id: 'react',
@@ -33,7 +33,7 @@ export const PACKAGES: PackageItem[] = [
         icon: <FaReact className="text-[#61DAFB]" size={48} />,
         npmUrl: 'https://www.npmjs.com/package/reicon-react',
         sourceUrl: 'https://github.com/dqev/reicon',
-        guideUrl: '/usage/react',
+        guideUrl: '/docs/react',
     },
     {
         id: 'react-native',
@@ -43,7 +43,7 @@ export const PACKAGES: PackageItem[] = [
         icon: <FaReact className="text-[#61DAFB]" size={48} />,
         npmUrl: 'https://www.npmjs.com/package/reicon-react-native',
         sourceUrl: 'https://github.com/dqev/reicon',
-        guideUrl: '/usage/react-native',
+        guideUrl: '/docs/react-native',
     },
     {
         id: 'vue',
@@ -53,7 +53,7 @@ export const PACKAGES: PackageItem[] = [
         icon: <VueIcon size={48} />,
         npmUrl: 'https://www.npmjs.com/package/reicon-vue',
         sourceUrl: 'https://github.com/dqev/reicon',
-        guideUrl: '/usage/vue',
+        guideUrl: '/docs/vue',
     },
     {
         id: 'svelte',
@@ -63,7 +63,7 @@ export const PACKAGES: PackageItem[] = [
         icon: <SvelteIcon size={48} />,
         npmUrl: 'https://www.npmjs.com/package/reicon-svelte',
         sourceUrl: 'https://github.com/dqev/reicon',
-        guideUrl: '/usage/svelte',
+        guideUrl: '/docs/svelte',
     },
 ];
 
@@ -87,7 +87,7 @@ export const TOOLS: ToolItem[] = [
         version: 'v1.0.0',
         description: 'Integrate Reicon directly into your Figma workspace. Search, customize size/stroke weights, and insert vector shapes into your designs.',
         icon: <FigmaIcon size={48} />,
-        guideUrl: '/usage/figma',
+        guideUrl: '/docs/figma',
         primaryAction: { label: 'Open in Figma', href: 'https://www.figma.com/community/plugin/1652983191908763066' },
         sourceUrl: 'https://github.com/dqev/reicon/tree/main/packages/reicon-figma',
     },
@@ -98,7 +98,7 @@ export const TOOLS: ToolItem[] = [
         version: 'v1.0.3',
         description: "Browse and insert Reicon icons directly into your HTML, React, Vue, Svelte, or vanilla JS code from your editor's sidebar panel.",
         icon: <VscVscodeInsiders className="text-[#007ACC]" size={48} />,
-        guideUrl: '/usage/vscode',
+        guideUrl: '/docs/vscode',
         primaryAction: { label: 'Use', href: 'https://marketplace.visualstudio.com/items?itemName=DevChauhan.reicon' },
         sourceUrl: 'https://github.com/dqev/reicon/tree/main/packages/reicon-vscode',
     },
@@ -109,7 +109,7 @@ export const TOOLS: ToolItem[] = [
         version: 'v1.0.0',
         description: 'Search, preview, and apply Reicon icons from AI agents and automation tools via MCP or CLI.',
         icon: <McpIcon size={48} />,
-        guideUrl: '/usage/mcp',
+        guideUrl: '/docs/mcp',
         primaryAction: { label: 'npm', href: 'https://www.npmjs.com/package/reicon-mcp' },
         sourceUrl: 'https://github.com/dqev/reicon/tree/main/packages/reicon-mcp',
     },
@@ -117,7 +117,7 @@ export const TOOLS: ToolItem[] = [
 
 export const SVG_PACKAGE = {
     name: 'reicon-svg',
-    guideUrl: '/usage/svg',
+    guideUrl: '/docs/svg',
     downloadUrl: '/reicon-icons.zip',
     description: 'Download the complete raw vector assets. Includes all Reicon icons in both outline and filled weights in black SVG format, fully compressed.',
     icon: <SvgIcon size={48} />,
