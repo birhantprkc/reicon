@@ -1,556 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://reicon.dev/icon/unread</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/unread.svg</image:loc>
-      <image:title>Unread Icon — Reicon</image:title>
-      <image:caption>Free unread SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/upload</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/upload.svg</image:loc>
-      <image:title>Upload Icon — Reicon</image:title>
-      <image:caption>Free upload SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/upload-square</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/upload-square.svg</image:loc>
-      <image:title>Upload Square Icon — Reicon</image:title>
-      <image:caption>Free upload square SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/upload-square2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/upload-square2.svg</image:loc>
-      <image:title>Upload Square2 Icon — Reicon</image:title>
-      <image:caption>Free upload square2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/upload-track</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/upload-track.svg</image:loc>
-      <image:title>Upload Track Icon — Reicon</image:title>
-      <image:caption>Free upload track SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/upload-track2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/upload-track2.svg</image:loc>
-      <image:title>Upload Track2 Icon — Reicon</image:title>
-      <image:caption>Free upload track2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/upload2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/upload2.svg</image:loc>
-      <image:title>Upload2 Icon — Reicon</image:title>
-      <image:caption>Free upload2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/upload3</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/upload3.svg</image:loc>
-      <image:title>Upload3 Icon — Reicon</image:title>
-      <image:caption>Free upload3 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/usb</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/usb.svg</image:loc>
-      <image:title>Usb Icon — Reicon</image:title>
-      <image:caption>Free usb SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/usb-circle</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/usb-circle.svg</image:loc>
-      <image:title>Usb Circle Icon — Reicon</image:title>
-      <image:caption>Free usb circle SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/usb-square</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/usb-square.svg</image:loc>
-      <image:title>Usb Square Icon — Reicon</image:title>
-      <image:caption>Free usb square SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user.svg</image:loc>
-      <image:title>User Icon — Reicon</image:title>
-      <image:caption>Free user SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-add</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-add.svg</image:loc>
-      <image:title>User Add Icon — Reicon</image:title>
-      <image:caption>Free user add SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-add2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-add2.svg</image:loc>
-      <image:title>User Add2 Icon — Reicon</image:title>
-      <image:caption>Free user add2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-add4</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-add4.svg</image:loc>
-      <image:title>User Add4 Icon — Reicon</image:title>
-      <image:caption>Free user add4 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-ban</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-ban.svg</image:loc>
-      <image:title>User Ban Icon — Reicon</image:title>
-      <image:caption>Free user ban SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-block</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-block.svg</image:loc>
-      <image:title>User Block Icon — Reicon</image:title>
-      <image:caption>Free user block SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-block2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-block2.svg</image:loc>
-      <image:title>User Block2 Icon — Reicon</image:title>
-      <image:caption>Free user block2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-check</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-check.svg</image:loc>
-      <image:title>User Check Icon — Reicon</image:title>
-      <image:caption>Free user check SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-check2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-check2.svg</image:loc>
-      <image:title>User Check2 Icon — Reicon</image:title>
-      <image:caption>Free user check2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-circle</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-circle.svg</image:loc>
-      <image:title>User Circle Icon — Reicon</image:title>
-      <image:caption>Free user circle SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-cirlce-add2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-cirlce-add2.svg</image:loc>
-      <image:title>User Cirlce Add2 Icon — Reicon</image:title>
-      <image:caption>Free user cirlce add2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-edit</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-edit.svg</image:loc>
-      <image:title>User Edit Icon — Reicon</image:title>
-      <image:caption>Free user edit SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-edit3</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-edit3.svg</image:loc>
-      <image:title>User Edit3 Icon — Reicon</image:title>
-      <image:caption>Free user edit3 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-hand</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-hand.svg</image:loc>
-      <image:title>User Hand Icon — Reicon</image:title>
-      <image:caption>Free user hand SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-hands</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-hands.svg</image:loc>
-      <image:title>User Hands Icon — Reicon</image:title>
-      <image:caption>Free user hands SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-heart</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-heart.svg</image:loc>
-      <image:title>User Heart Icon — Reicon</image:title>
-      <image:caption>Free user heart SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-heart2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-heart2.svg</image:loc>
-      <image:title>User Heart2 Icon — Reicon</image:title>
-      <image:caption>Free user heart2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-id</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-id.svg</image:loc>
-      <image:title>User Id Icon — Reicon</image:title>
-      <image:caption>Free user id SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-laptop</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-laptop.svg</image:loc>
-      <image:title>User Laptop Icon — Reicon</image:title>
-      <image:caption>Free user laptop SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-minus</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-minus.svg</image:loc>
-      <image:title>User Minus Icon — Reicon</image:title>
-      <image:caption>Free user minus SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-minus2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-minus2.svg</image:loc>
-      <image:title>User Minus2 Icon — Reicon</image:title>
-      <image:caption>Free user minus2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-minus4</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-minus4.svg</image:loc>
-      <image:title>User Minus4 Icon — Reicon</image:title>
-      <image:caption>Free user minus4 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-octagon2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-octagon2.svg</image:loc>
-      <image:title>User Octagon2 Icon — Reicon</image:title>
-      <image:caption>Free user octagon2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-off</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-off.svg</image:loc>
-      <image:title>User Off Icon — Reicon</image:title>
-      <image:caption>Free user off SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-remove2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-remove2.svg</image:loc>
-      <image:title>User Remove2 Icon — Reicon</image:title>
-      <image:caption>Free user remove2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-scan</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-scan.svg</image:loc>
-      <image:title>User Scan Icon — Reicon</image:title>
-      <image:caption>Free user scan SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-search</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-search.svg</image:loc>
-      <image:title>User Search Icon — Reicon</image:title>
-      <image:caption>Free user search SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-search3</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-search3.svg</image:loc>
-      <image:title>User Search3 Icon — Reicon</image:title>
-      <image:caption>Free user search3 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-speak</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-speak.svg</image:loc>
-      <image:title>User Speak Icon — Reicon</image:title>
-      <image:caption>Free user speak SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-speak2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-speak2.svg</image:loc>
-      <image:title>User Speak2 Icon — Reicon</image:title>
-      <image:caption>Free user speak2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-square</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-square.svg</image:loc>
-      <image:title>User Square Icon — Reicon</image:title>
-      <image:caption>Free user square SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-square3</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-square3.svg</image:loc>
-      <image:title>User Square3 Icon — Reicon</image:title>
-      <image:caption>Free user square3 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-tag2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-tag2.svg</image:loc>
-      <image:title>User Tag2 Icon — Reicon</image:title>
-      <image:caption>Free user tag2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-tick2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-tick2.svg</image:loc>
-      <image:title>User Tick2 Icon — Reicon</image:title>
-      <image:caption>Free user tick2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-x</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-x.svg</image:loc>
-      <image:title>User X Icon — Reicon</image:title>
-      <image:caption>Free user x SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-x2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-x2.svg</image:loc>
-      <image:title>User X2 Icon — Reicon</image:title>
-      <image:caption>Free user x2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user-x3</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user-x3.svg</image:loc>
-      <image:title>User X3 Icon — Reicon</image:title>
-      <image:caption>Free user x3 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user2.svg</image:loc>
-      <image:title>User2 Icon — Reicon</image:title>
-      <image:caption>Free user2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/user4</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/user4.svg</image:loc>
-      <image:title>User4 Icon — Reicon</image:title>
-      <image:caption>Free user4 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://reicon.dev/icon/users</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -617,14 +67,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/vault-3</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/vault</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/vault-3.svg</image:loc>
-      <image:title>Vault 3 Icon — Reicon</image:title>
-      <image:caption>Free vault 3 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/vault.svg</image:loc>
+      <image:title>Vault Icon — Reicon</image:title>
+      <image:caption>Free vault SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -650,14 +100,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/verify2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/verify</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/verify2.svg</image:loc>
-      <image:title>Verify2 Icon — Reicon</image:title>
-      <image:caption>Free verify2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/verify.svg</image:loc>
+      <image:title>Verify Icon — Reicon</image:title>
+      <image:caption>Free verify SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -672,25 +122,25 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-add2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-add</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-add2.svg</image:loc>
-      <image:title>Video Add2 Icon — Reicon</image:title>
-      <image:caption>Free video add2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-add.svg</image:loc>
+      <image:title>Video Add Icon — Reicon</image:title>
+      <image:caption>Free video add SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-circle2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-circle</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-circle2.svg</image:loc>
-      <image:title>Video Circle2 Icon — Reicon</image:title>
-      <image:caption>Free video circle2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-circle.svg</image:loc>
+      <image:title>Video Circle Icon — Reicon</image:title>
+      <image:caption>Free video circle SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -738,14 +188,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-horizontal2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-horizontal</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-horizontal2.svg</image:loc>
-      <image:title>Video Horizontal2 Icon — Reicon</image:title>
-      <image:caption>Free video horizontal2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-horizontal.svg</image:loc>
+      <image:title>Video Horizontal Icon — Reicon</image:title>
+      <image:caption>Free video horizontal SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -760,14 +210,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-octagon2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-octagon</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-octagon2.svg</image:loc>
-      <image:title>Video Octagon2 Icon — Reicon</image:title>
-      <image:caption>Free video octagon2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-octagon.svg</image:loc>
+      <image:title>Video Octagon Icon — Reicon</image:title>
+      <image:caption>Free video octagon SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -779,6 +229,17 @@
       <image:loc>https://cdn.reicon.dev/svg/video-off.svg</image:loc>
       <image:title>Video Off Icon — Reicon</image:title>
       <image:caption>Free video off SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://reicon.dev/icon/video-play</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://cdn.reicon.dev/svg/video-play.svg</image:loc>
+      <image:title>Video Play Icon — Reicon</image:title>
+      <image:caption>Free video play SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -804,25 +265,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-play2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-remove</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-play2.svg</image:loc>
-      <image:title>Video Play2 Icon — Reicon</image:title>
-      <image:caption>Free video play2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/video-remove2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-remove2.svg</image:loc>
-      <image:title>Video Remove2 Icon — Reicon</image:title>
-      <image:caption>Free video remove2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-remove.svg</image:loc>
+      <image:title>Video Remove Icon — Reicon</image:title>
+      <image:caption>Free video remove SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -837,58 +287,58 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-slash2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-slash</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-slash2.svg</image:loc>
-      <image:title>Video Slash2 Icon — Reicon</image:title>
-      <image:caption>Free video slash2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-slash.svg</image:loc>
+      <image:title>Video Slash Icon — Reicon</image:title>
+      <image:caption>Free video slash SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-square2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-square</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-square2.svg</image:loc>
-      <image:title>Video Square2 Icon — Reicon</image:title>
-      <image:caption>Free video square2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-square.svg</image:loc>
+      <image:title>Video Square Icon — Reicon</image:title>
+      <image:caption>Free video square SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-tick2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-tick</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-tick2.svg</image:loc>
-      <image:title>Video Tick2 Icon — Reicon</image:title>
-      <image:caption>Free video tick2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-tick.svg</image:loc>
+      <image:title>Video Tick Icon — Reicon</image:title>
+      <image:caption>Free video tick SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-time2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-time</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-time2.svg</image:loc>
-      <image:title>Video Time2 Icon — Reicon</image:title>
-      <image:caption>Free video time2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-time.svg</image:loc>
+      <image:title>Video Time Icon — Reicon</image:title>
+      <image:caption>Free video time SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/video-vertical2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/video-vertical</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/video-vertical2.svg</image:loc>
-      <image:title>Video Vertical2 Icon — Reicon</image:title>
-      <image:caption>Free video vertical2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/video-vertical.svg</image:loc>
+      <image:title>Video Vertical Icon — Reicon</image:title>
+      <image:caption>Free video vertical SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -936,25 +386,25 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/voice-cricle2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/voice-cricle</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/voice-cricle2.svg</image:loc>
-      <image:title>Voice Cricle2 Icon — Reicon</image:title>
-      <image:caption>Free voice cricle2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/voice-cricle.svg</image:loc>
+      <image:title>Voice Cricle Icon — Reicon</image:title>
+      <image:caption>Free voice cricle SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/voice-square2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/voice-square</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/voice-square2.svg</image:loc>
-      <image:title>Voice Square2 Icon — Reicon</image:title>
-      <image:caption>Free voice square2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/voice-square.svg</image:loc>
+      <image:title>Voice Square Icon — Reicon</image:title>
+      <image:caption>Free voice square SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -991,14 +441,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/volume-cross2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/volume-cross</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/volume-cross2.svg</image:loc>
-      <image:title>Volume Cross2 Icon — Reicon</image:title>
-      <image:caption>Free volume cross2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/volume-cross.svg</image:loc>
+      <image:title>Volume Cross Icon — Reicon</image:title>
+      <image:caption>Free volume cross SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1013,14 +463,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/volume-high2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/volume-high</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/volume-high2.svg</image:loc>
-      <image:title>Volume High2 Icon — Reicon</image:title>
-      <image:caption>Free volume high2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/volume-high.svg</image:loc>
+      <image:title>Volume High Icon — Reicon</image:title>
+      <image:caption>Free volume high SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1035,14 +485,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/volume-low-12</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/volume-low</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/volume-low-12.svg</image:loc>
-      <image:title>Volume Low 12 Icon — Reicon</image:title>
-      <image:caption>Free volume low 12 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/volume-low.svg</image:loc>
+      <image:title>Volume Low Icon — Reicon</image:title>
+      <image:caption>Free volume low SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1057,14 +507,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/volume-mute2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/volume-mute</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/volume-mute2.svg</image:loc>
-      <image:title>Volume Mute2 Icon — Reicon</image:title>
-      <image:caption>Free volume mute2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/volume-mute.svg</image:loc>
+      <image:title>Volume Mute Icon — Reicon</image:title>
+      <image:caption>Free volume mute SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1079,14 +529,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/volume-slash2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/volume-slash</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/volume-slash2.svg</image:loc>
-      <image:title>Volume Slash2 Icon — Reicon</image:title>
-      <image:caption>Free volume slash2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/volume-slash.svg</image:loc>
+      <image:title>Volume Slash Icon — Reicon</image:title>
+      <image:caption>Free volume slash SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1167,69 +617,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/wallet-12</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/wallet-add</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-12.svg</image:loc>
-      <image:title>Wallet 12 Icon — Reicon</image:title>
-      <image:caption>Free wallet 12 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/wallet-2</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-2.svg</image:loc>
-      <image:title>Wallet 2 Icon — Reicon</image:title>
-      <image:caption>Free wallet 2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/wallet-23</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-23.svg</image:loc>
-      <image:title>Wallet 23 Icon — Reicon</image:title>
-      <image:caption>Free wallet 23 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/wallet-32</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-32.svg</image:loc>
-      <image:title>Wallet 32 Icon — Reicon</image:title>
-      <image:caption>Free wallet 32 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/wallet-add-12</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-add-12.svg</image:loc>
-      <image:title>Wallet Add 12 Icon — Reicon</image:title>
-      <image:caption>Free wallet add 12 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://reicon.dev/icon/wallet-add-22</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-add-22.svg</image:loc>
-      <image:title>Wallet Add 22 Icon — Reicon</image:title>
-      <image:caption>Free wallet add 22 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/wallet-add.svg</image:loc>
+      <image:title>Wallet Add Icon — Reicon</image:title>
+      <image:caption>Free wallet add SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1244,6 +639,17 @@
     </image:image>
   </url>
   <url>
+    <loc>https://reicon.dev/icon/wallet-add3</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://cdn.reicon.dev/svg/wallet-add3.svg</image:loc>
+      <image:title>Wallet Add3 Icon — Reicon</image:title>
+      <image:caption>Free wallet add3 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://reicon.dev/icon/wallet-alt</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -1255,14 +661,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/wallet-check2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/wallet-check</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-check2.svg</image:loc>
-      <image:title>Wallet Check2 Icon — Reicon</image:title>
-      <image:caption>Free wallet check2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/wallet-check.svg</image:loc>
+      <image:title>Wallet Check Icon — Reicon</image:title>
+      <image:caption>Free wallet check SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1332,25 +738,25 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/wallet-remove2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/wallet-remove</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-remove2.svg</image:loc>
-      <image:title>Wallet Remove2 Icon — Reicon</image:title>
-      <image:caption>Free wallet remove2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/wallet-remove.svg</image:loc>
+      <image:title>Wallet Remove Icon — Reicon</image:title>
+      <image:caption>Free wallet remove SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/wallet-search2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/wallet-search</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wallet-search2.svg</image:loc>
-      <image:title>Wallet Search2 Icon — Reicon</image:title>
-      <image:caption>Free wallet search2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/wallet-search.svg</image:loc>
+      <image:title>Wallet Search Icon — Reicon</image:title>
+      <image:caption>Free wallet search SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1362,6 +768,17 @@
       <image:loc>https://cdn.reicon.dev/svg/wallet-up.svg</image:loc>
       <image:title>Wallet Up Icon — Reicon</image:title>
       <image:caption>Free wallet up SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://reicon.dev/icon/wallet2</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://cdn.reicon.dev/svg/wallet2.svg</image:loc>
+      <image:title>Wallet2 Icon — Reicon</image:title>
+      <image:caption>Free wallet2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1384,6 +801,17 @@
       <image:loc>https://cdn.reicon.dev/svg/wallet4.svg</image:loc>
       <image:title>Wallet4 Icon — Reicon</image:title>
       <image:caption>Free wallet4 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://reicon.dev/icon/wallet5</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://cdn.reicon.dev/svg/wallet5.svg</image:loc>
+      <image:title>Wallet5 Icon — Reicon</image:title>
+      <image:caption>Free wallet5 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1453,14 +881,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/warning-22</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/warning</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/warning-22.svg</image:loc>
-      <image:title>Warning 22 Icon — Reicon</image:title>
-      <image:caption>Free warning 22 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/warning.svg</image:loc>
+      <image:title>Warning Icon — Reicon</image:title>
+      <image:caption>Free warning SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1508,14 +936,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/watch-status2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/watch-status</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/watch-status2.svg</image:loc>
-      <image:title>Watch Status2 Icon — Reicon</image:title>
-      <image:caption>Free watch status2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/watch-status.svg</image:loc>
+      <image:title>Watch Status Icon — Reicon</image:title>
+      <image:caption>Free watch status SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1585,14 +1013,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/weight-12</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/weight</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/weight-12.svg</image:loc>
-      <image:title>Weight 12 Icon — Reicon</image:title>
-      <image:caption>Free weight 12 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/weight.svg</image:loc>
+      <image:title>Weight Icon — Reicon</image:title>
+      <image:caption>Free weight SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1739,14 +1167,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/wifi-square2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/wifi-square</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wifi-square2.svg</image:loc>
-      <image:title>Wifi Square2 Icon — Reicon</image:title>
-      <image:caption>Free wifi square2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/wifi-square.svg</image:loc>
+      <image:title>Wifi Square Icon — Reicon</image:title>
+      <image:caption>Free wifi square SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1772,14 +1200,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/wind-22</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/wind2</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/wind-22.svg</image:loc>
-      <image:title>Wind 22 Icon — Reicon</image:title>
-      <image:caption>Free wind 22 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/wind2.svg</image:loc>
+      <image:title>Wind2 Icon — Reicon</image:title>
+      <image:caption>Free wind2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
@@ -1893,14 +1321,14 @@
     </image:image>
   </url>
   <url>
-    <loc>https://reicon.dev/icon/woman2</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://reicon.dev/icon/woman</loc>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://cdn.reicon.dev/svg/woman2.svg</image:loc>
-      <image:title>Woman2 Icon — Reicon</image:title>
-      <image:caption>Free woman2 SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
+      <image:loc>https://cdn.reicon.dev/svg/woman.svg</image:loc>
+      <image:title>Woman Icon — Reicon</image:title>
+      <image:caption>Free woman SVG icon. Available in Outline and Filled weights. MIT licensed.</image:caption>
     </image:image>
   </url>
   <url>
