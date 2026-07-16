@@ -49,9 +49,9 @@ function Layout() {
             <Route path="/pack" element={<PackPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Footer />
         </Suspense>
       </ErrorBoundary>
-      <Footer />
     </div>
   );
 }
