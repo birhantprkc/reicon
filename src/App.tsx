@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import SmoothScroll from './components/layout/SmoothScroll';
 import CookieConsent from './components/layout/CookieConsent';
-import BrandsOverlay from './pages/home/BrandsOverlay';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ErrorBoundary from './components/ui/ErrorBoundary';
@@ -64,7 +63,6 @@ export default function App() {
           <ScrollToTop />
           <Layout />
           <CookieConsent />
-          <BrandsOverlay />
         </SmoothScroll>
       </BrowserRouter>
     </ThemeProvider>
