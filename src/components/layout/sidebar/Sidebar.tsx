@@ -173,7 +173,7 @@ function Sidebar({
           letterSpacing: '0.08em',
         }}
       >
-        <re-icon icon={icon} size="11" style={{ color: 'var(--text-more-muted)' }} />
+        <re-icon icon={icon} size="11" color="currentColor" style={{ color: 'var(--text-more-muted)' }} />
         {label}
       </div>
     );
@@ -236,12 +236,12 @@ function Sidebar({
         renderItem(`weight-${style}`, `${style} Icons`, activeStyle === style)
       )}
 
-      {renderSeparator('size2', 'Sizing')}
+      {renderSeparator('size', 'Sizing')}
       {SIZE_OPTIONS.map((size) =>
         renderItem(`size-${size}`, `${size}px Grid`, activeSize === size)
       )}
 
-      {renderSeparator('category-22', 'Categories')}
+      {renderSeparator('category2', 'Categories')}
       {renderItem('cat-all', 'All Categories', activeSet === 'all' && !showNew)}
       {categories.map((cat) =>
         renderItem(`cat-${cat}`, fmt(cat), activeSet === cat && !showNew)
@@ -311,7 +311,7 @@ function Sidebar({
           <span style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-base)' }}>Filters</span>
           {onClose && (
             <button onClick={onClose} className="reicon-sidebar-close" aria-label="Close sidebar">
-              <re-icon icon="x" size="16" />
+              <re-icon icon="x" size="16" color="currentColor" style={{ color: 'var(--text-muted)' }} />
             </button>
           )}
         </div>

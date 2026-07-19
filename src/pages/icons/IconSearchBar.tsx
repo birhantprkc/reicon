@@ -37,7 +37,7 @@ export default function IconSearchBar({ searchQuery, onSearchChange, onFilterCli
         className="lg:hidden ml-auto flex items-center gap-1.5 px-3 py-2.5 rounded-lg bg-text-base/5 border border-text-base/10 text-text-base/60 hover:text-text-base text-sm font-medium transition-colors shrink-0 cursor-pointer"
         aria-label="Open filters"
       >
-        <re-icon icon="filter" size="15" />
+        <re-icon icon="filter" size="15" color="currentColor" />
         Filters
       </button>
     </div>

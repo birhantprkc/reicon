@@ -9,6 +9,7 @@ import { ThemeProvider } from './components/layout/ThemeContext';
 
 const HomePage = lazy(() => import('./pages/home/Home'));
 const IconsPage = lazy(() => import('./pages/icons/IconsPage'));
+const IconDetail = lazy(() => import('./pages/icon/IconDetail'));
 
 const DocsPage = lazy(() => import('./pages/docs/DocsPage'));
 const PackagesPage = lazy(() => import('./pages/packages/PackagesPage'));
@@ -37,6 +38,7 @@ function Layout() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/icons" element={<IconsPage />} />
+            <Route path="/icon/:name" element={<IconDetail />} />
 
             <Route path="/docs" element={<DocsPage />} />
             <Route path="/docs/:framework" element={<DocsPage />} />

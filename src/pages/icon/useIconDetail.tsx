@@ -3,7 +3,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import { FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { SiSvelte } from 'react-icons/si';
-import { VueLogo } from './Snippets';
+import { VueLogo, FlutterLogo } from './Snippets';
 import { loadIconData } from '../../lib/icon-data';
 import { waitForReicon } from '../../lib/reicon-loader';
 import {
@@ -24,7 +24,7 @@ export default function useIconDetail() {
   const [previewSize, setPreviewSize] = useState(96);
   const [toast, setToast] = useState<string | null>(null);
   const [exportSize, setExportSize] = useState(64);
-  const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'react-native' | 'vue' | 'svelte' | 'direct'>('vanilla');
+  const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'react-native' | 'vue' | 'svelte' | 'flutter' | 'direct'>('vanilla');
   const [iconCategory, setIconCategory] = useState('');
   const [contributorGithub, setContributorGithub] = useState<string | null>(null);
   const [useCustomColor, setUseCustomColor] = useState(false);
@@ -35,6 +35,10 @@ export default function useIconDetail() {
   const pascalName = useMemo(() => name
     ? name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join('')
     : '', [name]);
+
+  const flutterName = useMemo(() => pascalName
+    ? pascalName.charAt(0).toLowerCase() + pascalName.slice(1)
+    : '', [pascalName]);
 
   const flashToast = useCallback((msg: string) => {
     setToast(msg);
@@ -77,6 +81,7 @@ export default function useIconDetail() {
   const reactNativeRaw = `import { ${pascalName} } from 'reicon-react-native';\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
   const vueRaw = `import { ${pascalName} } from 'reicon-vue';\n\n<${pascalName} :size="24"${fw ? ' weight="Filled"' : ''} />`;
   const svelteRaw = `<script>\n  import { ${pascalName} } from 'reicon-svelte';\n</script>\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
+  const flutterRaw = `import 'package:flutter_svg/flutter_svg.dart';\nimport 'package:reicon_flutter/reicon_flutter.dart';\n\nSvgPicture.string(\n  reiconSvg(Reicon.${fw ? 'filled' : 'outline'}.${flutterName}),\n  width: 24,\n  height: 24,\n)`;
   const directRaw = `import ${pascalName} from 'reicon-react/icons/${pascalName}';`;
 
   const CODE_TABS = useMemo(() => [
@@ -86,8 +91,9 @@ export default function useIconDetail() {
     { id: 'react-native' as const, label: 'React Native', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactNativeRaw },
     { id: 'vue' as const, label: 'Vue', icon: <VueLogo />, raw: vueRaw },
     { id: 'svelte' as const, label: 'Svelte', icon: <SiSvelte className="text-[#FF3E00]" size={14} />, raw: svelteRaw },
+    { id: 'flutter' as const, label: 'Flutter', icon: <FlutterLogo />, raw: flutterRaw },
     { id: 'direct' as const, label: 'Direct', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: directRaw },
-  ], [vanillaRaw, cdnRaw, reactRaw, reactNativeRaw, vueRaw, svelteRaw, directRaw]);
+  ], [vanillaRaw, cdnRaw, reactRaw, reactNativeRaw, vueRaw, svelteRaw, flutterRaw, directRaw]);
 
   const activeTab = CODE_TABS.find((t) => t.id === codeTab)!;
 

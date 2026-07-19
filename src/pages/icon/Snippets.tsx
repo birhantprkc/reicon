@@ -1,3 +1,27 @@
+import { FlutterIcon } from '../../components/docs/framework/icons';
+
+export const FlutterLogo = () => <FlutterIcon size={14} />;
+
+export function FlutterSnippet({ pascalName, flutterName, filled }: { pascalName: string; flutterName: string; filled: boolean }) {
+  return (
+    <>
+      <span className="text-[#c678dd]">import</span><span className="text-text-base/70"> 'package:flutter_svg/flutter_svg.dart'</span><span className="text-text-base/30">;</span>
+      {'\n'}
+      <span className="text-[#c678dd]">import</span><span className="text-text-base/70"> 'package:reicon_flutter/reicon_flutter.dart'</span><span className="text-text-base/30">;</span>
+      {'\n\n'}
+      <span className="text-[#61afef]">SvgPicture</span><span className="text-text-base/70">.string(</span>
+      {'\n'}
+      <span className="text-text-base/70">  </span><span className="text-[#61afef]">reiconSvg</span><span className="text-text-base/70">(</span><span className="text-[#e5c07b]">Reicon</span><span className="text-text-base/70">.</span><span className="text-[#e5c07b]">{filled ? 'filled' : 'outline'}</span><span className="text-text-base/70">.</span><span className="text-[#e5c07b]">{flutterName}</span><span className="text-text-base/70">),</span>
+      {'\n'}
+      <span className="text-text-base/70">  width: </span><span className="text-[#d19a66]">24</span><span className="text-text-base/30">,</span>
+      {'\n'}
+      <span className="text-text-base/70">  height: </span><span className="text-[#d19a66]">24</span><span className="text-text-base/30">,</span>
+      {'\n'}
+      <span className="text-text-base/70">)</span>
+    </>
+  );
+}
+
 export function VueLogo() {
   return (
     <svg className="w-3.5 h-3.5" viewBox="0 0 122.88 106.42" fill="none">
