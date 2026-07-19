@@ -5,21 +5,21 @@ export default function Privacy() {
     <div>
       <Helmet>
         <title>Privacy Policy — Reicon</title>
-        <meta name="description" content="Privacy Policy for Reicon, the free open-source icon library. Learn how we handle your data." />
+        <meta name="description" content="Privacy policy for Reicon. Learn how we handle your data." />
         <link rel="canonical" href="https://reicon.dev/privacy" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://reicon.dev/privacy" />
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Privacy Policy — Reicon" />
-        <meta property="og:description" content="Privacy Policy for Reicon, the free open-source icon library." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta property="og:description" content="Privacy policy for Reicon. Learn how we handle your data." />
+        <meta property="og:image" content="https://reicon.dev/og/privacy.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Privacy Policy — Reicon" />
-        <meta name="twitter:description" content="Privacy Policy for Reicon, the free open-source icon library." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta name="twitter:description" content="Privacy policy for Reicon. Learn how we handle your data." />
+        <meta name="twitter:image" content="https://reicon.dev/og/privacy.jpg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",

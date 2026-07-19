@@ -38,6 +38,14 @@ export const McpIcon = ({ size = 16 }: { size?: number }) => (
     <SiModelcontextprotocol className="text-[#6C5CE7]" size={size} />
 );
 
+export const FlutterIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size * (317 / 256)} viewBox="0 0 256 317" fill="none">
+    <path fill="#47C5FB" d="M158 0 0 158l49 48L255 0zM157 145l-85 85 49 50 49-49 85-86z"/>
+    <path fill="#00569E" d="m121 280 37 37h97l-85-86z"/>
+    <path fill="#00B5F8" d="m72 230 48-48 50 49-49 49z"/>
+  </svg>
+);
+
 export const SvgIcon = ({ size = 16 }: { size?: number }) => (
     <svg width={size} height={size} viewBox="0 0 300 300">
         <g stroke="#000" strokeWidth="38.009">
@@ -60,6 +68,7 @@ export const FrameworkIcon = ({ id, size = 16 }: { id: string; size?: number }) 
     if (id === 'figma') return <FigmaIcon size={size} />;
     if (id === 'vscode') return <VscVscodeInsiders className="text-[#007ACC]" size={size} />;
     if (id === 'mcp') return <McpIcon size={size} />;
+    if (id === 'flutter') return <FlutterIcon size={size} />;
     if (id === 'svg') return <SvgIcon size={size} />;
     return <IoLogoJavascript className="text-yellow-400" size={size} />;
 };

@@ -6,6 +6,7 @@ export function getFrameworkSectionId(framework: Framework): string {
     case 'react-native': return 'react-native-docs';
     case 'vue': return 'vue-docs';
     case 'svelte': return 'svelte-docs';
+    case 'flutter': return 'flutter-docs';
     case 'figma': return 'figma';
     case 'vscode': return 'vscode';
     case 'mcp': return 'mcp';
@@ -20,6 +21,7 @@ export function getFrameworkLabel(framework: Framework): string {
     case 'react-native': return 'React Native';
     case 'vue': return 'Vue';
     case 'svelte': return 'Svelte';
+    case 'flutter': return 'Flutter';
     case 'figma': return 'Figma';
     case 'vscode': return 'VS Code';
     case 'mcp': return 'MCP Server';
@@ -29,7 +31,7 @@ export function getFrameworkLabel(framework: Framework): string {
 }
 
 export function isStandaloneFramework(framework: Framework): boolean {
-  return framework === 'figma' || framework === 'vscode' || framework === 'mcp' || framework === 'svg';
+  return framework === 'flutter' || framework === 'figma' || framework === 'vscode' || framework === 'mcp' || framework === 'svg';
 }
 
 export const MCP_ON_THIS_PAGE = [
@@ -62,11 +64,21 @@ export const SVG_ON_THIS_PAGE = [
   { id: 'svg-styling', label: 'Dynamic Styling via CSS' },
 ] as const;
 
+export const FLUTTER_ON_THIS_PAGE = [
+  { id: 'flutter-docs', label: 'Flutter' },
+  { id: 'flutter-installation', label: 'Installation' },
+  { id: 'flutter-usage', label: 'Basic Usage' },
+  { id: 'flutter-svg', label: 'Flutter + flutter_svg' },
+  { id: 'flutter-runtime', label: 'Runtime Lookup' },
+  { id: 'flutter-complete', label: 'Full Widget Example' },
+] as const;
+
 export function getOnThisPageSections(framework: Framework): { id: string; label: string }[] {
   if (framework === 'mcp') return [...MCP_ON_THIS_PAGE];
   if (framework === 'vscode') return [...VSCODE_ON_THIS_PAGE];
   if (framework === 'figma') return [...FIGMA_ON_THIS_PAGE];
   if (framework === 'svg') return [...SVG_ON_THIS_PAGE];
+  if (framework === 'flutter') return [...FLUTTER_ON_THIS_PAGE];
 
   const frameworkEntry = {
     id: getFrameworkSectionId(framework),

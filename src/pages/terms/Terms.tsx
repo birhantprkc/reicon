@@ -5,21 +5,21 @@ export default function Terms() {
     <div>
       <Helmet>
         <title>Terms of Service — Reicon</title>
-        <meta name="description" content="Terms of Service for Reicon, the free open-source icon library." />
+        <meta name="description" content="Terms of service for using the Reicon open-source icon library." />
         <link rel="canonical" href="https://reicon.dev/terms" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://reicon.dev/terms" />
         <meta property="og:site_name" content="Reicon" />
         <meta property="og:title" content="Terms of Service — Reicon" />
-        <meta property="og:description" content="Terms of Service for Reicon, the free open-source icon library." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta property="og:description" content="Terms of service for using the Reicon open-source icon library." />
+        <meta property="og:image" content="https://reicon.dev/og/terms.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
         <meta name="twitter:title" content="Terms of Service — Reicon" />
-        <meta name="twitter:description" content="Terms of Service for Reicon, the free open-source icon library." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta name="twitter:description" content="Terms of service for using the Reicon open-source icon library." />
+        <meta name="twitter:image" content="https://reicon.dev/og/terms.jpg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",

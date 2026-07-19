@@ -29,7 +29,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const isLight = theme === 'light';
     root.classList.toggle('light', isLight);
     root.classList.toggle('dark', !isLight);
-    document.body.style.backgroundColor = isLight ? '#ffffff' : '#09090b';
+    document.body.style.backgroundColor = isLight ? '#f5f5f0' : '#09090b';
 
     try {
       localStorage.setItem('reicon-theme', theme);

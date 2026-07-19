@@ -35,3 +35,11 @@ import { SiModelcontextprotocol } from 'react-icons/si';
 export const McpIcon = ({ size = 14 }: { size?: number }) => (
     <SiModelcontextprotocol className="shrink-0" size={size} />
 );
+
+export const FlutterIcon = ({ size = 14 }: { size?: number }) => (
+    <svg className="shrink-0" width={size} height={size * (317 / 256)} viewBox="0 0 256 317" fill="none">
+        <path fill="#47C5FB" d="M158 0 0 158l49 48L255 0zM157 145l-85 85 49 50 49-49 85-86z"/>
+        <path fill="#00569E" d="m121 280 37 37h97l-85-86z"/>
+        <path fill="#00B5F8" d="m72 230 48-48 50 49-49 49z"/>
+    </svg>
+);

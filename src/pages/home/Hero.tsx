@@ -5,7 +5,7 @@ import { SiJavascript, SiReact } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
 import Background from '../../components/layout/Background';
 import ClayButton from '../../components/ui/Button';
-import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon } from './icons';
+import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon } from './icons';
 
 interface Props {
     theme: string;
@@ -140,6 +140,10 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                                 <Link to="/docs/mcp" title="MCP Server" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <McpIcon size={16} />
                                     <span className="hidden sm:inline">MCP Server</span>
+                                </Link>
+                                <Link to="/docs/flutter" title="Flutter" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
+                                    <FlutterIcon size={14} />
+                                    <span className="hidden sm:inline">Flutter</span>
                                 </Link>
                             </div>
                         </div>

@@ -114,7 +114,7 @@ export default function Integrations() {
                 <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#6C5CE7] mb-2">Integrations</div>
                 <h2 className="font-serif text-[clamp(26px,3.6vw,46px)] text-text-base leading-[1.15] tracking-[-0.02em] mb-3">Works everywhere you do.</h2>
                 <p className="text-[15px] text-text-base/45 leading-[1.65] max-w-[490px] mx-auto">
-                    Easy integration with CDN, React, React Native, Vue, Svelte, JavaScript, and MCP Server for AI agents.
+                    Easy integration with CDN, React, React Native, Vue, Svelte, Flutter, JavaScript, and MCP Server for AI agents.
                 </p>
             </div>
 
@@ -219,6 +219,32 @@ export default function Integrations() {
                         <NpmInstall pkg="reicon-svelte" />
                         <ImportLine name="Home" from="reicon-svelte" />
                         <JsxLine tag="Home" props={<><Prop name="size" value="{24}" isExpr /><Prop name="weight" value="Outline" /></>} />
+                    </>}
+                />
+
+                {/* Flutter */}
+                <IntegrationCard
+                    icon={<svg width={16} height={16 * (317 / 256)} viewBox="0 0 256 317" fill="none"><path fill="#47C5FB" d="M158 0 0 158l49 48L255 0zM157 145l-85 85 49 50 49-49 85-86z"/><path fill="#00569E" d="m121 280 37 37h97l-85-86z"/><path fill="#00B5F8" d="m72 230 48-48 50 49-49 49z"/></svg>}
+                    title="Flutter"
+                    guideUrl="/docs/flutter"
+                    copyText={`import { Reicon } from 'reicon_flutter';\n\nfinal home = Reicon.outline.home;\nreiconSvg(home, size: 24);`}
+                    lines={<>
+                        <div className="mb-2">
+                            <span className="text-[#ffbd2e]">$</span>
+                            <span className="text-[#e06c75]"> flutter</span>
+                            <span className="text-text-base/70"> pub add reicon_flutter</span>
+                        </div>
+                        <div>
+                            <span className="text-[#c678dd]">import</span>
+                            <span className="text-text-base/70"> 'package:reicon_flutter/reicon_flutter.dart';</span>
+                        </div>
+                        <div className="mt-3">
+                            <span className="text-[#c678dd]">final</span>
+                            <span className="text-text-base/70"> home = </span>
+                            <span className="text-[#61afef]">Reicon</span>
+                            <span className="text-text-base/30">.outline</span>
+                            <span className="text-text-base/70">.home;</span>
+                        </div>
                     </>}
                 />
 

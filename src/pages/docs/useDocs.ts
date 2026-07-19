@@ -8,6 +8,7 @@ import reactDocs from '../../../docs/react/index.md?raw';
 import reactNativeDocs from '../../../docs/react-native/index.md?raw';
 import vueDocs from '../../../docs/vue/index.md?raw';
 import svelteDocs from '../../../docs/svelte/index.md?raw';
+import flutterDocs from '../../../docs/flutter/index.md?raw';
 import figmaDocs from '../../../docs/figma/index.md?raw';
 import vscodeDocs from '../../../docs/vscode/index.md?raw';
 import mcpDocs from '../../../docs/mcp/index.md?raw';
@@ -71,6 +72,7 @@ export function useDocs() {
       case 'react-native': return 'react-native/index.md';
       case 'vue': return 'vue/index.md';
       case 'svelte': return 'svelte/index.md';
+      case 'flutter': return 'flutter/index.md';
       case 'figma': return 'figma/index.md';
       case 'vscode': return 'vscode/index.md';
       case 'mcp': return 'mcp/index.md';
@@ -112,6 +114,7 @@ export function useDocs() {
       case 'react-native': return reactNativeDocs;
       case 'vue': return vueDocs;
       case 'svelte': return svelteDocs;
+      case 'flutter': return flutterDocs;
       case 'figma': return figmaDocs;
       case 'vscode': return vscodeDocs;
       case 'mcp': return mcpDocs;
@@ -246,6 +249,7 @@ export function useDocs() {
     reactNativeDocs,
     vueDocs,
     svelteDocs,
+    flutterDocs,
     figmaDocs,
     vscodeDocs,
     mcpDocs,

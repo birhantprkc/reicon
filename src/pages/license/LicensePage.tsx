@@ -36,22 +36,22 @@ export default function LicensePage() {
   return (
     <div>
       <Helmet>
-        <title>License — Reicon | MIT License</title>
-        <meta name="description" content="Reicon is released under the MIT License. Free to use in personal and commercial projects." />
+        <title>License — Reicon</title>
+        <meta name="description" content="Reicon is free and open-source under the MIT license. Use in personal and commercial projects." />
         <link rel="canonical" href="https://reicon.dev/license" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://reicon.dev/license" />
         <meta property="og:site_name" content="Reicon" />
-        <meta property="og:title" content="License — Reicon | MIT License" />
-        <meta property="og:description" content="Reicon is released under the MIT License. Free to use in personal and commercial projects." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta property="og:title" content="License — Reicon" />
+        <meta property="og:description" content="Reicon is free and open-source under the MIT license. Use in personal and commercial projects." />
+        <meta property="og:image" content="https://reicon.dev/og/license.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
-        <meta name="twitter:title" content="License — Reicon | MIT License" />
-        <meta name="twitter:description" content="License — Reicon | MIT License" />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta name="twitter:title" content="License — Reicon" />
+        <meta name="twitter:description" content="Reicon is free and open-source under the MIT license. Use in personal and commercial projects." />
+        <meta name="twitter:image" content="https://reicon.dev/og/license.jpg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",

@@ -3,22 +3,22 @@ import { Helmet } from 'react-helmet-async';
 export default function FaqHelmet() {
   return (
     <Helmet>
-      <title>Frequently Asked Questions — Reicon | Free Open-Source Icons</title>
-      <meta name="description" content="Frequently asked questions about Reicon icon library. License, Figma integration, VS Code extension, React, React Native, Vue, Svelte support, and contribution guidelines." />
+      <title>FAQ — Reicon</title>
+      <meta name="description" content="Answers about Reicon: license, framework support, Figma integration, icon requests, and contributions." />
       <link rel="canonical" href="https://reicon.dev/faq" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://reicon.dev/faq" />
       <meta property="og:site_name" content="Reicon" />
-      <meta property="og:title" content="Frequently Asked Questions — Reicon" />
-      <meta property="og:description" content="Frequently asked questions about Reicon icon library. License, Figma integration, VS Code extension, React, React Native, Vue, Svelte support, and contribution guidelines." />
-      <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
+      <meta property="og:title" content="FAQ — Reicon" />
+      <meta property="og:description" content="Answers about Reicon: license, framework support, Figma integration, icon requests, and contributions." />
+      <meta property="og:image" content="https://reicon.dev/og/faq.jpg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@reicon_dev" />
-      <meta name="twitter:title" content="Frequently Asked Questions — Reicon" />
-      <meta name="twitter:description" content="Frequently asked questions about Reicon icon library. License, Figma integration, React, React Native, Vue, Svelte support, and contribution guidelines." />
-      <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
+      <meta name="twitter:title" content="FAQ — Reicon" />
+      <meta name="twitter:description" content="Answers about Reicon: license, framework support, Figma integration, icon requests, and contributions." />
+      <meta name="twitter:image" content="https://reicon.dev/og/faq.jpg" />
       <script type="application/ld+json">{JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',

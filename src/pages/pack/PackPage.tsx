@@ -9,10 +9,10 @@ export default function PackPage() {
     return (
         <div>
             <Helmet>
-                <title>Icon Pack Builder — Reicon | Custom Icon Packs</title>
+                <title>Icon Pack Builder — Reicon</title>
                 <meta
                     name="description"
-                    content="Select and export custom icon packs from Reicon. Download as SVG, PNG, or WebP ZIP files. Build your own icon set."
+                    content="Select and export custom icon packs. Download as SVG, PNG, or WebP ZIP files."
                 />
                 <link rel="canonical" href="https://reicon.dev/pack" />
                 <meta property="og:type" content="website" />
@@ -21,9 +21,9 @@ export default function PackPage() {
                 <meta property="og:title" content="Icon Pack Builder — Reicon" />
                 <meta
                     property="og:description"
-                    content="Select and export custom icon packs from Reicon. Download as SVG, PNG, or WebP ZIP files."
+                    content="Select and export custom icon packs. Download as SVG, PNG, or WebP ZIP files."
                 />
-                <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
+                <meta property="og:image" content="https://reicon.dev/og/pack.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta name="twitter:card" content="summary_large_image" />
@@ -31,9 +31,9 @@ export default function PackPage() {
                 <meta name="twitter:title" content="Icon Pack Builder — Reicon" />
                 <meta
                     name="twitter:description"
-                    content="Select and export custom icon packs from Reicon. Download as SVG, PNG, or WebP ZIP files."
+                    content="Select and export custom icon packs. Download as SVG, PNG, or WebP ZIP files."
                 />
-                <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
+                <meta name="twitter:image" content="https://reicon.dev/og/pack.jpg" />
                 <script type="application/ld+json">
                     {JSON.stringify({
                         '@context': 'https://schema.org',

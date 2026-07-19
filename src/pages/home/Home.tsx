@@ -54,23 +54,23 @@ export default function HomePage() {
   return (
     <div className="flex-1">
       <Helmet>
-        <title>Reicon — Free Open-Source Icon Library for Designers & Developers</title>
-        <meta name="description" content="Reicon is a free, open-source icon library with 2,700+ handcrafted, pixel-perfect SVG icons. Available for React, React Native, Vue, Svelte, Figma, VS Code, and the web. MIT licensed." />
+        <title>Reicon</title>
+        <meta name="description" content="Open-Source Icon Library for Designers &amp; Developers" />
         <link rel="canonical" href="https://reicon.dev/" />
-        <meta name="keywords" content="free icon library, open source icons, SVG icons, React icons, React Native icons, Vue icons, Svelte icons, Figma icons, VS Code icons, web icons, pixel perfect icons, reicon" />
+        <meta name="keywords" content="free icon library, open source icons, SVG icons, React icons, Vue icons, Figma icons, reicon" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://reicon.dev/" />
         <meta property="og:site_name" content="Reicon" />
-        <meta property="og:title" content="Reicon — Free Open-Source Icon Library" />
-        <meta property="og:description" content="Free, open-source SVG icon library with 2,700+ handcrafted icons for React, React Native, Vue, Svelte, Figma, VS Code, and the web." />
-        <meta property="og:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta property="og:title" content="Reicon" />
+        <meta property="og:description" content="Open-Source Icon Library for Designers &amp; Developers" />
+        <meta property="og:image" content="https://reicon.dev/og/og.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
-        <meta name="twitter:title" content="Reicon — Free Open-Source Icon Library" />
-        <meta name="twitter:description" content="Free, open-source SVG icon library with 2,700+ handcrafted icons for React, React Native, Vue, Svelte, Figma, VS Code, and the web." />
-        <meta name="twitter:image" content="https://reicon.dev/og-image.png?v=4" />
+        <meta name="twitter:title" content="Reicon" />
+        <meta name="twitter:description" content="Open-Source Icon Library for Designers &amp; Developers" />
+        <meta name="twitter:image" content="https://reicon.dev/og/og.jpg" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="ai-content-declaration" content="human-curated" />
         <script type="application/ld+json">{JSON.stringify({

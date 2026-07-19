@@ -135,11 +135,11 @@ export default function useIconDetail() {
   }, [name]);
 
   const pageTitle = name
-    ? `${pascalName} Icon \u2014 Free ${iconCategory || 'SVG'} Download | Reicon`
+    ? `${pascalName} Icon \u2014 Reicon`
     : 'Icon \u2014 Reicon';
-  const pageDesc = `Free ${pascalName} SVG icon from Reicon. Download as SVG, PNG, or WebP. Use in React, Vue, Svelte, Figma, or HTML. Outline & filled weights. MIT licensed.`;
+  const pageDesc = `Free ${pascalName} SVG icon from Reicon. Outline & filled weights. MIT licensed.`;
   const pageUrl = `https://reicon.dev/icon/${name}`;
-  const ogImage = 'https://reicon.dev/og-image.png?v=4';
+  const ogImage = 'https://reicon.dev/og/icon-detail.jpg';
   const ogImageAlt = `Reicon \u2014 ${pascalName} icon preview`;
 
   const relatedIcons = useMemo(() => {

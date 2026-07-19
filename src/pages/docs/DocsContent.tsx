@@ -9,6 +9,7 @@ const ReactDocs = lazy(() => import('./frameworks/ReactDocs'));
 const ReactNativeDocs = lazy(() => import('./frameworks/ReactNativeDocs'));
 const VueDocs = lazy(() => import('./frameworks/VueDocs'));
 const SvelteDocs = lazy(() => import('./frameworks/SvelteDocs'));
+const FlutterDocs = lazy(() => import('./frameworks/FlutterDocs'));
 const CdnDocs = lazy(() => import('./frameworks/CdnDocs'));
 const FigmaDocs = lazy(() => import('./guides/FigmaDocs'));
 const VscodeDocs = lazy(() => import('./guides/VscodeDocs'));
@@ -44,6 +45,7 @@ interface Props {
   reactNativeDocs: string;
   vueDocs: string;
   svelteDocs: string;
+  flutterDocs: string;
   figmaDocs: string;
   vscodeDocs: string;
   mcpDocs: string;
@@ -79,6 +81,7 @@ export default function DocsContent({
   reactNativeDocs,
   vueDocs,
   svelteDocs,
+  flutterDocs,
   figmaDocs,
   vscodeDocs,
   mcpDocs,
@@ -149,6 +152,8 @@ export default function DocsContent({
               <VueDocs markdownContent={vueDocs} copiedField={copiedField} onCopy={copyToClipboard} />
             ) : framework === 'svelte' ? (
               <SvelteDocs markdownContent={svelteDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+            ) : framework === 'flutter' ? (
+              <FlutterDocs markdownContent={flutterDocs} copiedField={copiedField} onCopy={copyToClipboard} />
             ) : framework === 'figma' ? (
               <FigmaDocs markdownContent={figmaDocs} />
             ) : framework === 'vscode' ? (

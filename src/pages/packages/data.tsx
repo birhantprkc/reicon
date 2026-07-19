@@ -1,7 +1,7 @@
 import { FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { VscVscodeInsiders } from 'react-icons/vsc';
-import { FigmaIcon, McpIcon, SvelteIcon, VueIcon, SvgIcon } from '../../components/docs/framework/icons';
+import { FigmaIcon, FlutterIcon, McpIcon, SvelteIcon, VueIcon, SvgIcon } from '../../components/docs/framework/icons';
 
 export interface PackageItem {
     id: string;
@@ -64,6 +64,16 @@ export const PACKAGES: PackageItem[] = [
         npmUrl: 'https://www.npmjs.com/package/reicon-svelte',
         sourceUrl: 'https://github.com/dqev/reicon',
         guideUrl: '/docs/svelte',
+    },
+    {
+        id: 'flutter',
+        name: 'reicon_flutter',
+        npmPkg: 'reicon_flutter',
+        description: 'Official Flutter/Dart package for Reicon. 2700+ SVG icons as path strings. Works with flutter_svg.',
+        icon: <FlutterIcon size={48} />,
+        npmUrl: 'https://pub.dev/packages/reicon_flutter',
+        sourceUrl: 'https://github.com/dqev/reicon/tree/main/packages/reicon-flutter',
+        guideUrl: '/docs/flutter',
     },
 ];
 

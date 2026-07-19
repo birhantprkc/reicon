@@ -52,7 +52,7 @@ export default function McpDocs({ markdownContent, copiedField, onCopy }: Props)
         The same binary supports CLI mode when arguments are provided.
       </p>
 
-      <div className="space-y-4 mb-8">
+      <div className="flex flex-col gap-4 mb-8">
         <SyntaxBlock
           title="Search"
           onCopy={() => onCopy('npx reicon-mcp search "shopping cart"', 'mcp-search')}

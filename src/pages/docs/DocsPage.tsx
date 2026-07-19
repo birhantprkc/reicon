@@ -47,6 +47,7 @@ export default function DocsPage() {
     vscodeDocs,
     mcpDocs,
     svgDocs,
+    flutterDocs,
     propsDocs,
     weightsDocs,
     typescriptDocs,
@@ -115,6 +116,7 @@ export default function DocsPage() {
           vscodeDocs={vscodeDocs}
           mcpDocs={mcpDocs}
           svgDocs={svgDocs}
+          flutterDocs={flutterDocs}
           propsDocs={propsDocs}
           weightsDocs={weightsDocs}
           typescriptDocs={typescriptDocs}
