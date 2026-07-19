@@ -11,14 +11,13 @@ This folder holds all public static assets served by Vite directly at the root U
 ## 🗂️ What's Inside
 
 ### 🌐 SEO & Crawler Files
-* [`sitemap.xml`](file:///Users/devchauhan/Documents/Website/reicon/public/sitemap.xml): The primary sitemap linking to sub-sitemaps.
-* [`sitemap-pages.xml`](file:///Users/devchauhan/Documents/Website/reicon/public/sitemap-pages.xml): Sitemap entries for standard routes (Landing, FAQ, Packages, etc.).
-* `sitemap-icons-*.xml`: Multi-part sitemaps containing pages for every individual icon. Generated dynamically during the build step.
-* [`robots.txt`](file:///Users/devchauhan/Documents/Website/reicon/public/robots.txt): Configured to guide search crawlers correctly, pointing to the sitemaps.
+* [`sitemap.xml`](file:///Users/devchauhan/Documents/Website/reicon/public/sitemap.xml): The primary sitemap. Generated dynamically during the build step.
+* `og/`: Open Graph images for each page route (generated during build).
+* [`robots.txt`](file:///Users/devchauhan/Documents/Website/reicon/public/robots.txt): Configured to guide search crawlers correctly, pointing to the sitemap.
 
 ### 🖼️ Branding & Visuals
 * `favicon/`: Multi-resolution favicon files, Apple touch icon, and web manifest.
-* `og-image.png`: High-resolution Open Graph image served when the website URL is shared on social platforms.
+* `readme-banner.png`: Banner image used across GitHub READMEs.
 * `reicon.png` / `icon-*.webp`: Main logo variants used across documentation and readmes.
 
 ### 📦 Downloads & Utilities
