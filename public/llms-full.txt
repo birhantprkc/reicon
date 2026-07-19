@@ -281,9 +281,9 @@ createIcon(displayName: string, iconData: Record<string, string>): IconFunction
 
 **Script tag:**
 ```html
-<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>
+<script src="https://unpkg.com/reicon/cdn/reicon.js"></script>
 <!-- Or jsDelivr: -->
-<script src="https://cdn.jsdelivr.net/npm/reicon/cdn/reicon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reicon/cdn/reicon.js"></script>
 ```
 
 **Usage:**
@@ -553,7 +553,7 @@ A: Yes. React, Vue, Svelte packages are SSR-compatible. Vanilla JS has `toSvg()`
 A: Yes — `reicon-mcp`. It provides `search_icons`, `view_icon`, `apply_icon`, and `list_categories` tools. Works fully offline.
 
 **Q: How do I use the CDN?**
-A: Add `<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>`, then use `<re-icon icon="home"></re-icon>`.
+A: Add `<script src="https://unpkg.com/reicon/cdn/reicon.js"></script>`, then use `<re-icon icon="home"></re-icon>`.
 
 **Q: Is there a VS Code extension?**
 A: Yes. Search "Reicon" in VS Code extensions or run `code --install-extension DevChauhan.reicon`.

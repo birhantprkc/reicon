@@ -126,14 +126,14 @@ export default function Integrations() {
                     icon={<SiHtml5 size={16} color="#E34F26" />}
                     title="CDN / HTML"
                     guideUrl="/docs/vanilla"
-                    copyText={`<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>\n\n<re-icon icon="home" size="24"></re-icon>`}
+                    copyText={`<script src="https://unpkg.com/reicon/cdn/reicon.js"></script>\n\n<re-icon icon="home" size="24"></re-icon>`}
                     lines={<>
                         <div>
                             <span className="text-text-base/20">&lt;</span>
                             <span className="text-[#e06c75]">script</span>
                             <span className="text-[#d19a66]"> src</span>
                             <span className="text-text-base/30">=</span>
-                            <span className="text-[#98c379] text-[11px] break-all">"unpkg.com/reicon/cdn/reicon.min.js"</span>
+                            <span className="text-[#98c379] text-[11px] break-all">"unpkg.com/reicon/cdn/reicon.js"</span>
                             <span className="text-text-base/20">&gt;&lt;/</span>
                             <span className="text-[#e06c75]">script</span>
                             <span className="text-text-base/20">&gt;</span>

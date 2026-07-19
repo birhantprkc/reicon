@@ -42,14 +42,14 @@ export default function Installation({ markdownContent, copiedField, onCopy }: P
 
       <SyntaxBlock
         title="HTML (UNPKG CDN)"
-        onCopy={() => onCopy('<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>', 'cdn-script')}
+        onCopy={() => onCopy('<script src="https://unpkg.com/reicon/cdn/reicon.js"></script>', 'cdn-script')}
         copied={copiedField === 'cdn-script'}
       >
         <span className="text-text-base/70">{'<'}</span>
         <span className="text-[#e06c75]">script</span>
         <span className="text-[#d19a66]"> src</span>
         <span className="text-text-base/50">=</span>
-        <span className="text-[#98c379]">"https://unpkg.com/reicon/cdn/reicon.min.js"</span>
+        <span className="text-[#98c379]">"https://unpkg.com/reicon/cdn/reicon.js"</span>
         <span className="text-text-base/70">{'></'}</span>
         <span className="text-[#e06c75]">script</span>
         <span className="text-text-base/70">{'>'}</span>
@@ -57,7 +57,7 @@ export default function Installation({ markdownContent, copiedField, onCopy }: P
 
       <div className="mt-4 mb-8">
         <p className="text-text-base/40 text-[13px]">
-          Or load a specific version: <code className="text-text-base/60 bg-text-base/4 px-1 py-0.5 rounded font-mono break-all">https://unpkg.com/reicon@latest/cdn/reicon.min.js</code>
+          Or load a specific version: <code className="text-text-base/60 bg-text-base/4 px-1 py-0.5 rounded font-mono break-all">https://unpkg.com/reicon@latest/cdn/reicon.js</code>
         </p>
       </div>
     </>

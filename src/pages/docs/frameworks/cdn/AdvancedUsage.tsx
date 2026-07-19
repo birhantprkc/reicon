@@ -162,7 +162,7 @@ export default function AdvancedUsage({ copiedField, onCopy }: Props) {
 
       <SyntaxBlock
         title="Complete HTML Page"
-        onCopy={() => onCopy('<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Reicon Page</title>\n  <script src="https://unpkg.com/reicon@latest/cdn/reicon.min.js"></script>\n</head>\n<body>\n  <nav>\n    <re-icon icon="home" size="20"></re-icon>\n    <re-icon icon="user" size="20"></re-icon>\n  </nav>\n  <main>\n    <h1>\n      <re-icon icon="shield-check" size="28" weight="filled" color="#6C5CE7"></re-icon>\n      App Verified\n    </h1>\n  </main>\n</body>\n</html>', 'cdn-full')}
+        onCopy={() => onCopy('<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Reicon Page</title>\n  <script src="https://unpkg.com/reicon@latest/cdn/reicon.js"></script>\n</head>\n<body>\n  <nav>\n    <re-icon icon="home" size="20"></re-icon>\n    <re-icon icon="user" size="20"></re-icon>\n  </nav>\n  <main>\n    <h1>\n      <re-icon icon="shield-check" size="28" weight="filled" color="#6C5CE7"></re-icon>\n      App Verified\n    </h1>\n  </main>\n</body>\n</html>', 'cdn-full')}
         copied={copiedField === 'cdn-full'}
       >
         <span className="text-text-base/30">{'<!DOCTYPE html>'}</span>
@@ -170,7 +170,7 @@ export default function AdvancedUsage({ copiedField, onCopy }: Props) {
         {'\n'}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">head</span><span className="text-text-base/70">{'>'}</span>
         {'\n  '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">meta</span><span className="text-[#d19a66]"> charset</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"UTF-8"</span><span className="text-text-base/70"> /{'>'}</span>
         {'\n  '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">title</span><span className="text-text-base/70">{'>'}</span><span className="text-text-base/60">Reicon Page</span><span className="text-text-base/70">{'</'}</span><span className="text-[#e06c75]">title</span><span className="text-text-base/70">{'>'}</span>
-        {'\n  '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">script</span><span className="text-[#d19a66]"> src</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"https://unpkg.com/reicon@latest/cdn/reicon.min.js"</span><span className="text-text-base/70">{'></'}</span><span className="text-[#e06c75]">script</span><span className="text-text-base/70">{'>'}</span>
+        {'\n  '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">script</span><span className="text-[#d19a66]"> src</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"https://unpkg.com/reicon@latest/cdn/reicon.js"</span><span className="text-text-base/70">{'></'}</span><span className="text-[#e06c75]">script</span><span className="text-text-base/70">{'>'}</span>
         {'\n'}<span className="text-text-base/70">{'</'}</span><span className="text-[#e06c75]">head</span><span className="text-text-base/70">{'>'}</span>
         {'\n'}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">body</span><span className="text-text-base/70">{'>'}</span>
         {'\n  '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">nav</span><span className="text-text-base/70">{'>'}</span>

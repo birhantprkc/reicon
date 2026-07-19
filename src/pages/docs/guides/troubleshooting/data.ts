@@ -9,7 +9,7 @@ export const troubleshootingItems: TroubleshootingItemData[] = [
   {
     question: "Icons are not rendering (CDN)",
     answer: "Make sure the CDN script is loaded before any <re-icon> elements. Place the script tag in your <head> or before your markup.",
-    copyText: '<!-- ✅ Place in <head> -->\n<script src="https://unpkg.com/reicon/cdn/reicon.min.js"></script>',
+    copyText: '<!-- ✅ Place in <head> -->\n<script src="https://unpkg.com/reicon/cdn/reicon.js"></script>',
     copyField: "faq-cdn",
   },
   {
