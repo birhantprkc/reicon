@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { PAGE_META } from '../../data/page-meta';
 
 /**
  * /pack — Icon Pack Builder placeholder page.
@@ -9,31 +10,31 @@ export default function PackPage() {
     return (
         <div>
             <Helmet>
-                <title>Icon Pack Builder — Reicon</title>
+                <title>{PAGE_META['/pack'].title}</title>
                 <meta
                     name="description"
-                    content="Select and export custom icon packs. Download as SVG, PNG, or WebP ZIP files."
+                    content={PAGE_META['/pack'].description}
                 />
-                <link rel="canonical" href="https://reicon.dev/pack" />
+                <link rel="canonical" href={PAGE_META['/pack'].url} />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://reicon.dev/pack" />
+                <meta property="og:url" content={PAGE_META['/pack'].url} />
                 <meta property="og:site_name" content="Reicon" />
-                <meta property="og:title" content="Icon Pack Builder — Reicon" />
+                <meta property="og:title" content={PAGE_META['/pack'].title} />
                 <meta
                     property="og:description"
-                    content="Select and export custom icon packs. Download as SVG, PNG, or WebP ZIP files."
+                    content={PAGE_META['/pack'].description}
                 />
-                <meta property="og:image" content="https://reicon.dev/og/pack.jpg" />
+                <meta property="og:image" content={PAGE_META['/pack'].ogImage} />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@reicon_dev" />
-                <meta name="twitter:title" content="Icon Pack Builder — Reicon" />
+                <meta name="twitter:title" content={PAGE_META['/pack'].title} />
                 <meta
                     name="twitter:description"
-                    content="Select and export custom icon packs. Download as SVG, PNG, or WebP ZIP files."
+                    content={PAGE_META['/pack'].description}
                 />
-                <meta name="twitter:image" content="https://reicon.dev/og/pack.jpg" />
+                <meta name="twitter:image" content={PAGE_META['/pack'].ogImage} />
                 <script type="application/ld+json">
                     {JSON.stringify({
                         '@context': 'https://schema.org',

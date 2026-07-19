@@ -59,7 +59,7 @@ export default function DocsPage() {
 
   return (
     <div className="flex-1">
-      <DocsHelmet />
+      <DocsHelmet framework={fwParam} />
 
       <div className="flex flex-1 pt-14">
         <style>{docsSidebarStyles}</style>

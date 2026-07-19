@@ -20,7 +20,7 @@ export default function IconDetail() {
     flashToast, handleCopy, handleCopySvg,
     handleDownloadSvg, handleDownloadPng, handleDownloadWebp,
     reset, CODE_TABS, activeTab,
-    pageTitle, pageDesc, pageUrl, ogImage, ogImageAlt,
+    pageTitle, pageDesc, pageUrl,
   } = useIconDetail();
 
   return (
@@ -29,8 +29,6 @@ export default function IconDetail() {
         pageTitle={pageTitle}
         pageDesc={pageDesc}
         pageUrl={pageUrl}
-        ogImage={ogImage}
-        ogImageAlt={ogImageAlt}
         pascalName={pascalName}
         iconCategory={iconCategory}
         name={name}

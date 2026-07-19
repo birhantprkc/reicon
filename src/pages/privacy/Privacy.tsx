@@ -1,25 +1,26 @@
 import { Helmet } from 'react-helmet-async';
+import { PAGE_META } from '../../data/page-meta';
 
 export default function Privacy() {
   return (
     <div>
       <Helmet>
-        <title>Privacy Policy — Reicon</title>
-        <meta name="description" content="Privacy policy for Reicon. Learn how we handle your data." />
-        <link rel="canonical" href="https://reicon.dev/privacy" />
+        <title>{PAGE_META['/privacy'].title}</title>
+        <meta name="description" content={PAGE_META['/privacy'].description} />
+        <link rel="canonical" href={PAGE_META['/privacy'].url} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://reicon.dev/privacy" />
+        <meta property="og:url" content={PAGE_META['/privacy'].url} />
         <meta property="og:site_name" content="Reicon" />
-        <meta property="og:title" content="Privacy Policy — Reicon" />
-        <meta property="og:description" content="Privacy policy for Reicon. Learn how we handle your data." />
-        <meta property="og:image" content="https://reicon.dev/og/privacy.jpg" />
+        <meta property="og:title" content={PAGE_META['/privacy'].title} />
+        <meta property="og:description" content={PAGE_META['/privacy'].description} />
+        <meta property="og:image" content={PAGE_META['/privacy'].ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
-        <meta name="twitter:title" content="Privacy Policy — Reicon" />
-        <meta name="twitter:description" content="Privacy policy for Reicon. Learn how we handle your data." />
-        <meta name="twitter:image" content="https://reicon.dev/og/privacy.jpg" />
+        <meta name="twitter:title" content={PAGE_META['/privacy'].title} />
+        <meta name="twitter:description" content={PAGE_META['/privacy'].description} />
+        <meta name="twitter:image" content={PAGE_META['/privacy'].ogImage} />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",

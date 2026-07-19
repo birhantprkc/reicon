@@ -134,13 +134,9 @@ export default function useIconDetail() {
     return () => { cancelled = true; };
   }, [name]);
 
-  const pageTitle = name
-    ? `${pascalName} Icon \u2014 Reicon`
-    : 'Icon \u2014 Reicon';
+  const pageTitle = `${pascalName} Icon \u2014 Reicon`;
   const pageDesc = `Free ${pascalName} SVG icon from Reicon. Outline & filled weights. MIT licensed.`;
   const pageUrl = `https://reicon.dev/icon/${name}`;
-  const ogImage = 'https://reicon.dev/og/icon-detail.jpg';
-  const ogImageAlt = `Reicon \u2014 ${pascalName} icon preview`;
 
   const relatedIcons = useMemo(() => {
     if (!name || !iconNames) return [];
@@ -163,7 +159,7 @@ export default function useIconDetail() {
     flashToast, handleCopy, handleCopySvg,
     handleDownloadSvg, handleDownloadPng, handleDownloadWebp,
     reset, CODE_TABS, activeTab,
-    pageTitle, pageDesc, pageUrl, ogImage, ogImageAlt,
+    pageTitle, pageDesc, pageUrl,
     iconNames,
   };
 }

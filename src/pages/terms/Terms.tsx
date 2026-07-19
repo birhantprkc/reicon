@@ -1,25 +1,26 @@
 import { Helmet } from 'react-helmet-async';
+import { PAGE_META } from '../../data/page-meta';
 
 export default function Terms() {
   return (
     <div>
       <Helmet>
-        <title>Terms of Service — Reicon</title>
-        <meta name="description" content="Terms of service for using the Reicon open-source icon library." />
-        <link rel="canonical" href="https://reicon.dev/terms" />
+        <title>{PAGE_META['/terms'].title}</title>
+        <meta name="description" content={PAGE_META['/terms'].description} />
+        <link rel="canonical" href={PAGE_META['/terms'].url} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://reicon.dev/terms" />
+        <meta property="og:url" content={PAGE_META['/terms'].url} />
         <meta property="og:site_name" content="Reicon" />
-        <meta property="og:title" content="Terms of Service — Reicon" />
-        <meta property="og:description" content="Terms of service for using the Reicon open-source icon library." />
-        <meta property="og:image" content="https://reicon.dev/og/terms.jpg" />
+        <meta property="og:title" content={PAGE_META['/terms'].title} />
+        <meta property="og:description" content={PAGE_META['/terms'].description} />
+        <meta property="og:image" content={PAGE_META['/terms'].ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
-        <meta name="twitter:title" content="Terms of Service — Reicon" />
-        <meta name="twitter:description" content="Terms of service for using the Reicon open-source icon library." />
-        <meta name="twitter:image" content="https://reicon.dev/og/terms.jpg" />
+        <meta name="twitter:title" content={PAGE_META['/terms'].title} />
+        <meta name="twitter:description" content={PAGE_META['/terms'].description} />
+        <meta name="twitter:image" content={PAGE_META['/terms'].ogImage} />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",

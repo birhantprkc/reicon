@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 
+const DEFAULT_OG = 'https://reicon.dev/og/og.jpg';
+
 interface SeoHelmetProps {
   pageTitle: string;
   pageDesc: string;
   pageUrl: string;
-  ogImage: string;
-  ogImageAlt: string;
   pascalName: string;
   iconCategory: string;
   name?: string;
 }
 
-export default function SeoHelmet({ pageTitle, pageDesc, pageUrl, ogImage, ogImageAlt, pascalName, iconCategory, name }: SeoHelmetProps) {
+export default function SeoHelmet({ pageTitle, pageDesc, pageUrl, pascalName, iconCategory, name }: SeoHelmetProps) {
   return (
     <Helmet>
       <title>{pageTitle}</title>
@@ -25,17 +25,15 @@ export default function SeoHelmet({ pageTitle, pageDesc, pageUrl, ogImage, ogIma
       <meta property="og:locale" content="en_US" />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDesc} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={DEFAULT_OG} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={ogImageAlt} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@reicon_dev" />
       <meta name="twitter:creator" content="@reicon_dev" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDesc} />
-      <meta name="twitter:image" content={ogImage} />
-      <meta name="twitter:image:alt" content={ogImageAlt} />
+      <meta name="twitter:image" content={DEFAULT_OG} />
       <script type="application/ld+json">{JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebPage",
@@ -46,7 +44,7 @@ export default function SeoHelmet({ pageTitle, pageDesc, pageUrl, ogImage, ogIma
         "inLanguage": "en-US",
         "isPartOf": { "@type": "WebSite", "url": "https://reicon.dev", "name": "Reicon" },
         "breadcrumb": { "@id": `${pageUrl}#breadcrumb` },
-        "primaryImageOfPage": { "@type": "ImageObject", "url": ogImage },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": DEFAULT_OG },
       })}</script>
       <script type="application/ld+json">{JSON.stringify({
         "@context": "https://schema.org",

@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { PAGE_META } from '../../data/page-meta';
 import PackageCard from './PackageCard';
 import SvgCard from './SvgCard';
 import ToolCard from './ToolCard';
@@ -8,23 +9,23 @@ export default function PackagesPage() {
   return (
     <div className="flex-1">
       <Helmet>
-        <title>Packages — Reicon</title>
-        <meta name="description" content="Install official Reicon packages for React, React Native, Vue, Svelte, Flutter, and JavaScript." />
-        <link rel="canonical" href="https://reicon.dev/packages" />
+        <title>{PAGE_META['/packages'].title}</title>
+        <meta name="description" content={PAGE_META['/packages'].description} />
+        <link rel="canonical" href={PAGE_META['/packages'].url} />
         <meta name="keywords" content="reicon packages, reicon-react, reicon-flutter, reicon-vue, reicon-svelte, SVG download, React icon library, Vue icons, Svelte icons" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://reicon.dev/packages" />
+        <meta property="og:url" content={PAGE_META['/packages'].url} />
         <meta property="og:site_name" content="Reicon" />
-        <meta property="og:title" content="Packages — Reicon" />
-        <meta property="og:description" content="Install official Reicon packages for React, React Native, Vue, Svelte, Flutter, and JavaScript." />
-        <meta property="og:image" content="https://reicon.dev/og/packages.jpg" />
+        <meta property="og:title" content={PAGE_META['/packages'].title} />
+        <meta property="og:description" content={PAGE_META['/packages'].description} />
+        <meta property="og:image" content={PAGE_META['/packages'].ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
-        <meta name="twitter:title" content="Packages — Reicon" />
-        <meta name="twitter:description" content="Install official Reicon packages for React, React Native, Vue, Svelte, Flutter, and JavaScript." />
-        <meta name="twitter:image" content="https://reicon.dev/og/packages.jpg" />
+        <meta name="twitter:title" content={PAGE_META['/packages'].title} />
+        <meta name="twitter:description" content={PAGE_META['/packages'].description} />
+        <meta name="twitter:image" content={PAGE_META['/packages'].ogImage} />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',

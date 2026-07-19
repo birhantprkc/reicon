@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
 import { HighlightItem } from './Highlight';
 import { IconTooltipTrigger } from './IconTooltip';
 
@@ -10,14 +9,11 @@ interface IconCardProps {
 }
 
 function IconCard({ name, weight = 'outline', size = 32 }: IconCardProps) {
-  const to = weight === 'filled' ? `/icon/${name}?weight=filled` : `/icon/${name}`;
-
   return (
     <HighlightItem value={`${name}-${weight}`}>
       <IconTooltipTrigger label={name} side="bottom" sideOffset={14}>
-        <Link
-          to={to}
-          className="cv-auto group flex items-center justify-center aspect-square bg-text-base/3 border border-text-base/6 rounded-xl transition-all cursor-pointer"
+        <div
+          className="cv-auto group flex items-center justify-center aspect-square bg-text-base/3 border border-text-base/6 rounded-xl transition-all cursor-default"
           title={name}
         >
           <re-icon
@@ -27,7 +23,7 @@ function IconCard({ name, weight = 'outline', size = 32 }: IconCardProps) {
             color="currentColor"
             className="text-text-base/70 group-hover:text-text-base transition-colors duration-150"
           />
-        </Link>
+        </div>
       </IconTooltipTrigger>
     </HighlightItem>
   );
