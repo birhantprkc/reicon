@@ -6,6 +6,7 @@ import { FaReact } from 'react-icons/fa';
 import Background from '../../components/layout/Background';
 import ClayButton from '../../components/ui/Button';
 import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon } from './icons';
+import BuyMeACoffeeIcon from '../../components/ui/BuyMeACoffeeIcon';
 
 interface Props {
     theme: string;
@@ -52,6 +53,13 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                                 {theme === 'dark' ? <Sun size={15} color="currentColor" /> : <Moon size={15} color="currentColor" />}
                             </button>
                             <div className="hidden md:flex gap-2">
+                                <Link
+                                    to="/support"
+                                    className="text-[13px] text-text-base/80 border border-white/20 bg-white/5 backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-white/10 transition-colors cursor-pointer flex items-center gap-1.5"
+                                >
+                                    <BuyMeACoffeeIcon size={15} />
+                                    Support
+                                </Link>
                                 <a
                                     href="https://github.com/dqev/reicon"
                                     target="_blank"

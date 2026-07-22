@@ -3,6 +3,8 @@ import { Star, Sun, Moon } from 'reicon-react';
 import ClayButton from '../../ui/Button';
 import NavLinks from './NavLinks';
 
+import BuyMeACoffeeIcon from '../../ui/BuyMeACoffeeIcon';
+
 interface MobileMenuProps {
   stars: number | null;
   theme: string;
@@ -79,6 +81,16 @@ export default function MobileMenu({ stars, theme, toggleTheme }: MobileMenuProp
                 {stars}
               </span>
             )}
+          </a>
+          <a
+            href="https://buymeacoffee.com/reicon"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="text-text-base/80 hover:text-text-base text-sm py-2 transition-colors flex items-center gap-2 font-medium"
+          >
+            <BuyMeACoffeeIcon size={16} />
+            Support Reicon (Buy Me a Coffee)
           </a>
           <ClayButton to="/icons" variant="accent" size="sm" onClick={() => setMenuOpen(false)} className="w-full justify-center mt-1">
             <Star size={14} />

@@ -53,6 +53,7 @@ export default function Footer() {
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px]">
             <Link to="/icons" className="text-text-base/70 hover:text-text-base transition-colors">Icons</Link>
             <Link to="/docs" className="text-text-base/70 hover:text-text-base transition-colors">Docs</Link>
+            <Link to="/support" className="text-text-base/70 hover:text-text-base transition-colors">Support</Link>
             <Link to="/faq" className="text-text-base/70 hover:text-text-base transition-colors">FAQ</Link>
             <Link to="/terms" className="text-text-base/70 hover:text-text-base transition-colors">Terms</Link>
             <Link to="/privacy" className="text-text-base/70 hover:text-text-base transition-colors">Privacy</Link>

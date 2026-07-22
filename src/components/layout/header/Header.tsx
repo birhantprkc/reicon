@@ -6,6 +6,8 @@ import { useTheme } from '../ThemeContext';
 import NavLinks from './NavLinks';
 import MobileMenu from './MobileMenu';
 
+import BuyMeACoffeeIcon from '../../ui/BuyMeACoffeeIcon';
+
 interface HeaderProps {
   className?: string;
 }
@@ -35,11 +37,19 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
 
         <div className="hidden sm:flex items-center gap-2">
           <NavLinks variant="desktop" />
+          <Link
+            to="/support"
+            className="hidden lg:inline-flex items-center gap-1.5 text-[12px] font-semibold bg-[#FFDD00] hover:bg-[#ffe533] text-[#0D0C22] rounded-full px-3 py-1 transition-all duration-150 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+            title="Support Reicon"
+          >
+            <BuyMeACoffeeIcon size={15} />
+            <span>Donate</span>
+          </Link>
           <a
             href="https://github.com/dqev/reicon"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-base/60 hover:text-text-base text-sm transition-colors px-3 py-1.5 mr-2 flex items-center gap-1"
+            className="text-text-base/60 hover:text-text-base text-sm transition-colors px-3 py-1.5 flex items-center gap-1"
           >
             GitHub
             {stars !== null && (
@@ -51,7 +61,7 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
           </a>
           <button
             onClick={toggleTheme}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-text-base/8 text-text-base/60 hover:text-text-base transition-all duration-150 cursor-pointer mr-1"
+            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-text-base/8 text-text-base/60 hover:text-text-base transition-all duration-150 cursor-pointer"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}

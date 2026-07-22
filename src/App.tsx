@@ -14,6 +14,7 @@ const IconDetail = lazy(() => import('./pages/icon/IconDetail'));
 const DocsPage = lazy(() => import('./pages/docs/DocsPage'));
 const PackagesPage = lazy(() => import('./pages/packages/PackagesPage'));
 const FaqPage = lazy(() => import('./pages/faq/FaqPage'));
+const SupportPage = lazy(() => import('./pages/support/SupportPage'));
 const NotFound = lazy(() => import('./pages/not-found/NotFound'));
 const Terms = lazy(() => import('./pages/terms/Terms'));
 const Privacy = lazy(() => import('./pages/privacy/Privacy'));
@@ -44,6 +45,8 @@ function Layout() {
             <Route path="/docs/:framework" element={<DocsPage />} />
             <Route path="/packages" element={<PackagesPage />} />
             <Route path="/faq" element={<FaqPage />} />
+            <Route path="/support" element={<SupportPage />} />
+            <Route path="/donate" element={<SupportPage />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/license" element={<LicensePage />} />
