@@ -19,6 +19,18 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     console.error('ErrorBoundary caught:', error, info);
+    const msg = error?.message || '';
+    if (
+      msg.includes('Failed to fetch dynamically imported module') ||
+      msg.includes('Importing a module script failed') ||
+      msg.includes('text/html')
+    ) {
+      const refreshed = sessionStorage.getItem('reicon_eb_refreshed') === 'true';
+      if (!refreshed) {
+        sessionStorage.setItem('reicon_eb_refreshed', 'true');
+        window.location.reload();
+      }
+    }
   }
 
   render() {

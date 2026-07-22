@@ -1,25 +1,26 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect, Suspense } from 'react';
 import SmoothScroll from './components/layout/SmoothScroll';
 import CookieConsent from './components/layout/CookieConsent';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ErrorBoundary from './components/ui/ErrorBoundary';
 import { ThemeProvider } from './components/layout/ThemeContext';
+import { lazyWithRetry } from './lib/lazyWithRetry';
 
-const HomePage = lazy(() => import('./pages/home/Home'));
-const IconsPage = lazy(() => import('./pages/icons/IconsPage'));
-const IconDetail = lazy(() => import('./pages/icon/IconDetail'));
+const HomePage = lazyWithRetry(() => import('./pages/home/Home'));
+const IconsPage = lazyWithRetry(() => import('./pages/icons/IconsPage'));
+const IconDetail = lazyWithRetry(() => import('./pages/icon/IconDetail'));
 
-const DocsPage = lazy(() => import('./pages/docs/DocsPage'));
-const PackagesPage = lazy(() => import('./pages/packages/PackagesPage'));
-const FaqPage = lazy(() => import('./pages/faq/FaqPage'));
-const SupportPage = lazy(() => import('./pages/support/SupportPage'));
-const NotFound = lazy(() => import('./pages/not-found/NotFound'));
-const Terms = lazy(() => import('./pages/terms/Terms'));
-const Privacy = lazy(() => import('./pages/privacy/Privacy'));
-const LicensePage = lazy(() => import('./pages/license/LicensePage'));
-const PackPage = lazy(() => import('./pages/pack/PackPage'));
+const DocsPage = lazyWithRetry(() => import('./pages/docs/DocsPage'));
+const PackagesPage = lazyWithRetry(() => import('./pages/packages/PackagesPage'));
+const FaqPage = lazyWithRetry(() => import('./pages/faq/FaqPage'));
+const SupportPage = lazyWithRetry(() => import('./pages/support/SupportPage'));
+const NotFound = lazyWithRetry(() => import('./pages/not-found/NotFound'));
+const Terms = lazyWithRetry(() => import('./pages/terms/Terms'));
+const Privacy = lazyWithRetry(() => import('./pages/privacy/Privacy'));
+const LicensePage = lazyWithRetry(() => import('./pages/license/LicensePage'));
+const PackPage = lazyWithRetry(() => import('./pages/pack/PackPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
