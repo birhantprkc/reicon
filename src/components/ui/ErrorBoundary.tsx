@@ -8,65 +8,44 @@ interface Props {
 interface State {
   hasError: boolean;
   error: Error | null;
-  isChunkError: boolean;
 }
 
 export default class ErrorBoundary extends Component<Props, State> {
-  state: State = { hasError: false, error: null, isChunkError: false };
+  state: State = { hasError: false, error: null };
 
   static getDerivedStateFromError(error: Error): State {
-    const msg = error?.message || '';
-    const name = error?.name || '';
-    const isChunkError =
-      name === 'ChunkLoadError' ||
-      msg.includes('Failed to fetch dynamically imported module') ||
-      msg.includes('Importing a module script failed') ||
-      msg.includes('Failed to load module script');
-
-    return { hasError: true, error, isChunkError };
+    return { hasError: true, error };
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     console.error('ErrorBoundary caught:', error, info);
-    if (this.state.isChunkError) {
-      const refreshed = sessionStorage.getItem('reicon_eb_refreshed') === 'true';
-      if (!refreshed) {
-        sessionStorage.setItem('reicon_eb_refreshed', 'true');
-        const cleanPath = window.location.pathname;
-        window.location.href = `${cleanPath}?v=${Date.now()}`;
-      }
-    }
   }
 
   render() {
     if (this.state.hasError) {
+      const msg = this.state.error?.message || '';
+      const isChunkError =
+        msg.includes('Failed to fetch') ||
+        msg.includes('dynamically imported module') ||
+        msg.includes('Importing a module script failed') ||
+        msg.includes('Failed to load module script');
+
+      if (isChunkError) {
+        window.location.href = window.location.pathname + '?v=' + Date.now();
+        return null;
+      }
+
       return (
         this.props.fallback || (
-          <div className="min-h-screen bg-bg-base flex items-center justify-center p-6">
-            <div className="max-w-md w-full text-center bg-text-base/3 border border-text-base/8 rounded-2xl p-8 backdrop-blur-xl shadow-2xl">
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-[#6C5CE7]/10 border border-[#6C5CE7]/20 flex items-center justify-center text-[#6C5CE7]">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
-                </svg>
-              </div>
-              <h1 className="text-xl font-serif font-bold text-text-base mb-2">
-                {this.state.isChunkError ? 'New Version Available' : 'Something went wrong'}
-              </h1>
-              <p className="text-sm text-text-base/60 mb-6">
-                {this.state.isChunkError
-                  ? 'Reicon has just been updated with new features and improvements. Please reload to load the latest version.'
-                  : (this.state.error?.message || 'An unexpected error occurred while loading this view.')}
-              </p>
+          <div className="min-h-[50vh] flex items-center justify-center p-6 text-center">
+            <div className="max-w-md w-full">
+              <h2 className="text-lg font-serif font-semibold text-text-base mb-2">Unable to load section</h2>
+              <p className="text-sm text-text-base/50 mb-4">{this.state.error?.message || 'A temporary error occurred.'}</p>
               <button
-                onClick={() => {
-                  sessionStorage.removeItem('reicon_chunk_refreshed');
-                  sessionStorage.removeItem('reicon_eb_refreshed');
-                  const cleanPath = window.location.pathname;
-                  window.location.href = `${cleanPath}?v=${Date.now()}`;
-                }}
-                className="w-full py-2.5 px-4 rounded-xl bg-[#6C5CE7] hover:bg-[#5a4bd1] text-white text-sm font-semibold transition-all shadow-[0_0_16px_rgba(108,92,231,0.3)] cursor-pointer"
+                onClick={() => window.location.reload()}
+                className="px-4 py-2 rounded-lg bg-[#6C5CE7] text-white text-xs font-medium hover:bg-[#5a4bd1] transition-colors cursor-pointer"
               >
-                Reload Application
+                Retry
               </button>
             </div>
           </div>
