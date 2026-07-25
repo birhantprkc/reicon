@@ -1,7 +1,48 @@
+import { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PAGE_META } from '../../data/page-meta';
+import DocsActionsBar from '../../components/docs/ActionsBar';
 
 export default function Terms() {
+  const [copiedPage, setCopiedPage] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const openDropdownRef = useRef<HTMLDivElement>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const getPageMarkdown = () => {
+    return `# Terms of Service\n\nLast updated: May 6, 2025\n\n1. Acceptance of Terms\nBy accessing or using the Reicon website (reicon.dev) and any related services, you agree to be bound by these Terms of Service. If you do not agree, please do not use the service.\n\n2. Description of Service\nReicon provides a free, open-source icon library consisting of SVG icons available for download, use in personal and commercial projects, and integration via React packages and CDN. The icons are licensed under the MIT License.\n\n3. License & Usage\nAll icons and associated code in the Reicon library are released under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the icons and software, subject to the conditions of the MIT License.\n\n4. Intellectual Property\nThe Reicon name, logo, website design, and branding are the intellectual property of Dev Chauhan. The open-source icons themselves are licensed under MIT, but the Reicon brand and website content (excluding icons) may not be used to imply endorsement or affiliation without permission.\n\n5. User Conduct\nYou agree not to use the service for any unlawful purpose, attempt to disrupt or compromise the service infrastructure, scrape data in a degrading manner, or misrepresent affiliation.\n\n6. Availability & Modifications\nReicon is provided on an "as is" basis.\n\n7. Disclaimer of Warranties\nThe service and all icons are provided "as is" without warranty of any kind.\n\n8. Limitation of Liability\nIn no event shall Reicon or its creator be liable for any indirect or consequential damages.\n\n9. Contact\nIf you have questions about these terms, contact us at hello@reicon.dev.`;
+  };
+
+  const handleCopyPageMarkdown = async () => {
+    try {
+      await navigator.clipboard.writeText(getPageMarkdown());
+      setCopiedPage(true);
+      showToast('Terms markdown copied!');
+      setTimeout(() => setCopiedPage(false), 2000);
+    } catch {
+      showToast('Failed to copy');
+    }
+  };
+
+  const openInLLM = async (platform: 'chatgpt' | 'claude' | 't3') => {
+    const md = getPageMarkdown();
+    try { await navigator.clipboard.writeText(md); } catch { /* silent */ }
+    const promptText = `Here is the Reicon Terms of Service documentation. Please read it and help answer my questions:\n\n${md}`;
+    const urls = {
+      chatgpt: `https://chatgpt.com/?hints=search&q=${encodeURIComponent(promptText)}`,
+      claude: `https://claude.ai/new?q=${encodeURIComponent(promptText)}`,
+      t3: `https://t3.chat/new?q=${encodeURIComponent(promptText)}`,
+    };
+    setOpenDropdown(false);
+    showToast('Markdown copied! Opening AI Chat...');
+    window.open(urls[platform], '_blank');
+  };
+
   return (
     <div>
       <Helmet>
@@ -31,7 +72,7 @@ export default function Terms() {
         })}</script>
       </Helmet>
 
-      <main className="flex-1 pt-28 px-4 md:px-8 pb-12 max-w-3xl mx-auto w-full overflow-x-hidden">
+      <main className="flex-1 pt-28 px-4 md:px-8 pb-12 max-w-5xl mx-auto w-full overflow-x-hidden">
         <h1 className="text-3xl font-serif text-text-base mb-8">Terms of Service</h1>
         <p className="text-sm text-text-base/40 mb-8">Last updated: May 6, 2025</p>
 
@@ -87,6 +128,26 @@ export default function Terms() {
             <p>If you have questions about these terms, contact us at <a href="mailto:hello@reicon.dev" className="text-[#6C5CE7] hover:underline">hello@reicon.dev</a>.</p>
           </section>
         </div>
+
+        <hr className="border-text-base/6 my-12" />
+
+        <DocsActionsBar
+          copiedPage={copiedPage}
+          openDropdown={openDropdown}
+          openDropdownRef={openDropdownRef}
+          githubEditUrl="https://github.com/dqev/reicon/edit/main/src/pages/terms/Terms.tsx"
+          githubUrl="https://github.com/dqev/reicon"
+          onCopyMarkdown={handleCopyPageMarkdown}
+          onOpenDropdown={setOpenDropdown}
+          onOpenInLLM={openInLLM}
+        />
+
+        {toastMessage && (
+          <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>{toastMessage}</span>
+          </div>
+        )}
       </main>
     </div>
   );

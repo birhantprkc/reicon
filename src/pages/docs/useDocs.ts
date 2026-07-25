@@ -49,19 +49,10 @@ export function useDocs() {
 
   const introItems = !fwParam
     ? [{ id: 'what-is-reicon', label: 'What is Reicon?' }]
-    : [{ id: 'intro', label: '← Back to Intro' }];
+    : [{ id: 'what-is-reicon', label: 'Introduction' }];
 
   const onThisPage = !fwParam
-    ? [
-      { id: 'what-is-reicon', label: 'What is Reicon?' },
-      { id: 'props', label: 'Props' },
-      { id: 'weights', label: 'Icon Weights' },
-      { id: 'styling', label: 'Styling & Color' },
-      { id: 'accessibility', label: 'Accessibility' },
-      { id: 'performance', label: 'Performance' },
-      { id: 'typescript', label: 'TypeScript' },
-      { id: 'troubleshooting', label: 'Troubleshooting' },
-    ]
+    ? [{ id: 'what-is-reicon', label: 'What is Reicon?' }]
     : getOnThisPageSections(framework);
 
   const githubUrl = 'https://github.com/dqev/reicon';
@@ -157,9 +148,14 @@ export function useDocs() {
   const scrollTo = (id: string) => {
     if (id === 'intro') {
       navigate('/docs');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
       return;
     }
+    if (!fwParam) {
+      navigate(`/docs/vanilla#${id}`);
+      return;
+    }
+    setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setMobileNavOpen(false);
   };
@@ -167,25 +163,43 @@ export function useDocs() {
   const switchFramework = (fw: Framework) => {
     setFramework(fw);
     setDropdownOpen(false);
-    navigate(`/docs/${fw}`, { replace: true });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(`/docs/${fw}`, { replace: !!fwParam });
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
     const fw = fwParam as Framework;
-    if (fw && FRAMEWORKS.some((f) => f.id === fw)) setFramework(fw);
+    if (fw && FRAMEWORKS.some((f) => f.id === fw)) {
+      setFramework(fw);
+      setActiveSection(getFrameworkSectionId(fw));
+    } else if (!fwParam) {
+      setFramework('vanilla');
+      setActiveSection('what-is-reicon');
+    }
+    window.scrollTo(0, 0);
   }, [fwParam]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) { if (e.isIntersecting) setActiveSection(e.target.id); }
-      },
-      { rootMargin: '-80px 0px -60% 0px', threshold: 0.1 }
-    );
-    contentRef.current?.querySelectorAll('[data-section]').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [framework]);
+    let observer: IntersectionObserver | null = null;
+    const timer = setTimeout(() => {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting && e.target.id) {
+              setActiveSection(e.target.id);
+            }
+          }
+        },
+        { rootMargin: '-80px 0px -50% 0px', threshold: 0.1 }
+      );
+      contentRef.current?.querySelectorAll('[data-section]').forEach((el) => observer?.observe(el));
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      if (observer) observer.disconnect();
+    };
+  }, [fwParam, framework]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

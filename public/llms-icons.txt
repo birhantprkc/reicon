@@ -91,6 +91,7 @@ import { ArrowUpRight } from 'reicon-vue';
 - arrow-up-circle -> ArrowUpCircle
 - arrow-up-left-circle -> ArrowUpLeftCircle
 - arrow-up-left-square -> ArrowUpLeftSquare
+- arrow-up-right -> ArrowUpRight
 - arrow-up-right-circle -> ArrowUpRightCircle
 - arrow-up-right-square -> ArrowUpRightSquare
 - arrow-up-square -> ArrowUpSquare
@@ -575,7 +576,6 @@ import { ArrowUpRight } from 'reicon-vue';
 - arrow-square-up -> ArrowSquareUp
 - arrow-swap-horizontal -> ArrowSwapHorizontal
 - arrow-up-left -> ArrowUpLeft
-- arrow-up-right -> ArrowUpRight
 - arrow-up4 -> ArrowUp4
 - arrow3 -> Arrow3
 - aspect-ratio-square -> AspectRatioSquare

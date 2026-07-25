@@ -29,7 +29,7 @@ function IntegrationCard({ icon, title, lines, copyText, guideUrl }: {
                             <div className="w-5 h-5 flex items-center justify-center shrink-0">{icon}</div>
                             <h3 className="text-[14px] font-semibold text-text-base flex items-center gap-0.5">
                                 {title}
-                                <re-icon icon="arrow-up-right2" size={10} className="text-text-base/30 group-hover/title:text-text-base/60 transition-colors relative -top-[0.5px]" />
+                                <re-icon icon="arrow-up-right" size={10} className="text-text-base/30 group-hover/title:text-text-base/60 transition-colors relative -top-[0.5px]" />
                             </h3>
                         </Link>
                     ) : (

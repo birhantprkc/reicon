@@ -46,7 +46,7 @@ function Sidebar({
   const fmt = (name: string) =>
     name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
-  function renderItem(id: string, label: string, isActive: boolean) {
+  function renderNavItem(id: string, label: string, isActive: boolean) {
     const isHovered = hoveredItem === id;
 
     return (
@@ -63,34 +63,8 @@ function Sidebar({
           else { onSetChange(id.replace('cat-', '')); if (showNew) onNewToggle(false); }
         }}
         onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.click()}
-        style={{
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'center',
-          marginLeft: '0.5rem',
-          paddingLeft: '1rem',
-          paddingRight: '0.5rem',
-          paddingTop: '0.3rem',
-          paddingBottom: '0.3rem',
-          minHeight: '2rem',
-          borderRadius: '6px',
-          background: 'transparent',
-          cursor: 'pointer',
-          userSelect: 'none',
-          width: 'calc(100% - 0.5rem)',
-        }}
+        className={`sidebar-item ${isActive ? 'active' : ''}`}
       >
-        <span
-          style={{
-            position: 'absolute',
-            left: '9px',
-            top: 0,
-            bottom: 0,
-            width: '1px',
-            backgroundColor: 'var(--border-base)',
-          }}
-        />
-
         <AnimatePresence initial={false} mode="wait">
           {isActive && (
             <motion.span
@@ -99,18 +73,7 @@ function Sidebar({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-              style={{
-                position: 'absolute',
-                pointerEvents: 'none',
-                zIndex: 11,
-                left: '8px',
-                top: '22%',
-                bottom: '22%',
-                width: '3px',
-                borderRadius: '9999px',
-                backgroundColor: '#6C5CE7',
-                boxShadow: '0 0 8px rgba(108,92,231,0.45)',
-              }}
+              className="sidebar-item-active-bar"
             />
           )}
         </AnimatePresence>
@@ -123,17 +86,7 @@ function Sidebar({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-              style={{
-                position: 'absolute',
-                pointerEvents: 'none',
-                zIndex: 10,
-                left: '8px',
-                top: '22%',
-                bottom: '22%',
-                width: '3px',
-                borderRadius: '9999px',
-                backgroundColor: 'var(--text-more-muted)',
-              }}
+              className="sidebar-item-hover-bar"
             />
           )}
         </AnimatePresence>
@@ -141,14 +94,7 @@ function Sidebar({
         <motion.span
           animate={{ x: isHovered || isActive ? 3 : 0 }}
           transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-          style={{
-            fontSize: '14px',
-            width: '100%',
-            paddingLeft: '12px',
-            color: isActive ? 'var(--text-base)' : isHovered ? 'var(--text-hover)' : 'var(--text-muted)',
-            fontWeight: isActive ? 500 : 400,
-            lineHeight: 1.4,
-          }}
+          className="sidebar-item-text"
         >
           {label}
         </motion.span>
@@ -156,96 +102,87 @@ function Sidebar({
     );
   }
 
-  function renderSeparator(icon: string, label: string, first = false) {
-    return (
-      <div
-        style={{
-          padding: '0.4rem 0.5rem',
-          marginTop: first ? 0 : '1.5rem',
-          marginBottom: '0.25rem',
-          fontSize: '11px',
-          fontWeight: 600,
-          color: 'var(--text-more-muted)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.4rem',
-          textTransform: 'uppercase',
-          letterSpacing: '0.08em',
-        }}
-      >
-        <re-icon icon={icon} size="11" color="currentColor" style={{ color: 'var(--text-more-muted)' }} />
-        {label}
-      </div>
-    );
-  }
-
   const sidebarContent = (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0', width: '100%' }}>
-
-      {renderSeparator('star', 'Quick Access', true)}
-      <div style={{ padding: '2px 4px' }}>
-        <button
-          onClick={() => onNewToggle(!showNew)}
-          style={{
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '8px',
-            borderRadius: '10px',
-            border: showNew ? '1px solid rgba(108,92,231,0.5)' : '1px solid var(--border-base)',
-            background: showNew ? 'rgba(108,92,231,0.05)' : 'transparent',
-            boxShadow: showNew ? '0 0 12px rgba(108,92,231,0.15)' : 'none',
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-          }}
-        >
-          <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={showNew ? {
-              width: '10px', height: '10px', borderRadius: '9999px', flexShrink: 0,
-              background: 'linear-gradient(135deg,#5a4bd1,#7c6cf0)',
-              boxShadow: '0 0 8px rgba(124,108,240,0.8)',
-            } : {
-              width: '6px', height: '6px', borderRadius: '9999px', flexShrink: 0,
-              background: '#6C5CE7', boxShadow: '0 0 6px rgba(108,92,231,0.6)',
-              animation: 'sidebar-pulse 2s ease-in-out infinite',
-            }} />
-            <span style={{
-              fontSize: '13px', fontWeight: 500,
-              color: showNew ? '#6c5ce7' : 'var(--text-muted)',
-              transition: 'color 0.2s',
-            }}>
-              Added {NEW_ICONS_COUNT} icons
-            </span>
-          </span>
-          <span style={{
-            width: '24px', height: '24px', borderRadius: '6px', flexShrink: 0,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            border: showNew ? '1px solid var(--border-base)' : '1px solid var(--border-muted)',
-            background: showNew ? 'var(--surface-hover)' : 'transparent',
-            color: showNew ? 'var(--text-base)' : 'transparent',
-            transition: 'all 0.2s',
-          }}>
-            <Check size={14} />
-          </span>
-        </button>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      {/* Quick Access */}
+      <div className="reicon-sidebar-group">
+        <div className="sidebar-section-header">
+          <div className="sidebar-icon-box">
+            <re-icon icon="star" size="13" />
+          </div>
+          <span>Quick Access</span>
+        </div>
+        <div className="sidebar-items-container">
+          <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
+          <div className="pl-6 pr-0.5 my-1">
+            <button
+              onClick={() => onNewToggle(!showNew)}
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                showNew ? 'border-[#6C5CE7]/50 bg-[#6C5CE7]/8 shadow-[0_0_12px_rgba(108,92,231,0.15)]' : 'border-text-base/8 bg-text-base/3 hover:bg-text-base/5'
+              }`}
+            >
+              <span className="flex items-center gap-1.5 min-w-0">
+                <span className={showNew ? 'w-2 h-2 rounded-full bg-[#6C5CE7] shadow-[0_0_8px_rgba(108,92,231,0.8)] shrink-0' : 'w-1.5 h-1.5 rounded-full bg-[#6C5CE7] opacity-60 shrink-0'} />
+                <span className={`text-[12.5px] font-medium whitespace-nowrap truncate transition-colors ${showNew ? 'text-[#6c5ce7]' : 'text-text-base/70'}`}>
+                  Added {NEW_ICONS_COUNT} icons
+                </span>
+              </span>
+              <span className={`w-4 h-4 rounded flex items-center justify-center border transition-all shrink-0 ml-1 ${showNew ? 'border-[#6C5CE7]/50 bg-[#6C5CE7] text-white' : 'border-text-base/15 bg-transparent text-transparent'}`}>
+                <Check size={10} />
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      {renderSeparator('palette', 'Weights')}
-      {STYLE_OPTIONS.map((style) =>
-        renderItem(`weight-${style}`, `${style} Icons`, activeStyle === style)
-      )}
+      {/* Weights */}
+      <div className="reicon-sidebar-group">
+        <div className="sidebar-section-header">
+          <div className="sidebar-icon-box">
+            <re-icon icon="palette" size="13" />
+          </div>
+          <span>Weights</span>
+        </div>
+        <div className="sidebar-items-container">
+          <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
+          {STYLE_OPTIONS.map((style) =>
+            renderNavItem(`weight-${style}`, `${style} Icons`, activeStyle === style)
+          )}
+        </div>
+      </div>
 
-      {renderSeparator('size', 'Sizing')}
-      {SIZE_OPTIONS.map((size) =>
-        renderItem(`size-${size}`, `${size}px Grid`, activeSize === size)
-      )}
+      {/* Sizing */}
+      <div className="reicon-sidebar-group">
+        <div className="sidebar-section-header">
+          <div className="sidebar-icon-box">
+            <re-icon icon="size" size="13" />
+          </div>
+          <span>Sizing</span>
+        </div>
+        <div className="sidebar-items-container">
+          <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
+          {SIZE_OPTIONS.map((size) =>
+            renderNavItem(`size-${size}`, `${size}px Grid`, activeSize === size)
+          )}
+        </div>
+      </div>
 
-      {renderSeparator('category2', 'Categories')}
-      {renderItem('cat-all', 'All Categories', activeSet === 'all' && !showNew)}
-      {categories.map((cat) =>
-        renderItem(`cat-${cat}`, fmt(cat), activeSet === cat && !showNew)
-      )}
+      {/* Categories */}
+      <div className="reicon-sidebar-group">
+        <div className="sidebar-section-header">
+          <div className="sidebar-icon-box">
+            <re-icon icon="category2" size="13" />
+          </div>
+          <span>Categories</span>
+        </div>
+        <div className="sidebar-items-container">
+          <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
+          {renderNavItem('cat-all', 'All Categories', activeSet === 'all' && !showNew)}
+          {categories.map((cat) =>
+            renderNavItem(`cat-${cat}`, fmt(cat), activeSet === cat && !showNew)
+          )}
+        </div>
+      </div>
     </div>
   );
 
@@ -257,18 +194,124 @@ function Sidebar({
           50%      { opacity:0.5; transform:scale(0.85); }
         }
         #nd-sidebar {
-          width: 13rem;
+          width: 13.5rem;
           height: calc(100vh - 3.5rem);
           position: sticky;
           top: 3.5rem;
           overflow-y: auto;
-          padding: 1rem 0.5rem;
+          padding: 1.25rem 0.5rem 2rem 0.75rem;
+          margin-left: 0.5rem;
           z-index: 30;
           background-color: var(--bg-base);
           scrollbar-width: none;
           flex-shrink: 0;
         }
         #nd-sidebar::-webkit-scrollbar { display: none; }
+
+        .reicon-sidebar-group {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          margin-top: 1.25rem;
+        }
+        .reicon-sidebar-group:first-child {
+          margin-top: 0;
+        }
+        .sidebar-section-header {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.375rem;
+          font-size: 11px;
+          font-weight: 600;
+          color: var(--text-more-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+        .sidebar-icon-box {
+          width: 1.25rem;
+          height: 1.25rem;
+          border-radius: 5px;
+          background-color: var(--surface-hover);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-muted);
+          flex-shrink: 0;
+        }
+        .sidebar-items-container {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 0.125rem;
+        }
+        .sidebar-section-line {
+          position: absolute;
+          left: 0.625rem;
+          top: -0.375rem;
+          bottom: 0.5rem;
+          width: 1px;
+          transform: translateX(-50%);
+          pointer-events: none;
+        }
+        .sidebar-item {
+          position: relative;
+          display: flex;
+          align-items: center;
+          padding: 0.375rem 0.5rem 0.375rem 1.625rem;
+          border-radius: 8px;
+          cursor: pointer;
+          background: transparent;
+          min-height: 2rem;
+          font-size: 13px;
+          color: var(--text-muted);
+          transition: color 0.15s ease;
+          user-select: none;
+          border: 0;
+          width: 100%;
+          text-align: left;
+        }
+        .sidebar-item:hover {
+          color: var(--text-hover);
+        }
+        .sidebar-item.active {
+          color: var(--text-base);
+          font-weight: 600;
+        }
+        .sidebar-item-active-bar {
+          position: absolute;
+          left: 0.625rem;
+          top: 22%;
+          bottom: 22%;
+          width: 3px;
+          border-radius: 9999px;
+          background-color: #6C5CE7;
+          box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+          transform: translateX(-50%);
+          z-index: 10;
+        }
+        .sidebar-item-hover-bar {
+          position: absolute;
+          left: 0.625rem;
+          top: 22%;
+          bottom: 22%;
+          width: 3px;
+          border-radius: 9999px;
+          background-color: var(--text-more-muted);
+          opacity: 0;
+          transform: translateX(-50%);
+          transition: opacity 0.15s ease;
+          z-index: 5;
+        }
+        .sidebar-item:hover .sidebar-item-hover-bar {
+          opacity: 0.6;
+        }
+        .sidebar-item-text {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+
         .reicon-sidebar-backdrop {
           position:fixed; inset:0; z-index:40;
           background: var(--shadow-color); backdrop-filter:blur(6px);

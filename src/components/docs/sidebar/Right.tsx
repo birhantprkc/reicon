@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
+import { motion } from 'motion/react';
 
 interface PageSection { id: string; label: string }
 
@@ -13,6 +14,8 @@ interface Props {
 export default function DocsRightSidebar({
     onThisPage, activeSection, otpIndicatorStyle, otpListRef, onNavClick,
 }: Props) {
+    const [hoveredId, setHoveredId] = useState<string | null>(null);
+
     return (
         <aside id="otp-sidebar" className="hidden xl:block" data-lenis-prevent>
             <div className="otp-header">
@@ -22,22 +25,50 @@ export default function DocsRightSidebar({
                 <span>On this page</span>
             </div>
             <div className="relative">
-                <div
+                <motion.div
                     className="otp-indicator"
-                    style={{
-                        top: `${otpIndicatorStyle.top}px`,
-                        height: `${otpIndicatorStyle.height}px`,
+                    animate={{
+                        top: otpIndicatorStyle.top,
+                        height: otpIndicatorStyle.height,
                         opacity: otpIndicatorStyle.opacity,
                     }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
                 <ul className="otp-list" ref={otpListRef}>
-                    {onThisPage.map((s) => (
-                        <li key={s.id} className={`otp-item ${activeSection === s.id ? 'active' : ''}`}>
-                            <button onClick={() => onNavClick(s.id)} className="otp-button">
-                                {s.label}
-                            </button>
-                        </li>
-                    ))}
+                    {onThisPage.map((s, itemIndex) => {
+                        const isActive = activeSection === s.id;
+                        const hoveredIndex = hoveredId ? onThisPage.findIndex((it) => it.id === hoveredId) : -1;
+                        const distance = (hoveredIndex !== -1 && itemIndex !== -1) ? Math.abs(hoveredIndex - itemIndex) : -1;
+
+                        let offsetX = 0;
+                        if (distance === 0) {
+                            offsetX = 4;
+                        } else if (distance === 1) {
+                            offsetX = 2;
+                        }
+
+                        return (
+                            <li
+                                key={s.id}
+                                className={`otp-item ${isActive ? 'active' : ''}`}
+                                onMouseEnter={() => setHoveredId(s.id)}
+                                onMouseLeave={() => setHoveredId(null)}
+                            >
+                                <button
+                                    onClick={() => onNavClick(s.id)}
+                                    className="otp-button"
+                                >
+                                    <motion.span
+                                        className="inline-block"
+                                        animate={{ x: offsetX }}
+                                        transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+                                    >
+                                        {s.label}
+                                    </motion.span>
+                                </button>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         </aside>

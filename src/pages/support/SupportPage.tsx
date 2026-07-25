@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { Heart, HandHeart, Sparkles, Star, Code, Check } from 'reicon-react';
 import BuyMeACoffeeIcon from '../../components/ui/BuyMeACoffeeIcon';
 import { PAGE_META } from '../../data/page-meta';
+import DocsActionsBar from '../../components/docs/ActionsBar';
 
 const BUY_ME_A_COFFEE_URL = 'https://buymeacoffee.com/reicon';
 
@@ -57,6 +58,15 @@ const IMPACT_CARDS = [
 
 export default function SupportPage() {
   const [copiedLink, setCopiedLink] = useState(false);
+  const [copiedPage, setCopiedPage] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const openDropdownRef = useRef<HTMLDivElement>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
 
   const handleShare = async () => {
     try {
@@ -66,6 +76,35 @@ export default function SupportPage() {
     } catch {
       // fallback
     }
+  };
+
+  const getPageMarkdown = () => {
+    return `# Support Reicon Development\n\nReicon is 100% free and open-source under the MIT license. If Reicon helps you ship faster apps or craft cleaner designs, consider buying a coffee to support its future.\n\nBuy a coffee: ${BUY_ME_A_COFFEE_URL}`;
+  };
+
+  const handleCopyPageMarkdown = async () => {
+    try {
+      await navigator.clipboard.writeText(getPageMarkdown());
+      setCopiedPage(true);
+      showToast('Support page markdown copied!');
+      setTimeout(() => setCopiedPage(false), 2000);
+    } catch {
+      showToast('Failed to copy');
+    }
+  };
+
+  const openInLLM = async (platform: 'chatgpt' | 'claude' | 't3') => {
+    const md = getPageMarkdown();
+    try { await navigator.clipboard.writeText(md); } catch { /* silent */ }
+    const promptText = `Here is the Reicon Support page details. Please read it and help answer my questions:\n\n${md}`;
+    const urls = {
+      chatgpt: `https://chatgpt.com/?hints=search&q=${encodeURIComponent(promptText)}`,
+      claude: `https://claude.ai/new?q=${encodeURIComponent(promptText)}`,
+      t3: `https://t3.chat/new?q=${encodeURIComponent(promptText)}`,
+    };
+    setOpenDropdown(false);
+    showToast('Markdown copied! Opening AI Chat...');
+    window.open(urls[platform], '_blank');
   };
 
   return (
@@ -214,7 +253,7 @@ export default function SupportPage() {
       </div>
 
       {/* Creator Note */}
-      <div className="bg-gradient-to-r from-text-base/4 via-text-base/3 to-text-base/4 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-text-base/4 via-text-base/3 to-text-base/4 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
         <div className="space-y-2 text-center md:text-left">
           <div className="inline-flex items-center gap-1 text-xs text-[#FFDD00] font-semibold">
             <Star size={14} weight="Filled" />
@@ -236,6 +275,26 @@ export default function SupportPage() {
           <span>buymeacoffee.com/reicon</span>
         </a>
       </div>
+
+      <hr className="border-text-base/6 my-12" />
+
+      <DocsActionsBar
+        copiedPage={copiedPage}
+        openDropdown={openDropdown}
+        openDropdownRef={openDropdownRef}
+        githubEditUrl="https://github.com/dqev/reicon/edit/main/src/pages/support/SupportPage.tsx"
+        githubUrl="https://github.com/dqev/reicon"
+        onCopyMarkdown={handleCopyPageMarkdown}
+        onOpenDropdown={setOpenDropdown}
+        onOpenInLLM={openInLLM}
+      />
+
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
     </motion.div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'motion/react';
-import EditOnGitHub from '../../components/docs/EditOnGitHub';
+import DocsActionsBar from '../../components/docs/ActionsBar';
 import { docsSidebarStyles } from '../../components/docs/sidebar/styles';
 import DocsRightSidebar from '../../components/docs/sidebar/Right';
 import FaqHelmet from './FaqHelmet';
@@ -161,8 +161,31 @@ export default function FaqPage() {
   const [otpIndicatorStyle, setOtpIndicatorStyle] = useState({ top: 0, height: 0, opacity: 0 });
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
+  const [copiedPage, setCopiedPage] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   const contentRef = useRef<HTMLDivElement>(null);
   const otpListRef = useRef<HTMLUListElement>(null);
+  const openDropdownRef = useRef<HTMLDivElement>(null);
+
+  const githubUrl = 'https://github.com/dqev/reicon/blob/main/src/pages/faq/FaqPage.tsx';
+  const githubEditUrl = 'https://github.com/dqev/reicon/edit/main/src/pages/faq/FaqPage.tsx';
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (openDropdownRef.current && !openDropdownRef.current.contains(e.target as Node)) {
+        setOpenDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -209,13 +232,96 @@ export default function FaqPage() {
       .filter((cat) => cat.items.length > 0);
   }, [searchQuery]);
 
+  const handleCopyPageMarkdown = async () => {
+    try {
+      let md = '# Frequently Asked Questions\n\n';
+      FAQ_CATEGORIES.forEach((cat) => {
+        md += `## ${cat.title}\n\n`;
+        cat.items.forEach((item) => {
+          md += `### ${item.question}\n\n`;
+        });
+      });
+      await navigator.clipboard.writeText(md);
+      setCopiedPage(true);
+      showToast('FAQ markdown copied!');
+      setTimeout(() => setCopiedPage(false), 2000);
+    } catch {
+      showToast('Failed to copy');
+    }
+  };
+
+  const openInLLM = async (platform: 'chatgpt' | 'claude' | 't3') => {
+    let md = '# Frequently Asked Questions\n\n';
+    FAQ_CATEGORIES.forEach((cat) => {
+      md += `## ${cat.title}\n\n`;
+      cat.items.forEach((item) => {
+        md += `### ${item.question}\n\n`;
+      });
+    });
+    try { await navigator.clipboard.writeText(md); } catch { /* silent */ }
+    const promptText = `Here is the Reicon FAQ documentation. Please read it and help answer my questions:\n\n${md}`;
+    const urls = {
+      chatgpt: `https://chatgpt.com/?hints=search&q=${encodeURIComponent(promptText)}`,
+      claude: `https://claude.ai/new?q=${encodeURIComponent(promptText)}`,
+      t3: `https://t3.chat/new?q=${encodeURIComponent(promptText)}`,
+    };
+    setOpenDropdown(false);
+    showToast('Markdown copied! Opening AI Chat...');
+    window.open(urls[platform], '_blank');
+  };
+
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const allVisibleItems = useMemo(() => [
+    ...NAV_ITEMS.general,
+    ...NAV_ITEMS.technical,
+    ...NAV_ITEMS.design,
+  ], []);
+
   const renderNavItem = (item: { id: string; label: string }) => {
     const isActive = activeSection === item.id;
+    const hoveredIndex = hoveredId ? allVisibleItems.findIndex((it) => it.id === hoveredId) : -1;
+    const itemIndex = allVisibleItems.findIndex((it) => it.id === item.id);
+    const distance = (hoveredIndex !== -1 && itemIndex !== -1) ? Math.abs(hoveredIndex - itemIndex) : -1;
+
+    let offsetX = 0;
+    let hoverOpacity = 0;
+    if (distance === 0) {
+      offsetX = 4;
+      hoverOpacity = 0.6;
+    } else if (distance === 1) {
+      offsetX = 2;
+      hoverOpacity = 0;
+    }
+
     return (
-      <div key={item.id} onClick={() => scrollTo(item.id)} className={`sidebar-item ${isActive ? 'active' : ''}`}>
-        <div className="sidebar-item-line" />
-        {isActive ? <div className="sidebar-item-active-bar" /> : <div className="sidebar-item-hover-bar" />}
-        <span className="sidebar-item-text">{item.label}</span>
+      <div
+        key={item.id}
+        onClick={() => scrollTo(item.id)}
+        onMouseEnter={() => setHoveredId(item.id)}
+        onMouseLeave={() => setHoveredId(null)}
+        className={`sidebar-item ${isActive ? 'active' : ''}`}
+      >
+        {isActive ? (
+          <motion.div
+            layoutId="faqSidebarActiveBar"
+            className="sidebar-item-active-bar"
+            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+          />
+        ) : (
+          <motion.div
+            className="sidebar-item-hover-bar"
+            animate={{ opacity: hoverOpacity }}
+            transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+          />
+        )}
+        <motion.span
+          animate={{ x: offsetX }}
+          transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+          className="sidebar-item-text"
+        >
+          {item.label}
+        </motion.span>
       </div>
     );
   };
@@ -234,32 +340,49 @@ export default function FaqPage() {
 
         {/* Left sidebar */}
         <aside id="docs-sidebar" className="hidden lg:block" data-lenis-prevent>
-          <div>
-            <div className="sidebar-separator">
-              <re-icon icon="compass" size="12" />
+          <div className="reicon-sidebar-group">
+            <div className="sidebar-section-header">
+              <div className="sidebar-icon-box">
+                <re-icon icon="compass" size="13" />
+              </div>
               <span>General</span>
             </div>
-            <div>{NAV_ITEMS.general.map(renderNavItem)}</div>
+            <div className="sidebar-items-container">
+              <div className="sidebar-section-line" />
+              {NAV_ITEMS.general.map(renderNavItem)}
+            </div>
           </div>
-          <div className="mt-4">
-            <div className="sidebar-separator">
-              <re-icon icon="code" size="12" />
+
+          <div className="reicon-sidebar-group">
+            <div className="sidebar-section-header">
+              <div className="sidebar-icon-box">
+                <re-icon icon="code" size="13" />
+              </div>
               <span>Technical</span>
             </div>
-            <div>{NAV_ITEMS.technical.map(renderNavItem)}</div>
+            <div className="sidebar-items-container">
+              <div className="sidebar-section-line" />
+              {NAV_ITEMS.technical.map(renderNavItem)}
+            </div>
           </div>
-          <div className="mt-4">
-            <div className="sidebar-separator">
-              <re-icon icon="palette" size="12" />
+
+          <div className="reicon-sidebar-group">
+            <div className="sidebar-section-header">
+              <div className="sidebar-icon-box">
+                <re-icon icon="palette" size="13" />
+              </div>
               <span>Design</span>
             </div>
-            <div>{NAV_ITEMS.design.map(renderNavItem)}</div>
+            <div className="sidebar-items-container">
+              <div className="sidebar-section-line" />
+              {NAV_ITEMS.design.map(renderNavItem)}
+            </div>
           </div>
         </aside>
 
         {/* Main content */}
-        <main ref={contentRef} className="flex-1 min-w-0 px-4 md:px-8 lg:px-12 xl:px-16 pt-14 lg:pt-8 pb-16 overflow-x-hidden">
-          <div className="max-w-3xl">
+        <main ref={contentRef} className="flex-1 min-w-0 px-4 md:px-6 lg:px-8 xl:px-10 py-5 pb-36 lg:pb-12 overflow-x-hidden">
+          <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl md:text-4xl font-serif text-text-base mb-6">Frequently Asked Questions</h1>
             <p className="text-text-base/50 text-[15px] leading-[1.8] mb-8">
               Everything you need to know about Reicon. If your question isn't answered here, open a discussion on{' '}
@@ -299,7 +422,25 @@ export default function FaqPage() {
               />
             ))}
 
-            <EditOnGitHub filePath="src/pages/faq/FaqPage.tsx" />
+            <hr className="border-text-base/6 my-12" />
+
+            <DocsActionsBar
+              copiedPage={copiedPage}
+              openDropdown={openDropdown}
+              openDropdownRef={openDropdownRef}
+              githubEditUrl={githubEditUrl}
+              githubUrl={githubUrl}
+              onCopyMarkdown={handleCopyPageMarkdown}
+              onOpenDropdown={setOpenDropdown}
+              onOpenInLLM={openInLLM}
+            />
+
+            {toastMessage && (
+              <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>{toastMessage}</span>
+              </div>
+            )}
           </div>
         </main>
 

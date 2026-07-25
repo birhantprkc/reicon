@@ -1,12 +1,13 @@
 /** Scoped CSS string for the Docs page sidebars. Injected via <style> tag. */
 export const docsSidebarStyles = `
   #docs-sidebar {
-    width: 13rem;
+    width: 14rem;
     height: calc(100vh - 3.5rem);
     position: sticky;
     top: 3.5rem;
     overflow-y: auto;
-    padding: 1.25rem 0.75rem;
+    padding: 1.25rem 0.75rem 2rem 1.5rem;
+    margin-left: 1.5rem;
     z-index: 30;
     background-color: var(--bg-base);
     scrollbar-width: none;
@@ -15,87 +16,111 @@ export const docsSidebarStyles = `
   }
   #docs-sidebar::-webkit-scrollbar { display: none; }
 
-  .reicon-sidebar-list {
+  /* ── LEFT SIDEBAR GROUPS & CONNECTED LINE ── */
+  .reicon-sidebar-group {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    width: 100%;
+    margin-top: 1.25rem;
+  }
+  .reicon-sidebar-group:first-child {
+    margin-top: 0;
   }
 
-  .sidebar-separator {
-    padding: 0.5rem 0.75rem;
-    margin-top: 1.25rem;
-    margin-bottom: 0.25rem;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-more-muted);
+  .sidebar-section-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 0.375rem;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-more-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-  .reicon-sidebar-list > div:first-child .sidebar-separator { margin-top: 0; }
-  .sidebar-separator re-icon { color: var(--text-more-muted); }
+
+  .sidebar-icon-box {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem; /* 20px */
+    border-radius: 5px;
+    background-color: var(--surface-hover);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .sidebar-items-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .sidebar-section-line {
+    position: absolute;
+    left: 0.625rem; /* 10px = center of 20px icon box */
+    top: -0.375rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background-color: var(--border-base);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
 
   .sidebar-item {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0.375rem 0.5rem 0.375rem 1.5rem;
-    margin-left: 0.25rem;
+    padding: 0.375rem 0.5rem 0.375rem 1.625rem;
     border-radius: 8px;
     cursor: pointer;
     background: transparent;
     min-height: 2rem;
     font-size: 13px;
     color: var(--text-muted);
-    transition: color 0.15s ease, background-color 0.15s ease;
+    transition: color 0.15s ease;
     user-select: none;
     border: 0;
-    width: calc(100% - 0.25rem);
+    width: 100%;
     text-align: left;
   }
   .sidebar-item:hover {
     color: var(--text-hover);
-    background: var(--surface-base);
+    background: transparent;
   }
   .sidebar-item.active {
     color: var(--text-base);
     font-weight: 600;
-    background: var(--surface-hover);
+    background: transparent;
   }
 
-  .sidebar-item-line {
-    position: absolute;
-    left: 0.625rem;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: var(--border-base);
-  }
   .sidebar-item-active-bar {
     position: absolute;
-    left: 10.5px;
-    top: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    height: 56%;
+    left: 0.625rem;
+    top: 22%;
+    bottom: 22%;
     width: 3px;
     border-radius: 9999px;
     background-color: #6C5CE7;
     box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+    transform: translateX(-50%);
+    z-index: 10;
   }
   .sidebar-item-hover-bar {
     position: absolute;
     left: 0.625rem;
-    top: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    height: 56%;
+    top: 22%;
+    bottom: 22%;
     width: 3px;
     border-radius: 9999px;
     background-color: var(--text-more-muted);
     opacity: 0;
+    transform: translateX(-50%);
     transition: opacity 0.15s ease;
+    z-index: 5;
   }
   .sidebar-item:hover .sidebar-item-hover-bar { opacity: 0.6; }
 
@@ -103,17 +128,17 @@ export const docsSidebarStyles = `
     display: flex;
     align-items: center;
     width: 100%;
-    padding-left: 0.375rem;
   }
 
   /* ── RIGHT SIDEBAR: ON THIS PAGE ── */
   #otp-sidebar {
-    width: 13rem;
+    width: 14rem;
     height: calc(100vh - 3.5rem);
     position: sticky;
     top: 3.5rem;
     overflow-y: auto;
-    padding: 1.25rem 0.5rem;
+    padding: 1.25rem 1.5rem 2rem 0.75rem;
+    margin-right: 1.5rem;
     z-index: 30;
     background-color: var(--bg-base);
     scrollbar-width: none;
@@ -178,8 +203,12 @@ export const docsSidebarStyles = `
     font-size: 13px;
     color: var(--text-muted);
     cursor: pointer;
-    transition: color 0.15s ease, font-weight 0.15s ease;
+    transition: color 0.15s ease;
     user-select: none;
+  }
+
+  .otp-button:hover {
+    color: var(--text-hover);
   }
 
   .otp-button:hover {

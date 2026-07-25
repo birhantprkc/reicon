@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PAGE_META } from '../../data/page-meta';
 import { Copy, Check } from 'reicon-react';
+import DocsActionsBar from '../../components/docs/ActionsBar';
 
 const LICENSE_TEXT = `MIT License
 
@@ -27,11 +28,44 @@ SOFTWARE.`;
 
 export default function LicensePage() {
   const [copied, setCopied] = useState(false);
+  const [copiedPage, setCopiedPage] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const openDropdownRef = useRef<HTMLDivElement>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(LICENSE_TEXT);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleCopyPageMarkdown = async () => {
+    try {
+      await navigator.clipboard.writeText(LICENSE_TEXT);
+      setCopiedPage(true);
+      showToast('License markdown copied!');
+      setTimeout(() => setCopiedPage(false), 2000);
+    } catch {
+      showToast('Failed to copy');
+    }
+  };
+
+  const openInLLM = async (platform: 'chatgpt' | 'claude' | 't3') => {
+    try { await navigator.clipboard.writeText(LICENSE_TEXT); } catch { /* silent */ }
+    const promptText = `Here is the Reicon MIT License documentation. Please read it and help answer my questions:\n\n${LICENSE_TEXT}`;
+    const urls = {
+      chatgpt: `https://chatgpt.com/?hints=search&q=${encodeURIComponent(promptText)}`,
+      claude: `https://claude.ai/new?q=${encodeURIComponent(promptText)}`,
+      t3: `https://t3.chat/new?q=${encodeURIComponent(promptText)}`,
+    };
+    setOpenDropdown(false);
+    showToast('Markdown copied! Opening AI Chat...');
+    window.open(urls[platform], '_blank');
   };
 
   return (
@@ -63,7 +97,7 @@ export default function LicensePage() {
         })}</script>
       </Helmet>
 
-      <main className="flex-1 pt-28 px-4 md:px-8 pb-12 max-w-3xl mx-auto w-full overflow-x-hidden">
+      <main className="flex-1 pt-28 px-4 md:px-8 pb-12 max-w-5xl mx-auto w-full overflow-x-hidden">
         <h1 className="text-3xl font-serif text-text-base mb-8">License</h1>
 
         <div className="space-y-8 text-[15px] text-text-base/60 leading-relaxed">
@@ -138,6 +172,26 @@ export default function LicensePage() {
             <p>If you have questions about licensing, contact us at <a href="mailto:hello@reicon.dev" className="text-[#6C5CE7] hover:underline">hello@reicon.dev</a>.</p>
           </section>
         </div>
+
+        <hr className="border-text-base/6 my-12" />
+
+        <DocsActionsBar
+          copiedPage={copiedPage}
+          openDropdown={openDropdown}
+          openDropdownRef={openDropdownRef}
+          githubEditUrl="https://github.com/dqev/reicon/edit/main/src/pages/license/LicensePage.tsx"
+          githubUrl="https://github.com/dqev/reicon"
+          onCopyMarkdown={handleCopyPageMarkdown}
+          onOpenDropdown={setOpenDropdown}
+          onOpenInLLM={openInLLM}
+        />
+
+        {toastMessage && (
+          <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>{toastMessage}</span>
+          </div>
+        )}
       </main>
     </div>
   );

@@ -40,8 +40,17 @@ export default function IconsPage() {
   const cached = useMemo(() => loadCache(), []);
   const [allIcons, setAllIcons] = useState<string[]>(() => cached.icons);
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeSet, setActiveSet] = useState('all');
-  const [activeStyle, setActiveStyle] = useState('All');
+  
+  const initialSet = searchParams.get('category') || searchParams.get('set') || 'all';
+  const initialStyle = useMemo(() => {
+    const w = searchParams.get('weight')?.toLowerCase();
+    if (w === 'filled') return 'Filled';
+    if (w === 'outline') return 'Outline';
+    return 'All';
+  }, [searchParams]);
+
+  const [activeSet, setActiveSet] = useState(initialSet);
+  const [activeStyle, setActiveStyle] = useState(initialStyle);
   const [activeSize, setActiveSize] = useState('32');
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>(() => cached.categoryMap);
   const [showNew, setShowNew] = useState(searchParams.get('new') === 'true');
@@ -49,6 +58,17 @@ export default function IconsPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [newIconsSet, setNewIconsSet] = useState<Set<string> | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const w = searchParams.get('weight')?.toLowerCase();
+    if (w === 'filled') setActiveStyle('Filled');
+    else if (w === 'outline') setActiveStyle('Outline');
+    
+    const cat = searchParams.get('category') || searchParams.get('set');
+    if (cat) setActiveSet(cat);
+
+    if (searchParams.get('new') === 'true') setShowNew(true);
+  }, [searchParams]);
 
   useEffect(() => {
     let cancelled = false;

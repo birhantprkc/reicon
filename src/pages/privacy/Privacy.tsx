@@ -1,7 +1,48 @@
+import { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PAGE_META } from '../../data/page-meta';
+import DocsActionsBar from '../../components/docs/ActionsBar';
 
 export default function Privacy() {
+  const [copiedPage, setCopiedPage] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const openDropdownRef = useRef<HTMLDivElement>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const getPageMarkdown = () => {
+    return `# Privacy Policy\n\nLast updated: May 6, 2025\n\n1. Overview\nReicon (reicon.dev) is committed to protecting your privacy.\n\n2. Information We Collect\nAnalytics Data, CDN Logs, Contact Information.\n\n3. Information We Do NOT Collect\nNo account creation, no payment info, no ad trackers, no data selling, no tracking cookies.\n\n4. Third-Party Services\nVercel, Google Fonts, cdn.reicon.dev.\n\n5. Data Retention\nAggregated analytics, temporary server logs.\n\n6. Your Rights\nRequest info, request deletion, opt out of analytics.\n\n7. Children's Privacy\nNot knowingly collected.\n\n8. Changes to This Policy\nPosted with updated revision date.\n\n9. Contact\nhello@reicon.dev`;
+  };
+
+  const handleCopyPageMarkdown = async () => {
+    try {
+      await navigator.clipboard.writeText(getPageMarkdown());
+      setCopiedPage(true);
+      showToast('Privacy policy markdown copied!');
+      setTimeout(() => setCopiedPage(false), 2000);
+    } catch {
+      showToast('Failed to copy');
+    }
+  };
+
+  const openInLLM = async (platform: 'chatgpt' | 'claude' | 't3') => {
+    const md = getPageMarkdown();
+    try { await navigator.clipboard.writeText(md); } catch { /* silent */ }
+    const promptText = `Here is the Reicon Privacy Policy documentation. Please read it and help answer my questions:\n\n${md}`;
+    const urls = {
+      chatgpt: `https://chatgpt.com/?hints=search&q=${encodeURIComponent(promptText)}`,
+      claude: `https://claude.ai/new?q=${encodeURIComponent(promptText)}`,
+      t3: `https://t3.chat/new?q=${encodeURIComponent(promptText)}`,
+    };
+    setOpenDropdown(false);
+    showToast('Markdown copied! Opening AI Chat...');
+    window.open(urls[platform], '_blank');
+  };
+
   return (
     <div>
       <Helmet>
@@ -31,7 +72,7 @@ export default function Privacy() {
         })}</script>
       </Helmet>
 
-      <main className="flex-1 pt-28 px-4 md:px-8 pb-12 max-w-3xl mx-auto w-full overflow-x-hidden">
+      <main className="flex-1 pt-28 px-4 md:px-8 pb-12 max-w-5xl mx-auto w-full overflow-x-hidden">
         <h1 className="text-3xl font-serif text-text-base mb-8">Privacy Policy</h1>
         <p className="text-sm text-text-base/40 mb-8">Last updated: May 6, 2025</p>
 
@@ -100,6 +141,26 @@ export default function Privacy() {
             <p>For privacy-related questions or requests, contact us at <a href="mailto:hello@reicon.dev" className="text-[#6C5CE7] hover:underline">hello@reicon.dev</a>.</p>
           </section>
         </div>
+
+        <hr className="border-text-base/6 my-12" />
+
+        <DocsActionsBar
+          copiedPage={copiedPage}
+          openDropdown={openDropdown}
+          openDropdownRef={openDropdownRef}
+          githubEditUrl="https://github.com/dqev/reicon/edit/main/src/pages/privacy/Privacy.tsx"
+          githubUrl="https://github.com/dqev/reicon"
+          onCopyMarkdown={handleCopyPageMarkdown}
+          onOpenDropdown={setOpenDropdown}
+          onOpenInLLM={openInLLM}
+        />
+
+        {toastMessage && (
+          <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>{toastMessage}</span>
+          </div>
+        )}
       </main>
     </div>
   );

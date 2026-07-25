@@ -71,7 +71,7 @@ export default function DocsActionsBar({
                                 <SiGithub size={14} />
                                 Open in GitHub
                             </span>
-                            <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
+                            <re-icon icon="arrow-up-right" size={12} className="text-text-base/30"></re-icon>
                         </a>
 
                         <button
@@ -85,7 +85,7 @@ export default function DocsActionsBar({
                                 </svg>
                                 Open in ChatGPT
                             </span>
-                            <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
+                            <re-icon icon="arrow-up-right" size={12} className="text-text-base/30"></re-icon>
                         </button>
 
                         <button
@@ -96,7 +96,7 @@ export default function DocsActionsBar({
                                 <SiClaude size={14} />
                                 Open in Claude
                             </span>
-                            <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
+                            <re-icon icon="arrow-up-right" size={12} className="text-text-base/30"></re-icon>
                         </button>
 
                         <button
@@ -107,7 +107,7 @@ export default function DocsActionsBar({
                                 <re-icon icon="chat" size={14}></re-icon>
                                 Open in T3 Chat
                             </span>
-                            <re-icon icon="arrow-up-right2" size={12} className="text-text-base/30"></re-icon>
+                            <re-icon icon="arrow-up-right" size={12} className="text-text-base/30"></re-icon>
                         </button>
                     </div>
                 )}
