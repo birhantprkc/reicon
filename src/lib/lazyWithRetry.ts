@@ -12,15 +12,20 @@ export function lazyWithRetry<T extends ComponentType<any>>(
 
     try {
       const component = await componentImport();
-      sessionStorage.setItem('reicon_chunk_refreshed', 'false');
+      sessionStorage.removeItem('reicon_chunk_refreshed');
+      sessionStorage.removeItem('reicon_eb_refreshed');
       return component;
     } catch (error: unknown) {
       const errMessage = error instanceof Error ? error.message : String(error);
       const isChunkError =
-        errMessage.includes('Failed to fetch dynamically imported module') ||
+        errMessage.includes('Failed to fetch') ||
+        errMessage.includes('dynamically imported module') ||
         errMessage.includes('Importing a module script failed') ||
+        errMessage.includes('Failed to load module script') ||
+        errMessage.includes('Strict MIME type') ||
         errMessage.includes('text/html') ||
-        (error as { name?: string })?.name === 'ChunkLoadError';
+        (error as { name?: string })?.name === 'ChunkLoadError' ||
+        (error as { name?: string })?.name === 'TypeError';
 
       if (isChunkError && !pageHasBeenRefreshed) {
         sessionStorage.setItem('reicon_chunk_refreshed', 'true');
