@@ -16,15 +16,12 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   static getDerivedStateFromError(error: Error): State {
     const msg = error?.message || '';
+    const name = error?.name || '';
     const isChunkError =
-      msg.includes('Failed to fetch') ||
-      msg.includes('dynamically imported module') ||
+      name === 'ChunkLoadError' ||
+      msg.includes('Failed to fetch dynamically imported module') ||
       msg.includes('Importing a module script failed') ||
-      msg.includes('Failed to load module script') ||
-      msg.includes('Strict MIME type') ||
-      msg.includes('text/html') ||
-      error?.name === 'TypeError' ||
-      error?.name === 'ChunkLoadError';
+      msg.includes('Failed to load module script');
 
     return { hasError: true, error, isChunkError };
   }
@@ -35,7 +32,8 @@ export default class ErrorBoundary extends Component<Props, State> {
       const refreshed = sessionStorage.getItem('reicon_eb_refreshed') === 'true';
       if (!refreshed) {
         sessionStorage.setItem('reicon_eb_refreshed', 'true');
-        window.location.reload();
+        const cleanPath = window.location.pathname;
+        window.location.href = `${cleanPath}?v=${Date.now()}`;
       }
     }
   }
@@ -57,13 +55,14 @@ export default class ErrorBoundary extends Component<Props, State> {
               <p className="text-sm text-text-base/60 mb-6">
                 {this.state.isChunkError
                   ? 'Reicon has just been updated with new features and improvements. Please reload to load the latest version.'
-                  : 'An unexpected error occurred while loading this view.'}
+                  : (this.state.error?.message || 'An unexpected error occurred while loading this view.')}
               </p>
               <button
                 onClick={() => {
                   sessionStorage.removeItem('reicon_chunk_refreshed');
                   sessionStorage.removeItem('reicon_eb_refreshed');
-                  window.location.reload();
+                  const cleanPath = window.location.pathname;
+                  window.location.href = `${cleanPath}?v=${Date.now()}`;
                 }}
                 className="w-full py-2.5 px-4 rounded-xl bg-[#6C5CE7] hover:bg-[#5a4bd1] text-white text-sm font-semibold transition-all shadow-[0_0_16px_rgba(108,92,231,0.3)] cursor-pointer"
               >
