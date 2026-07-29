@@ -23,17 +23,6 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      const msg = this.state.error?.message || '';
-      const isChunkError =
-        msg.includes('Failed to fetch') ||
-        msg.includes('dynamically imported module') ||
-        msg.includes('Importing a module script failed') ||
-        msg.includes('Failed to load module script');
-
-      if (isChunkError) {
-        window.location.href = window.location.pathname + '?v=' + Date.now();
-        return null;
-      }
 
       return (
         this.props.fallback || (
