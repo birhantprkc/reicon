@@ -10,7 +10,7 @@ export interface PageMeta {
 
 export const PAGE_META: Record<string, PageMeta> = {
   '/': { title: 'Reicon', description: 'Open-Source Icon Library for Designers & Developers', url: 'https://reicon.dev/', ogImage: 'https://reicon.dev/og/og.jpg' },
-  '/icons': { title: 'Reicon — 2,700+ Free SVG Icons', description: 'Browse 2,700+ free, open-source SVG icons. Outline & Filled weights. MIT licensed.', url: 'https://reicon.dev/icons', ogImage: 'https://reicon.dev/og/icons.jpg' },
+  '/icons': { title: 'Free Open-Source SVG Icons — Reicon', description: 'Browse 3,900+ free, open-source SVG icons in Outline, Filled, and Duotone weights. MIT licensed.', url: 'https://reicon.dev/icons', ogImage: 'https://reicon.dev/og/icons.jpg' },
   '/docs': { title: 'Reicon Docs — Get Started', description: 'Get started with Reicon. Install and use icons in React, Vue, Svelte, Flutter, Figma, VS Code, and MCP.', url: 'https://reicon.dev/docs', ogImage: 'https://reicon.dev/og/docs.jpg' },
   '/docs/react': { title: 'Reicon for React — Reicon', description: 'Install and use Reicon in React. Import components, customize props, tree-shake unused icons.', url: 'https://reicon.dev/docs/react', ogImage: 'https://reicon.dev/og/docs-react.jpg' },
   '/docs/react-native': { title: 'Reicon for React Native — Reicon', description: 'Install and use Reicon in React Native. SVG components for Expo and bare React Native.', url: 'https://reicon.dev/docs/react-native', ogImage: 'https://reicon.dev/og/docs-react-native.jpg' },
