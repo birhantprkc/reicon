@@ -18,9 +18,12 @@ export default function useIconDetail() {
   const { name } = useParams<{ name: string }>();
   const [searchParams] = useSearchParams();
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [activeWeight, setActiveWeight] = useState<'outline' | 'filled'>(
-    searchParams.get('weight') === 'filled' ? 'filled' : 'outline'
-  );
+  const [activeWeight, setActiveWeight] = useState<'outline' | 'filled' | 'duotone'>(() => {
+    const w = searchParams.get('weight')?.toLowerCase();
+    if (w === 'filled') return 'filled';
+    if (w === 'duotone') return 'duotone';
+    return 'outline';
+  });
   const [previewSize, setPreviewSize] = useState(96);
   const [toast, setToast] = useState<string | null>(null);
   const [exportSize, setExportSize] = useState(64);
@@ -98,7 +101,10 @@ export default function useIconDetail() {
   const activeTab = CODE_TABS.find((t) => t.id === codeTab)!;
 
   useEffect(() => {
-    setActiveWeight(searchParams.get('weight') === 'filled' ? 'filled' : 'outline');
+    const w = searchParams.get('weight')?.toLowerCase();
+    if (w === 'filled') setActiveWeight('filled');
+    else if (w === 'duotone') setActiveWeight('duotone');
+    else setActiveWeight('outline');
   }, [name, searchParams]);
 
   useEffect(() => {

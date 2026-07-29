@@ -87,12 +87,12 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                                 Handcrafted & Open Source
                             </div>
                             <Link
-                                to="/icons?new=true"
-                                className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg border border-white/10 rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors"
+                                to="/icons?weight=duotone"
+                                className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg border border-white/10 rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors group"
                             >
                                 <span className="w-[6px] h-[6px] bg-[#6C5CE7] rounded-full shrink-0 animate-pulse" />
-                                {newIconCount} New Icons Added
-                                <Confetti2 size={15} color="currentColor" />
+                                <span>1,200+ New Duotone Icons Added</span>
+                                <Confetti2 size={15} color="currentColor" className="text-text-base/70 group-hover:scale-110 transition-transform" />
                             </Link>
                         </div>
 

@@ -46,7 +46,7 @@ function Sidebar({
   const fmt = (name: string) =>
     name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
-  function renderNavItem(id: string, label: string, isActive: boolean) {
+  function renderNavItem(id: string, label: string, isActive: boolean, isBeta?: boolean) {
     const isHovered = hoveredItem === id;
 
     return (
@@ -96,7 +96,12 @@ function Sidebar({
           transition={{ type: 'spring', stiffness: 200, damping: 20 }}
           className="sidebar-item-text"
         >
-          {label}
+          <span className="truncate">{label}</span>
+          {isBeta && (
+            <span className="ml-auto shrink-0 px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-md bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30 leading-none">
+              Beta
+            </span>
+          )}
         </motion.span>
       </div>
     );
@@ -146,7 +151,12 @@ function Sidebar({
         <div className="sidebar-items-container">
           <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
           {STYLE_OPTIONS.map((style) =>
-            renderNavItem(`weight-${style}`, `${style} Icons`, activeStyle === style)
+            renderNavItem(
+              `weight-${style}`,
+              `${style} Icons`,
+              activeStyle === style,
+              style === 'Duotone'
+            )
           )}
         </div>
       </div>

@@ -9,6 +9,7 @@ import IconGrid from './IconGrid';
 import LoadingScreen from '../../components/ui/LoadingScreen';
 import { loadIconData } from '../../lib/icon-data';
 import { waitForReicon } from '../../lib/reicon-loader';
+import { useDuotoneData } from '../../hooks/useDuotoneData';
 
 const LS_ICONS = 'reicon-icons-cache';
 const LS_MAP = 'reicon-map-cache';
@@ -36,7 +37,7 @@ function saveCache(icons: string[], categoryMap: Record<string, string>) {
 }
 
 export default function IconsPage() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const cached = useMemo(() => loadCache(), []);
   const [allIcons, setAllIcons] = useState<string[]>(() => cached.icons);
   const [searchQuery, setSearchQuery] = useState('');
@@ -46,6 +47,7 @@ export default function IconsPage() {
     const w = searchParams.get('weight')?.toLowerCase();
     if (w === 'filled') return 'Filled';
     if (w === 'outline') return 'Outline';
+    if (w === 'duotone') return 'Duotone';
     return 'All';
   }, [searchParams]);
 
@@ -59,10 +61,36 @@ export default function IconsPage() {
   const [newIconsSet, setNewIconsSet] = useState<Set<string> | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
 
+  const handleStyleChange = (style: string) => {
+    setActiveStyle(style);
+    const newParams = new URLSearchParams(searchParams);
+    if (style !== 'All') {
+      newParams.set('weight', style.toLowerCase());
+    } else {
+      newParams.delete('weight');
+    }
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const handleSetChange = (set: string) => {
+    setActiveSet(set);
+    const newParams = new URLSearchParams(searchParams);
+    if (set !== 'all') {
+      newParams.set('category', set);
+    } else {
+      newParams.delete('category');
+      newParams.delete('set');
+    }
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const { duotoneMap, loading: duotoneLoading } = useDuotoneData(activeStyle);
+
   useEffect(() => {
     const w = searchParams.get('weight')?.toLowerCase();
     if (w === 'filled') setActiveStyle('Filled');
     else if (w === 'outline') setActiveStyle('Outline');
+    else if (w === 'duotone') setActiveStyle('Duotone');
     
     const cat = searchParams.get('category') || searchParams.get('set');
     if (cat) setActiveSet(cat);
@@ -143,9 +171,9 @@ export default function IconsPage() {
       <div className="flex flex-1 pt-14">
         <Sidebar
           activeSet={activeSet}
-          onSetChange={setActiveSet}
+          onSetChange={handleSetChange}
           activeStyle={activeStyle}
-          onStyleChange={setActiveStyle}
+          onStyleChange={handleStyleChange}
           activeSize={activeSize}
           onSizeChange={setActiveSize}
           showNew={showNew}
@@ -171,6 +199,8 @@ export default function IconsPage() {
             ready={ready}
             searchQuery={searchQuery}
             onSearchClear={() => setSearchQuery('')}
+            duotoneMap={duotoneMap}
+            duotoneLoading={duotoneLoading}
           />
         </main>
       </div>

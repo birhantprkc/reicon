@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import IconCard, { IconCardSkeleton } from '../../components/ui/IconCard';
+import DuotoneIconCard from '../../components/ui/DuotoneIconCard';
 import { Highlight } from '../../components/ui/Highlight';
 import { IconTooltipProvider } from '../../components/ui/IconTooltip';
+import type { DuotoneIconInfo } from '../../hooks/useDuotoneData';
 
 const BATCH_SIZE = 60;
 
@@ -13,6 +15,8 @@ interface IconGridProps {
   ready: boolean;
   searchQuery: string;
   onSearchClear: () => void;
+  duotoneMap?: Record<string, DuotoneIconInfo> | null;
+  duotoneLoading?: boolean;
 }
 
 export default function IconGrid({
@@ -23,29 +27,48 @@ export default function IconGrid({
   ready,
   searchQuery,
   onSearchClear,
+  duotoneMap,
+  duotoneLoading,
 }: IconGridProps) {
   const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const totalCardsRef = useRef(0);
 
+  const effectiveIcons = useMemo(() => {
+    if (activeStyle === 'Duotone' && duotoneMap) {
+      return filteredIcons.filter((name) => Boolean(duotoneMap[name]));
+    }
+    return filteredIcons;
+  }, [filteredIcons, activeStyle, duotoneMap]);
+
   useEffect(() => {
     setVisibleCount(BATCH_SIZE);
-  }, [filteredIcons]);
+  }, [effectiveIcons, activeStyle]);
 
   const visibleCards = useMemo(() => {
+    if (activeStyle === 'Duotone' && duotoneMap) {
+      return effectiveIcons.slice(0, visibleCount).map((name) => (
+        <DuotoneIconCard
+          key={name}
+          name={name}
+          code={duotoneMap[name]?.code || ''}
+          size={displaySize}
+        />
+      ));
+    }
     if (activeStyle === 'All') {
       const nameSliceCount = Math.ceil(visibleCount / 2);
-      return filteredIcons.slice(0, nameSliceCount).flatMap((name) => [
+      return effectiveIcons.slice(0, nameSliceCount).flatMap((name) => [
         <IconCard key={`${name}-outline`} name={name} weight="outline" size={displaySize} />,
         <IconCard key={`${name}-filled`} name={name} weight="filled" size={displaySize} />,
       ]);
     }
-    return filteredIcons.slice(0, visibleCount).map((name) => (
+    return effectiveIcons.slice(0, visibleCount).map((name) => (
       <IconCard key={name} name={name} weight={displayWeight} size={displaySize} />
     ));
-  }, [filteredIcons, visibleCount, activeStyle, displaySize, displayWeight]);
+  }, [effectiveIcons, visibleCount, activeStyle, displaySize, displayWeight, duotoneMap]);
 
-  const totalCards = activeStyle === 'All' ? filteredIcons.length * 2 : filteredIcons.length;
+  const totalCards = activeStyle === 'All' ? effectiveIcons.length * 2 : effectiveIcons.length;
   const hasMore = visibleCount < totalCards;
 
   totalCardsRef.current = totalCards;
@@ -76,7 +99,7 @@ export default function IconGrid({
     }
   }, [filteredIcons, totalCards]);
 
-  if (!ready) {
+  if (!ready || (activeStyle === 'Duotone' && duotoneLoading)) {
     return (
       <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-1.5">
         {Array.from({ length: 96 }).map((_, i) => (

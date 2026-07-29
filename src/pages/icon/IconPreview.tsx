@@ -1,5 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { EASE } from './utils';
+import { useDuotoneData } from '../../hooks/useDuotoneData';
+import { useMemo } from 'react';
 
 interface IconPreviewProps {
   pascalName: string;
@@ -10,7 +12,7 @@ interface IconPreviewProps {
   previewSize: number;
   useCustomColor: boolean;
   customColor: string;
-  onSetActiveWeight: (w: 'outline' | 'filled') => void;
+  onSetActiveWeight: (w: 'outline' | 'filled' | 'duotone') => void;
   onSetPreviewSize: (s: number) => void;
   onReset: () => void;
 }
@@ -20,6 +22,14 @@ export default function IconPreview({
   activeWeight, previewSize, useCustomColor, customColor,
   onSetActiveWeight, onSetPreviewSize, onReset,
 }: IconPreviewProps) {
+  const { duotoneMap } = useDuotoneData(activeWeight === 'duotone' ? 'Duotone' : 'Outline');
+
+  const duotoneSvgInnerHtml = useMemo(() => {
+    if (activeWeight !== 'duotone' || !name || !duotoneMap?.[name]?.code) return null;
+    const rawCode = duotoneMap[name].code;
+    return rawCode.replace(/fill="#[A-Fa-f0-9]{6}"/gi, 'fill="currentColor"');
+  }, [activeWeight, name, duotoneMap]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -46,7 +56,7 @@ export default function IconPreview({
         <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t border-r border-[#6C5CE7]/35" />
         <div className="absolute bottom-2.5 left-2.5 w-2.5 h-2.5 border-b border-l border-[#6C5CE7]/35" />
         <div className="absolute bottom-2.5 right-2.5 w-2.5 h-2.5 border-b border-r border-[#6C5CE7]/35" />
-        <span className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[7.5px] font-mono text-[#6C5CE7]/45 select-none tracking-wider">24<span className="text-text-base/20"> \u00D7 </span>24</span>
+        <span className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[7.5px] font-mono text-[#6C5CE7]/45 select-none tracking-wider">24<span className="text-text-base/20"> × </span>24</span>
         <span className="absolute bottom-2.5 right-3 text-[8px] font-mono text-text-base/35 tabular-nums select-none">{previewSize}px</span>
         <span className="absolute bottom-2.5 left-3 text-[8px] font-mono text-text-base/25 select-none lowercase">{activeWeight}</span>
 
@@ -59,7 +69,18 @@ export default function IconPreview({
             transition={{ duration: 0.22, ease: EASE }}
             className="flex items-center justify-center"
           >
-            <re-icon icon={name} weight={activeWeight} size={previewSize} color={useCustomColor ? customColor : 'var(--text-base)'} aria-label={`${pascalName} icon preview`} />
+            {activeWeight === 'duotone' && duotoneSvgInnerHtml ? (
+              <svg
+                viewBox="0 0 24 24"
+                width={previewSize}
+                height={previewSize}
+                style={{ color: useCustomColor ? customColor : 'var(--text-base)' }}
+                aria-label={`${pascalName} icon preview`}
+                dangerouslySetInnerHTML={{ __html: duotoneSvgInnerHtml }}
+              />
+            ) : (
+              <re-icon icon={name} weight={activeWeight} size={previewSize} color={useCustomColor ? customColor : 'var(--text-base)'} aria-label={`${pascalName} icon preview`} />
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -106,10 +127,13 @@ export default function IconPreview({
         <div>
           <label className="text-[12px] text-text-base/50 mb-2 block">Weight</label>
           <div className="flex gap-2">
-            {(['outline', 'filled'] as const).map((w) => (
+            {(['outline', 'filled', 'duotone'] as const).map((w) => (
               <button key={w} onClick={() => onSetActiveWeight(w)}
-                className={`flex-1 px-3 py-2 rounded-lg text-[13px] font-medium transition-all cursor-pointer ${activeWeight === w ? 'bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30' : 'bg-text-base/5 text-text-base/40 border border-text-base/10 hover:text-text-base/60'}`}>
-                {w.charAt(0).toUpperCase() + w.slice(1)}
+                className={`flex-1 px-2.5 py-2 rounded-lg text-[13px] font-medium transition-all cursor-pointer flex items-center justify-center gap-1 ${activeWeight === w ? 'bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30' : 'bg-text-base/5 text-text-base/40 border border-text-base/10 hover:text-text-base/60'}`}>
+                <span>{w.charAt(0).toUpperCase() + w.slice(1)}</span>
+                {w === 'duotone' && (
+                  <span className="text-[8px] font-bold uppercase tracking-wider px-1 rounded bg-[#6C5CE7]/20 text-[#6C5CE7]">Beta</span>
+                )}
               </button>
             ))}
           </div>
@@ -127,3 +151,5 @@ export default function IconPreview({
     </motion.div>
   );
 }
+
+

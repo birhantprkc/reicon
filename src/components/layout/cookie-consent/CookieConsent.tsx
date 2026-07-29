@@ -32,7 +32,10 @@ export default function CookieConsent() {
     setStoredConsent(prefs);
     setPreferences(prefs);
     setAnimateIn(false);
-    setTimeout(() => setVisible(false), 500);
+    setTimeout(() => {
+      setVisible(false);
+      window.dispatchEvent(new CustomEvent('reicon-cookie-consent-dismissed'));
+    }, 500);
   };
 
   const handleAcceptAll = () => {
