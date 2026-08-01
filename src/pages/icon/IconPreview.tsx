@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { EASE } from './utils';
 import { useDuotoneData } from '../../hooks/useDuotoneData';
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 
 interface IconPreviewProps {
   pascalName: string;
@@ -22,7 +22,21 @@ export default function IconPreview({
   activeWeight, previewSize, useCustomColor, customColor,
   onSetActiveWeight, onSetPreviewSize, onReset,
 }: IconPreviewProps) {
-  const { duotoneMap } = useDuotoneData(activeWeight === 'duotone' ? 'Duotone' : 'Outline');
+  const { duotoneMap } = useDuotoneData('Duotone');
+
+  const hasDuotone = useMemo(() => {
+    return Boolean(name && duotoneMap && duotoneMap[name]?.code);
+  }, [name, duotoneMap]);
+
+  useEffect(() => {
+    if (duotoneMap && !hasDuotone && activeWeight === 'duotone') {
+      onSetActiveWeight('outline');
+    }
+  }, [duotoneMap, hasDuotone, activeWeight, onSetActiveWeight]);
+
+  const availableWeights = useMemo(() => {
+    return hasDuotone ? (['outline', 'filled', 'duotone'] as const) : (['outline', 'filled'] as const);
+  }, [hasDuotone]);
 
   const duotoneSvgInnerHtml = useMemo(() => {
     if (activeWeight !== 'duotone' || !name || !duotoneMap?.[name]?.code) return null;
@@ -127,7 +141,7 @@ export default function IconPreview({
         <div>
           <label className="text-[12px] text-text-base/50 mb-2 block">Weight</label>
           <div className="flex gap-2">
-            {(['outline', 'filled', 'duotone'] as const).map((w) => (
+            {availableWeights.map((w) => (
               <button key={w} onClick={() => onSetActiveWeight(w)}
                 className={`flex-1 px-2.5 py-2 rounded-lg text-[13px] font-medium transition-all cursor-pointer flex items-center justify-center gap-1 ${activeWeight === w ? 'bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30' : 'bg-text-base/5 text-text-base/40 border border-text-base/10 hover:text-text-base/60'}`}>
                 <span>{w.charAt(0).toUpperCase() + w.slice(1)}</span>
