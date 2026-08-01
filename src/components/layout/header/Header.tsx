@@ -30,30 +30,33 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
   return (
     <header ref={ref} className={`fixed top-0 left-0 right-0 z-50 bg-[var(--header-bg)] backdrop-blur-xl transition-colors duration-300 ${className}`}>
       <div className="flex items-center justify-between h-14 px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-1 shrink-0">
-          <img src={theme === 'dark' ? '/icon-light.webp' : '/icon-dark.webp'} alt="Reicon" loading="lazy" className="w-4 h-4" />
-          <span className="text-text-base font-semibold text-base">Reicon</span>
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-text-base font-semibold text-[14px] bg-text-base/[0.04] backdrop-blur-lg rounded-full px-3.5 h-[34px] hover:bg-text-base/10 transition-all duration-150 shadow-2xs shrink-0"
+        >
+          <img src={theme === 'dark' ? '/icon-light.webp' : '/icon-dark.webp'} alt="Reicon" loading="lazy" className="w-4.5 h-4.5" />
+          <span>Reicon</span>
         </Link>
 
         <div className="hidden sm:flex items-center gap-2">
           <NavLinks variant="desktop" />
           <Link
             to="/support"
-            className="hidden lg:inline-flex items-center gap-1.5 text-[12px] font-semibold bg-[#FFDD00] hover:bg-[#ffe533] text-[#0D0C22] rounded-full px-3 py-1 transition-all duration-150 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+            className="hidden lg:inline-flex items-center gap-1.5 text-[13px] font-medium bg-text-base/[0.04] hover:bg-text-base/10 text-text-base rounded-full px-4 h-[34px] transition-all duration-150 shadow-2xs"
             title="Support Reicon"
           >
             <BuyMeACoffeeIcon size={15} />
-            <span>Donate</span>
+            <span>Support</span>
           </Link>
           <a
             href="https://github.com/dqev/reicon"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-base/60 hover:text-text-base text-sm transition-colors px-3 py-1.5 flex items-center gap-1"
+            className="text-text-base/80 hover:text-text-base text-[13px] font-medium bg-text-base/[0.04] hover:bg-text-base/10 rounded-full px-4 h-[34px] flex items-center gap-1.5 transition-all duration-150 shadow-2xs"
           >
             GitHub
             {stars !== null && (
-              <span className="flex items-center gap-0.5 text-text-base/40 text-[11px] font-medium border-l border-text-base/10 pl-1.5 ml-0.5">
+              <span className="flex items-center gap-1 text-text-base/60 text-[11px] font-medium border-l border-text-base/20 pl-2 ml-0.5">
                 <Star size={11} weight="Filled" color="#eab308" className="shrink-0 relative -top-[0.5px]" />
                 {stars}
               </span>
@@ -61,7 +64,7 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
           </a>
           <button
             onClick={toggleTheme}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-text-base/8 text-text-base/60 hover:text-text-base transition-all duration-150 cursor-pointer"
+            className="w-[34px] h-[34px] flex items-center justify-center rounded-full bg-text-base/[0.04] hover:bg-text-base/10 text-text-base/70 hover:text-text-base transition-all duration-150 cursor-pointer shadow-2xs"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}

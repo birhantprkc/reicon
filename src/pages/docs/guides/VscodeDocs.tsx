@@ -1,6 +1,6 @@
 import SectionHeader from '../../../components/docs/SectionHeader';
 import SyntaxBlock from '../../../components/docs/SyntaxBlock';
-import { VscVscodeInsiders } from 'react-icons/vsc';
+import { VscodeIcon } from '../../../components/docs/framework/icons';
 
 interface Props {
   markdownContent: string;
@@ -16,7 +16,7 @@ export default function VscodeDocs({ markdownContent, copiedField, onCopy }: Pro
         title="VS Code"
         level="h2"
         markdownContent={markdownContent}
-        icon={<VscVscodeInsiders className="text-[#007ACC]" size={30} />}
+        icon={<VscodeIcon size={30} />}
       />
 
       <p className="text-text-base/60 text-[15px] leading-[1.8] mb-6">

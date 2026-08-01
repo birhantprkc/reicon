@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../../components/layout/Header';
 import { useTheme } from '../../components/layout/ThemeContext';
 
-import LaunchBanner from './LaunchBanner';
 import Hero from './Hero';
 import Features from './Features';
 import Integrations from './Integrations';
@@ -110,8 +109,6 @@ export default function HomePage() {
       `}</style>
 
       <Header ref={fixedNavRef} className="opacity-0 pointer-events-none transition-all duration-500" />
-
-      <LaunchBanner />
 
       <Hero
         theme={theme}

@@ -8,6 +8,9 @@ import ClayButton from '../../components/ui/Button';
 import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon } from './icons';
 import BuyMeACoffeeIcon from '../../components/ui/BuyMeACoffeeIcon';
 
+import NavLinks from '../../components/layout/header/NavLinks';
+import MobileMenu from '../../components/layout/header/MobileMenu';
+
 interface Props {
     theme: string;
     toggleTheme: () => void;
@@ -35,27 +38,32 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                 <div className="absolute inset-0 z-[2] flex flex-col justify-between p-[18px] md:p-[26px_40px]">
                     {/* Top bar */}
                     <div className="relative flex items-center justify-between">
-                        <Link to="/" className="flex items-center gap-2 text-text-base font-semibold text-[15px]">
-                            <img src={theme === 'dark' ? '/icon-light.webp' : '/icon-dark.webp'} alt="Reicon" loading="lazy" className="w-5 h-5" />
-                            Reicon
+                        <Link
+                            to="/"
+                            className="flex items-center gap-2 text-text-base font-semibold text-[14px] bg-text-base/[0.04] backdrop-blur-lg rounded-full px-3.5 py-[7px] hover:bg-text-base/10 transition-all duration-150 shadow-2xs"
+                        >
+                            <img src={theme === 'dark' ? '/icon-light.webp' : '/icon-dark.webp'} alt="Reicon" loading="lazy" className="w-4.5 h-4.5" />
+                            <span>Reicon</span>
                         </Link>
-                        <nav className="hidden md:flex gap-6 absolute left-1/2 -translate-x-1/2">
-                            <Link to="/docs" className="text-[13px] text-text-base/60 hover:text-text-base transition-colors">Docs</Link>
-                            <Link to="/icons" className="text-[13px] text-text-base/60 hover:text-text-base transition-colors">Icons</Link>
-                            <Link to="/packages" className="text-[13px] text-text-base/60 hover:text-text-base transition-colors">Packages</Link>
+                        <nav className="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2 bg-text-base/[0.04] backdrop-blur-lg rounded-full p-1 shadow-2xs">
+                            <Link to="/docs" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">Docs</Link>
+                            <Link to="/icons" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">Icons</Link>
+                            <Link to="/packages" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">Packages</Link>
+                            <Link to="/faq" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">FAQ</Link>
                         </nav>
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={toggleTheme}
-                                className="w-8 h-8 flex items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-lg hover:bg-white/10 text-text-base/80 hover:text-text-base transition-colors cursor-pointer"
+                                className="w-8 h-8 flex items-center justify-center rounded-full bg-text-base/[0.04] backdrop-blur-lg hover:bg-text-base/10 text-text-base/80 hover:text-text-base transition-colors cursor-pointer hidden md:flex"
                                 aria-label="Toggle theme"
                             >
                                 {theme === 'dark' ? <Sun size={15} color="currentColor" /> : <Moon size={15} color="currentColor" />}
                             </button>
+                            <MobileMenu stars={stars} theme={theme} toggleTheme={toggleTheme} />
                             <div className="hidden md:flex gap-2">
                                 <Link
                                     to="/support"
-                                    className="text-[13px] text-text-base/80 border border-white/20 bg-white/5 backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-white/10 transition-colors cursor-pointer flex items-center gap-1.5"
+                                    className="text-[13px] text-text-base/80 bg-text-base/[0.04] backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-text-base/10 transition-colors cursor-pointer flex items-center gap-1.5"
                                 >
                                     <BuyMeACoffeeIcon size={15} />
                                     Support
@@ -64,11 +72,11 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                                     href="https://github.com/dqev/reicon"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-[13px] text-text-base/80 border border-white/20 bg-white/5 backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-white/10 transition-colors cursor-pointer flex items-center gap-1.5"
+                                    className="text-[13px] text-text-base/80 bg-text-base/[0.04] backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-text-base/10 transition-colors cursor-pointer flex items-center gap-1.5"
                                 >
                                     GitHub
                                     {stars !== null && (
-                                        <span className="flex items-center gap-0.5 text-text-base/50 text-[11px] font-medium border-l border-white/15 pl-1.5">
+                                        <span className="flex items-center gap-0.5 text-text-base/50 text-[11px] font-medium border-l border-text-base/15 pl-1.5">
                                             <Star size={11} weight="Filled" color="#eab308" className="shrink-0 relative -top-[0.5px]" />
                                             {stars}
                                         </span>
@@ -82,16 +90,16 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                     {/* Center content */}
                     <div className="text-center px-3">
                         <div className="flex items-center justify-center gap-2 mb-5 flex-wrap">
-                            <div className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg border border-white/10 rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90">
-                                <HandHeart size={16} color="currentColor" />
-                                Handcrafted & Open Source
+                            <div className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90">
+                             <HandHeart size={16} color="currentColor" />
+                                 Open Source Library
                             </div>
                             <Link
                                 to="/icons?weight=duotone"
-                                className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg border border-white/10 rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors group"
+                                className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors group"
                             >
                                 <span className="w-[6px] h-[6px] bg-[#6C5CE7] rounded-full shrink-0 animate-pulse" />
-                                <span>1,200+ New Duotone Icons Added</span>
+                                <span>1,200+ Duotone Icons Added</span>
                                 <Confetti2 size={15} color="currentColor" className="text-text-base/70 group-hover:scale-110 transition-transform" />
                             </Link>
                         </div>
@@ -100,14 +108,14 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                             The icon library<br />designers actually want.
                         </h1>
                         <p className="text-[clamp(13px,1.45vw,18px)] text-text-base/60 leading-[1.65] max-w-[480px] mx-auto mb-7">
-                            Precision-crafted, open-source SVG icons for React, Vue, Svelte, Figma, and the web. Pixel-perfect. No auto-generation.
+                            Precision-crafted, open-source SVG icons for React, Vue, Svelte, Figma, and the web. Pixel-perfect.
                         </p>
                         <div className="flex items-center justify-center gap-[10px] flex-wrap">
                             <ClayButton to="/icons" variant="primary">
                                 <Search3 size={16} />
                                 Browse Icons
                             </ClayButton>
-                            <Link to="/docs" className="bg-white/10 text-text-base text-[14px] px-6 py-3 rounded-full border border-white/20 backdrop-blur-lg flex items-center gap-[6px] hover:bg-white/15 transition-colors">
+                            <Link to="/docs" className="bg-text-base/[0.04] hover:bg-text-base/10 text-text-base text-[14px] font-medium px-6 py-3 rounded-full backdrop-blur-lg flex items-center gap-[6px] transition-all duration-150 shadow-2xs">
                                 <Book3 size={16} color="currentColor" />
                                 Docs Guide
                             </Link>
@@ -116,49 +124,49 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                         {/* Integrations row */}
                         <div className="mt-14 flex flex-col items-center justify-center gap-3.5 select-none">
                             <span className="text-[10px] tracking-[0.15em] text-text-base/35 dark:text-text-base/30 uppercase font-semibold">Integrations</span>
-                            <div className="flex items-center justify-center gap-4 sm:gap-7 flex-wrap max-w-[600px]">
+                            <div className="flex items-center justify-center gap-x-5 gap-y-3 sm:gap-7 flex-wrap max-w-[250px] sm:max-w-[600px] mx-auto">
                                 <Link to="/docs/react" title="React" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <SiReact className="text-[#61DAFB]/70 hover:text-[#61DAFB] transition-colors" size={18} />
                                     <span className="hidden sm:inline">React</span>
-                                </Link>
-                                <Link to="/docs/react-native" title="React Native" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
-                                    <FaReact className="text-[#61DAFB]/60 hover:text-[#61DAFB] transition-colors" size={17} />
-                                    <span className="hidden sm:inline">React Native</span>
                                 </Link>
                                 <Link to="/docs/vue" title="Vue 3" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <VueIcon size={17} />
                                     <span className="hidden sm:inline">Vue</span>
                                 </Link>
+                                <Link to="/docs/figma" title="Figma" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
+                                    <FigmaIcon size={16} />
+                                    <span className="hidden sm:inline">Figma</span>
+                                </Link>
                                 <Link to="/docs/svelte" title="Svelte" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <SvelteIcon size={16} />
                                     <span className="hidden sm:inline">Svelte</span>
+                                </Link>
+                                <Link to="/docs/react-native" title="React Native" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
+                                    <FaReact className="text-[#61DAFB]/60 hover:text-[#61DAFB] transition-colors" size={17} />
+                                    <span className="hidden sm:inline">React Native</span>
                                 </Link>
                                 <Link to="/docs/vanilla" title="Vanilla JavaScript" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <SiJavascript className="text-[#F7DF1E]/80 hover:text-[#F7DF1E] transition-colors" size={16} />
                                     <span className="hidden sm:inline">JavaScript</span>
                                 </Link>
-                                <Link to="/docs/figma" title="Figma" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
-                                    <FigmaIcon size={16} />
-                                    <span className="hidden sm:inline">Figma</span>
-                                </Link>
                                 <Link to="/docs/vscode" title="VS Code" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <VscodeIcon size={17} />
                                     <span className="hidden sm:inline">VS Code</span>
                                 </Link>
-                                <Link to="/docs/mcp" title="MCP Server" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
-                                    <McpIcon size={16} />
-                                    <span className="hidden sm:inline">MCP Server</span>
-                                </Link>
                                 <Link to="/docs/flutter" title="Flutter" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                                     <FlutterIcon size={14} />
                                     <span className="hidden sm:inline">Flutter</span>
+                                </Link>
+                                <Link to="/docs/mcp" title="MCP Server" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
+                                    <McpIcon size={16} />
+                                    <span className="hidden sm:inline">MCP Server</span>
                                 </Link>
                             </div>
                         </div>
                     </div>
 
                     {/* Bottom bar */}
-                    <div className="flex items-end justify-center sm:justify-between">
+                    <div className="flex items-end justify-center sm:justify-centre">
                         <div className="flex gap-[26px]">
                             {[{ num: '2700+', label: 'Icons' }, { num: '2', label: 'Weights' }, { num: 'MIT', label: 'License' }].map((s) => (
                                 <div key={s.label}>
@@ -167,9 +175,6 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                                 </div>
                             ))}
                         </div>
-                        <a href="https://fluidshader.vercel.app/" target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center gap-1.5 text-[15px] text-text-base/50 hover:text-text-base/70 transition-colors cursor-pointer">
-                            Shader by <re-icon icon="palette" size={13}></re-icon> Fluid Shader
-                        </a>
                     </div>
                 </div>
             </div>
