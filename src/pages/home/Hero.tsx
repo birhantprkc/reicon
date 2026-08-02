@@ -31,11 +31,9 @@ export default function Hero({ heroCardRef }: Props) {
             >
                 <Background />
 
-                <div className="absolute inset-0 z-[2] flex flex-col justify-between pt-24 sm:pt-28 md:pt-32 pb-6 px-[18px] md:px-[40px]">
-
-
+                <div className="absolute inset-0 z-[2] flex flex-col justify-between pt-20 sm:pt-24 md:pt-28 pb-6 px-[18px] md:px-[40px]">
                     {/* Center content */}
-                    <div className="text-center px-3">
+                    <div className="my-auto text-center px-3 max-w-4xl mx-auto flex flex-col items-center justify-center">
                         <div className="flex items-center justify-center gap-2 mb-5 flex-wrap">
                             <a
                                 href="https://github.com/dqev/reicon"
@@ -60,7 +58,7 @@ export default function Hero({ heroCardRef }: Props) {
                             The icon library<br />designers actually want.
                         </h1>
                         <p className="text-[clamp(13px,1.45vw,18px)] text-text-base/60 leading-[1.65] max-w-[480px] mx-auto mb-7">
-                            Precision-crafted, open-source SVG icons for React, Vue, Svelte, Figma, and the web. Pixel-perfect.
+                            Open‑source SVGs for React, Vue, Svelte, Figma, and the web, drawn with the same care as your UI.
                         </p>
                         <div className="flex items-center justify-center gap-[10px] flex-wrap">
                             <ClayButton to="/icons" variant="primary">
@@ -74,7 +72,7 @@ export default function Hero({ heroCardRef }: Props) {
                         </div>
 
                         {/* Integrations row */}
-                        <div className="mt-14 flex flex-col items-center justify-center gap-3.5 select-none">
+                        <div className="mt-8 md:mt-10 flex flex-col items-center justify-center gap-3 select-none">
                             <span className="text-[10px] tracking-[0.15em] text-text-base/35 dark:text-text-base/30 uppercase font-semibold">Integrations</span>
                             <div className="flex items-center justify-center gap-x-5 gap-y-3 sm:gap-7 flex-wrap max-w-[250px] sm:max-w-[600px] mx-auto">
                                 <Link to="/docs/react" title="React" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
@@ -117,13 +115,16 @@ export default function Hero({ heroCardRef }: Props) {
                         </div>
                     </div>
 
-                    {/* Bottom bar */}
-                    <div className="flex items-end justify-center sm:justify-centre">
-                        <div className="flex gap-[26px]">
-                            {[{ num: '2700+', label: 'Icons' }, { num: '2', label: 'Weights' }, { num: 'MIT', label: 'License' }].map((s) => (
-                                <div key={s.label}>
-                                    <div className="font-serif text-[19px] font-semibold text-text-base leading-[1.2]">{s.num}</div>
-                                    <div className="text-[11px] text-text-base/45">{s.label}</div>
+                    {/* Bottom stats bar */}
+                    <div className="flex items-end justify-center pb-2">
+                        <div className="inline-flex items-center gap-5 sm:gap-8 px-6 sm:px-8 py-2.5">
+                            {[{ num: '2,700+', label: 'Icons' }, { num: '2', label: 'Weights' }, { num: 'MIT', label: 'License' }].map((s, idx) => (
+                                <div key={s.label} className="flex items-center gap-5 sm:gap-8">
+                                    <div className="flex items-baseline gap-1.5 sm:gap-2">
+                                        <span className="font-serif text-[18px] sm:text-[21px] font-semibold text-text-base leading-none">{s.num}</span>
+                                        <span className="text-[12px] text-text-base/60 font-medium">{s.label}</span>
+                                    </div>
+                                    {idx < 2 && <div className="w-[1px] h-3.5 bg-white/15" />}
                                 </div>
                             ))}
                         </div>
