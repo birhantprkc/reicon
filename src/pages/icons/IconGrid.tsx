@@ -137,10 +137,6 @@ export default function IconGrid({
 
       {hasMore && (
         <div key={visibleCount} ref={sentinelRef} className="flex justify-center py-8">
-          <div className="flex items-center gap-2 text-text-base/30 text-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-text-base/20 animate-pulse" />
-            Loading more icons…
-          </div>
         </div>
       )}
     </>

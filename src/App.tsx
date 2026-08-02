@@ -30,6 +30,9 @@ function ScrollToTop() {
 }
 
 function Layout() {
+  const { pathname } = useLocation();
+  const hideFooter = pathname === '/icons' || pathname.startsWith('/docs');
+
   return (
     <div className="min-h-screen bg-bg-base flex flex-col">
       <Header />
@@ -52,7 +55,7 @@ function Layout() {
             <Route path="/pack" element={<PackPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
+          {!hideFooter && <Footer />}
         </Suspense>
       </ErrorBoundary>
     </div>
