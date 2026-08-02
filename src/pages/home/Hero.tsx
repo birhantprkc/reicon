@@ -1,24 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, HandHeart, Search3, Book3, Confetti2, Sun, Moon } from 'reicon-react';
+import { HandHeart, Search3, Book3, Confetti2, Doc, Doc2 } from 'reicon-react';
 import { SiJavascript, SiReact } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
 import Background from '../../components/layout/Background';
 import ClayButton from '../../components/ui/Button';
 import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon } from './icons';
-import BuyMeACoffeeIcon from '../../components/ui/BuyMeACoffeeIcon';
-
-import NavLinks from '../../components/layout/header/NavLinks';
-import MobileMenu from '../../components/layout/header/MobileMenu';
 
 interface Props {
-    theme: string;
-    toggleTheme: () => void;
+    theme?: string;
+    toggleTheme?: () => void;
     heroCardRef: React.RefObject<HTMLDivElement | null>;
-    stars: number | null;
+    stars?: number | null;
 }
 
-export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) {
+export default function Hero({ heroCardRef }: Props) {
     const [newIconCount, setNewIconCount] = useState(0);
     useEffect(() => {
         import('../../data/new-icons-added.json').then(m => {
@@ -27,73 +23,29 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
     }, []);
 
     return (
-        <div className="relative min-h-screen flex items-start justify-center pt-[10px]">
+        <div className="relative min-h-screen flex items-start justify-center">
             <div
                 ref={heroCardRef}
-                className="sticky top-[10px] w-[calc(100%-20px)] mx-[10px] h-[calc(100vh-20px)] rounded-[18px] overflow-hidden origin-top will-change-transform"
+                className="sticky top-0 w-full h-screen overflow-hidden origin-top will-change-transform"
                 style={{ transformOrigin: 'top center' }}
             >
                 <Background />
 
-                <div className="absolute inset-0 z-[2] flex flex-col justify-between p-[18px] md:p-[26px_40px]">
-                    {/* Top bar */}
-                    <div className="relative flex items-center justify-between">
-                        <Link
-                            to="/"
-                            className="flex items-center gap-2 text-text-base font-semibold text-[14px] bg-text-base/[0.04] backdrop-blur-lg rounded-full px-3.5 py-[7px] hover:bg-text-base/10 transition-all duration-150 shadow-2xs"
-                        >
-                            <img src={theme === 'dark' ? '/icon-light.webp' : '/icon-dark.webp'} alt="Reicon" loading="lazy" className="w-4.5 h-4.5" />
-                            <span>Reicon</span>
-                        </Link>
-                        <nav className="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2 bg-text-base/[0.04] backdrop-blur-lg rounded-full p-1 shadow-2xs">
-                            <Link to="/docs" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">Docs</Link>
-                            <Link to="/icons" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">Icons</Link>
-                            <Link to="/packages" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">Packages</Link>
-                            <Link to="/faq" className="text-[13px] font-medium text-text-base/80 hover:text-text-base transition-colors px-3.5 py-1.5 rounded-full hover:bg-text-base/10">FAQ</Link>
-                        </nav>
-                        <div className="flex items-center gap-2">
-                            <button
-                                onClick={toggleTheme}
-                                className="w-8 h-8 flex items-center justify-center rounded-full bg-text-base/[0.04] backdrop-blur-lg hover:bg-text-base/10 text-text-base/80 hover:text-text-base transition-colors cursor-pointer hidden md:flex"
-                                aria-label="Toggle theme"
-                            >
-                                {theme === 'dark' ? <Sun size={15} color="currentColor" /> : <Moon size={15} color="currentColor" />}
-                            </button>
-                            <MobileMenu stars={stars} theme={theme} toggleTheme={toggleTheme} />
-                            <div className="hidden md:flex gap-2">
-                                <Link
-                                    to="/support"
-                                    className="text-[13px] text-text-base/80 bg-text-base/[0.04] backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-text-base/10 transition-colors cursor-pointer flex items-center gap-1.5"
-                                >
-                                    <BuyMeACoffeeIcon size={15} />
-                                    Support
-                                </Link>
-                                <a
-                                    href="https://github.com/dqev/reicon"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-[13px] text-text-base/80 bg-text-base/[0.04] backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-text-base/10 transition-colors cursor-pointer flex items-center gap-1.5"
-                                >
-                                    GitHub
-                                    {stars !== null && (
-                                        <span className="flex items-center gap-0.5 text-text-base/50 text-[11px] font-medium border-l border-text-base/15 pl-1.5">
-                                            <Star size={11} weight="Filled" color="#eab308" className="shrink-0 relative -top-[0.5px]" />
-                                            {stars}
-                                        </span>
-                                    )}
-                                </a>
-                                <ClayButton to="/icons" variant="primary" size="sm">Browse Icons</ClayButton>
-                            </div>
-                        </div>
-                    </div>
+                <div className="absolute inset-0 z-[2] flex flex-col justify-between pt-24 sm:pt-28 md:pt-32 pb-6 px-[18px] md:px-[40px]">
+
 
                     {/* Center content */}
                     <div className="text-center px-3">
                         <div className="flex items-center justify-center gap-2 mb-5 flex-wrap">
-                            <div className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90">
-                             <HandHeart size={16} color="currentColor" />
-                                 Open Source Library
-                            </div>
+                            <a
+                                href="https://github.com/dqev/reicon"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors"
+                            >
+                                <HandHeart size={16} color="currentColor" />
+                                <span>Open Source Library</span>
+                            </a>
                             <Link
                                 to="/icons?weight=duotone"
                                 className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors group"
@@ -116,7 +68,7 @@ export default function Hero({ theme, toggleTheme, heroCardRef, stars }: Props) 
                                 Browse Icons
                             </ClayButton>
                             <Link to="/docs" className="bg-text-base/[0.04] hover:bg-text-base/10 text-text-base text-[14px] font-medium px-6 py-3 rounded-full backdrop-blur-lg flex items-center gap-[6px] transition-all duration-150 shadow-2xs">
-                                <Book3 size={16} color="currentColor" />
+                                <Doc size={16} color="currentColor" />
                                 Docs Guide
                             </Link>
                         </div>

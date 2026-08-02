@@ -46,14 +46,13 @@ export default function IconsPage() {
   const initialStyle = useMemo(() => {
     const w = searchParams.get('weight')?.toLowerCase();
     if (w === 'filled') return 'Filled';
-    if (w === 'outline') return 'Outline';
     if (w === 'duotone') return 'Duotone';
-    return 'All';
+    return 'Outline';
   }, [searchParams]);
 
   const [activeSet, setActiveSet] = useState(initialSet);
   const [activeStyle, setActiveStyle] = useState(initialStyle);
-  const [activeSize, setActiveSize] = useState('32');
+  const [activeSize, setActiveSize] = useState('36');
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>(() => cached.categoryMap);
   const [showNew, setShowNew] = useState(searchParams.get('new') === 'true');
   const [ready, setReady] = useState(() => cached.icons.length > 0);
@@ -64,11 +63,7 @@ export default function IconsPage() {
   const handleStyleChange = (style: string) => {
     setActiveStyle(style);
     const newParams = new URLSearchParams(searchParams);
-    if (style !== 'All') {
-      newParams.set('weight', style.toLowerCase());
-    } else {
-      newParams.delete('weight');
-    }
+    newParams.set('weight', style.toLowerCase());
     setSearchParams(newParams, { replace: true });
   };
 
@@ -89,8 +84,8 @@ export default function IconsPage() {
   useEffect(() => {
     const w = searchParams.get('weight')?.toLowerCase();
     if (w === 'filled') setActiveStyle('Filled');
-    else if (w === 'outline') setActiveStyle('Outline');
     else if (w === 'duotone') setActiveStyle('Duotone');
+    else setActiveStyle('Outline');
     
     const cat = searchParams.get('category') || searchParams.get('set');
     if (cat) setActiveSet(cat);
@@ -141,12 +136,9 @@ export default function IconsPage() {
 
   useEffect(() => {
     if (window.Reicon?.preload && filteredIcons.length > 0) {
-      const namesToPreload = activeStyle === 'All'
-        ? filteredIcons.slice(0, BATCH_SIZE / 2)
-        : filteredIcons.slice(0, BATCH_SIZE);
-      window.Reicon.preload(namesToPreload);
+      window.Reicon.preload(filteredIcons.slice(0, BATCH_SIZE));
     }
-  }, [filteredIcons, activeStyle]);
+  }, [filteredIcons]);
 
   const displaySize = parseInt(activeSize) || 32;
   const displayWeight = activeStyle === 'Filled' ? 'filled' : 'outline';

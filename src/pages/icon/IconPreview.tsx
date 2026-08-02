@@ -54,23 +54,8 @@ export default function IconPreview({
       <div className="relative w-full aspect-square bg-text-base/2 border border-text-base/8 rounded-2xl flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: 'linear-gradient(to right, var(--border-muted) 1px, transparent 1px), linear-gradient(to bottom, var(--border-muted) 1px, transparent 1px)',
-          backgroundSize: 'calc(100%/12) calc(100%/12)',
-          maskImage: 'radial-gradient(circle at center, #000 60%, transparent 92%)',
-          WebkitMaskImage: 'radial-gradient(circle at center, #000 60%, transparent 92%)',
+          backgroundSize: '20px 20px',
         }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at center, rgba(108,92,231,0.12), transparent 58%)' }} />
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" fill="none">
-          <rect x="9" y="9" width="82" height="82" rx="7" stroke="var(--border-base)" strokeWidth="0.4" strokeDasharray="2.5 2.5" />
-          <rect x="20" y="20" width="60" height="60" rx="7" stroke="#6C5CE7" strokeOpacity="0.22" strokeWidth="0.4" />
-          <circle cx="50" cy="50" r="35" stroke="#6C5CE7" strokeOpacity="0.22" strokeWidth="0.4" />
-          <line x1="50" y1="6" x2="50" y2="94" stroke="#6C5CE7" strokeOpacity="0.25" strokeWidth="0.3" />
-          <line x1="6" y1="50" x2="94" y2="50" stroke="#6C5CE7" strokeOpacity="0.25" strokeWidth="0.3" />
-        </svg>
-        <div className="absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t border-l border-[#6C5CE7]/35" />
-        <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t border-r border-[#6C5CE7]/35" />
-        <div className="absolute bottom-2.5 left-2.5 w-2.5 h-2.5 border-b border-l border-[#6C5CE7]/35" />
-        <div className="absolute bottom-2.5 right-2.5 w-2.5 h-2.5 border-b border-r border-[#6C5CE7]/35" />
-        <span className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[7.5px] font-mono text-[#6C5CE7]/45 select-none tracking-wider">24<span className="text-text-base/20"> × </span>24</span>
         <span className="absolute bottom-2.5 right-3 text-[8px] font-mono text-text-base/35 tabular-nums select-none">{previewSize}px</span>
         <span className="absolute bottom-2.5 left-3 text-[8px] font-mono text-text-base/25 select-none lowercase">{activeWeight}</span>
 
@@ -158,7 +143,7 @@ export default function IconPreview({
             <label className="text-[12px] text-text-base/50">Size</label>
             <span className="text-[12px] text-text-base/40 font-mono">{previewSize}px</span>
           </div>
-          <input type="range" min={16} max={128} value={previewSize} onChange={(e) => onSetPreviewSize(Number(e.target.value))}
+          <input type="range" min={16} max={256} value={previewSize} onChange={(e) => onSetPreviewSize(Number(e.target.value))}
             className="w-full h-1.5 rounded-full appearance-none bg-text-base/10 accent-[#6C5CE7] cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#6C5CE7] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(108,92,231,0.5)]" />
         </div>
       </div>

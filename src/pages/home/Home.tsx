@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import Header from '../../components/layout/Header';
 import { useTheme } from '../../components/layout/ThemeContext';
 
 import Hero from './Hero';
@@ -11,29 +10,17 @@ import Playground from './Playground';
 import CTA from './CTA';
 
 export default function HomePage() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const heroCardRef = useRef<HTMLDivElement>(null);
-  const fixedNavRef = useRef<HTMLElement>(null);
-  const [stars, setStars] = useState<number | null>(null);
 
-  // Fetch GitHub stars
-  useEffect(() => {
-    fetch('https://api.github.com/repos/dqev/reicon')
-      .then((r) => r.json())
-      .then((d) => { if (d.stargazers_count) setStars(d.stargazers_count); })
-      .catch(() => { });
-  }, []);
-
-  // Hero card parallax + sticky nav reveal
+  // Hero card parallax scroll effect
   useEffect(() => {
     const card = heroCardRef.current;
-    const nav = fixedNavRef.current;
-    if (!card || !nav) return;
+    if (!card) return;
     const tick = () => {
       const p = Math.min(window.scrollY / (window.innerHeight * 0.55), 1);
       card.style.transform = `scale(${1 - p * 0.11})`;
       card.style.opacity = String(1 - p * 0.13);
-      nav.classList.toggle('nav-visible', window.scrollY > window.innerHeight * 0.65);
     };
     window.addEventListener('scroll', tick, { passive: true });
     tick();
@@ -104,18 +91,7 @@ export default function HomePage() {
         })}</script>
       </Helmet>
 
-      <style>{`
-        .nav-visible { opacity: 1 !important; pointer-events: auto !important; }
-      `}</style>
-
-      <Header ref={fixedNavRef} className="opacity-0 pointer-events-none transition-all duration-500" />
-
-      <Hero
-        theme={theme}
-        toggleTheme={toggleTheme}
-        heroCardRef={heroCardRef}
-        stars={stars}
-      />
+      <Hero heroCardRef={heroCardRef} />
 
       <Features />
 

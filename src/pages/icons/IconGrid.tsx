@@ -56,19 +56,12 @@ export default function IconGrid({
         />
       ));
     }
-    if (activeStyle === 'All') {
-      const nameSliceCount = Math.ceil(visibleCount / 2);
-      return effectiveIcons.slice(0, nameSliceCount).flatMap((name) => [
-        <IconCard key={`${name}-outline`} name={name} weight="outline" size={displaySize} />,
-        <IconCard key={`${name}-filled`} name={name} weight="filled" size={displaySize} />,
-      ]);
-    }
     return effectiveIcons.slice(0, visibleCount).map((name) => (
       <IconCard key={name} name={name} weight={displayWeight} size={displaySize} />
     ));
   }, [effectiveIcons, visibleCount, activeStyle, displaySize, displayWeight, duotoneMap]);
 
-  const totalCards = activeStyle === 'All' ? effectiveIcons.length * 2 : effectiveIcons.length;
+  const totalCards = effectiveIcons.length;
   const hasMore = visibleCount < totalCards;
 
   totalCardsRef.current = totalCards;

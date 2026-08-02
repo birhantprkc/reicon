@@ -30,12 +30,9 @@ function ScrollToTop() {
 }
 
 function Layout() {
-  const { pathname } = useLocation();
-  const isHome = pathname === '/';
-
   return (
     <div className="min-h-screen bg-bg-base flex flex-col">
-      {!isHome && <Header />}
+      <Header />
       <ErrorBoundary>
         <Suspense fallback={<div className="flex-1" />}>
           <Routes>

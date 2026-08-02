@@ -16,15 +16,23 @@ import {
 
 export default function useIconDetail() {
   const { name } = useParams<{ name: string }>();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [activeWeight, setActiveWeight] = useState<'outline' | 'filled' | 'duotone'>(() => {
+  const [activeWeight, setActiveWeightState] = useState<'outline' | 'filled' | 'duotone'>(() => {
     const w = searchParams.get('weight')?.toLowerCase();
     if (w === 'filled') return 'filled';
     if (w === 'duotone') return 'duotone';
     return 'outline';
   });
-  const [previewSize, setPreviewSize] = useState(96);
+
+  const setActiveWeight = useCallback((w: 'outline' | 'filled' | 'duotone') => {
+    setActiveWeightState(w);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('weight', w);
+    setSearchParams(newParams, { replace: true });
+  }, [searchParams, setSearchParams]);
+
+  const [previewSize, setPreviewSize] = useState(128);
   const [toast, setToast] = useState<string | null>(null);
   const [exportSize, setExportSize] = useState(64);
   const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'react-native' | 'vue' | 'svelte' | 'flutter' | 'direct'>('vanilla');
@@ -70,11 +78,11 @@ export default function useIconDetail() {
 
   const reset = useCallback(() => {
     setActiveWeight('outline');
-    setPreviewSize(96);
+    setPreviewSize(128);
     setUseCustomColor(false);
     setCustomColor('#6C5CE7');
     setIsColorPickerOpen(false);
-  }, []);
+  }, [setActiveWeight]);
 
   const fw = activeWeight === 'filled';
 
@@ -89,7 +97,7 @@ export default function useIconDetail() {
 
   const CODE_TABS = useMemo(() => [
     { id: 'vanilla' as const, label: 'JS', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: vanillaRaw },
-    { id: 'cdn' as const, label: 'CDN', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: cdnRaw },
+    { id: 'cdn' as const, label: 'CDN', icon: <IoLogoJavascript className="text-[#F7DF1E]" size={14} />, raw: cdnRaw },
     { id: 'react' as const, label: 'React', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactRaw },
     { id: 'react-native' as const, label: 'React Native', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactNativeRaw },
     { id: 'vue' as const, label: 'Vue', icon: <VueLogo />, raw: vueRaw },
@@ -102,9 +110,9 @@ export default function useIconDetail() {
 
   useEffect(() => {
     const w = searchParams.get('weight')?.toLowerCase();
-    if (w === 'filled') setActiveWeight('filled');
-    else if (w === 'duotone') setActiveWeight('duotone');
-    else setActiveWeight('outline');
+    if (w === 'filled') setActiveWeightState('filled');
+    else if (w === 'duotone') setActiveWeightState('duotone');
+    else setActiveWeightState('outline');
   }, [name, searchParams]);
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { Check } from 'reicon-react';
 import { STYLE_OPTIONS, SIZE_OPTIONS, NEW_ICONS_COUNT } from './constants';
 
@@ -30,7 +29,6 @@ function Sidebar({
   onClose,
 }: SidebarProps) {
   const [categories, setCategories] = useState<string[]>([]);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   useEffect(() => {
     function load() {
@@ -47,63 +45,25 @@ function Sidebar({
     name.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
   function renderNavItem(id: string, label: string, isActive: boolean, isBeta?: boolean) {
-    const isHovered = hoveredItem === id;
-
     return (
-      <div
+      <button
         key={id}
-        role="button"
-        tabIndex={0}
-        onMouseEnter={() => setHoveredItem(id)}
-        onMouseLeave={() => setHoveredItem(null)}
+        type="button"
         onClick={() => {
           if (id.startsWith('weight-')) { onStyleChange(id.replace('weight-', '')); if (showNew) onNewToggle(false); }
           else if (id.startsWith('size-')) { onSizeChange(id.replace('size-', '')); }
           else if (id === 'cat-all') { onSetChange('all'); if (showNew) onNewToggle(false); }
           else { onSetChange(id.replace('cat-', '')); if (showNew) onNewToggle(false); }
         }}
-        onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.click()}
         className={`sidebar-item ${isActive ? 'active' : ''}`}
       >
-        <AnimatePresence initial={false} mode="wait">
-          {isActive && (
-            <motion.span
-              layoutId="sidebar-item-active-indicator"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-              className="sidebar-item-active-bar"
-            />
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence initial={false} mode="wait">
-          {isHovered && (
-            <motion.span
-              layoutId="sidebar-item-hover-indicator"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 500, damping: 35 }}
-              className="sidebar-item-hover-bar"
-            />
-          )}
-        </AnimatePresence>
-
-        <motion.span
-          animate={{ x: isHovered || isActive ? 3 : 0 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-          className="sidebar-item-text"
-        >
-          <span className="truncate">{label}</span>
-          {isBeta && (
-            <span className="ml-auto shrink-0 px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-md bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30 leading-none">
-              Beta
-            </span>
-          )}
-        </motion.span>
-      </div>
+        <span className="truncate">{label}</span>
+        {isBeta && (
+          <span className="ml-auto shrink-0 px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-md bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30 leading-none">
+            Beta
+          </span>
+        )}
+      </button>
     );
   }
 
@@ -268,13 +228,14 @@ function Sidebar({
           position: relative;
           display: flex;
           align-items: center;
+          justify-content: space-between;
           padding: 0.375rem 0.5rem 0.375rem 1.625rem;
           border-radius: 8px;
           cursor: pointer;
           background: transparent;
           min-height: 2rem;
           font-size: 13px;
-          color: var(--text-muted);
+          color: var(--text-base);
           transition: color 0.15s ease;
           user-select: none;
           border: 0;
@@ -282,39 +243,13 @@ function Sidebar({
           text-align: left;
         }
         .sidebar-item:hover {
-          color: var(--text-hover);
+          color: var(--text-muted);
+          background: transparent;
         }
         .sidebar-item.active {
-          color: var(--text-base);
+          color: #6C5CE7;
           font-weight: 600;
-        }
-        .sidebar-item-active-bar {
-          position: absolute;
-          left: 0.625rem;
-          top: 22%;
-          bottom: 22%;
-          width: 3px;
-          border-radius: 9999px;
-          background-color: #6C5CE7;
-          box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
-          transform: translateX(-50%);
-          z-index: 10;
-        }
-        .sidebar-item-hover-bar {
-          position: absolute;
-          left: 0.625rem;
-          top: 22%;
-          bottom: 22%;
-          width: 3px;
-          border-radius: 9999px;
-          background-color: var(--text-more-muted);
-          opacity: 0;
-          transform: translateX(-50%);
-          transition: opacity 0.15s ease;
-          z-index: 5;
-        }
-        .sidebar-item:hover .sidebar-item-hover-bar {
-          opacity: 0.6;
+          background: transparent;
         }
         .sidebar-item-text {
           display: flex;
