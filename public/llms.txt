@@ -1,20 +1,39 @@
-# Reicon Icon Library
+# Reicon Icon & Illustration Library
 
-> Free, open-source SVG icon library — **2,700+ handcrafted, pixel-perfect icons** in Outline and Filled weights on a 24×24 grid. Available for React, Vue 3, Svelte, React Native, vanilla JS, CDN/web component, Figma, and VS Code. MIT license.
+> Free, open-source SVG icon & illustration library — **2,700+ handcrafted icons** in Outline and Filled weights + **71,000+ free SVG illustrations**. Available for React, Vue 3, Svelte, React Native, vanilla JS, CDN, Figma, and VS Code. MIT license.
 >
 > ⚠️ **Not** the Windows tool "ReIcon" by Sordum — completely unrelated.
 
 ## Agent Quick Start
 
-When a user asks you to use Reicon icons, follow these steps:
+When a user asks you to use Reicon icons or SVG illustrations, follow these steps:
 
-1. **Identify their framework** (React / Vue / Svelte / React Native / vanilla HTML / vanilla JS)
-2. **Tell them the install command** for their framework
-3. **Convert the icon name**: they'll say something like "home icon" → use `Home` for components, `"home"` for CDN
-4. **Generate code** with the correct import and props
+1. **Icons**: Use `reicon-react`, `reicon-vue`, `reicon-svelte`, `reicon-react-native`, or `reicon` (vanilla CDN).
+2. **Illustrations**: Direct CDN URL format `https://cdn.reicon.dev/{slug}.svg` (e.g. `https://cdn.reicon.dev/aspen.svg`, `https://cdn.reicon.dev/bag.svg`, `https://cdn.reicon.dev/build.svg`).
+3. **Browse Illustrations Page**: `https://reicon.dev/illustration`
+4. **Illustration Detail Page**: `https://reicon.dev/illustration/{slug}`
 
-**Naming rule**: kebab-case icon names (`arrow-up-right`) → PascalCase component names (`ArrowUpRight`). Split on `-`, capitalize each part, join.
-**Weights**: `"Outline"` (default, 1.5px stroke) or `"Filled"` (solid). Always PascalCase in framework props, lowercase in CDN attributes.
+---
+
+## 🎨 SVG Illustrations (71,000+ Free SVGs)
+
+Reicon provides 71,000+ free, open-source vector SVG illustrations across 75+ categories.
+
+### CDN URL Pattern:
+`https://cdn.reicon.dev/{slug}.svg`
+
+### React / HTML Usage:
+```html
+<img src="https://cdn.reicon.dev/aspen.svg" alt="Aspen Illustration" width="180" height="180" />
+```
+```jsx
+<img src="https://cdn.reicon.dev/bag.svg" alt="Bag Illustration" width={180} height={180} />
+```
+
+### Features:
+- **71,000+ Vector Designs**: Doodling, object, people, mark, and scene illustrations.
+- **MIT License**: Free for commercial and personal projects.
+- **CDN Hosted**: Hosted on lightning-fast global CDN (`https://cdn.reicon.dev`).
 
 ---
 

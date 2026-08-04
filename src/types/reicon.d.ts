@@ -6,12 +6,13 @@ interface ReIconElementProps extends React.HTMLAttributes<HTMLElement> {
   size?: number | string;
   color?: string;
   class?: string;
+  style?: React.CSSProperties;
 }
 
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      're-icon': React.DetailedHTMLProps<ReIconElementProps, HTMLElement>;
+      're-icon': ReIconElementProps;
     }
   }
 }
@@ -19,15 +20,22 @@ declare module 'react' {
 declare module 'react/jsx-runtime' {
   namespace JSX {
     interface IntrinsicElements {
-      're-icon': React.DetailedHTMLProps<ReIconElementProps, HTMLElement>;
+      're-icon': ReIconElementProps;
     }
   }
 }
 
 declare global {
+  namespace React {
+    namespace JSX {
+      interface IntrinsicElements {
+        're-icon': ReIconElementProps;
+      }
+    }
+  }
   namespace JSX {
     interface IntrinsicElements {
-      're-icon': React.DetailedHTMLProps<ReIconElementProps, HTMLElement>;
+      're-icon': ReIconElementProps;
     }
   }
 

@@ -20,9 +20,7 @@ type HighlightCtx = {
 const Ctx = React.createContext<HighlightCtx | undefined>(undefined);
 
 function useCtx() {
-  const c = React.useContext(Ctx);
-  if (!c) throw new Error('HighlightItem must be inside Highlight');
-  return c;
+  return React.useContext(Ctx);
 }
 
 export interface HighlightProps {
@@ -88,21 +86,22 @@ export interface HighlightItemProps {
 }
 
 export function HighlightItem({ children, value, className, style }: HighlightItemProps) {
-  const { setActiveValue, setBounds, clearBounds } = useCtx();
+  const ctx = useCtx();
   const itemId = React.useId();
   const localRef = React.useRef<HTMLDivElement>(null);
   const id = value ?? itemId;
 
   const handleMouseEnter = React.useCallback(() => {
-    if (!localRef.current) return;
-    setBounds(localRef.current.getBoundingClientRect());
-    setActiveValue(id);
-  }, [id, setBounds, setActiveValue]);
+    if (!ctx || !localRef.current) return;
+    ctx.setBounds(localRef.current.getBoundingClientRect());
+    ctx.setActiveValue(id);
+  }, [id, ctx]);
 
   const handleMouseLeave = React.useCallback(() => {
-    setActiveValue(null);
-    clearBounds();
-  }, [clearBounds, setActiveValue]);
+    if (!ctx) return;
+    ctx.setActiveValue(null);
+    ctx.clearBounds();
+  }, [ctx]);
 
   return (
     <div

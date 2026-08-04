@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { HandHeart, Search3, Book3, Confetti2, Doc, Doc2 } from 'reicon-react';
+import { HandHeart, Search3, Book3, Confetti2, Doc, Doc2, PenSparkle } from 'reicon-react';
 import { SiJavascript, SiReact } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
 import Background from '../../components/layout/Background';
@@ -39,17 +39,17 @@ export default function Hero({ heroCardRef }: Props) {
                                 href="https://github.com/dqev/reicon"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors"
+                                className="inline-flex items-center gap-[6px] bg-text-base/[0.04] hover:bg-text-base/10 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 transition-colors"
                             >
                                 <HandHeart size={16} color="currentColor" />
                                 <span>Open Source Library</span>
                             </a>
                             <Link
-                                to="/icons?weight=duotone"
-                                className="inline-flex items-center gap-[6px] bg-white/5 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 hover:bg-white/8 transition-colors group"
+                                to="/illustration"
+                                className="inline-flex items-center gap-[6px] bg-text-base/[0.04] hover:bg-text-base/10 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 transition-colors group"
                             >
                                 <span className="w-[6px] h-[6px] bg-[#6C5CE7] rounded-full shrink-0 animate-pulse" />
-                                <span>1,200+ Duotone Icons Added</span>
+                                <span>71,000+ Illustrations</span>
                                 <Confetti2 size={15} color="currentColor" className="text-text-base/70 group-hover:scale-110 transition-transform" />
                             </Link>
                         </div>
@@ -58,17 +58,21 @@ export default function Hero({ heroCardRef }: Props) {
                             The icon library<br />designers actually want.
                         </h1>
                         <p className="text-[clamp(13px,1.45vw,18px)] text-text-base/60 leading-[1.65] max-w-[480px] mx-auto mb-7">
-                            Open‑source SVGs for React, Vue, Svelte, Figma, and the web, drawn with the same care as your UI.
+                            Open‑source SVGs &amp; illustrations for React, Vue, Svelte, Figma, and the web, drawn with care.
                         </p>
                         <div className="flex items-center justify-center gap-[10px] flex-wrap">
                             <ClayButton to="/icons" variant="primary">
                                 <Search3 size={16} />
                                 Browse Icons
                             </ClayButton>
-                            <Link to="/docs" className="bg-text-base/[0.04] hover:bg-text-base/10 text-text-base text-[14px] font-medium px-6 py-3 rounded-full backdrop-blur-lg flex items-center gap-[6px] transition-all duration-150 shadow-2xs">
+                            <Link to="/illustration" className="bg-text-base/[0.04] hover:bg-text-base/10 text-text-base text-[14px] font-medium px-6 py-3 rounded-full backdrop-blur-lg flex items-center gap-[6px] transition-all duration-150 shadow-2xs">
+                                <PenSparkle size={16} />
+                                 Illustrations
+                            </Link>
+                            <ClayButton to="/docs" variant="primary">
                                 <Doc size={16} color="currentColor" />
                                 Docs Guide
-                            </Link>
+                            </ClayButton>
                         </div>
 
                         {/* Integrations row */}
