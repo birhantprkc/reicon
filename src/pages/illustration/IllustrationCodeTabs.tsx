@@ -168,8 +168,8 @@ export default function IllustrationCodeTabs({
       </div>
 
       {/* Code Box Container matching CodeTabs.tsx 100% */}
-      <div className="px-1.5 py-1.5 overflow-x-auto">
-        <div className="bg-bg-base rounded-md min-h-[92px] max-h-[140px] relative overflow-hidden flex flex-col">
+      <div className="px-1.5 py-1.5 max-w-full">
+        <div className="bg-bg-base rounded-md min-h-[92px] max-h-[200px] relative overflow-hidden flex flex-col">
           {/* Copy Button matching IconDetail CodeTabs 100% */}
           <button
             type="button"
@@ -197,7 +197,7 @@ export default function IllustrationCodeTabs({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.18 }}
-              className="p-4 text-[13px] font-mono leading-[1.7] overflow-x-auto overflow-y-auto max-h-[135px] whitespace-pre focus-visible:outline-none text-text-base select-text"
+              className="p-4 pr-10 text-[13px] font-mono leading-[1.7] overflow-auto min-h-0 min-w-0 flex-1 whitespace-pre focus-visible:outline-none text-text-base select-text"
             >
               <HighlightedCode code={currentTabObj.raw} />
             </motion.pre>
