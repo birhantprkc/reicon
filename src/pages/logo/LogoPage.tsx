@@ -32,6 +32,7 @@ export default function LogoPage() {
   const [filteredItems, setFilteredItems] = useState<LogoItem[]>([]);
   const [ready, setReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Sync state when searchParams change
   useEffect(() => {
@@ -139,7 +140,7 @@ export default function LogoPage() {
         description={`Explore clean vector SVG brand logos for ${activeCategory === 'all' ? 'top tech companies and global brands' : activeCategory}. Free download and instant code copy.`}
       />
 
-      <div className="flex flex-1 pt-14">
+      <div className="flex flex-1 pt-14 px-4 md:px-10">
         <LogoSidebar
           activeCategory={activeCategory}
           onCategoryChange={handleCategoryChange}
@@ -147,13 +148,16 @@ export default function LogoPage() {
           onSizeChange={handleSizeChange}
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
+          collapsed={sidebarCollapsed}
         />
 
-        <main className="flex-1 p-4 md:p-6">
+        <main className={`flex-1 py-4 md:py-6 px-0 md:pr-0 ${sidebarCollapsed ? 'md:pl-0' : 'md:pl-6'} transition-all duration-300 ease-in-out`}>
           <LogoSearchBar
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
             onFilterClick={() => setSidebarOpen(true)}
+            isCollapsed={sidebarCollapsed}
+            onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
           />
 
           <IconCount count={filteredItems.length} ready={ready} />

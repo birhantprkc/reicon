@@ -109,7 +109,7 @@ export default function SupportPage() {
 
   return (
     <motion.div
-      className="flex-1 pt-24 pb-16 px-4 sm:px-6 md:px-8 max-w-5xl mx-auto w-full overflow-x-hidden"
+      className="flex-1 pt-28 pb-16 px-4 sm:px-6 md:px-8 max-w-5xl mx-auto w-full overflow-x-hidden"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}

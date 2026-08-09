@@ -54,10 +54,9 @@ export default function IconsPage() {
   const [activeStyle, setActiveStyle] = useState(initialStyle);
   const [activeSize, setActiveSize] = useState('36');
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>(() => cached.categoryMap);
-  const [showNew, setShowNew] = useState(searchParams.get('new') === 'true');
   const [ready, setReady] = useState(() => cached.icons.length > 0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [newIconsSet, setNewIconsSet] = useState<Set<string> | null>(null);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
 
   const handleStyleChange = (style: string) => {
@@ -89,17 +88,14 @@ export default function IconsPage() {
     
     const cat = searchParams.get('category') || searchParams.get('set');
     if (cat) setActiveSet(cat);
-
-    if (searchParams.get('new') === 'true') setShowNew(true);
   }, [searchParams]);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const [iconData] = await Promise.all([loadIconData(), waitForReicon()]);
+        await Promise.all([loadIconData(), waitForReicon()]);
         if (cancelled) return;
-        setNewIconsSet(new Set(iconData.newIcons));
         if (window.Reicon?.icons) {
           setAllIcons(window.Reicon.icons);
           saveCache(window.Reicon.icons, window.Reicon.categoryMap);
@@ -118,9 +114,6 @@ export default function IconsPage() {
 
   const filteredIcons = useMemo(() => {
     let icons = allIcons;
-    if (showNew && newIconsSet) {
-      icons = icons.filter((name) => newIconsSet.has(name));
-    }
     if (activeSet !== 'all' && Object.keys(categoryMap).length > 0) {
       icons = icons.filter((name) => categoryMap[name] === activeSet);
     }
@@ -132,7 +125,7 @@ export default function IconsPage() {
         .sort((a, b) => (ranked.get(a) ?? Infinity) - (ranked.get(b) ?? Infinity));
     }
     return icons;
-  }, [deferredQuery, allIcons, activeSet, categoryMap, showNew, searchResults]);
+  }, [deferredQuery, allIcons, activeSet, categoryMap, searchResults]);
 
   useEffect(() => {
     if (window.Reicon?.preload && filteredIcons.length > 0) {
@@ -160,7 +153,7 @@ export default function IconsPage() {
     <div className="flex-1">
       <IconsHelmet />
 
-      <div className="flex flex-1 pt-14">
+      <div className="flex flex-1 pt-14 px-4 md:px-10">
         <Sidebar
           activeSet={activeSet}
           onSetChange={handleSetChange}
@@ -168,17 +161,18 @@ export default function IconsPage() {
           onStyleChange={handleStyleChange}
           activeSize={activeSize}
           onSizeChange={setActiveSize}
-          showNew={showNew}
-          onNewToggle={setShowNew}
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
+          collapsed={sidebarCollapsed}
         />
 
-        <main className="flex-1 p-4 md:p-6">
+        <main className={`flex-1 py-4 md:py-6 px-0 md:pr-0 ${sidebarCollapsed ? 'md:pl-0' : 'md:pl-6'} transition-all duration-300 ease-in-out`}>
           <IconSearchBar
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
             onFilterClick={() => setSidebarOpen(true)}
+            isCollapsed={sidebarCollapsed}
+            onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
           />
 
           <IconCount count={filteredIcons.length} ready={ready} />

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { HandHeart, Search3, Doc, PenSparkle } from 'reicon-react';
 import { SiJavascript, SiReact } from 'react-icons/si';
@@ -32,13 +31,6 @@ function OpenAiIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export default function Hero({ heroCardRef }: Props) {
-  const [newIconCount, setNewIconCount] = useState(0);
-  useEffect(() => {
-    import('../../data/new-icons-added.json').then((m) => {
-      setNewIconCount((m.default as string[]).length);
-    });
-  }, []);
-
   return (
     <div className="relative min-h-screen flex items-start justify-center">
       <div

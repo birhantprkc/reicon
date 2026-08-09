@@ -9,9 +9,10 @@ interface IllustrationSidebarProps {
   onSizeChange: (size: string) => void;
   isOpen?: boolean;
   onClose?: () => void;
+  collapsed?: boolean;
 }
 
-const SIZE_OPTIONS = ['64', '80', '100', '120'];
+const SIZE_OPTIONS = ['24', '36', '50', '60'];
 
 function IllustrationSidebar({
   activeCategory,
@@ -21,6 +22,7 @@ function IllustrationSidebar({
   onSizeChange,
   isOpen = false,
   onClose,
+  collapsed = false,
 }: IllustrationSidebarProps) {
   const [meta, setMeta] = useState<IllustrationCategoriesMeta | null>(null);
   const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
@@ -56,7 +58,6 @@ function IllustrationSidebar({
     id: string,
     label: string,
     isActive: boolean,
-    count?: number,
     onClickHandler?: () => void
   ) {
     return (
@@ -74,49 +75,24 @@ function IllustrationSidebar({
         className={`sidebar-item ${isActive ? 'active' : ''}`}
       >
         <span className="truncate">{label}</span>
-        {count !== undefined && (
-          <span className="text-[10px] font-mono opacity-50 ml-2">
-            {count.toLocaleString()}
-          </span>
-        )}
       </button>
     );
   }
 
   const sidebarContent = (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-      {/* Overview */}
+      {/* Grid Size */}
       <div className="reicon-sidebar-group">
         <div className="sidebar-section-header">
           <div className="sidebar-icon-box">
-            <re-icon icon="star" size="13" />
+            <re-icon icon="ruler" size="13" />
           </div>
-          <span>Overview</span>
-        </div>
-        <div className="sidebar-items-container">
-          <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-          {renderNavItem(
-            'cat-all',
-            'All Illustrations',
-            activeCategory === 'all',
-            meta?.total_icons,
-            () => onCategoryChange('all', 'all')
-          )}
-        </div>
-      </div>
-
-      {/* Sizing */}
-      <div className="reicon-sidebar-group">
-        <div className="sidebar-section-header">
-          <div className="sidebar-icon-box">
-            <re-icon icon="size" size="13" />
-          </div>
-          <span>Sizing</span>
+          <span>Grid Size</span>
         </div>
         <div className="sidebar-items-container">
           <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
           {SIZE_OPTIONS.map((size) =>
-            renderNavItem(`size-${size}`, `${size}px Grid`, activeSize === size)
+            renderNavItem(`size-${size}`, `${size}px`, activeSize === size)
           )}
         </div>
       </div>
@@ -131,6 +107,13 @@ function IllustrationSidebar({
         </div>
         <div className="sidebar-items-container">
           <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
+
+          {renderNavItem(
+            'cat-all',
+            'All Categories',
+            activeCategory === 'all',
+            () => onCategoryChange('all', 'all')
+          )}
 
           {meta?.categories.map((cat) => {
             const isCatActive = activeCategory === cat.name;
@@ -152,20 +135,17 @@ function IllustrationSidebar({
                   <span className="truncate flex items-center gap-1.5 min-w-0">
                     <span>{fmt(cat.name)}</span>
                   </span>
-                  <span className="flex items-center gap-1.5 ml-2 shrink-0">
-                    <span className="text-[10px] font-mono opacity-50">
-                      {cat.count.toLocaleString()}
-                    </span>
-                    {cat.subcategories && cat.subcategories.length > 0 && (
+                  {cat.subcategories && cat.subcategories.length > 0 && (
+                    <span className="flex items-center ml-2 shrink-0">
                       <span
-                        className={`inline-flex items-center justify-center transition-transform duration-200 opacity-60 ${
+                        className={`inline-flex items-center justify-center transition-transform duration-200 ${
                           isExpanded ? 'rotate-180' : ''
                         }`}
                       >
                         <re-icon icon="chevron-down" size="10" color="currentColor" />
                       </span>
-                    )}
-                  </span>
+                    </span>
+                  )}
                 </button>
 
                 {isExpanded && cat.subcategories && cat.subcategories.length > 0 && (
@@ -185,9 +165,6 @@ function IllustrationSidebar({
                           style={{ paddingLeft: '2.5rem', fontSize: '12px' }}
                         >
                           <span className="truncate">{fmt(sub.name)}</span>
-                          <span className="text-[9.5px] font-mono opacity-40 ml-1">
-                            {sub.count.toLocaleString()}
-                          </span>
                         </button>
                       );
                     })}
@@ -210,12 +187,21 @@ function IllustrationSidebar({
           position: sticky;
           top: 3.5rem;
           overflow-y: auto;
-          padding: 1.25rem 0.5rem 2rem 0.75rem;
-          margin-left: 0.5rem;
+          padding: 1.25rem 0.5rem 2rem 0;
+          margin-left: 0;
           z-index: 30;
           background-color: var(--bg-base);
           scrollbar-width: none;
           flex-shrink: 0;
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.3s ease, padding 0.3s ease;
+        }
+        #nd-sidebar-illustration.is-collapsed {
+          width: 0;
+          padding: 0;
+          margin: 0;
+          opacity: 0;
+          overflow: hidden;
+          pointer-events: none;
         }
         #nd-sidebar-illustration::-webkit-scrollbar { display: none; }
 
@@ -314,8 +300,8 @@ function IllustrationSidebar({
         }
         .reicon-sidebar-close {
           display: inline-flex; align-items: center; justify-content: center;
-          width: 28px; height: 28px; border-radius: 8px;
-          background: var(--surface-base); border: 1px solid var(--border-base);
+          width: 28px; height: 28px; border-radius: 9999px;
+          background: var(--surface-base); border: none;
           color: var(--text-muted); cursor: pointer;
           transition: color 0.15s, background-color 0.15s;
         }
@@ -324,7 +310,7 @@ function IllustrationSidebar({
         @media(max-width: 1023.98px) { #nd-sidebar-illustration{display:none;} }
       `}</style>
 
-      <aside id="nd-sidebar-illustration" className="hidden lg:flex" data-lenis-prevent>
+      <aside id="nd-sidebar-illustration" className={`hidden lg:block ${collapsed ? 'is-collapsed' : ''}`} data-lenis-prevent>
         {sidebarContent}
       </aside>
 

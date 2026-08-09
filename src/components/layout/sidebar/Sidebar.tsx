@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Check } from 'reicon-react';
-import { STYLE_OPTIONS, SIZE_OPTIONS, NEW_ICONS_COUNT } from './constants';
+import { STYLE_OPTIONS, SIZE_OPTIONS } from './constants';
 
 interface SidebarProps {
   activeSet: string;
@@ -9,10 +8,9 @@ interface SidebarProps {
   onStyleChange: (style: string) => void;
   activeSize: string;
   onSizeChange: (size: string) => void;
-  showNew: boolean;
-  onNewToggle: (val: boolean) => void;
   isOpen?: boolean;
   onClose?: () => void;
+  collapsed?: boolean;
 }
 
 
@@ -23,10 +21,9 @@ function Sidebar({
   onStyleChange,
   activeSize,
   onSizeChange,
-  showNew,
-  onNewToggle,
   isOpen = false,
   onClose,
+  collapsed = false,
 }: SidebarProps) {
   const [categories, setCategories] = useState<string[]>([]);
 
@@ -50,10 +47,10 @@ function Sidebar({
         key={id}
         type="button"
         onClick={() => {
-          if (id.startsWith('weight-')) { onStyleChange(id.replace('weight-', '')); if (showNew) onNewToggle(false); }
+          if (id.startsWith('weight-')) { onStyleChange(id.replace('weight-', '')); }
           else if (id.startsWith('size-')) { onSizeChange(id.replace('size-', '')); }
-          else if (id === 'cat-all') { onSetChange('all'); if (showNew) onNewToggle(false); }
-          else { onSetChange(id.replace('cat-', '')); if (showNew) onNewToggle(false); }
+          else if (id === 'cat-all') { onSetChange('all'); }
+          else { onSetChange(id.replace('cat-', '')); }
         }}
         className={`sidebar-item ${isActive ? 'active' : ''}`}
       >
@@ -69,37 +66,6 @@ function Sidebar({
 
   const sidebarContent = (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-      {/* Quick Access */}
-      <div className="reicon-sidebar-group">
-        <div className="sidebar-section-header">
-          <div className="sidebar-icon-box">
-            <re-icon icon="star" size="13" />
-          </div>
-          <span>Quick Access</span>
-        </div>
-        <div className="sidebar-items-container">
-          <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-          <div className="pl-6 pr-0.5 my-1">
-            <button
-              onClick={() => onNewToggle(!showNew)}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg border transition-all cursor-pointer ${
-                showNew ? 'border-[#6C5CE7]/50 bg-[#6C5CE7]/8 shadow-[0_0_12px_rgba(108,92,231,0.15)]' : 'border-text-base/8 bg-text-base/3 hover:bg-text-base/5'
-              }`}
-            >
-              <span className="flex items-center gap-1.5 min-w-0">
-                <span className={showNew ? 'w-2 h-2 rounded-full bg-[#6C5CE7] shadow-[0_0_8px_rgba(108,92,231,0.8)] shrink-0' : 'w-1.5 h-1.5 rounded-full bg-[#6C5CE7] opacity-60 shrink-0'} />
-                <span className={`text-[12.5px] font-medium whitespace-nowrap truncate transition-colors ${showNew ? 'text-[#6c5ce7]' : 'text-text-base/70'}`}>
-                  Added {NEW_ICONS_COUNT} icons
-                </span>
-              </span>
-              <span className={`w-4 h-4 rounded flex items-center justify-center border transition-all shrink-0 ml-1 ${showNew ? 'border-[#6C5CE7]/50 bg-[#6C5CE7] text-white' : 'border-text-base/15 bg-transparent text-transparent'}`}>
-                <Check size={10} />
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Weights */}
       <div className="reicon-sidebar-group">
         <div className="sidebar-section-header">
@@ -113,7 +79,7 @@ function Sidebar({
           {STYLE_OPTIONS.map((style) =>
             renderNavItem(
               `weight-${style}`,
-              `${style} Icons`,
+              style,
               activeStyle === style,
               style === 'Duotone'
             )
@@ -121,18 +87,18 @@ function Sidebar({
         </div>
       </div>
 
-      {/* Sizing */}
+      {/* Grid Size */}
       <div className="reicon-sidebar-group">
         <div className="sidebar-section-header">
           <div className="sidebar-icon-box">
-            <re-icon icon="size" size="13" />
+            <re-icon icon="ruler" size="13" />
           </div>
-          <span>Sizing</span>
+          <span>Grid Size</span>
         </div>
         <div className="sidebar-items-container">
           <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-          {SIZE_OPTIONS.map((size) =>
-            renderNavItem(`size-${size}`, `${size}px Grid`, activeSize === size)
+          {SIZE_OPTIONS.map((sz) =>
+            renderNavItem(`size-${sz}`, `${sz}px`, activeSize === sz)
           )}
         </div>
       </div>
@@ -147,9 +113,9 @@ function Sidebar({
         </div>
         <div className="sidebar-items-container">
           <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-          {renderNavItem('cat-all', 'All Categories', activeSet === 'all' && !showNew)}
+          {renderNavItem('cat-all', 'All Categories', activeSet === 'all')}
           {categories.map((cat) =>
-            renderNavItem(`cat-${cat}`, fmt(cat), activeSet === cat && !showNew)
+            renderNavItem(`cat-${cat}`, fmt(cat), activeSet === cat)
           )}
         </div>
       </div>
@@ -169,12 +135,21 @@ function Sidebar({
           position: sticky;
           top: 3.5rem;
           overflow-y: auto;
-          padding: 1.25rem 0.5rem 2rem 0.75rem;
-          margin-left: 0.5rem;
+          padding: 1.25rem 0.5rem 2rem 0;
+          margin-left: 0;
           z-index: 30;
           background-color: var(--bg-base);
           scrollbar-width: none;
           flex-shrink: 0;
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.3s ease, padding 0.3s ease;
+        }
+        #nd-sidebar.is-collapsed {
+          width: 0;
+          padding: 0;
+          margin: 0;
+          opacity: 0;
+          overflow: hidden;
+          pointer-events: none;
         }
         #nd-sidebar::-webkit-scrollbar { display: none; }
 
@@ -278,8 +253,8 @@ function Sidebar({
         }
         .reicon-sidebar-close {
           display:inline-flex; align-items:center; justify-content:center;
-          width:28px; height:28px; border-radius:8px;
-          background: var(--surface-base); border:1px solid var(--border-base);
+          width:28px; height:28px; border-radius:9999px;
+          background: var(--surface-base); border:none;
           color: var(--text-muted); cursor:pointer;
           transition:color 0.15s, background-color 0.15s;
         }
@@ -288,7 +263,7 @@ function Sidebar({
         @media(max-width:1023.98px) { #nd-sidebar{display:none;} }
       `}</style>
 
-      <aside id="nd-sidebar" className="hidden lg:flex" data-lenis-prevent>
+      <aside id="nd-sidebar" className={`hidden lg:block ${collapsed ? 'is-collapsed' : ''}`} data-lenis-prevent>
         {sidebarContent}
       </aside>
 

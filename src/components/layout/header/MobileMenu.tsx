@@ -12,10 +12,10 @@ interface MobileMenuProps {
 }
 
 const navItems = [
-  { to: '/docs', label: 'Docs' },
   { to: '/icons', label: 'Icons' },
   { to: '/illustration', label: 'Illustration' },
   { to: '/logos', label: 'Logos' },
+  { to: '/docs', label: 'Docs' },
   { to: '/packages', label: 'Packages' },
   { to: '/faq', label: 'FAQ' },
 ];
@@ -121,7 +121,7 @@ export default function MobileMenu({ stars, theme, toggleTheme }: MobileMenuProp
                   onClick={() => setMenuOpen(false)}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-colors cursor-pointer"
                   style={{
-                    border: isDark ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.2)',
+                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)',
                     color: isDark ? '#ffffff' : '#111111',
                   }}
                   aria-label="Close menu"

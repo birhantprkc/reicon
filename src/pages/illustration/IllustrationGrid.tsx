@@ -20,8 +20,8 @@ export default function IllustrationGrid({
 }: IllustrationGridProps) {
   if (!ready) {
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-        {Array.from({ length: 24 }).map((_, i) => (
+      <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-1.5">
+        {Array.from({ length: 120 }).map((_, i) => (
           <IllustrationCardSkeleton key={i} size={displaySize} />
         ))}
       </div>
@@ -55,9 +55,9 @@ export default function IllustrationGrid({
       </div>
       <IconTooltipProvider openDelay={500} closeDelay={200}>
         <Highlight
-          className="absolute inset-0 rounded-2xl ring-1 ring-text-base/20 bg-text-base/7 pointer-events-none"
+          className="absolute inset-0 rounded-xl ring-1 ring-text-base/20 bg-text-base/7 pointer-events-none"
         >
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-1.5">
             {items.map((item) => (
               <IllustrationCard key={item.slug} item={item} size={displaySize} />
             ))}

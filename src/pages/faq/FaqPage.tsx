@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'motion/react';
+import { Search3 } from 'reicon-react';
 import DocsActionsBar from '../../components/docs/ActionsBar';
 import { docsSidebarStyles } from '../../components/docs/sidebar/styles';
 import DocsRightSidebar from '../../components/docs/sidebar/Right';
@@ -197,12 +198,24 @@ export default function FaqPage() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => { for (const e of entries) { if (e.isIntersecting) setActiveSection(e.target.id); } },
-      { rootMargin: '-80px 0px -60% 0px', threshold: 0.1 }
-    );
-    contentRef.current?.querySelectorAll('[data-section]').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section]'));
+      if (!sections.length) return;
+      const scrollPos = window.scrollY + 140;
+      let currentId = sections[0].id;
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPos) {
+          currentId = section.id;
+        } else {
+          break;
+        }
+      }
+      setActiveSection(currentId);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -281,58 +294,17 @@ export default function FaqPage() {
     window.open(urls[platform], '_blank');
   };
 
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-
-  const allVisibleItems = useMemo(() => [
-    ...NAV_ITEMS.general,
-    ...NAV_ITEMS.technical,
-    ...NAV_ITEMS.design,
-  ], []);
-
   const renderNavItem = (item: { id: string; label: string }) => {
     const isActive = activeSection === item.id;
-    const hoveredIndex = hoveredId ? allVisibleItems.findIndex((it) => it.id === hoveredId) : -1;
-    const itemIndex = allVisibleItems.findIndex((it) => it.id === item.id);
-    const distance = (hoveredIndex !== -1 && itemIndex !== -1) ? Math.abs(hoveredIndex - itemIndex) : -1;
-
-    let offsetX = 0;
-    let hoverOpacity = 0;
-    if (distance === 0) {
-      offsetX = 4;
-      hoverOpacity = 0.6;
-    } else if (distance === 1) {
-      offsetX = 2;
-      hoverOpacity = 0;
-    }
-
     return (
       <div
         key={item.id}
         onClick={() => scrollTo(item.id)}
-        onMouseEnter={() => setHoveredId(item.id)}
-        onMouseLeave={() => setHoveredId(null)}
         className={`sidebar-item ${isActive ? 'active' : ''}`}
       >
-        {isActive ? (
-          <motion.div
-            layoutId="faqSidebarActiveBar"
-            className="sidebar-item-active-bar"
-            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-          />
-        ) : (
-          <motion.div
-            className="sidebar-item-hover-bar"
-            animate={{ opacity: hoverOpacity }}
-            transition={{ type: 'spring', stiffness: 450, damping: 28 }}
-          />
-        )}
-        <motion.span
-          animate={{ x: offsetX }}
-          transition={{ type: 'spring', stiffness: 450, damping: 28 }}
-          className="sidebar-item-text"
-        >
+        <span className="sidebar-item-text">
           {item.label}
-        </motion.span>
+        </span>
       </div>
     );
   };
@@ -346,7 +318,7 @@ export default function FaqPage() {
     >
       <FaqHelmet />
 
-      <div className="flex flex-1 pt-14">
+      <div className="flex flex-1 pt-14 px-4 md:px-10">
         <style>{docsSidebarStyles}</style>
 
         {/* Left sidebar */}
@@ -392,7 +364,7 @@ export default function FaqPage() {
         </aside>
 
         {/* Main content */}
-        <main ref={contentRef} className="flex-1 min-w-0 px-4 md:px-6 lg:px-8 xl:px-10 py-5 pb-36 lg:pb-12 overflow-x-hidden">
+        <main ref={contentRef} className="flex-1 min-w-0 px-0 md:px-6 lg:px-8 xl:px-10 py-5 pb-36 lg:pb-12 overflow-x-hidden">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl md:text-4xl font-serif text-text-base mb-6">Frequently Asked Questions</h1>
             <p className="text-text-base/50 text-[15px] leading-[1.8] mb-8">
@@ -401,24 +373,15 @@ export default function FaqPage() {
             </p>
 
             <div className="relative mb-10">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-base/30"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-base/70">
+                <Search3 size={16} />
+              </div>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search questions..."
-                className="w-full pl-10 pr-4 py-2.5 bg-text-base/4 border border-text-base/10 rounded-lg text-[14px] text-text-base placeholder:text-text-base/25 outline-none focus:border-text-base/25 transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 bg-text-base/[0.04] rounded-full text-[14px] text-text-base placeholder:text-text-base/70 outline-none focus:bg-text-base/10 transition-colors"
               />
             </div>
 

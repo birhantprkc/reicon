@@ -180,25 +180,24 @@ export function useDocs() {
   }, [fwParam]);
 
   useEffect(() => {
-    let observer: IntersectionObserver | null = null;
-    const timer = setTimeout(() => {
-      observer = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting && e.target.id) {
-              setActiveSection(e.target.id);
-            }
-          }
-        },
-        { rootMargin: '-80px 0px -50% 0px', threshold: 0.1 }
-      );
-      contentRef.current?.querySelectorAll('[data-section]').forEach((el) => observer?.observe(el));
-    }, 50);
-
-    return () => {
-      clearTimeout(timer);
-      if (observer) observer.disconnect();
+    const handleScroll = () => {
+      const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section]'));
+      if (!sections.length) return;
+      const scrollPos = window.scrollY + 140;
+      let currentId = sections[0].id;
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPos) {
+          currentId = section.id;
+        } else {
+          break;
+        }
+      }
+      setActiveSection(currentId);
     };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [fwParam, framework]);
 
   useEffect(() => {

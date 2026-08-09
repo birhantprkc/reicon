@@ -94,7 +94,7 @@ export default function DocsContent({
   troubleshootingDocs,
 }: Props) {
   return (
-    <main ref={contentRef} className="flex-1 min-w-0 px-4 md:px-6 lg:px-8 xl:px-10 py-5 pb-36 lg:pb-12 overflow-x-hidden">
+    <main ref={contentRef} className="flex-1 min-w-0 px-0 md:px-6 lg:px-8 xl:px-10 py-5 pb-36 lg:pb-12 overflow-x-hidden">
       <div className="max-w-5xl mx-auto">
         <AnimatePresence mode="wait">
           <motion.div

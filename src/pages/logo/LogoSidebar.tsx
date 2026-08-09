@@ -8,6 +8,7 @@ interface LogoSidebarProps {
   onSizeChange: (size: string) => void;
   isOpen?: boolean;
   onClose?: () => void;
+  collapsed?: boolean;
 }
 
 const SIZE_OPTIONS = ['24', '32', '36', '48'];
@@ -19,6 +20,7 @@ function LogoSidebar({
   onSizeChange,
   isOpen = false,
   onClose,
+  collapsed = false,
 }: LogoSidebarProps) {
   const [meta, setMeta] = useState<LogoCategoriesMeta | null>(null);
 
@@ -56,32 +58,18 @@ function LogoSidebar({
 
   const sidebarContent = (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-      {/* Quick Access */}
+      {/* Grid Size */}
       <div className="reicon-sidebar-group">
         <div className="sidebar-section-header">
           <div className="sidebar-icon-box">
-            <re-icon icon="star" size="13" />
+            <re-icon icon="ruler" size="13" />
           </div>
-          <span>Quick Access</span>
-        </div>
-        <div className="sidebar-items-container">
-          <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-          {renderNavItem('cat-all', 'All Categories', activeCategory === 'all')}
-        </div>
-      </div>
-
-      {/* Sizing */}
-      <div className="reicon-sidebar-group">
-        <div className="sidebar-section-header">
-          <div className="sidebar-icon-box">
-            <re-icon icon="size" size="13" />
-          </div>
-          <span>Sizing</span>
+          <span>Grid Size</span>
         </div>
         <div className="sidebar-items-container">
           <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
           {SIZE_OPTIONS.map((size) =>
-            renderNavItem(`size-${size}`, `${size}px Grid`, activeSize === size)
+            renderNavItem(`size-${size}`, `${size}px`, activeSize === size)
           )}
         </div>
       </div>
@@ -96,6 +84,7 @@ function LogoSidebar({
         </div>
         <div className="sidebar-items-container">
           <div className="sidebar-section-line" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
+          {renderNavItem('cat-all', 'All Categories', activeCategory === 'all')}
           {meta?.categories.map((cat) =>
             renderNavItem(
               `cat-${cat.name}`,
@@ -117,12 +106,21 @@ function LogoSidebar({
           position: sticky;
           top: 3.5rem;
           overflow-y: auto;
-          padding: 1.25rem 0.5rem 2rem 0.75rem;
-          margin-left: 0.5rem;
+          padding: 1.25rem 0.5rem 2rem 0;
+          margin-left: 0;
           z-index: 30;
           background-color: var(--bg-base);
           scrollbar-width: none;
           flex-shrink: 0;
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.3s ease, padding 0.3s ease;
+        }
+        #nd-logo-sidebar.is-collapsed {
+          width: 0;
+          padding: 0;
+          margin: 0;
+          opacity: 0;
+          overflow: hidden;
+          pointer-events: none;
         }
         #nd-logo-sidebar::-webkit-scrollbar { display: none; }
 
@@ -221,8 +219,8 @@ function LogoSidebar({
         }
         .reicon-sidebar-close {
           display:inline-flex; align-items:center; justify-content:center;
-          width:28px; height:28px; border-radius:8px;
-          background: var(--surface-base); border:1px solid var(--border-base);
+          width:28px; height:28px; border-radius:9999px;
+          background: var(--surface-base); border:none;
           color: var(--text-muted); cursor:pointer;
           transition:color 0.15s, background-color 0.15s;
         }
@@ -231,7 +229,7 @@ function LogoSidebar({
         @media(max-width:1023.98px) { #nd-logo-sidebar{display:none;} }
       `}</style>
 
-      <aside id="nd-logo-sidebar" className="hidden lg:flex" data-lenis-prevent>
+      <aside id="nd-logo-sidebar" className={`hidden lg:block ${collapsed ? 'is-collapsed' : ''}`} data-lenis-prevent>
         {sidebarContent}
       </aside>
 

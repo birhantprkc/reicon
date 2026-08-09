@@ -14,7 +14,7 @@ import {
   searchIllustrations,
 } from '../../lib/illustration-data';
 
-const BATCH_SIZE = 60;
+const BATCH_SIZE = 120;
 
 export default function IllustrationPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,7 +22,7 @@ export default function IllustrationPage() {
   const initialCat = searchParams.get('category') || 'all';
   const initialSub = searchParams.get('subcategory') || 'all';
   const initialQ = searchParams.get('q') || '';
-  const initialSize = searchParams.get('size') || '100';
+  const initialSize = searchParams.get('size') || '50';
 
   const [activeCategory, setActiveCategory] = useState(initialCat);
   const [activeSubcategory, setActiveSubcategory] = useState(initialSub);
@@ -36,13 +36,14 @@ export default function IllustrationPage() {
   const [filteredItems, setFilteredItems] = useState<IllustrationItem[]>([]);
   const [ready, setReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Sync state when searchParams change
   useEffect(() => {
     const cat = searchParams.get('category') || 'all';
     const sub = searchParams.get('subcategory') || 'all';
     const q = searchParams.get('q') || '';
-    const sz = searchParams.get('size') || '100';
+    const sz = searchParams.get('size') || '50';
 
     setActiveCategory(cat);
     setActiveSubcategory(sub);
@@ -147,7 +148,7 @@ export default function IllustrationPage() {
     <div className="flex-1">
       <IllustrationHelmet />
 
-      <div className="flex flex-1 pt-14">
+      <div className="flex flex-1 pt-14 px-4 md:px-10">
         <IllustrationSidebar
           activeCategory={activeCategory}
           activeSubcategory={activeSubcategory}
@@ -156,15 +157,18 @@ export default function IllustrationPage() {
           onSizeChange={handleSizeChange}
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
+          collapsed={sidebarCollapsed}
         />
 
-        <main className="flex-1 p-4 md:p-6">
+        <main className={`flex-1 py-4 md:py-6 px-0 md:pr-0 ${sidebarCollapsed ? 'md:pl-0' : 'md:pl-6'} transition-all duration-300 ease-in-out`}>
           <IllustrationSearchBar
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
             onFilterClick={() => setSidebarOpen(true)}
             displaySize={displaySize}
             onDisplaySizeChange={(sz) => handleSizeChange(sz.toString())}
+            isCollapsed={sidebarCollapsed}
+            onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
           />
 
           <IconCount count={filteredItems.length} ready={ready} />
