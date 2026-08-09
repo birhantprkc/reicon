@@ -266,39 +266,4 @@ export async function getRelatedLogos(slug: string): Promise<LogoItem[]> {
   return results;
 }
 
-/**
- * Fetch raw SVG XML code for a given logo brand and variant
- */
-export async function fetchLogoSvgCode(brandSlug: string, variant: string = 'original'): Promise<string> {
-  const cacheKey = `${brandSlug}__${variant}`;
-  if (svgCodeCache.has(cacheKey)) {
-    return svgCodeCache.get(cacheKey)!;
-  }
 
-  const logoUrl = getLogoUrl(brandSlug, variant);
-
-  try {
-    const proxyUrl = `/cdn-proxy/logos/${brandSlug}/${variant}.svg`;
-    const res = await fetch(proxyUrl);
-    if (res.ok) {
-      const text = await res.text();
-      if (text.trim().startsWith('<svg')) {
-        svgCodeCache.set(cacheKey, text);
-        return text;
-      }
-    }
-  } catch {}
-
-  try {
-    const res = await fetch(logoUrl);
-    if (res.ok) {
-      const text = await res.text();
-      if (text.trim().startsWith('<svg')) {
-        svgCodeCache.set(cacheKey, text);
-        return text;
-      }
-    }
-  } catch {}
-
-  return '';
-}

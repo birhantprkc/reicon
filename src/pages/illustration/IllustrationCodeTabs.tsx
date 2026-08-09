@@ -1,15 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { VueLogo } from '../icon/Snippets';
-import { fetchIllustrationSvgCode } from '../../lib/illustration-data';
 
 interface IllustrationCodeTabsProps {
   slug: string;
   title: string;
   cdnUrl: string;
-  svgCode: string;
   copiedField: string | null;
   onCopy: (text: string, field: string) => void;
 }
@@ -69,39 +67,16 @@ function HighlightedCode({ code }: { code: string }) {
 }
 
 export default function IllustrationCodeTabs({
-  slug,
   title,
   cdnUrl,
-  svgCode,
   copiedField,
   onCopy,
 }: IllustrationCodeTabsProps) {
-  const [activeTab, setActiveTab] = useState<'react' | 'vue' | 'html' | 'svg'>('react');
-  const [fetchedSvg, setFetchedSvg] = useState(svgCode);
-
-  useEffect(() => {
-    if (svgCode) {
-      setFetchedSvg(svgCode);
-      return;
-    }
-    if (!slug) return;
-    let cancelled = false;
-
-    fetchIllustrationSvgCode(slug).then((code) => {
-      if (!cancelled && code) {
-        setFetchedSvg(code);
-      }
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [slug, svgCode]);
+  const [activeTab, setActiveTab] = useState<'react' | 'vue' | 'html'>('react');
 
   const reactCode = `<img\n  src="${cdnUrl}"\n  alt="${title}"\n  width={180}\n  height={180}\n/>`;
   const vueCode = `<template>\n  <img src="${cdnUrl}" alt="${title}" width="180" height="180" />\n</template>`;
   const htmlCode = `<img src="${cdnUrl}" alt="${title}" width="180" height="180" />`;
-  const formattedSvg = fetchedSvg || `<!-- Loading SVG source code... -->`;
 
   const tabs = [
     {
@@ -122,19 +97,10 @@ export default function IllustrationCodeTabs({
       icon: <IoLogoJavascript size={14} className="text-[#F7DF1E]" />,
       raw: htmlCode,
     },
-    {
-      id: 'svg',
-      label: 'SVG Code',
-      icon: <img src="/readme-assets/svg.svg" alt="SVG" className="w-3.5 h-3.5 shrink-0 object-contain" />,
-      raw: formattedSvg,
-    },
   ] as const;
 
   const currentTabObj = tabs.find((t) => t.id === activeTab) || tabs[0];
-  const isCopied =
-    copiedField === activeTab ||
-    copiedField === `code-${activeTab}` ||
-    (activeTab === 'svg' && (copiedField === 'svg' || copiedField === 'code-svg'));
+  const isCopied = copiedField === activeTab || copiedField === `code-${activeTab}`;
 
   return (
     <figure className="relative rounded-xl bg-text-base/3 border border-text-base/8 text-sm max-w-full overflow-hidden">

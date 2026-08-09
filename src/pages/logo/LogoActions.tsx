@@ -10,7 +10,6 @@ interface LogoActionsProps {
   exportSize: number;
   copiedField: string | null;
   onCopy: (text: string, field: string) => void;
-  onCopySvg: () => void;
   onDownloadSvg: () => void;
   onDownloadPng: () => void;
   onDownloadWebp: () => void;
@@ -25,7 +24,6 @@ export default function LogoActions({
   exportSize,
   copiedField,
   onCopy,
-  onCopySvg,
   onDownloadSvg,
   onDownloadPng,
   onDownloadWebp,
@@ -36,7 +34,6 @@ export default function LogoActions({
       {/* Quick Copy Buttons */}
       <div className="flex flex-wrap gap-2">
         {([
-          ['Copy SVG', onCopySvg, 'svg'],
           ['Copy CDN URL', () => onCopy(activeUrl, 'cdn'), 'cdn'],
           ['Copy Name', () => onCopy(name || slug, 'name'), 'name'],
         ] as const).map(([label, fn, field]) => (

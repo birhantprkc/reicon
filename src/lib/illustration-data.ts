@@ -208,38 +208,4 @@ export async function getIllustrationDetail(slug: string): Promise<IllustrationI
   };
 }
 
-/**
- * Fetch raw SVG XML content using same-origin proxy first to eliminate CORS console errors
- */
-export async function fetchIllustrationSvgCode(slug: string): Promise<string> {
-  if (!slug) return '';
-  if (svgCodeCache.has(slug)) {
-    return svgCodeCache.get(slug)!;
-  }
 
-  // 1. Try same-origin proxy endpoint first (avoids browser CORS console errors)
-  try {
-    const res = await fetch(`/cdn-proxy/${slug}.svg`);
-    if (res.ok) {
-      const text = await res.text();
-      if (text.trim().startsWith('<svg')) {
-        svgCodeCache.set(slug, text);
-        return text;
-      }
-    }
-  } catch {}
-
-  // 2. Fallback to direct CDN fetch
-  try {
-    const res = await fetch(getIllustrationUrl(slug));
-    if (res.ok) {
-      const text = await res.text();
-      if (text.trim().startsWith('<svg')) {
-        svgCodeCache.set(slug, text);
-        return text;
-      }
-    }
-  } catch {}
-
-  return '';
-}

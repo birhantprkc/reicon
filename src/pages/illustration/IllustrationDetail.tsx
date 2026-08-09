@@ -7,7 +7,6 @@ import {
   getIllustrationDetail,
   getIllustrationUrl,
   loadIllustrationGroup,
-  fetchIllustrationSvgCode,
 } from '../../lib/illustration-data';
 import IllustrationCard from './IllustrationCard';
 import IllustrationCodeTabs from './IllustrationCodeTabs';
@@ -25,7 +24,6 @@ export default function IllustrationDetail() {
   const [loading, setLoading] = useState(true);
   const [previewSize, setPreviewSize] = useState(180);
   const [exportSize, setExportSize] = useState(512);
-  const [svgCode, setSvgCode] = useState('');
 
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
@@ -46,10 +44,6 @@ export default function IllustrationDetail() {
           }
         });
       }
-    });
-
-    fetchIllustrationSvgCode(slug).then((code) => {
-      if (!cancelled && code) setSvgCode(code);
     });
 
     return () => {
@@ -93,48 +87,26 @@ export default function IllustrationDetail() {
     flashToast(field);
   };
 
-  const handleCopySvgCode = async () => {
-    let code = svgCode;
-    if (!code && currentSlug) {
-      code = await fetchIllustrationSvgCode(currentSlug);
-      if (code) setSvgCode(code);
+  const handleDownloadSvg = async () => {
+    try {
+      const res = await fetch(cdnUrl);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${currentSlug}.svg`;
+      a.click();
+      URL.revokeObjectURL(url);
+      flashToast('download-svg');
+    } catch {
+      window.open(cdnUrl, '_blank');
     }
-    if (code) {
-      navigator.clipboard.writeText(code);
-      flashToast('svg');
-    } else {
-      flashToast('error');
-    }
-  };
-
-  const handleDownloadSvg = () => {
-    if (!svgCode) {
-      flashToast('error');
-      return;
-    }
-
-    const blob = new Blob([svgCode], { type: 'image/svg+xml' });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${currentSlug}-${exportSize}x${exportSize}.svg`;
-    a.click();
-
-    URL.revokeObjectURL(url);
-    flashToast('download-svg');
   };
 
   const handleDownloadPng = async () => {
     try {
-      if (!svgCode) {
-        flashToast('error');
-        return;
-      }
-      const blob = new Blob([svgCode], { type: 'image/svg+xml' });
-      const url = URL.createObjectURL(blob);
-
       const img = new Image();
+      img.crossOrigin = 'anonymous';
       img.onload = () => {
         const canvas = document.createElement('canvas');
         canvas.width = exportSize;
@@ -147,11 +119,10 @@ export default function IllustrationDetail() {
           a.href = pngUrl;
           a.download = `${currentSlug}-${exportSize}x${exportSize}.png`;
           a.click();
-          URL.revokeObjectURL(url);
           flashToast('download-png');
         }
       };
-      img.src = url;
+      img.src = cdnUrl;
     } catch {
       flashToast('error');
     }
@@ -290,16 +261,6 @@ export default function IllustrationDetail() {
                   >
                     {copiedField === 'html' ? 'Copied!' : 'Copy HTML'}
                   </motion.button>
-
-                  <motion.button
-                    whileTap={{ scale: 0.96 }}
-                    onClick={handleCopySvgCode}
-                    className={`flex-1 min-w-[120px] text-[12.5px] font-medium py-2.5 rounded-lg border transition-colors cursor-pointer ${
-                      copiedField === 'svg' ? 'bg-[#6C5CE7]/20 border-[#6C5CE7]/40 text-[#6C5CE7]' : 'bg-text-base/5 border-text-base/10 text-text-base/60 hover:text-text-base hover:bg-text-base/10'
-                    }`}
-                  >
-                    {copiedField === 'svg' ? 'Copied!' : 'Copy SVG'}
-                  </motion.button>
                 </div>
 
                 <div>
@@ -347,7 +308,6 @@ export default function IllustrationDetail() {
                 slug={currentSlug}
                 title={currentTitle}
                 cdnUrl={cdnUrl}
-                svgCode={svgCode}
                 copiedField={copiedField}
                 onCopy={copyToClipboard}
               />
@@ -373,23 +333,43 @@ export default function IllustrationDetail() {
 
           {/* Related Illustrations Grid */}
           {related.length > 0 && (
-            <div className="mt-16 pt-10 border-t border-text-base/8">
+            <section className="w-full pb-16 mt-12 border-t border-text-base/8 pt-12 relative z-20 bg-bg-base">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-[16px] font-serif text-text-base">Related Illustrations</h3>
+                <h2 className="text-lg font-serif text-text-base">Related illustrations</h2>
                 <Link to={`/illustration?category=${item?.category || 'object'}`} className="text-[12px] font-mono text-text-base/50 hover:text-text-base">
                   View all in {item?.category} &rarr;
                 </Link>
               </div>
-              <IconTooltipProvider openDelay={500} closeDelay={200}>
-                <Highlight className="absolute inset-0 rounded-xl ring-1 ring-text-base/20 bg-text-base/7 pointer-events-none">
-                  <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1.5">
-                    {related.map((rel) => (
-                      <IllustrationCard key={rel.slug} item={rel} size={36} />
-                    ))}
-                  </div>
-                </Highlight>
-              </IconTooltipProvider>
-            </div>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2.5">
+                {related.map((rel, i) => (
+                  <motion.div
+                    key={rel.slug}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.3, delay: Math.min(i * 0.025, 0.3), ease: [0.25, 0.46, 0.45, 0.94] }}
+                  >
+                    <Link
+                      to={`/illustration/${rel.slug}`}
+                      className="flex flex-col items-center justify-between p-3 aspect-square rounded-xl bg-text-base/3 border border-text-base/6 hover:bg-text-base/6 hover:border-text-base/15 transition-all group"
+                      title={rel.title || rel.name || rel.slug}
+                    >
+                      <div className="flex-1 flex items-center justify-center w-full my-auto">
+                        <img
+                          src={getIllustrationUrl(rel.slug)}
+                          alt={rel.title || rel.name}
+                          loading="lazy"
+                          className="max-w-[48px] max-h-[48px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-150"
+                        />
+                      </div>
+                      <span className="text-[11px] text-text-base/50 group-hover:text-text-base truncate w-full text-center font-medium transition-colors mt-1">
+                        {rel.title || rel.name || rel.slug}
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
           )}
         </div>
       </main>

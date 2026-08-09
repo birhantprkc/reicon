@@ -6,7 +6,6 @@ interface LogoCodeTabsProps {
   slug: string;
   name: string;
   variant: string;
-  svgCode: string;
   svgUrl: string;
   copiedField: string | null;
   handleCopy: (text: string, field: string) => void;
@@ -68,43 +67,39 @@ function HighlightedCode({ code }: { code: string }) {
 }
 
 export default function LogoCodeTabs({
-  slug,
   name,
-  variant,
-  svgCode,
   svgUrl,
   copiedField,
   handleCopy,
 }: LogoCodeTabsProps) {
-  // Show CDN first, then SVG Code
-  const [codeTab, setCodeTab] = useState<'cdn' | 'svg'>('cdn');
+  const [codeTab, setCodeTab] = useState<'cdn' | 'react' | 'vue'>('cdn');
 
-  const pascalName = slug
-    .replace(/[^a-zA-Z0-9]/g, ' ')
-    .split(' ')
-    .filter(Boolean)
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join('');
+  const cdnCode = `<img src="${svgUrl}" alt="${name}" width="24" height="24" />`;
+  const reactCode = `<img\n  src="${svgUrl}"\n  alt="${name}"\n  width={24}\n  height={24}\n/>`;
+  const vueCode = `<template>\n  <img src="${svgUrl}" alt="${name}" width="24" height="24" />\n</template>`;
 
   const CODE_TABS = [
     {
       id: 'cdn',
-      label: 'JS CDN',
+      label: 'HTML / CDN',
       icon: <FrameworkIcon id="javascript" size={14} />,
     },
     {
-      id: 'svg',
-      label: 'SVG Code',
-      icon: <SvgIcon size={14} />,
+      id: 'react',
+      label: 'React',
+      icon: <FrameworkIcon id="react" size={14} />,
+    },
+    {
+      id: 'vue',
+      label: 'Vue',
+      icon: <FrameworkIcon id="vue" size={14} />,
     },
   ] as const;
 
-  const formattedSvg = svgCode || `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">\n  <!-- ${name} ${variant} SVG -->\n</svg>`;
-  const cdnCode = `<img src="${svgUrl}" alt="${name}" width="24" height="24" />`;
-
   const rawSnippets: Record<string, string> = {
     cdn: cdnCode,
-    svg: formattedSvg,
+    react: reactCode,
+    vue: vueCode,
   };
 
   const activeRaw = rawSnippets[codeTab] || '';

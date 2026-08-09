@@ -10,7 +10,6 @@ import TypeTable from '../../components/docs/TypeTable';
 import {
   LogoItem,
   getLogoDetail,
-  fetchLogoSvgCode,
   getLogoUrl,
   getRelatedLogos,
 } from '../../lib/logo-data';
@@ -24,7 +23,6 @@ export default function LogoDetail() {
   const [logo, setLogo] = useState<LogoItem | null>(null);
   const [relatedLogos, setRelatedLogos] = useState<LogoItem[]>([]);
   const [selectedVariant, setSelectedVariant] = useState<string>('original');
-  const [svgCode, setSvgCode] = useState<string>('');
   const [previewSize, setPreviewSize] = useState<number>(128);
   const [exportSize, setExportSize] = useState<number>(48);
   const [loading, setLoading] = useState(true);
@@ -42,7 +40,6 @@ export default function LogoDetail() {
       setLoading(false);
 
       if (item) {
-        fetchLogoSvgCode(item.slug, defaultVar).then(setSvgCode);
         getRelatedLogos(item.slug).then(setRelatedLogos);
       }
     });
@@ -55,9 +52,6 @@ export default function LogoDetail() {
 
   const handleVariantChange = (varKey: string) => {
     setSelectedVariant(varKey);
-    if (logo) {
-      fetchLogoSvgCode(logo.slug, varKey).then(setSvgCode);
-    }
   };
 
   const handleCopy = (text: string, field: string) => {
@@ -65,15 +59,6 @@ export default function LogoDetail() {
     setCopiedField(field);
     flashToast(`Copied ${field.replace('code-', '')} snippet!`);
     setTimeout(() => setCopiedField(null), 2000);
-  };
-
-  const handleCopySvg = () => {
-    if (svgCode) {
-      navigator.clipboard.writeText(svgCode);
-      setCopiedField('svg');
-      flashToast('Copied SVG code!');
-      setTimeout(() => setCopiedField(null), 2000);
-    }
   };
 
   const handleDownloadSvg = () => {
@@ -94,18 +79,7 @@ export default function LogoDetail() {
         flashToast(`Downloaded ${logo.name} SVG!`);
       })
       .catch(() => {
-        if (svgCode) {
-          const blob = new Blob([svgCode], { type: 'image/svg+xml' });
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `${logo.slug}-${selectedVariant}.svg`;
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-          document.body.removeChild(a);
-          flashToast(`Downloaded ${logo.name} SVG!`);
-        }
+        window.open(activeUrl, '_blank');
       });
   };
 
@@ -117,6 +91,7 @@ export default function LogoDetail() {
     canvas.height = exportSize;
     const ctx = canvas.getContext('2d');
     const img = new Image();
+    img.crossOrigin = 'anonymous';
 
     img.onload = () => {
       if (ctx) {
@@ -133,13 +108,7 @@ export default function LogoDetail() {
       }
     };
 
-    if (svgCode) {
-      const encoded = encodeURIComponent(svgCode);
-      img.src = `data:image/svg+xml;charset=utf-8,${encoded}`;
-    } else {
-      img.crossOrigin = 'anonymous';
-      img.src = activeUrl;
-    }
+    img.src = activeUrl;
   };
 
   const handleBack = () => {
@@ -258,7 +227,6 @@ export default function LogoDetail() {
                 exportSize={exportSize}
                 copiedField={copiedField}
                 onCopy={handleCopy}
-                onCopySvg={handleCopySvg}
                 onDownloadSvg={handleDownloadSvg}
                 onDownloadPng={() => handleDownloadRaster('png')}
                 onDownloadWebp={() => handleDownloadRaster('webp')}
@@ -269,7 +237,6 @@ export default function LogoDetail() {
                 slug={logo.slug}
                 name={logo.name}
                 variant={selectedVariant}
-                svgCode={svgCode}
                 svgUrl={activeUrl}
                 copiedField={copiedField}
                 handleCopy={handleCopy}
