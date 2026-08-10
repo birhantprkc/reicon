@@ -1,4 +1,5 @@
 import { Search3 } from 'reicon-react';
+import DesktopFilterDropdown, { SortOption } from '../../components/ui/DesktopFilterDropdown';
 
 interface IllustrationSearchBarProps {
   searchQuery: string;
@@ -8,6 +9,8 @@ interface IllustrationSearchBarProps {
   onDisplaySizeChange: (size: number) => void;
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
+  sortBy?: SortOption;
+  onSortChange?: (sort: SortOption) => void;
 }
 
 export default function IllustrationSearchBar({
@@ -16,6 +19,8 @@ export default function IllustrationSearchBar({
   onFilterClick,
   isCollapsed,
   onToggleCollapse,
+  sortBy = 'az',
+  onSortChange,
 }: IllustrationSearchBarProps) {
   return (
     <div className="mb-4 flex items-center gap-2">
@@ -54,12 +59,17 @@ export default function IllustrationSearchBar({
           </button>
         )}
       </div>
+
+      {onSortChange && (
+        <DesktopFilterDropdown sortBy={sortBy} onSortChange={onSortChange} />
+      )}
+
       <button
         onClick={onFilterClick}
         className="lg:hidden ml-auto flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-text-base/[0.04] hover:bg-text-base/10 text-text-base/70 hover:text-text-base text-sm font-medium transition-colors shrink-0 cursor-pointer"
         aria-label="Open filters"
       >
-        <re-icon icon="filter" size="15" color="currentColor" />
+        <re-icon icon="sort-alpha" size="15" color="currentColor" />
         Filters
       </button>
     </div>

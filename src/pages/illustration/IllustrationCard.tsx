@@ -21,7 +21,7 @@ function IllustrationCard({ item, size = 36 }: IllustrationCardProps) {
       <IconTooltipTrigger label={item.name} side="bottom" sideOffset={14}>
         <Link
           to={`/illustration/${item.slug}`}
-          className="cv-auto group relative flex items-center justify-center aspect-square bg-text-base/3 border border-text-base/6 hover:border-text-base/20 rounded-xl transition-all cursor-pointer p-2 overflow-hidden"
+          className="cv-auto group relative flex items-center justify-center w-full h-full aspect-square bg-text-base/3 border border-text-base/6 hover:border-text-base/20 rounded-xl transition-all cursor-pointer p-2 overflow-hidden"
           title={item.name}
         >
           {/* Skeleton Placeholder - Always 100% Dead-Center */}

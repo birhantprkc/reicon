@@ -6,6 +6,7 @@ import IllustrationSearchBar from './IllustrationSearchBar';
 import IconCount from '../icons/IconCount';
 import IllustrationGrid from './IllustrationGrid';
 import LoadMoreButton from '../../components/ui/LoadMoreButton';
+import { SortOption } from '../../components/ui/DesktopFilterDropdown';
 import {
   IllustrationItem,
   loadIllustrationCategories,
@@ -37,6 +38,7 @@ export default function IllustrationPage() {
   const [ready, setReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>('az');
 
   // Sync state when searchParams change
   useEffect(() => {
@@ -95,21 +97,20 @@ export default function IllustrationPage() {
     };
   }, [deferredSearchQuery, items, activeCategory]);
 
-  const handleCategoryChange = (category: string, subcategory: string = 'all') => {
-    setActiveCategory(category);
-    setActiveSubcategory(subcategory);
-    setVisibleCount(BATCH_SIZE);
+  const sortedItems = useMemo(() => {
+    if (sortBy === 'za') return [...filteredItems].sort((a, b) => b.name.localeCompare(a.name));
+    return [...filteredItems].sort((a, b) => a.name.localeCompare(b.name));
+  }, [filteredItems, sortBy]);
 
+  const handleCategoryChange = (cat: string, subcat: string = 'all') => {
+    setActiveCategory(cat);
+    setActiveSubcategory(subcat);
+    setVisibleCount(BATCH_SIZE);
     const newParams = new URLSearchParams(searchParams);
-    if (category !== 'all') {
-      newParams.set('category', category);
-      if (subcategory !== 'all') {
-        newParams.set('subcategory', subcategory);
-      } else {
-        newParams.delete('subcategory');
-      }
+    newParams.set('category', cat);
+    if (subcat !== 'all') {
+      newParams.set('subcategory', subcat);
     } else {
-      newParams.delete('category');
       newParams.delete('subcategory');
     }
     setSearchParams(newParams, { replace: true });
@@ -137,8 +138,8 @@ export default function IllustrationPage() {
   const displaySize = parseInt(activeSize) || 100;
 
   const visibleItems = useMemo(() => {
-    return filteredItems.slice(0, visibleCount);
-  }, [filteredItems, visibleCount]);
+    return sortedItems.slice(0, visibleCount);
+  }, [sortedItems, visibleCount]);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + BATCH_SIZE);
@@ -169,9 +170,11 @@ export default function IllustrationPage() {
             onDisplaySizeChange={(sz) => handleSizeChange(sz.toString())}
             isCollapsed={sidebarCollapsed}
             onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
           />
 
-          <IconCount count={filteredItems.length} ready={ready} />
+          <IconCount count={sortedItems.length} ready={ready} />
 
           <IllustrationGrid
             items={visibleItems}

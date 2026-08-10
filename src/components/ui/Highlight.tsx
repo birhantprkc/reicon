@@ -85,7 +85,7 @@ export interface HighlightItemProps {
   style?: React.CSSProperties;
 }
 
-export function HighlightItem({ children, value, className, style }: HighlightItemProps) {
+export function HighlightItem({ children, value, className = 'w-full h-full aspect-square', style }: HighlightItemProps) {
   const ctx = useCtx();
   const itemId = React.useId();
   const localRef = React.useRef<HTMLDivElement>(null);

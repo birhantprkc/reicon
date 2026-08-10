@@ -60,7 +60,7 @@ export default function LogoGrid({
       <div role="status" aria-live="polite" className="sr-only">
         Showing {cards.length} logos
       </div>
-      <IconTooltipProvider openDelay={500} closeDelay={200}>
+      <IconTooltipProvider openDelay={100} closeDelay={120}>
         <Highlight
           className="absolute inset-0 rounded-xl ring-1 ring-text-base/20 bg-text-base/7 pointer-events-none"
         >

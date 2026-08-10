@@ -10,6 +10,7 @@ import LoadingScreen from '../../components/ui/LoadingScreen';
 import { loadIconData } from '../../lib/icon-data';
 import { waitForReicon } from '../../lib/reicon-loader';
 import { useDuotoneData } from '../../hooks/useDuotoneData';
+import { SortOption } from '../../components/ui/DesktopFilterDropdown';
 
 const LS_ICONS = 'reicon-icons-cache';
 const LS_MAP = 'reicon-map-cache';
@@ -57,6 +58,7 @@ export default function IconsPage() {
   const [ready, setReady] = useState(() => cached.icons.length > 0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>('az');
   const [loadError, setLoadError] = useState<string | null>(null);
 
   const handleStyleChange = (style: string) => {
@@ -127,11 +129,16 @@ export default function IconsPage() {
     return icons;
   }, [deferredQuery, allIcons, activeSet, categoryMap, searchResults]);
 
+  const sortedIcons = useMemo(() => {
+    if (sortBy === 'za') return [...filteredIcons].sort((a, b) => b.localeCompare(a));
+    return [...filteredIcons].sort((a, b) => a.localeCompare(b));
+  }, [filteredIcons, sortBy]);
+
   useEffect(() => {
-    if (window.Reicon?.preload && filteredIcons.length > 0) {
-      window.Reicon.preload(filteredIcons.slice(0, BATCH_SIZE));
+    if (window.Reicon?.preload && sortedIcons.length > 0) {
+      window.Reicon.preload(sortedIcons.slice(0, BATCH_SIZE));
     }
-  }, [filteredIcons]);
+  }, [sortedIcons]);
 
   const displaySize = parseInt(activeSize) || 32;
   const displayWeight = activeStyle === 'Filled' ? 'filled' : 'outline';
@@ -173,12 +180,14 @@ export default function IconsPage() {
             onFilterClick={() => setSidebarOpen(true)}
             isCollapsed={sidebarCollapsed}
             onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
           />
 
-          <IconCount count={filteredIcons.length} ready={ready} />
+          <IconCount count={sortedIcons.length} ready={ready} />
 
           <IconGrid
-            filteredIcons={filteredIcons}
+            filteredIcons={sortedIcons}
             activeStyle={activeStyle}
             displaySize={displaySize}
             displayWeight={displayWeight}

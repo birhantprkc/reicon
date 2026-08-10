@@ -6,6 +6,7 @@ import LogoSearchBar from './LogoSearchBar';
 import IconCount from '../icons/IconCount';
 import LogoGrid from './LogoGrid';
 import LoadMoreButton from '../../components/ui/LoadMoreButton';
+import { SortOption } from '../../components/ui/DesktopFilterDropdown';
 import {
   LogoItem,
   loadLogoGroup,
@@ -33,6 +34,7 @@ export default function LogoPage() {
   const [ready, setReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>('az');
 
   // Sync state when searchParams change
   useEffect(() => {
@@ -50,15 +52,13 @@ export default function LogoPage() {
     let cancelled = false;
     setReady(false);
 
-    async function loadData() {
-      const list = await loadLogoGroup(activeCategory);
+    loadLogoGroup(activeCategory).then((list) => {
       if (!cancelled) {
         setItems(list);
         setReady(true);
       }
-    }
+    });
 
-    loadData();
     return () => {
       cancelled = true;
     };
@@ -72,7 +72,7 @@ export default function LogoPage() {
       return;
     }
 
-    searchLogos(deferredSearchQuery, items, activeCategory).then((matched) => {
+    searchLogos(deferredSearchQuery, items).then((matched) => {
       if (!cancelled) {
         setFilteredItems(matched);
       }
@@ -81,42 +81,53 @@ export default function LogoPage() {
     return () => {
       cancelled = true;
     };
-  }, [deferredSearchQuery, items, activeCategory]);
+  }, [deferredSearchQuery, items]);
 
-  // Helper to update URL params
-  const updateParams = (newParams: Record<string, string | null>) => {
-    const params = new URLSearchParams(searchParams);
-    Object.entries(newParams).forEach(([key, val]) => {
-      if (val === null || val === 'all' || val === '') {
-        params.delete(key);
-      } else {
-        params.set(key, val);
-      }
-    });
-    setSearchParams(params, { replace: true });
+  const sortedItems = useMemo(() => {
+    if (sortBy === 'za') return [...filteredItems].sort((a, b) => b.name.localeCompare(a.name));
+    return [...filteredItems].sort((a, b) => a.name.localeCompare(b.name));
+  }, [filteredItems, sortBy]);
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setVisibleCount(BATCH_SIZE);
+
+    const newParams = new URLSearchParams(searchParams);
+    if (category !== 'all') {
+      newParams.set('category', category);
+    } else {
+      newParams.delete('category');
+    }
+    setSearchParams(newParams, { replace: true });
   };
 
-  const handleCategoryChange = (cat: string) => {
-    setActiveCategory(cat);
-    setVisibleCount(BATCH_SIZE);
-    updateParams({ category: cat });
+  const handleSizeChange = (size: string) => {
+    setActiveSize(size);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('size', size);
+    setSearchParams(newParams, { replace: true });
   };
 
-  const handleSearchChange = (q: string) => {
-    setSearchQuery(q);
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val);
     setVisibleCount(BATCH_SIZE);
-    updateParams({ q });
+
+    const newParams = new URLSearchParams(searchParams);
+    if (val.trim()) {
+      newParams.set('q', val);
+    } else {
+      newParams.delete('q');
+    }
+    setSearchParams(newParams, { replace: true });
   };
 
   const handleSearchClear = () => {
     setSearchQuery('');
     setVisibleCount(BATCH_SIZE);
-    updateParams({ q: null });
-  };
 
-  const handleSizeChange = (sz: string) => {
-    setActiveSize(sz);
-    updateParams({ size: sz });
+    const newParams = new URLSearchParams(searchParams);
+    newParams.delete('q');
+    setSearchParams(newParams, { replace: true });
   };
 
   const handleLoadMore = () => {
@@ -124,8 +135,8 @@ export default function LogoPage() {
   };
 
   const visibleItems = useMemo(() => {
-    return filteredItems.slice(0, visibleCount);
-  }, [filteredItems, visibleCount]);
+    return sortedItems.slice(0, visibleCount);
+  }, [sortedItems, visibleCount]);
 
   const displaySize = parseInt(activeSize, 10) || 36;
 
@@ -158,9 +169,11 @@ export default function LogoPage() {
             onFilterClick={() => setSidebarOpen(true)}
             isCollapsed={sidebarCollapsed}
             onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
           />
 
-          <IconCount count={filteredItems.length} ready={ready} />
+          <IconCount count={sortedItems.length} ready={ready} />
 
           <LogoGrid
             items={visibleItems}

@@ -15,7 +15,7 @@ function IconCard({ name, weight = 'outline', size = 32 }: IconCardProps) {
       <IconTooltipTrigger label={name} side="bottom" sideOffset={14}>
         <Link
           to={`/icon/${name}${weight ? `?weight=${weight}` : ''}`}
-          className="cv-auto group flex items-center justify-center aspect-square bg-text-base/3 border border-text-base/6 rounded-xl transition-all cursor-pointer"
+          className="cv-auto group flex items-center justify-center w-full h-full aspect-square bg-text-base/3 border border-text-base/6 rounded-xl transition-all cursor-pointer"
           title={name}
         >
           <re-icon

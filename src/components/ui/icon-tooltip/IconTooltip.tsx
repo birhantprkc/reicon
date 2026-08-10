@@ -11,8 +11,8 @@ export interface IconTooltipProviderProps {
 
 export function IconTooltipProvider({
   children,
-  openDelay = 300,
-  closeDelay = 300,
+  openDelay = 100,
+  closeDelay = 120,
 }: IconTooltipProviderProps) {
   const globalId = React.useId();
   const [current, setCurrent] = React.useState<TooltipData | null>(null);
@@ -78,6 +78,7 @@ export interface IconTooltipTriggerProps {
   label: string;
   side?: Side;
   sideOffset?: number;
+  className?: string;
 }
 
 export function IconTooltipTrigger({
@@ -85,6 +86,7 @@ export function IconTooltipTrigger({
   label,
   side = 'bottom',
   sideOffset = 14,
+  className = 'w-full h-full aspect-square block',
 }: IconTooltipTriggerProps) {
   const { show, hide, current } = useGlobal();
   const id = React.useId();
@@ -104,6 +106,7 @@ export function IconTooltipTrigger({
       ref={ref}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      className={className}
       data-state={current?.id === id ? 'open' : 'closed'}
     >
       {children}

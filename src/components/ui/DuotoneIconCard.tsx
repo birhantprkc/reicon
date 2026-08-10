@@ -22,7 +22,7 @@ function DuotoneIconCard({ name, code, size = 32 }: DuotoneIconCardProps) {
       <IconTooltipTrigger label={`${name} (Duotone)`} side="bottom" sideOffset={14}>
         <Link
           to={`/icon/${name}?weight=duotone`}
-          className="cv-auto group flex items-center justify-center aspect-square bg-text-base/3 border border-text-base/6 rounded-xl transition-all cursor-pointer relative"
+          className="cv-auto group flex items-center justify-center w-full h-full aspect-square bg-text-base/3 border border-text-base/6 rounded-xl transition-all cursor-pointer relative"
           title={`${name} (Duotone)`}
         >
           <svg

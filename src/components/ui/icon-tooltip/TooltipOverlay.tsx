@@ -12,8 +12,6 @@ import {
 } from '@floating-ui/react';
 import { useGlobal, initialFromSide, type TooltipData } from './context';
 
-const MotionFloatingArrow = motion.create(FloatingArrow);
-
 export function TooltipOverlay() {
   const { current, transition, globalId } = useGlobal();
 
@@ -30,7 +28,7 @@ export function TooltipOverlay() {
     placement: side,
     whileElementsMounted: autoUpdate,
     middleware: [
-      floatingOffset(rendered.data?.sideOffset ?? 0),
+      floatingOffset(rendered.data?.sideOffset ?? 14),
       flip(),
       shift({ padding: 8 }),
       floatingArrow({ element: arrowRef }),
@@ -93,11 +91,9 @@ export function TooltipOverlay() {
                 </motion.div>
               </div>
 
-              <MotionFloatingArrow
+              <FloatingArrow
                 ref={arrowRef}
                 context={context}
-                layoutId={`icon-tooltip-arrow-${globalId}`}
-                transition={transition}
                 width={12}
                 height={6}
                 className="fill-[var(--tooltip-bg)]"
