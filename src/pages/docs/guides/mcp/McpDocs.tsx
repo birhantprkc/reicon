@@ -59,7 +59,7 @@ export default function McpDocs({ markdownContent, copiedField, onCopy }: Props)
           copied={copiedField === 'mcp-search'}
         >
           <span className="text-[#98c379]">npx reicon-mcp search</span>
-          <span className="text-text-base/70"> "shopping cart"</span>
+          <span className="text-[#e5c07b]"> "shopping cart"</span>
         </SyntaxBlock>
 
         <SyntaxBlock
@@ -68,7 +68,9 @@ export default function McpDocs({ markdownContent, copiedField, onCopy }: Props)
           copied={copiedField === 'mcp-view'}
         >
           <span className="text-[#98c379]">npx reicon-mcp view</span>
-          <span className="text-text-base/70"> heart --weight Filled</span>
+          <span className="text-[#e5c07b]"> heart</span>
+          <span className="text-[#56b6c2]"> --weight</span>
+          <span className="text-[#98c379]"> Filled</span>
         </SyntaxBlock>
 
         <SyntaxBlock
@@ -77,7 +79,13 @@ export default function McpDocs({ markdownContent, copiedField, onCopy }: Props)
           copied={copiedField === 'mcp-apply'}
         >
           <span className="text-[#98c379]">npx reicon-mcp apply</span>
-          <span className="text-text-base/70"> heart --framework react --size 32 --color "#ef4444"</span>
+          <span className="text-[#e5c07b]"> heart</span>
+          <span className="text-[#56b6c2]"> --framework</span>
+          <span className="text-text-base/70"> react</span>
+          <span className="text-[#56b6c2]"> --size</span>
+          <span className="text-[#d19a66]"> 32</span>
+          <span className="text-[#56b6c2]"> --color</span>
+          <span className="text-[#98c379]"> "#ef4444"</span>
         </SyntaxBlock>
 
         <SyntaxBlock
@@ -103,7 +111,13 @@ export default function McpDocs({ markdownContent, copiedField, onCopy }: Props)
         copied={copiedField === 'mcp-file-marker'}
       >
         <span className="text-[#98c379]">npx reicon-mcp apply</span>
-        <span className="text-text-base/70"> heart --framework react --file src/App.tsx --marker "&#123;/* ICON */&#125;"</span>
+        <span className="text-[#e5c07b]"> heart</span>
+        <span className="text-[#56b6c2]"> --framework</span>
+        <span className="text-text-base/70"> react</span>
+        <span className="text-[#56b6c2]"> --file</span>
+        <span className="text-text-base/70"> src/App.tsx</span>
+        <span className="text-[#56b6c2]"> --marker</span>
+        <span className="text-[#98c379]"> "{'{/* ICON */}'}"</span>
       </SyntaxBlock>
 
       <div className="mt-4 bg-[#6C5CE7]/5 border border-[#6C5CE7]/15 rounded-xl p-4 text-[13px] text-text-base/50 leading-relaxed mb-6">

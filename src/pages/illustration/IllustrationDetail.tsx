@@ -14,6 +14,8 @@ import { useTheme } from '../../components/layout/ThemeContext';
 import { Highlight } from '../../components/ui/Highlight';
 import { IconTooltipProvider } from '../../components/ui/IconTooltip';
 
+import { downloadSvgAsRaster, downloadSvgFile } from '../../lib/download-raster';
+
 export default function IllustrationDetail() {
   const { name: slug } = useParams<{ name: string }>();
   const navigate = useNavigate();
@@ -89,40 +91,39 @@ export default function IllustrationDetail() {
 
   const handleDownloadSvg = async () => {
     try {
-      const res = await fetch(cdnUrl);
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${currentSlug}.svg`;
-      a.click();
-      URL.revokeObjectURL(url);
+      await downloadSvgFile({
+        url: cdnUrl,
+        filename: `${currentSlug}.svg`,
+      });
       flashToast('download-svg');
     } catch {
-      window.open(cdnUrl, '_blank');
+      flashToast('error');
     }
   };
 
   const handleDownloadPng = async () => {
     try {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = exportSize;
-        canvas.height = exportSize;
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.drawImage(img, 0, 0, exportSize, exportSize);
-          const pngUrl = canvas.toDataURL('image/png');
-          const a = document.createElement('a');
-          a.href = pngUrl;
-          a.download = `${currentSlug}-${exportSize}x${exportSize}.png`;
-          a.click();
-          flashToast('download-png');
-        }
-      };
-      img.src = cdnUrl;
+      await downloadSvgAsRaster({
+        svgUrl: cdnUrl,
+        filename: `${currentSlug}-${exportSize}px`,
+        format: 'png',
+        exportSize,
+      });
+      flashToast('download-png');
+    } catch {
+      flashToast('error');
+    }
+  };
+
+  const handleDownloadWebp = async () => {
+    try {
+      await downloadSvgAsRaster({
+        svgUrl: cdnUrl,
+        filename: `${currentSlug}-${exportSize}px`,
+        format: 'webp',
+        exportSize,
+      });
+      flashToast('download-webp');
     } catch {
       flashToast('error');
     }
@@ -290,7 +291,7 @@ export default function IllustrationDetail() {
                     className="flex-1 text-[12.5px] font-medium py-2.5 rounded-lg border bg-text-base/5 border-text-base/10 text-text-base/60 hover:text-text-base hover:bg-text-base/10 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
-                    Download SVG
+                    SVG
                   </motion.button>
                   <motion.button
                     whileTap={{ scale: 0.96 }}
@@ -298,7 +299,15 @@ export default function IllustrationDetail() {
                     className="flex-1 text-[12.5px] font-medium py-2.5 rounded-lg border bg-text-base/5 border-text-base/10 text-text-base/60 hover:text-text-base hover:bg-text-base/10 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
-                    Download PNG
+                    PNG
+                  </motion.button>
+                  <motion.button
+                    whileTap={{ scale: 0.96 }}
+                    onClick={handleDownloadWebp}
+                    className="flex-1 text-[12.5px] font-medium py-2.5 rounded-lg border bg-text-base/5 border-text-base/10 text-text-base/60 hover:text-text-base hover:bg-text-base/10 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
+                    WebP
                   </motion.button>
                 </div>
               </div>
@@ -359,7 +368,9 @@ export default function IllustrationDetail() {
                           src={getIllustrationUrl(rel.slug)}
                           alt={rel.title || rel.name}
                           loading="lazy"
-                          className="max-w-[48px] max-h-[48px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-150"
+                          className={`max-w-[48px] max-h-[48px] object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-150 ${
+                            theme === 'dark' ? 'invert brightness-150' : ''
+                          }`}
                         />
                       </div>
                       <span className="text-[11px] text-text-base/50 group-hover:text-text-base truncate w-full text-center font-medium transition-colors mt-1">

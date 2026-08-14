@@ -27,7 +27,18 @@ export default function ToolsSection({ copiedField, onCopy }: ToolsSectionProps)
               onCopy={() => onCopy(SEARCH_TOOL, 'mcp-search-tool')}
               copied={copiedField === 'mcp-search-tool'}
             >
-              <span className="text-text-base/70">{SEARCH_TOOL}</span>
+              <span className="text-[#61afef] font-semibold">search_icons</span>
+              <span className="text-text-base/40">(</span>
+              <span className="text-text-base/40">{'{ '}</span>
+              <span className="text-[#e06c75]">query</span>
+              <span className="text-text-base/40">: </span>
+              <span className="text-[#98c379]">"heart"</span>
+              <span className="text-text-base/40">, </span>
+              <span className="text-[#e06c75]">weight</span>
+              <span className="text-text-base/40">: </span>
+              <span className="text-[#98c379]">"Filled"</span>
+              <span className="text-text-base/40"> {'}'}</span>
+              <span className="text-text-base/40">)</span>
             </SyntaxBlock>
           </div>
         </div>
@@ -42,7 +53,36 @@ export default function ToolsSection({ copiedField, onCopy }: ToolsSectionProps)
               onCopy={() => onCopy(APPLY_TOOL, 'mcp-apply-tool')}
               copied={copiedField === 'mcp-apply-tool'}
             >
-              <span className="text-text-base/70 whitespace-pre">{APPLY_TOOL}</span>
+              <span className="text-[#61afef] font-semibold">apply_icon</span>
+              <span className="text-text-base/40">(</span>
+              <span className="text-text-base/40">{'{'}</span>
+              {'\n  '}
+              <span className="text-[#e06c75]">name</span>
+              <span className="text-text-base/40">: </span>
+              <span className="text-[#98c379]">"heart"</span>
+              <span className="text-text-base/40">,</span>
+              {'\n  '}
+              <span className="text-[#e06c75]">weight</span>
+              <span className="text-text-base/40">: </span>
+              <span className="text-[#98c379]">"Filled"</span>
+              <span className="text-text-base/40">,</span>
+              {'\n  '}
+              <span className="text-[#e06c75]">framework</span>
+              <span className="text-text-base/40">: </span>
+              <span className="text-[#98c379]">"react"</span>
+              <span className="text-text-base/40">,</span>
+              {'\n  '}
+              <span className="text-[#e06c75]">size</span>
+              <span className="text-text-base/40">: </span>
+              <span className="text-[#d19a66]">24</span>
+              <span className="text-text-base/40">,</span>
+              {'\n  '}
+              <span className="text-[#e06c75]">color</span>
+              <span className="text-text-base/40">: </span>
+              <span className="text-[#98c379]">"#ef4444"</span>
+              {'\n'}
+              <span className="text-text-base/40">{'}'}</span>
+              <span className="text-text-base/40">)</span>
             </SyntaxBlock>
           </div>
         </div>

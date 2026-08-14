@@ -5,6 +5,7 @@ import LogoHelmet from './LogoHelmet';
 import LogoPreview from './LogoPreview';
 import LogoActions from './LogoActions';
 import LogoCodeTabs from './LogoCodeTabs';
+import { downloadSvgAsRaster, downloadSvgFile } from '../../lib/download-raster';
 import RelatedLogos from './RelatedLogos';
 import TypeTable from '../../components/docs/TypeTable';
 import {
@@ -61,64 +62,34 @@ export default function LogoDetail() {
     setTimeout(() => setCopiedField(null), 2000);
   };
 
-  const handleDownloadSvg = () => {
-    if (!logo) {
-      flashToast('error');
-      return;
-    }
-    
+  const handleDownloadSvg = async () => {
+    if (!logo) return;
     const activeUrl = logo.variants[selectedVariant] || getLogoUrl(logo.slug, selectedVariant);
-    const proxyUrl = activeUrl.replace('https://cdn.reicon.dev', '/cdn-proxy');
-
-    fetch(proxyUrl)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${logo.slug}-${selectedVariant}.svg`;
-        document.body.appendChild(a);
-        a.click();
-        URL.revokeObjectURL(url);
-        flashToast(`Downloaded ${logo.name} SVG!`);
-      })
-      .catch(() => {
-        window.open(activeUrl, '_blank');
+    try {
+      await downloadSvgFile({
+        url: activeUrl,
+        filename: `${logo.slug}-${selectedVariant}.svg`,
       });
+      flashToast(`Downloaded ${logo.name} SVG!`);
+    } catch {
+      flashToast('Failed to download SVG');
+    }
   };
 
-  const handleDownloadRaster = (format: 'png' | 'webp') => {
-    if (!logo) {
-      flashToast('error');
-      return;
-    }
-    
+  const handleDownloadRaster = async (format: 'png' | 'webp') => {
+    if (!logo) return;
     const activeUrl = logo.variants[selectedVariant] || getLogoUrl(logo.slug, selectedVariant);
-    const proxyUrl = activeUrl.replace("https://cdn.reicon.dev", "/cdn-proxy");
-    
-    const canvas = document.createElement('canvas');
-    canvas.width = exportSize;
-    canvas.height = exportSize;
-    const ctx = canvas.getContext('2d');
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-
-    img.onload = () => {
-      if (ctx) {
-        ctx.clearRect(0, 0, exportSize, exportSize);
-        ctx.drawImage(img, 0, 0, exportSize, exportSize);
-        const dataUrl = canvas.toDataURL(`image/${format}`);
-        const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = `${logo.slug}-${selectedVariant}-${exportSize}x${exportSize}.${format}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        flashToast(`Downloaded ${format.toUpperCase()} (${exportSize}px)!`);
-      }
-    };
-
-    img.src = proxyUrl;
+    try {
+      await downloadSvgAsRaster({
+        svgUrl: activeUrl,
+        filename: `${logo.slug}-${selectedVariant}-${exportSize}px`,
+        format,
+        exportSize,
+      });
+      flashToast(`Downloaded ${format.toUpperCase()} (${exportSize}px)!`);
+    } catch {
+      flashToast(`Failed to download ${format.toUpperCase()}`);
+    }
   };
 
   const handleBack = () => {

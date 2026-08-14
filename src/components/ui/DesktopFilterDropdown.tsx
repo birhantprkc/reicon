@@ -44,10 +44,10 @@ export default function DesktopFilterDropdown({ sortBy, onSortChange }: DesktopF
       <button
         type="button"
         onClick={() => setOpen(!open)}
+        style={{ cursor: 'pointer' }}
         className={`flex items-center justify-center p-2.5 rounded-full bg-text-base/[0.04] hover:bg-text-base/10 text-text-base/70 hover:text-text-base transition-all shrink-0 cursor-pointer ${
           open ? 'bg-text-base/10 text-text-base' : ''
         }`}
-        title={open ? "Close menu" : "Sort & Filter"}
         aria-label={open ? "Close menu" : "Sort & Filter"}
       >
         {open ? (
@@ -67,8 +67,11 @@ export default function DesktopFilterDropdown({ sortBy, onSortChange }: DesktopF
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 6 }}
             transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute right-0 top-full mt-2 w-52 p-1.5 rounded-2xl bg-[var(--dropdown-bg)] shadow-2xl z-50 overflow-hidden text-sm select-none"
+            className="absolute right-0 top-full mt-2.5 w-52 p-1.5 rounded-2xl bg-[var(--dropdown-bg)] shadow-2xl z-50 text-sm select-none"
           >
+            {/* Top caret arrow pointer */}
+            <div className="absolute -top-1.5 right-3.5 w-3 h-3 bg-[var(--dropdown-bg)] rotate-45 z-10 pointer-events-none" />
+
             <div className="px-3 py-1.5 border-b border-text-base/6 text-[11px] font-semibold tracking-wider text-text-base/40 uppercase">
               Sort Order
             </div>
@@ -80,6 +83,7 @@ export default function DesktopFilterDropdown({ sortBy, onSortChange }: DesktopF
                   <button
                     key={opt.id}
                     type="button"
+                    style={{ cursor: 'pointer' }}
                     onClick={() => {
                       onSortChange(opt.id);
                       setOpen(false);

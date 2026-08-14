@@ -1,17 +1,36 @@
-# Reicon Icon & Illustration Library
+# Reicon — Icons, Illustrations & Brand Logos Library
 
-> Free, open-source SVG icon & illustration library — **2,700+ handcrafted icons** in Outline and Filled weights + **71,000+ free SVG illustrations**. Available for React, Vue 3, Svelte, React Native, vanilla JS, CDN, Figma, and VS Code. MIT license.
+> Free, open-source SVG icon, illustration, and logo library — **3,900+ vector icons** (Outline, Filled, Duotone), **71,000+ free SVG illustrations**, and **4,900+ vector brand logos**. Available for React, Vue 3, Svelte, React Native, Flutter, vanilla JS, CDN, Figma, VS Code, and AI MCP Server. 100% MIT licensed.
 >
 > ⚠️ **Not** the Windows tool "ReIcon" by Sordum — completely unrelated.
 
 ## Agent Quick Start
 
-When a user asks you to use Reicon icons or SVG illustrations, follow these steps:
+When a user asks you to use Reicon icons, illustrations, or brand logos, follow these steps:
 
-1. **Icons**: Use `reicon-react`, `reicon-vue`, `reicon-svelte`, `reicon-react-native`, or `reicon` (vanilla CDN).
-2. **Illustrations**: Direct CDN URL format `https://cdn.reicon.dev/{slug}.svg` (e.g. `https://cdn.reicon.dev/aspen.svg`, `https://cdn.reicon.dev/bag.svg`, `https://cdn.reicon.dev/build.svg`).
-3. **Browse Illustrations Page**: `https://reicon.dev/illustration`
-4. **Illustration Detail Page**: `https://reicon.dev/illustration/{slug}`
+1. **Icons**: Use `reicon-react`, `reicon-vue`, `reicon-svelte`, `reicon-react-native`, `reicon_flutter`, or `reicon` (vanilla CDN). Browse: `https://reicon.dev/icons`
+2. **Illustrations**: Direct CDN URL format `https://cdn.reicon.dev/{slug}.svg` (e.g. `https://cdn.reicon.dev/aspen.svg`, `https://cdn.reicon.dev/bag.svg`). Browse: `https://reicon.dev/illustration`
+3. **Brand Logos**: Direct CDN URL format `https://cdn.reicon.dev/logos/{slug}/{variant}.svg` (e.g. `https://cdn.reicon.dev/logos/react/original.svg`, `https://cdn.reicon.dev/logos/github/wordmark.svg`). Browse: `https://reicon.dev/logos`
+
+---
+
+## 🏷️ Brand Logos (4,900+ Vector Logos)
+
+Reicon provides 4,900+ clean, official vector SVG logos for tech companies, frameworks, AI tools, and global brands.
+
+### CDN URL Pattern:
+`https://cdn.reicon.dev/logos/{slug}/{variant}.svg`
+
+### Variants:
+- `original` (default full color brand logo)
+- `monochrome` (single color)
+- `wordmark` (logo with text)
+- `icon` (symbol only)
+
+### React / HTML Usage:
+```html
+<img src="https://cdn.reicon.dev/logos/react/original.svg" alt="React Logo" width="32" height="32" />
+```
 
 ---
 

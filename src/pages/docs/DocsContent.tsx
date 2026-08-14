@@ -110,19 +110,18 @@ export default function DocsContent({
                 <section id="what-is-reicon" data-section className="mb-12 scroll-mt-24">
                   <SectionHeader id="what-is-reicon" title="What is Reicon?" level="h2" markdownContent={vanillaDocs} />
                   <p className="text-text-base/60 text-[15px] leading-[1.8] mb-6">
-                    Reicon is an open-source icon library that provides beautifully crafted vector (SVG) icons for digital projects.
-                    The library offers the core <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon</code> package for JavaScript and CDN, plus framework-specific packages for{' '}
+                    Reicon is a free, open-source vector graphics library combining <strong>3,900+ UI icons</strong>, <strong>71,000+ vector illustrations</strong>, and <strong>4,900+ brand logos</strong>.
+                    The ecosystem offers native packages for <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon</code> (vanilla JS &amp; CDN),{' '}
                     <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-react</code>,{' '}
                     <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-react-native</code>,{' '}
-                    <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-vue</code>, and{' '}
-                    <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-svelte</code>.
+                    <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-vue</code>,{' '}
+                    <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-svelte</code>, and{' '}
+                    <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon_flutter</code>.
                   </p>
                   <p className="text-text-base/60 text-[15px] leading-[1.8]">
-                    Every icon comes in two weights — Outline and Filled — and is fully customizable with size, color, and custom props.
-                    Icons are tree-shakeable when used with bundlers, ensuring minimal bundle size.
+                    Icons come in Outline, Filled, and Duotone weights with zero external dependencies and full tree-shakeability. Vector illustrations and brand logos are hosted on global CDNs for direct usage across any framework or design environment.
                   </p>
                 </section>
-                <hr className="border-text-base/6 mb-12" />
               </>
             )}
 

@@ -69,7 +69,7 @@ export default function IllustrationSearchBar({
         className="lg:hidden ml-auto flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-text-base/[0.04] hover:bg-text-base/10 text-text-base/70 hover:text-text-base text-sm font-medium transition-colors shrink-0 cursor-pointer"
         aria-label="Open filters"
       >
-        <re-icon icon="sort-alpha" size="15" color="currentColor" />
+        <re-icon icon="filter" size="15" color="currentColor" />
         Filters
       </button>
     </div>

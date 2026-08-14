@@ -54,10 +54,10 @@ const FAQ_CATEGORIES = [
       {
         id: "what-is-reicon",
         question: "What is Reicon?",
-        markdownAnswer: "Reicon is an open-source vector icon library designed for digital interfaces. It includes 2,700+ handcrafted, pixel-perfect SVG icons in Outline and Filled weights. Official packages are available for React (reicon-react), React Native (reicon-react-native), Vue 3 (reicon-vue), Svelte (reicon-svelte), and vanilla JavaScript, plus a CDN script for HTML pages.",
+        markdownAnswer: "Reicon is a free, open-source vector graphics library providing 3,900+ UI icons in Outline, Filled, and Duotone weights, 71,000+ SVG illustrations, and 4,900+ brand logos. Official packages are available for React (reicon-react), React Native (reicon-react-native), Vue 3 (reicon-vue), Svelte (reicon-svelte), Flutter (reicon_flutter), vanilla JavaScript, CDN runtime, Figma plugin, VS Code extension, and AI MCP Server.",
         answer: (
           <p>
-            Reicon is an open-source vector icon library designed for digital interfaces. It includes 2,700+ handcrafted, pixel-perfect SVG icons in Outline and Filled weights. Official packages are available for React (<Code>reicon-react</Code>), React Native (<Code>reicon-react-native</Code>), Vue 3 (<Code>reicon-vue</Code>), Svelte (<Code>reicon-svelte</Code>), and vanilla JavaScript, plus a CDN script for HTML pages.
+            Reicon is a free, open-source vector graphics library providing <strong>3,900+ UI icons</strong> in Outline, Filled, and Duotone weights, <strong>71,000+ SVG illustrations</strong>, and <strong>4,900+ brand logos</strong>. Official packages are available for React (<Code>reicon-react</Code>), React Native (<Code>reicon-react-native</Code>), Vue 3 (<Code>reicon-vue</Code>), Svelte (<Code>reicon-svelte</Code>), Flutter (<Code>reicon_flutter</Code>), vanilla JavaScript, CDN runtime, Figma plugin, VS Code extension, and MCP Server.
           </p>
         ),
       },
