@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HandHeart, Search3, Doc, PenSparkle } from 'reicon-react';
 import { SiJavascript, SiReact } from 'react-icons/si';
@@ -12,6 +13,9 @@ interface Props {
   heroCardRef: React.RefObject<HTMLDivElement | null>;
   stars?: number | null;
 }
+
+const CA = 'C7eur8CFg8VhTofcPcG3eEHfCDeCSY7GTn2ntEfLpump';
+const PUMP_URL = `https://pump.fun/coin/${CA}`;
 
 function ClaudeIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -31,6 +35,15 @@ function OpenAiIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export default function Hero({ heroCardRef }: Props) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCA = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(CA);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="relative min-h-screen flex items-start justify-center">
       <div
@@ -45,27 +58,44 @@ export default function Hero({ heroCardRef }: Props) {
           <div className="my-auto text-center px-3 max-w-4xl mx-auto flex flex-col items-center justify-center">
             {/* Top pill badges */}
             <div className="flex items-center justify-center gap-2 mb-5 flex-wrap">
-              <a
-                href="https://github.com/dqev/reicon"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-[6px] bg-text-base/[0.04] hover:bg-text-base/10 backdrop-blur-lg rounded-full px-[14px] py-[6px] text-[12px] text-text-base/90 transition-colors"
-              >
-                <HandHeart size={16} color="currentColor" />
-                <span>Open Source Library</span>
-              </a>
+              {/* Pump token pill */}
+              <div className="inline-flex items-center gap-2 bg-text-base/[0.04] backdrop-blur-lg rounded-full px-3.5 py-1.5 text-[12px] text-text-base/90 shadow-2xs">
+                <span className="flex items-center gap-1.5 font-semibold text-emerald-500">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>$REICON live!</span>
+                </span>
 
-              <Link
-                to="/logos"
-                className="hidden sm:inline-flex items-center gap-2 bg-text-base/[0.04] hover:bg-text-base/10 backdrop-blur-lg rounded-full px-3.5 py-1.5 text-[12px] text-text-base/90 transition-colors group"
-              >
-                {/* Inline SVG brand icons stack */}
-                <div className="flex items-center -space-x-1.5 shrink-0">
-                  <OpenAiIcon className="w-4 h-4 shrink-0 relative z-[3] text-text-base" />
-                  <ClaudeIcon className="w-4 h-4 shrink-0 relative z-[2]" />
-                </div>
-                <span>4,900+ Brand Logos</span>
-              </Link>
+                <span className="hidden sm:inline text-text-base/20">•</span>
+
+                <button
+                  onClick={handleCopyCA}
+                  className="hidden sm:inline-flex items-center gap-1 font-mono text-[11px] bg-text-base/5 hover:bg-text-base/15 px-2 py-0.5 rounded-full text-text-base/80 hover:text-text-base transition-colors cursor-pointer"
+                  title="Click to copy contract address"
+                >
+                  <span className="text-text-base/40 font-sans text-[10px]">CA:</span>
+                  <span>C7eur8...Lpump</span>
+                  {copied ? (
+                    <span className="text-emerald-500 font-sans text-[10px] font-bold">✓</span>
+                  ) : (
+                    <svg className="w-2.5 h-2.5 text-text-base/40 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                  )}
+                </button>
+
+                <span className="text-text-base/20">•</span>
+
+                <a
+                  href={PUMP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-text-base underline underline-offset-2 decoration-text-base/20 text-[11px] sm:text-[12px] inline-flex items-center gap-1"
+                >
+                  <span>Buy on pump.fun</span>
+                  <re-icon icon="reply" size="14" />
+                </a>
+              </div>
             </div>
 
             <h1 className="font-serif text-[clamp(34px,6.8vw,84px)] font-semibold text-text-base leading-[1.06] tracking-[-0.03em] mb-4">
