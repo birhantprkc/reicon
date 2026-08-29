@@ -9,7 +9,7 @@ export interface PageMeta {
 }
 
 export const PAGE_META: Record<string, PageMeta> = {
-  '/': { title: 'Reicon — Free Open-Source SVG Icons, Illustrations & Brand Logos', description: 'Free open-source vector graphics library — 3,900+ SVG icons, 71,000+ vector illustrations, and 4,900+ brand logos for React, Vue, Svelte, Flutter, Figma, VS Code, and AI MCP agents. MIT licensed.', url: 'https://reicon.dev/', ogImage: 'https://reicon.dev/og/og.jpg' },
+  '/': { title: 'Reicon — Free Open-Source SVG Icons, Illustrations & Brand Logos', description: 'Reicon — Free open-source SVG icons, illustrations & brand logos. 3,900+ icons, 71,000+ illustrations, 4,900+ logos for React, Vue, Svelte, Flutter, Figma & more.', url: 'https://reicon.dev/', ogImage: 'https://reicon.dev/og/og.jpg' },
   '/icons': { title: 'Free Open-Source SVG Icons — Reicon', description: 'Browse 3,900+ free, open-source SVG icons in Outline, Filled, and Duotone weights. MIT licensed.', url: 'https://reicon.dev/icons', ogImage: 'https://reicon.dev/og/icons.jpeg' },
   '/illustration': { title: '71,000+ Free SVG Illustrations — Open-Source Vector Graphics | Reicon', description: 'Browse 71,000+ free open-source SVG vector illustrations for React, Vue, HTML, and Figma. Download high-resolution PNG & customizable SVGs. MIT licensed.', url: 'https://reicon.dev/illustration', ogImage: 'https://reicon.dev/og/illustration.jpg' },
   '/logos': { title: '4,900+ Free SVG Brand Logos — High Quality Vector Logos | Reicon', description: 'Browse and download 4,900+ clean vector brand logos for tech companies, frameworks, AI, and global brands. Free SVG & PNG formats. MIT licensed.', url: 'https://reicon.dev/logos', ogImage: 'https://reicon.dev/og/logos.jpeg' },

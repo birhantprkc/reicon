@@ -71,8 +71,8 @@ export default function Hero({ heroCardRef }: Props) {
             <h1 className="font-serif text-[clamp(34px,6.8vw,84px)] font-semibold text-text-base leading-[1.06] tracking-[-0.03em] mb-4">
               The icon library<br />designers actually want.
             </h1>
-            <p className="text-[clamp(13px,1.45vw,18px)] text-text-base/60 leading-[1.65] max-w-[500px] mx-auto mb-7">
-              Open‑source vector icons, illustrations &amp; brand logos for React, Vue, Svelte, Flutter, Figma, and AI agents.
+            <p className="text-[clamp(13px,1.45vw,18px)] text-text-base/60 leading-[1.65] max-w-[620px] mx-auto mb-7">
+              Free, open-source vector graphics library with 3,900+ SVG icons, 71,000+ illustrations, and 4,900+ brand logos — built for designers &amp; developers.
             </p>
             <div className="grid grid-cols-2 sm:flex sm:items-center sm:justify-center gap-2 sm:gap-2.5 max-w-[440px] sm:max-w-none mx-auto w-full">
               <ClayButton to="/icons" variant="primary" className="w-full justify-center px-2.5 sm:px-5 text-[12px] sm:text-[14px] whitespace-nowrap">
