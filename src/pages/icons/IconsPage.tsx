@@ -130,9 +130,14 @@ export default function IconsPage() {
   }, [deferredQuery, allIcons, activeSet, categoryMap, searchResults]);
 
   const sortedIcons = useMemo(() => {
+    const q = deferredQuery.trim();
+    if (q) {
+      if (sortBy === 'za') return [...filteredIcons].reverse();
+      return filteredIcons;
+    }
     if (sortBy === 'za') return [...filteredIcons].sort((a, b) => b.localeCompare(a));
     return [...filteredIcons].sort((a, b) => a.localeCompare(b));
-  }, [filteredIcons, sortBy]);
+  }, [filteredIcons, sortBy, deferredQuery]);
 
   useEffect(() => {
     if (window.Reicon?.preload && sortedIcons.length > 0) {

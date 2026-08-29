@@ -1337,45 +1337,18 @@ function scoreIcon(entry: SearchIndexEntry, query: string, tokens: string[]): nu
   return Math.max(0, score);
 }
 
+import { executeSearch, type SearchResult as BaseSearchResult, type SearchIndexEntry as BaseSearchIndexEntry } from '../utils/search';
+
+export type SearchIndexEntry = BaseSearchIndexEntry;
+export type SearchResult = BaseSearchResult;
+
 export function getSearchIndex(): SearchIndexEntry[] {
-  return index;
+  return index as SearchIndexEntry[];
 }
 
 export function searchIcons(
   query: string,
-  options: { limit?: number } = {},
+  options: { limit?: number; category?: string } = {},
 ): SearchResult[] {
-  const trimmed = query.trim();
-  if (!trimmed) return [];
-
-  if (isSentenceQuery(trimmed)) return [];
-
-  const limit = options.limit ?? 24;
-  const tokens = tokenize(trimmed);
-  const results: SearchResult[] = [];
-
-  for (const entry of index) {
-    const score = scoreIcon(entry, query, tokens);
-    if (score > 0) {
-      results.push({
-        name: entry.n,
-        category: entry.c,
-        tags: entry.t,
-        score,
-      });
-    }
-  }
-
-  results.sort((a, b) => b.score - a.score || a.name.length - b.name.length);
-
-  const seen = new Set<string>();
-  const deduped: SearchResult[] = [];
-  for (const r of results) {
-    if (seen.has(r.name)) continue;
-    seen.add(r.name);
-    deduped.push(r);
-    if (deduped.length >= limit) break;
-  }
-
-  return deduped;
+  return executeSearch(query, index as SearchIndexEntry[], options);
 }
