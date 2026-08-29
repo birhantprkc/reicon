@@ -1,17 +1,7 @@
 import searchIndex from './search-index.json';
+import { executeSearch, type SearchIndexEntry, type SearchResult } from '../utils/search';
 
-export interface SearchIndexEntry {
-  n: string;
-  c: string;
-  t: string[];
-}
-
-export interface SearchResult {
-  name: string;
-  category: string;
-  tags: string[];
-  score: number;
-}
+export type { SearchIndexEntry, SearchResult };
 
 const SENTENCE_MARKERS = /\?|!|\.{2,}/;
 const SENTENCE_WORDS = /\b(please|could|would|want|need|show|find|give|get me|looking for|i am|i'm|can you|help me|what is)\b/i;
@@ -1336,11 +1326,6 @@ function scoreIcon(entry: SearchIndexEntry, query: string, tokens: string[]): nu
 
   return Math.max(0, score);
 }
-
-import { executeSearch, type SearchResult as BaseSearchResult, type SearchIndexEntry as BaseSearchIndexEntry } from '../utils/search';
-
-export type SearchIndexEntry = BaseSearchIndexEntry;
-export type SearchResult = BaseSearchResult;
 
 export function getSearchIndex(): SearchIndexEntry[] {
   return index as SearchIndexEntry[];
