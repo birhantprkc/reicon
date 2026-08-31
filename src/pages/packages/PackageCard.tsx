@@ -10,7 +10,7 @@ export default function PackageCard({ pkg }: { pkg: PackageItem }) {
             <h3 className="text-text-base font-semibold text-lg mb-2">{pkg.name}</h3>
             <div className="flex items-center gap-2 flex-wrap mb-4">
                 <img src={`https://img.shields.io/npm/v/${pkg.npmPkg}?color=6C5CE7`} alt={`${pkg.name} version`} loading="lazy" className="h-5" />
-                <img src={`https://img.shields.io/npm/dw/${pkg.npmPkg}?color=6C5CE7`} alt={`${pkg.name} downloads`} loading="lazy" className="h-5" />
+                <img src={`https://img.shields.io/npm/dm/${pkg.npmPkg}?color=6C5CE7`} alt={`${pkg.name} downloads`} loading="lazy" className="h-5" />
             </div>
             <p className="text-text-base/50 text-[14px] leading-relaxed mb-6 flex-1">{pkg.description}</p>
             <div className="flex items-center gap-2">
