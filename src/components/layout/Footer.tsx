@@ -212,6 +212,17 @@ export default function Footer() {
           <h2 className="font-serif font-bold text-[clamp(44px,13vw,160px)] leading-none tracking-[-0.04em] text-text-base/6 select-none pointer-events-none transition-colors">
             reicon<span className="text-[#6C5CE7]/35">.dev</span>
           </h2>
+          <div className="mt-3 flex items-center justify-center gap-1.5 text-[12px] text-text-base/40">
+            <span>Hosted & Powered by</span>
+            <a
+              href="https://vercel.com/?utm_source=reicon&utm_campaign=oss"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-text-base transition-colors font-medium cursor-pointer"
+            >
+              ▲ Vercel
+            </a>
+          </div>
         </div>
       </div>
     </footer>
