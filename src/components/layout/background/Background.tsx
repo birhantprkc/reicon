@@ -45,24 +45,21 @@ export default function Background() {
       const fgB = 251;
       const fgAlpha = isDark ? 0.35 : 0.18;
 
-      const t = 1.5; // Initial static warp state
+      const t = 1.5; // Static warp state
       const isMobile = window.innerWidth < 768;
 
-      // Mobile aspect correction variables
       const minDim = Math.min(w, h);
       const aspectX = w / minDim;
       const aspectY = h / minDim;
 
       let idx = 0;
       for (let y = 0; y < h; y++) {
-        // Desktop uses exact original formula | Mobile uses centered aspect-correct scaling
         const ny = isMobile ? ((y / h) - 0.5) * 2.5 * aspectY : (y / h) * 3 - 1.5;
         const bayerRow = (y % 4) * 4;
 
         for (let x = 0; x < w; x++) {
           const nx = isMobile ? ((x / w) - 0.5) * 2.5 * aspectX : (x / w) * 3 - 1.5;
 
-          // Original Organic Warp Curve formula
           let wx = nx;
           let wy = ny;
           for (let i = 1; i < 4; i++) {
@@ -73,11 +70,9 @@ export default function Background() {
           const rawDist = Math.abs(Math.sin(t - wy - wx));
           const shape = Math.min(1, Math.max(0, 0.12 / Math.max(0.001, rawDist)));
 
-          // Bayer threshold check
           const bayerVal = BAYER_4X4[bayerRow + (x % 4)] / 16.0;
           const dither = shape + (bayerVal - 0.5) * 0.4 > 0.45 ? 1 : 0;
 
-          // Composite colors
           if (dither) {
             buf[idx] = Math.round(fgR * fgAlpha + bgR * (1 - fgAlpha));
             buf[idx + 1] = Math.round(fgG * fgAlpha + bgG * (1 - fgAlpha));
@@ -97,8 +92,6 @@ export default function Background() {
 
     renderDither();
 
-    // Instant frame-synced resize handler (0ms perceptual lag)
-    // Ignore height-only resizes on mobile caused by browser address bar showing/hiding on scroll
     let lastWidth = window.innerWidth;
     let resizeRafId: number | null = null;
     const handleResize = () => {
@@ -135,4 +128,3 @@ export default function Background() {
     </div>
   );
 }
-
