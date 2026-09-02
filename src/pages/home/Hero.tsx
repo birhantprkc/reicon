@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { HandHeart, Search3, Doc, PenSparkle } from 'reicon-react';
 import { SiJavascript, SiReact } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
-import Background from '../../components/layout/Background';
 import ClayButton from '../../components/ui/Button';
+import { ShaderBackground } from '../../components/ui/ShaderBackground';
 import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon } from './icons';
 
 interface Props {
@@ -32,15 +32,19 @@ function OpenAiIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 export default function Hero({ heroCardRef }: Props) {
   return (
-    <div className="relative min-h-screen flex items-start justify-center">
+    <div className="relative min-h-screen flex items-start justify-center pt-[72px] sm:pt-[76px] md:pt-[82px] pb-4 px-4 sm:px-5 md:px-8 w-full">
       <div
         ref={heroCardRef}
-        className="relative md:sticky md:top-0 w-full min-h-screen md:h-screen overflow-hidden origin-top will-change-transform"
+        className="relative w-full min-h-[calc(100vh-88px)] md:min-h-[calc(100vh-98px)] bg-text-base/3 rounded-[16px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden flex flex-col justify-between pt-10 sm:pt-14 md:pt-16 pb-6 px-4 md:px-10 origin-top will-change-transform"
         style={{ transformOrigin: 'top center' }}
       >
-        <Background />
+        {/* Waves Shader Background in brand accent colors */}
+        <ShaderBackground className="absolute inset-0 w-full h-full pointer-events-none opacity-55" />
 
-        <div className="absolute inset-0 z-[2] flex flex-col justify-between pt-20 sm:pt-24 md:pt-28 pb-6 px-[18px] md:px-[40px]">
+        {/* Rich top ambient smoke glow overlay */}
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[700px] sm:w-[850px] h-[320px] bg-gradient-to-b from-[#9B8AFB]/[0.14] via-[#9B8AFB]/[0.06] to-transparent rounded-full blur-[90px] pointer-events-none z-[1]" />
+
+        <div className="relative z-[2] flex flex-col justify-between h-full flex-1">
           {/* Center content */}
           <div className="my-auto text-center px-3 max-w-4xl mx-auto flex flex-col items-center justify-center">
             {/* Top pill badges */}

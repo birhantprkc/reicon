@@ -131,12 +131,12 @@ function Sidebar({
         }
         #nd-sidebar {
           width: 13.5rem;
-          height: calc(100vh - 4.5rem);
+          height: calc(100vh - 3.5rem);
           position: sticky;
-          top: 4.5rem;
+          top: 3.5rem;
           align-self: flex-start;
           overflow-y: auto;
-          padding: 1rem 0.5rem 2rem 0;
+          padding: 1.25rem 0.5rem 2rem 0;
           margin-left: 0;
           z-index: 30;
           background-color: var(--bg-base);
@@ -212,7 +212,7 @@ function Sidebar({
           min-height: 2rem;
           font-size: 13px;
           color: var(--text-base);
-          transition: color 0.15s ease;
+          transition: color 0.15s ease, background-color 0.15s ease;
           user-select: none;
           border: 0;
           width: 100%;

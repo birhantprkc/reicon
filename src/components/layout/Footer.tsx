@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ShaderBackground } from '../ui/ShaderBackground';
 
 const socials = [
   {
@@ -41,142 +42,98 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 mt-auto pt-16 pb-8 text-text-base overflow-hidden" role="contentinfo">
-      <div className="max-w-[1160px] mx-auto px-6">
+    <footer className="relative z-10 mt-auto pt-16 pb-6 text-text-base overflow-hidden" role="contentinfo">
+      {/* Full-height subtle bottom-to-top accent smoke Shader Background */}
+      <ShaderBackground className="absolute inset-0 w-full h-full pointer-events-none opacity-25 transform scale-y-[-1] z-0" />
+
+      {/* Top seamless gradient fade overlay merging with page background */}
+      <div className="absolute top-0 left-0 right-0 h-36 bg-gradient-to-b from-bg-base via-bg-base/80 to-transparent pointer-events-none z-[1]" />
+
+      <div className="relative z-10 max-w-[1160px] mx-auto px-6">
         {/* Multi-Column Section Matching Left Sidebar Structure with Fading Vertical Lines */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-10 gap-x-6 lg:gap-x-8 pb-12 sm:pb-16 text-left">
           {/* Column 1: Use / Integration */}
           <div className="relative flex flex-col">
             <div className="flex items-center gap-2 mb-2 text-[11px] font-semibold tracking-wider text-text-base/40 uppercase">
-              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-text-base/50 shrink-0">
-                <re-icon icon="folder" size="13" />
+              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-[#9B8AFB] shrink-0">
+                <re-icon icon="folder" size="13" color="currentColor" />
               </div>
               <span>Use</span>
             </div>
             <div className="relative flex flex-col gap-1">
               <div className="absolute left-[10px] top-[-4px] bottom-[4px] w-[1px] transform -translate-x-1/2 pointer-events-none" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-              <Link to="/docs/react" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                React Packages
-              </Link>
-              <Link to="/docs/react-native" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                React Native
-              </Link>
-              <Link to="/docs/vue" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Vue Package
-              </Link>
-              <Link to="/docs/svelte" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Svelte Package
-              </Link>
-              <Link to="/docs/flutter" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Flutter SDK
-              </Link>
-              <Link to="/docs/vanilla" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Vanilla JS & CDN
-              </Link>
+              <Link to="/docs/react" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">React Packages</Link>
+              <Link to="/docs/react-native" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">React Native</Link>
+              <Link to="/docs/vue" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Vue Package</Link>
+              <Link to="/docs/svelte" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Svelte Package</Link>
+              <Link to="/docs/flutter" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Flutter SDK</Link>
+              <Link to="/docs/vanilla" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Vanilla JS & CDN</Link>
             </div>
           </div>
 
-          {/* Column 2: Icons */}
+          {/* Column 2: Icons & Resources */}
           <div className="relative flex flex-col">
             <div className="flex items-center gap-2 mb-2 text-[11px] font-semibold tracking-wider text-text-base/40 uppercase">
-              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-text-base/50 shrink-0">
-                <re-icon icon="widget" size="13" />
+              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-[#9B8AFB] shrink-0">
+                <re-icon icon="widget" size="13" color="currentColor" />
               </div>
               <span>Icons</span>
             </div>
             <div className="relative flex flex-col gap-1">
               <div className="absolute left-[10px] top-[-4px] bottom-[4px] w-[1px] transform -translate-x-1/2 pointer-events-none" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-              <Link to="/icons" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                All Icons
-              </Link>
-              <Link to="/illustration" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Illustrations
-              </Link>
-              <Link to="/logos" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Brand Logos
-              </Link>
-              <Link to="/icons?weight=outline" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Outline Icons
-              </Link>
-              <Link to="/icons?weight=filled" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Filled Icons
-              </Link>
-              <Link to="/docs/vscode" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                VS Code Extension
-              </Link>
-              <Link to="/docs/mcp" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                MCP AI Server
-              </Link>
-              <Link to="/docs/figma" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Figma UI Kit
-              </Link>
+              <Link to="/icons" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">All Icons</Link>
+              <Link to="/illustration" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Illustrations</Link>
+              <Link to="/logos" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Brand Logos</Link>
+              <Link to="/icons?style=outline" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Outline Icons</Link>
+              <Link to="/icons?style=filled" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Filled Icons</Link>
+              <Link to="/docs/vscode" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">VS Code Extension</Link>
+              <Link to="/docs/mcp" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">MCP AI Server</Link>
+              <Link to="/docs/figma" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Figma UI Kit</Link>
             </div>
           </div>
 
-          {/* Column 3: Ecosystem */}
+          {/* Column 3: Ecosystem & Guides */}
           <div className="relative flex flex-col">
             <div className="flex items-center gap-2 mb-2 text-[11px] font-semibold tracking-wider text-text-base/40 uppercase">
-              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-text-base/50 shrink-0">
-                <re-icon icon="layers" size="13" />
+              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-[#9B8AFB] shrink-0">
+                <re-icon icon="layers" size="13" color="currentColor" />
               </div>
               <span>Ecosystem</span>
             </div>
             <div className="relative flex flex-col gap-1">
               <div className="absolute left-[10px] top-[-4px] bottom-[4px] w-[1px] transform -translate-x-1/2 pointer-events-none" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-              <Link to="/docs" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Documentation
-              </Link>
-              <Link to="/docs/vanilla#props" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Props Reference
-              </Link>
-              <Link to="/docs/vanilla#styling" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Styling & Color
-              </Link>
-              <Link to="/docs/vanilla#accessibility" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Accessibility Guide
-              </Link>
-              <Link to="/docs/vanilla#typescript" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                TypeScript Definitions
-              </Link>
+              <Link to="/docs" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Documentation</Link>
+              <Link to="/docs/props" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Props Reference</Link>
+              <Link to="/docs/styling" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Styling & Color</Link>
+              <Link to="/docs/accessibility" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Accessibility Guide</Link>
+              <Link to="/docs/typescript" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">TypeScript Definitions</Link>
             </div>
           </div>
 
-          {/* Column 4: Support */}
+          {/* Column 4: Support & Legal */}
           <div className="relative flex flex-col">
             <div className="flex items-center gap-2 mb-2 text-[11px] font-semibold tracking-wider text-text-base/40 uppercase">
-              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-text-base/50 shrink-0">
-                <re-icon icon="headphones" size="13" />
+              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-[#9B8AFB] shrink-0">
+                <re-icon icon="headphones" size="13" color="currentColor" />
               </div>
               <span>Support</span>
             </div>
             <div className="relative flex flex-col gap-1">
               <div className="absolute left-[10px] top-[-4px] bottom-[4px] w-[1px] transform -translate-x-1/2 pointer-events-none" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-              <Link to="/support" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Support Reicon
-              </Link>
-              <Link to="/faq" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Questions & Answers
-              </Link>
-              <Link to="/license" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                MIT License
-              </Link>
-              <Link to="/terms" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Terms of Service
-              </Link>
-              <Link to="/privacy" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium">
-                Privacy Policy
-              </Link>
-              <a href="mailto:hello@reicon.dev" className="relative flex items-center pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">
-                Contact
-              </a>
+              <Link to="/support" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Support Reicon</Link>
+              <Link to="/faq" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Questions & Answers</Link>
+              <Link to="/license" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">MIT License</Link>
+              <Link to="/terms" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Terms of Service</Link>
+              <Link to="/privacy" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Privacy Policy</Link>
+              <a href="mailto:support@reicon.dev" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Contact</a>
             </div>
           </div>
 
-          {/* Column 5: Socials */}
-          <div className="col-span-2 md:col-span-1 relative flex flex-col">
+          {/* Column 5: Social Links */}
+          <div className="relative flex flex-col">
             <div className="flex items-center gap-2 mb-2 text-[11px] font-semibold tracking-wider text-text-base/40 uppercase">
-              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-text-base/50 shrink-0">
-                <re-icon icon="at" size="13" />
+              <div className="w-5 h-5 rounded-[5px] bg-text-base/4 flex items-center justify-center text-[#9B8AFB] shrink-0">
+                <re-icon icon="at" size="13" color="currentColor" />
               </div>
               <span>Socials</span>
             </div>
@@ -206,23 +163,23 @@ export default function Footer() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Big Branding Watermark Display */}
-        <div className="pt-6 sm:pt-8 flex flex-col items-center justify-center text-center overflow-hidden">
-          <h2 className="font-serif font-bold text-[clamp(44px,13vw,160px)] leading-none tracking-[-0.04em] text-text-base/6 select-none pointer-events-none transition-colors">
-            reicon<span className="text-[#9B8AFB]/35">.dev</span>
-          </h2>
-          <div className="mt-3 flex items-center justify-center gap-1.5 text-[12px] text-text-base/40">
-            <span>Hosted & Powered by</span>
-            <a
-              href="https://vercel.com/?utm_source=reicon&utm_campaign=oss"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 hover:text-text-base transition-colors font-medium cursor-pointer"
-            >
-              ▲ Vercel
-            </a>
-          </div>
+      {/* Big Branding Watermark Display */}
+      <div className="relative mt-4 pt-10 pb-4 w-full flex flex-col items-center justify-center text-center overflow-hidden">
+        <h2 className="relative z-10 font-serif font-bold text-[clamp(44px,13vw,160px)] leading-none tracking-[-0.04em] text-text-base/20 dark:text-text-base/25 select-none pointer-events-none transition-colors">
+          reicon<span className="text-[#9B8AFB] opacity-80">.dev</span>
+        </h2>
+        <div className="relative z-10 mt-3 flex items-center justify-center gap-1.5 text-[12px] text-text-base/40 pb-2">
+          <span>Hosted & Powered by</span>
+          <a
+            href="https://vercel.com/?utm_source=reicon&utm_campaign=oss"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 hover:text-text-base transition-colors font-medium cursor-pointer"
+          >
+            ▲ Vercel
+          </a>
         </div>
       </div>
     </footer>

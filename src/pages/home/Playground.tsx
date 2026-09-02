@@ -184,7 +184,7 @@ export default function Playground({ theme }: { theme: string }) {
       </div>
 
       {mode === 'icons' ? (
-        <div className="bg-text-base/3 rounded-[14px] overflow-hidden">
+        <div className="bg-text-base/3 rounded-[16px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden">
           <div className="grid lg:grid-cols-[300px_1fr]">
             <div className="p-5 lg:p-6 lg:border-r border-b lg:border-b-0 border-text-base/6 flex flex-col gap-4">
               <PlaygroundPreview

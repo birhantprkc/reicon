@@ -84,12 +84,11 @@ export default function IconsPage() {
 
   useEffect(() => {
     const w = searchParams.get('weight')?.toLowerCase();
-    if (w === 'filled') setActiveStyle('Filled');
-    else if (w === 'duotone') setActiveStyle('Duotone');
-    else setActiveStyle('Outline');
-    
-    const cat = searchParams.get('category') || searchParams.get('set');
-    if (cat) setActiveSet(cat);
+    const newStyle = w === 'filled' ? 'Filled' : w === 'duotone' ? 'Duotone' : 'Outline';
+    setActiveStyle((prev) => (prev !== newStyle ? newStyle : prev));
+
+    const cat = searchParams.get('category') || searchParams.get('set') || 'all';
+    setActiveSet((prev) => (prev !== cat ? cat : prev));
   }, [searchParams]);
 
   useEffect(() => {

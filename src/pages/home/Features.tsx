@@ -3,7 +3,7 @@ import { ShieldCheck, Code, Palette, Layers, HandHeart, Box } from 'reicon-react
 function FeatureBlock({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
     return (
         <div className="bg-text-base/3 rounded-[14px] p-[34px_30px]">
-            <div className="w-10 h-10 rounded-[9px] bg-text-base/6 flex items-center justify-center text-text-base/70 text-[18px] mb-4">
+            <div className="w-10 h-10 rounded-[10px] bg-text-base/6 flex items-center justify-center text-[#9B8AFB] text-[18px] mb-4">
                 {icon}
             </div>
             <h3 className="text-[14px] font-semibold text-text-base mb-[7px]">{title}</h3>

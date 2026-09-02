@@ -34,9 +34,20 @@ function ScrollToTop() {
   return null;
 }
 
+const VALID_ROUTES = [
+  '/', '/icons', '/illustration', '/logos', '/logo', '/packages', '/faq', '/support', '/donate', '/terms', '/privacy', '/license', '/pack'
+];
+
+function isKnownRoute(pathname: string) {
+  if (VALID_ROUTES.includes(pathname)) return true;
+  if (pathname.startsWith('/icon/') || pathname.startsWith('/illustration/') || pathname.startsWith('/logo/') || pathname.startsWith('/docs')) return true;
+  return false;
+}
+
 function Layout() {
   const { pathname } = useLocation();
-  const hideFooter = pathname === '/icons' || pathname === '/illustration' || pathname === '/logos' || pathname === '/logo' || pathname.startsWith('/docs');
+  const is404 = !isKnownRoute(pathname);
+  const hideFooter = is404 || pathname === '/icons' || pathname === '/illustration' || pathname === '/logos' || pathname === '/logo' || pathname.startsWith('/docs');
 
   return (
     <div className="min-h-screen bg-bg-base flex flex-col">

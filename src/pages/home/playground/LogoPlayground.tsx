@@ -78,19 +78,20 @@ export default function LogoPlayground({ theme }: { theme: string }) {
   };
 
   return (
-    <div className="bg-text-base/3 rounded-[14px] overflow-hidden min-w-0 max-w-full">
+    <div className="bg-text-base/3 rounded-[16px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden min-w-0 max-w-full">
       <div className="grid lg:grid-cols-[300px_1fr] min-w-0">
         {/* Left Column: Preview & Controls */}
         <div className="p-5 lg:p-6 lg:border-r border-b lg:border-b-0 border-text-base/6 flex flex-col gap-4 min-w-0">
           {/* Preview Box */}
           <div className="flex flex-col">
-            <div className="relative w-full aspect-square max-w-[220px] mx-auto bg-bg-base border border-text-base/8 rounded-2xl flex items-center justify-center overflow-hidden">
+            <div className="relative w-full aspect-square max-w-[220px] mx-auto bg-text-base/2 border border-text-base/8 rounded-2xl flex items-center justify-center overflow-hidden">
               <div
-                className="absolute inset-0 pointer-events-none z-0"
+                className="absolute inset-0 pointer-events-none rounded-2xl overflow-hidden z-0"
                 style={{
                   backgroundImage:
                     'linear-gradient(to right, var(--border-muted) 1px, transparent 1px), linear-gradient(to bottom, var(--border-muted) 1px, transparent 1px)',
                   backgroundSize: '20px 20px',
+                  backgroundPosition: 'center center',
                 }}
               />
               <span className="absolute bottom-2.5 right-3 text-[8px] font-mono text-text-base/35 tabular-nums select-none z-10">
@@ -217,10 +218,10 @@ export default function LogoPlayground({ theme }: { theme: string }) {
                     type="button"
                     onClick={() => setSelectedSlug(item.slug)}
                     title={item.name}
-                    className={`aspect-square flex items-center justify-center p-1.5 sm:p-2 border-r border-b transition-colors cursor-pointer min-w-0 ${
+                    className={`aspect-square flex items-center justify-center p-1.5 sm:p-2 border-r border-b border-text-base/4 transition-colors cursor-pointer min-w-0 ${
                       isSelected
-                        ? 'bg-[#9B8AFB]/15 border-[#9B8AFB]/30'
-                        : 'border-text-base/4 hover:bg-text-base/3'
+                        ? 'bg-[#9B8AFB]/15'
+                        : 'hover:bg-text-base/3'
                     }`}
                   >
                     <img
