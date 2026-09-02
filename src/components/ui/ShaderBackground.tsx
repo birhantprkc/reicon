@@ -154,12 +154,12 @@ vec3 shade(vec2 uv, vec2 p, float t) {
 void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution.xy;
   vec2 screenUv = uv;
-  float maxDim = max(u_resolution.x, u_resolution.y);
-  vec2 p = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / maxDim;
+  float refDim = sqrt(u_resolution.x * u_resolution.y);
+  vec2 p = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / refDim;
   float cursorMask = 0.0;
 
   if (u_cursorPresence > 0.001) {
-    vec2 cursor = (0.5 * u_mouse * u_resolution.xy) / maxDim;
+    vec2 cursor = (0.5 * u_mouse * u_resolution.xy) / refDim;
     vec2 cursorDelta = p - cursor;
     if (u_cursorEffect < 0.5) {
       p += cursor * u_cursorPresence * u_cursorStrength * 0.55;
@@ -180,7 +180,7 @@ void main() {
     }
   }
 
-  uv = p * maxDim / u_resolution.xy + 0.5;
+  uv = p * refDim / u_resolution.xy + 0.5;
   p *= u_scale;
   if (abs(u_rotate) > 0.0001) {
     float cr = cos(u_rotate), sr = sin(u_rotate);
