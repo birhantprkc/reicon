@@ -44,10 +44,10 @@ export default function Footer() {
   return (
     <footer className="relative z-10 mt-auto pt-16 pb-6 text-text-base overflow-hidden" role="contentinfo">
       {/* Full-height subtle bottom-to-top accent smoke Shader Background */}
-      <ShaderBackground className="absolute inset-0 w-full h-full pointer-events-none opacity-25 transform scale-y-[-1] z-0" />
+      <ShaderBackground className="absolute inset-0 w-full h-full pointer-events-none opacity-12 transform scale-y-[-1] z-0" />
 
       {/* Top seamless gradient fade overlay merging with page background */}
-      <div className="absolute top-0 left-0 right-0 h-36 bg-gradient-to-b from-bg-base via-bg-base/80 to-transparent pointer-events-none z-[1]" />
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-bg-base via-bg-base/90 to-transparent pointer-events-none z-[1]" />
 
       <div className="relative z-10 max-w-[1160px] mx-auto px-6">
         {/* Multi-Column Section Matching Left Sidebar Structure with Fading Vertical Lines */}
