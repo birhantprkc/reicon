@@ -22,7 +22,7 @@ interface TypeTableProps {
 
 /**
  * Animate-ui style props/type table — rounded chrome, header row in a slightly
- * lighter shade, prop chips in the site accent (#6C5CE7) and neutral chips for
+ * lighter shade, prop chips in the site accent (#9B8AFB) and neutral chips for
  * type/default values. Stays on the Reicon dark palette.
  */
 export default function TypeTable({ rows, showDescription, className = '' }: TypeTableProps) {
@@ -153,9 +153,9 @@ function TypeTableStyles() {
 
       /* Prop chip — accent color, like fd-primary/10 + text-fd-primary */
       .reicon-tt-chip--prop {
-        background: rgba(108, 92, 231, 0.14);
+        background: rgba(155, 138, 251, 0.14);
         color: #b3a8ff;
-        border-color: rgba(108, 92, 231, 0.25);
+        border-color: rgba(155, 138, 251, 0.25);
       }
 
       .reicon-tt-chip--deprecated {

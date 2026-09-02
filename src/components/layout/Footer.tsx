@@ -210,7 +210,7 @@ export default function Footer() {
         {/* Big Branding Watermark Display */}
         <div className="pt-6 sm:pt-8 flex flex-col items-center justify-center text-center overflow-hidden">
           <h2 className="font-serif font-bold text-[clamp(44px,13vw,160px)] leading-none tracking-[-0.04em] text-text-base/6 select-none pointer-events-none transition-colors">
-            reicon<span className="text-[#6C5CE7]/35">.dev</span>
+            reicon<span className="text-[#9B8AFB]/35">.dev</span>
           </h2>
           <div className="mt-3 flex items-center justify-center gap-1.5 text-[12px] text-text-base/40">
             <span>Hosted & Powered by</span>

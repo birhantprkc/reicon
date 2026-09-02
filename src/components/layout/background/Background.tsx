@@ -34,15 +34,15 @@ export default function Background() {
       const imgData = ctx.createImageData(w, h);
       const buf = imgData.data;
 
-      // Theme colors (#6C5CE7 brand accent)
+      // Theme colors (#9B8AFB brand accent)
       const isDark = theme === 'dark';
       const bgR = isDark ? 9 : 245;
       const bgG = isDark ? 9 : 245;
       const bgB = isDark ? 11 : 240;
 
-      const fgR = 108; // #6C5CE7
-      const fgG = 92;
-      const fgB = 231;
+      const fgR = 155;
+      const fgG = 138;
+      const fgB = 251;
       const fgAlpha = isDark ? 0.35 : 0.18;
 
       const t = 1.5; // Initial static warp state
@@ -98,8 +98,13 @@ export default function Background() {
     renderDither();
 
     // Instant frame-synced resize handler (0ms perceptual lag)
+    // Ignore height-only resizes on mobile caused by browser address bar showing/hiding on scroll
+    let lastWidth = window.innerWidth;
     let resizeRafId: number | null = null;
     const handleResize = () => {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+
       if (resizeRafId !== null) return;
       resizeRafId = requestAnimationFrame(() => {
         renderDither();
@@ -117,7 +122,7 @@ export default function Background() {
   }, [theme]);
 
   return (
-    <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden var(--bg-base)">
+    <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden" style={{ backgroundColor: 'var(--bg-base)' }}>
       <canvas
         ref={canvasRef}
         id="c"

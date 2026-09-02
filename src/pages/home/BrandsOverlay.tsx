@@ -54,7 +54,7 @@ export default function BrandsOverlay() {
         className={`pointer-events-auto ml-auto w-full max-w-[360px] bg-bg-base border border-text-base/10 rounded-[16px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.25)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${animateIn ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
       >
         {/* Hero image */}
-        <div className="relative aspect-[1200/400] overflow-hidden bg-gradient-to-br from-[#6C5CE7]/20 to-transparent">
+        <div className="relative aspect-[1200/400] overflow-hidden bg-gradient-to-br from-[#9B8AFB]/20 to-transparent">
           <img
             src="/new-launch.jpg"
             alt="brands.reicon.dev"
@@ -66,7 +66,7 @@ export default function BrandsOverlay() {
         <div className="relative -mt-[2px] px-4 pb-4 pt-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <div className="text-[10px] font-semibold tracking-[0.1em] uppercase text-[#6C5CE7] mb-0.5">
+              <div className="text-[10px] font-semibold tracking-[0.1em] uppercase text-[#9B8AFB] mb-0.5">
                 New Launch
               </div>
               <h3 className="font-serif text-[16px] text-text-base leading-[1.2] tracking-[-0.01em]">
@@ -81,7 +81,7 @@ export default function BrandsOverlay() {
                 href="https://brands.reicon.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 bg-[#6C5CE7] text-white text-[12px] font-medium px-3.5 py-2 rounded-full hover:bg-[#6C5CE7]/90 active:scale-[0.97] transition-all cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center gap-1 bg-[#9B8AFB] text-white text-[12px] font-medium px-3.5 py-2 rounded-full hover:bg-[#9B8AFB]/90 active:scale-[0.97] transition-all cursor-pointer whitespace-nowrap"
               >
                 Browse
                 <ArrowRightUp size={12} />

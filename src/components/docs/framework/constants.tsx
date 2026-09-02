@@ -7,7 +7,7 @@ export const FRAMEWORKS = [
     { id: 'flutter', label: 'Flutter', icon: 'flutter', color: '#02569B' },
     { id: 'figma', label: 'Figma', icon: 'figma', color: '#F24E1E' },
     { id: 'vscode', label: 'VS Code', icon: 'vscode', color: '#007ACC' },
-    { id: 'mcp', label: 'MCP Server', icon: 'mcp', color: '#6C5CE7' },
+    { id: 'mcp', label: 'MCP Server', icon: 'mcp', color: '#9B8AFB' },
     { id: 'svg', label: 'Raw SVGs', icon: 'svg', color: '#4285F4' },
 ] as const;
 

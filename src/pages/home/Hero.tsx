@@ -35,7 +35,7 @@ export default function Hero({ heroCardRef }: Props) {
     <div className="relative min-h-screen flex items-start justify-center">
       <div
         ref={heroCardRef}
-        className="sticky top-0 w-full h-screen overflow-hidden origin-top will-change-transform"
+        className="relative md:sticky md:top-0 w-full min-h-screen md:h-screen overflow-hidden origin-top will-change-transform"
         style={{ transformOrigin: 'top center' }}
       >
         <Background />

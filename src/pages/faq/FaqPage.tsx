@@ -68,7 +68,7 @@ const FAQ_CATEGORIES = [
         answer: (
           <p>
             Yes, Reicon is 100% free and open-source under the{' '}
-            <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline">MIT License</a>. Use it in personal, commercial, education, or open-source projects — no attribution required (though always appreciated!).
+            <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" className="text-[#9B8AFB] hover:underline">MIT License</a>. Use it in personal, commercial, education, or open-source projects — no attribution required (though always appreciated!).
           </p>
         ),
       },
@@ -147,7 +147,7 @@ const FAQ_CATEGORIES = [
         answer: (
           <p>
             Open an Issue on our{' '}
-            <a href="https://github.com/dqev/reicon/issues" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline">GitHub Issues tracker</a>{' '}
+            <a href="https://github.com/dqev/reicon/issues" target="_blank" rel="noopener noreferrer" className="text-[#9B8AFB] hover:underline">GitHub Issues tracker</a>{' '}
             using the "Icon Request" template. We review requests weekly and design new sets based on popularity.
           </p>
         ),
@@ -369,7 +369,7 @@ export default function FaqPage() {
             <h1 className="text-3xl md:text-4xl font-serif text-text-base mb-6">Frequently Asked Questions</h1>
             <p className="text-text-base/50 text-[15px] leading-[1.8] mb-8">
               Everything you need to know about Reicon. If your question isn't answered here, open a discussion on{' '}
-              <a href="https://github.com/dqev/reicon" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline">GitHub</a> or contact us directly.
+              <a href="https://github.com/dqev/reicon" target="_blank" rel="noopener noreferrer" className="text-[#9B8AFB] hover:underline">GitHub</a> or contact us directly.
             </p>
 
             <div className="relative mb-10">

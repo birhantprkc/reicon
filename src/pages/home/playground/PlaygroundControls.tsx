@@ -7,8 +7,8 @@ const HEX_RE = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
 function ColorPicker({ color, onChange, theme }: { color: string; onChange: (c: string) => void; theme: string }) {
     const isLight = theme === 'light';
     const presets = isLight
-        ? ['#111111', '#6C5CE7', '#ef4444', '#f59e0b', '#22c55e', '#3b82f6', '#ec4899', '#06b6d4']
-        : ['#ffffff', '#6C5CE7', '#ef4444', '#f59e0b', '#22c55e', '#3b82f6', '#ec4899', '#06b6d4'];
+        ? ['#111111', '#9B8AFB', '#ef4444', '#f59e0b', '#22c55e', '#3b82f6', '#ec4899', '#06b6d4']
+        : ['#ffffff', '#9B8AFB', '#ef4444', '#f59e0b', '#22c55e', '#3b82f6', '#ec4899', '#06b6d4'];
     const safeColor = HEX_RE.test(color) ? color : (isLight ? '#111111' : '#ffffff');
     const [isOpen, setIsOpen] = useState(false);
 
@@ -94,7 +94,7 @@ export default function PlaygroundControls({
                     <span className="text-[13px] text-text-base/30 font-mono">{size}px</span>
                 </div>
                 <input type="range" min={16} max={48} value={size} onChange={(e) => onChangeSize(Number(e.target.value))}
-                    className="w-full h-1.5 rounded-full appearance-none bg-text-base/10 accent-[#6C5CE7] cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#6C5CE7] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(108,92,231,0.5)]"
+                    className="w-full h-1.5 rounded-full appearance-none bg-text-base/10 accent-[#9B8AFB] cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#9B8AFB] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(155, 138, 251,0.5)]"
                 />
             </div>
 
@@ -104,7 +104,7 @@ export default function PlaygroundControls({
                     {(['outline', 'filled'] as const).map((w) => (
                         <button key={w} onClick={() => onChangeWeight(w)}
                             className={`flex-1 px-3 py-2 rounded-lg text-[13px] font-medium transition-all cursor-pointer ${weight === w
-                                ? 'bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30'
+                                ? 'bg-[#9B8AFB]/15 text-[#9B8AFB] border border-[#9B8AFB]/30'
                                 : 'bg-text-base/5 text-text-base/40 border border-text-base/10 hover:text-text-base/60'
                                 }`}
                         >

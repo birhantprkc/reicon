@@ -18,7 +18,7 @@ export default function Troubleshooting({ markdownContent, copiedField, onCopy }
           href="https://github.com/dqev/reicon/issues"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#6C5CE7] hover:underline"
+          className="text-[#9B8AFB] hover:underline"
         >
           GitHub
         </a>.

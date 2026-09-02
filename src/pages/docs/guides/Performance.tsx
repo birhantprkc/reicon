@@ -113,22 +113,22 @@ export default function Performance({ markdownContent, copiedField, onCopy }: Pr
           </thead>
           <tbody className="text-text-base/60">
             <tr className="border-b border-text-base/4">
-              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#6C5CE7]/14 px-1.5 py-0.5 rounded text-[12px]">reicon-react</code></td>
+              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#9B8AFB]/14 px-1.5 py-0.5 rounded text-[12px]">reicon-react</code></td>
               <td className="px-4 py-3">Only used icons</td>
               <td className="px-4 py-3">React / Next.js apps</td>
             </tr>
             <tr className="border-b border-text-base/4">
-              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#6C5CE7]/14 px-1.5 py-0.5 rounded text-[12px]">reicon-react/icons/*</code></td>
+              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#9B8AFB]/14 px-1.5 py-0.5 rounded text-[12px]">reicon-react/icons/*</code></td>
               <td className="px-4 py-3">Single icon per import</td>
               <td className="px-4 py-3">Production builds</td>
             </tr>
             <tr className="border-b border-text-base/4">
-              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#6C5CE7]/14 px-1.5 py-0.5 rounded text-[12px]">reicon-vue</code></td>
+              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#9B8AFB]/14 px-1.5 py-0.5 rounded text-[12px]">reicon-vue</code></td>
               <td className="px-4 py-3">Only used icons</td>
               <td className="px-4 py-3">Vue / Nuxt apps</td>
             </tr>
             <tr>
-              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#6C5CE7]/14 px-1.5 py-0.5 rounded text-[12px]">CDN script</code></td>
+              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#9B8AFB]/14 px-1.5 py-0.5 rounded text-[12px]">CDN script</code></td>
               <td className="px-4 py-3">On-demand fetching</td>
               <td className="px-4 py-3">Static sites, prototyping</td>
             </tr>

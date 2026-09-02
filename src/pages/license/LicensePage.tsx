@@ -145,22 +145,22 @@ export default function LicensePage() {
             </p>
             <ul className="list-disc list-inside space-y-2 text-text-base/60">
               <li>
-                <a href="https://solar-icons.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline font-medium">
+                <a href="https://solar-icons.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#9B8AFB] hover:underline font-medium">
                   Solar Icons
                 </a>{' '}
                 designed by{' '}
                 <span className="text-text-base/80">480 Design</span> and package maintained by{' '}
-                <a href="https://github.com/saoudi-h/solar-icons" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline">
+                <a href="https://github.com/saoudi-h/solar-icons" target="_blank" rel="noopener noreferrer" className="text-[#9B8AFB] hover:underline">
                   Saoudi H.
                 </a>{' '}
                 (released under CC BY 4.0 and MIT Licenses).
               </li>
               <li>
-                <a href="https://zappicon.com" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline font-medium">
+                <a href="https://zappicon.com" target="_blank" rel="noopener noreferrer" className="text-[#9B8AFB] hover:underline font-medium">
                   Zappicon
                 </a>{' '}
                 (subject to the{' '}
-                <a href="https://zappicon.com/license" target="_blank" rel="noopener noreferrer" className="text-[#6C5CE7] hover:underline">
+                <a href="https://zappicon.com/license" target="_blank" rel="noopener noreferrer" className="text-[#9B8AFB] hover:underline">
                   Zappicon License
                 </a>).
               </li>
@@ -169,7 +169,7 @@ export default function LicensePage() {
 
           <section>
             <h2 className="text-lg font-semibold text-text-base mb-3">Questions?</h2>
-            <p>If you have questions about licensing, contact us at <a href="mailto:hello@reicon.dev" className="text-[#6C5CE7] hover:underline">hello@reicon.dev</a>.</p>
+            <p>If you have questions about licensing, contact us at <a href="mailto:hello@reicon.dev" className="text-[#9B8AFB] hover:underline">hello@reicon.dev</a>.</p>
           </section>
         </div>
 

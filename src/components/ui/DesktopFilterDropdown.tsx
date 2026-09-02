@@ -90,16 +90,16 @@ export default function DesktopFilterDropdown({ sortBy, onSortChange }: DesktopF
                     }}
                     className={`w-full flex items-center justify-between px-3 py-2 text-left text-xs font-medium transition-colors cursor-pointer rounded-xl ${
                       isSelected
-                        ? 'text-[#6C5CE7] bg-[#6C5CE7]/10 font-semibold'
+                        ? 'text-[#9B8AFB] bg-[#9B8AFB]/10 font-semibold'
                         : 'text-text-base/70 hover:text-text-base hover:bg-text-base/5'
                     }`}
                   >
                     <div className="flex items-center gap-2">
-                      <span className={isSelected ? 'text-[#6C5CE7]' : 'opacity-60'}>{opt.icon}</span>
+                      <span className={isSelected ? 'text-[#9B8AFB]' : 'opacity-60'}>{opt.icon}</span>
                       <span>{opt.label}</span>
                     </div>
                     {isSelected && (
-                      <svg className="w-3.5 h-3.5 text-[#6C5CE7] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <svg className="w-3.5 h-3.5 text-[#9B8AFB] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     )}

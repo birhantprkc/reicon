@@ -24,7 +24,7 @@ export default function NotFound() {
         <div className="flex items-center gap-3">
           <Link
             to="/"
-            className="bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors inline-flex items-center gap-2"
+            className="bg-[#9B8AFB] hover:bg-[#8B7AFB] text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors inline-flex items-center gap-2"
           >
             <ArrowLeft size={16} />
             Go Home

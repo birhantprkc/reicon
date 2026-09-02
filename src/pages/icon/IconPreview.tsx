@@ -128,10 +128,10 @@ export default function IconPreview({
           <div className="flex gap-2">
             {availableWeights.map((w) => (
               <button key={w} onClick={() => onSetActiveWeight(w)}
-                className={`flex-1 px-2.5 py-2 rounded-lg text-[13px] font-medium transition-all cursor-pointer flex items-center justify-center gap-1 ${activeWeight === w ? 'bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30' : 'bg-text-base/5 text-text-base/40 border border-text-base/10 hover:text-text-base/60'}`}>
+                className={`flex-1 px-2.5 py-2 rounded-lg text-[13px] font-medium transition-all cursor-pointer flex items-center justify-center gap-1 ${activeWeight === w ? 'bg-[#9B8AFB]/15 text-[#9B8AFB] border border-[#9B8AFB]/30' : 'bg-text-base/5 text-text-base/40 border border-text-base/10 hover:text-text-base/60'}`}>
                 <span>{w.charAt(0).toUpperCase() + w.slice(1)}</span>
                 {w === 'duotone' && (
-                  <span className="text-[8px] font-bold uppercase tracking-wider px-1 rounded bg-[#6C5CE7]/20 text-[#6C5CE7]">Beta</span>
+                  <span className="text-[8px] font-bold uppercase tracking-wider px-1 rounded bg-[#9B8AFB]/20 text-[#9B8AFB]">Beta</span>
                 )}
               </button>
             ))}
@@ -144,7 +144,7 @@ export default function IconPreview({
             <span className="text-[12px] text-text-base/40 font-mono">{previewSize}px</span>
           </div>
           <input type="range" min={16} max={256} value={previewSize} onChange={(e) => onSetPreviewSize(Number(e.target.value))}
-            className="w-full h-1.5 rounded-full appearance-none bg-text-base/10 accent-[#6C5CE7] cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#6C5CE7] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(108,92,231,0.5)]" />
+            className="w-full h-1.5 rounded-full appearance-none bg-text-base/10 accent-[#9B8AFB] cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#9B8AFB] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(155, 138, 251,0.5)]" />
         </div>
       </div>
     </motion.div>

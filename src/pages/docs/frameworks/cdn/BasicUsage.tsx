@@ -16,7 +16,7 @@ export default function BasicUsage({ copiedField, onCopy }: Props) {
 
       <SyntaxBlock
         title="JavaScript"
-        onCopy={() => onCopy("import { Home, ShieldCheck } from 'reicon';\n\n// Create SVG elements\nconst home = Home({ size: 24 });\nconst shield = ShieldCheck({ size: 32, color: '#6C5CE7', weight: 'Filled' });\n\n// Append directly to document\ndocument.body.appendChild(home);\ndocument.body.appendChild(shield);", 'vanilla-esm')}
+        onCopy={() => onCopy("import { Home, ShieldCheck } from 'reicon';\n\n// Create SVG elements\nconst home = Home({ size: 24 });\nconst shield = ShieldCheck({ size: 32, color: '#9B8AFB', weight: 'Filled' });\n\n// Append directly to document\ndocument.body.appendChild(home);\ndocument.body.appendChild(shield);", 'vanilla-esm')}
         copied={copiedField === 'vanilla-esm'}
       >
         <span className="text-[#c678dd]">import</span>
@@ -44,7 +44,7 @@ export default function BasicUsage({ copiedField, onCopy }: Props) {
         <span className="text-text-base/70">({'{'} size: </span>
         <span className="text-[#d19a66]">32</span>
         <span className="text-text-base/70">, color: </span>
-        <span className="text-[#98c379]">'#6C5CE7'</span>
+        <span className="text-[#98c379]">'#9B8AFB'</span>
         <span className="text-text-base/70">, weight: </span>
         <span className="text-[#98c379]">'Filled'</span>
         <span className="text-text-base/70"> {'}'});</span>
@@ -68,7 +68,7 @@ export default function BasicUsage({ copiedField, onCopy }: Props) {
 
       <SyntaxBlock
         title="HTML"
-        onCopy={() => onCopy('<re-icon icon="home"></re-icon>\n<re-icon icon="shield-check" weight="filled" size="32" color="#6C5CE7"></re-icon>', 'cdn-basic')}
+        onCopy={() => onCopy('<re-icon icon="home"></re-icon>\n<re-icon icon="shield-check" weight="filled" size="32" color="#9B8AFB"></re-icon>', 'cdn-basic')}
         copied={copiedField === 'cdn-basic'}
       >
         <span className="text-text-base/70">{'<'}</span>
@@ -93,7 +93,7 @@ export default function BasicUsage({ copiedField, onCopy }: Props) {
         <span className="text-[#98c379]">"32"</span>
         <span className="text-[#d19a66]"> color</span>
         <span className="text-text-base/50">=</span>
-        <span className="text-[#98c379]">"#6C5CE7"</span>
+        <span className="text-[#98c379]">"#9B8AFB"</span>
         <span className="text-text-base/70">{'></'}</span>
         <span className="text-[#e06c75]">re-icon</span>
         <span className="text-text-base/70">{'>'}</span>

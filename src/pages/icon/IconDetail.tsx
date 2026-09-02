@@ -140,7 +140,7 @@ export default function IconDetail() {
 
           <section className="mt-16">
             <div className="border-t border-text-base/8 pt-12 mb-8 text-center">
-              <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#6C5CE7] mb-2">In context</div>
+              <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#9B8AFB] mb-2">In context</div>
               <h2 className="font-serif text-[clamp(20px,2.6vw,30px)] text-text-base">See the {pascalName} icon in real UI</h2>
             </div>
 
@@ -170,7 +170,7 @@ export default function IconDetail() {
             className="fixed bottom-6 left-0 right-0 z-[100] flex justify-center px-4"
           >
             <div className="bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base/80 text-[13px] px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap">
-              <svg className="w-3.5 h-3.5 text-[#6C5CE7] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+              <svg className="w-3.5 h-3.5 text-[#9B8AFB] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
               {toast}
             </div>
           </motion.div>

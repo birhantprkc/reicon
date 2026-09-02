@@ -126,8 +126,8 @@ export default function LogoCodeTabs({
                 {isActive && (
                   <motion.span
                     layoutId="logo-code-tab-underline"
-                    className="absolute bottom-0 left-2 right-2 h-[2px] rounded-t-full bg-[#6C5CE7]"
-                    style={{ boxShadow: '0 0 8px rgba(108,92,231,0.45)' }}
+                    className="absolute bottom-0 left-2 right-2 h-[2px] rounded-t-full bg-[#9B8AFB]"
+                    style={{ boxShadow: '0 0 8px rgba(155, 138, 251,0.45)' }}
                   />
                 )}
               </button>

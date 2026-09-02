@@ -152,7 +152,7 @@ export default function IconsPage() {
     return (
       <div className="min-h-screen bg-bg-base flex flex-col items-center justify-center gap-4">
         <p className="text-red-400 text-sm">{loadError}</p>
-        <button onClick={() => window.location.reload()} className="text-sm text-[#6C5CE7] hover:underline cursor-pointer">Retry</button>
+        <button onClick={() => window.location.reload()} className="text-sm text-[#9B8AFB] hover:underline cursor-pointer">Retry</button>
       </div>
     );
   }

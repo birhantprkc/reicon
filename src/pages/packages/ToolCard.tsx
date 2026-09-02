@@ -25,7 +25,7 @@ export default function ToolCard({ tool }: { tool: ToolItem }) {
             </div>
             <p className="text-text-base/50 text-[14px] leading-relaxed mb-6 flex-1">{tool.description}</p>
             <div className="flex items-center gap-2">
-                <Link to={tool.guideUrl} className="bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white text-[13px] font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer">
+                <Link to={tool.guideUrl} className="bg-[#9B8AFB] hover:bg-[#8B7AFB] text-white text-[13px] font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer">
                     Guide
                 </Link>
                 <a href={tool.primaryAction.href} target="_blank" rel="noopener noreferrer" className="bg-text-base/6 hover:bg-text-base/10 text-text-base/70 hover:text-text-base text-[13px] font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer">

@@ -89,11 +89,13 @@ html.lenis body {
   overflow: hidden;
 }
 
+html,
 body {
   background: var(--bg-base);
   color: var(--text-base);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: clip;
 }
 
 /* ═══ Hide Scrollbar ═══ */
@@ -320,7 +322,7 @@ body {
   background: transparent;
 }
 .sidebar-item.active {
-  color: #6C5CE7;
+  color: #9B8AFB;
   font-weight: 500;
   background: transparent;
 }
@@ -381,7 +383,7 @@ body {
 /* Accent — purple */
 .clay-accent {
   color: #fff;
-  background: linear-gradient(145deg, #7c6cf0, #5a4bd1);
+  background: linear-gradient(145deg, #A898FC, #8470F7);
 }
 
 /* Temporarily disable transitions during theme change to keep all elements in sync */

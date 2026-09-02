@@ -149,7 +149,7 @@ export default function IllustrationBanner() {
           <Link
             to="/logos"
             onClick={dismiss}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#6C5CE7] text-white font-semibold text-xs hover:bg-[#6C5CE7]/90 transition-all cursor-pointer text-center shadow-md shadow-[#6C5CE7]/20 whitespace-nowrap"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#9B8AFB] text-white font-semibold text-xs hover:bg-[#9B8AFB]/90 transition-all cursor-pointer text-center shadow-md shadow-[#9B8AFB]/20 whitespace-nowrap"
           >
             <span>Brand Logos</span>
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -160,7 +160,7 @@ export default function IllustrationBanner() {
           <Link
             to="/illustration"
             onClick={dismiss}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#6C5CE7] text-white font-semibold text-xs hover:bg-[#6C5CE7]/90 transition-all cursor-pointer text-center shadow-md shadow-[#6C5CE7]/20 whitespace-nowrap"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#9B8AFB] text-white font-semibold text-xs hover:bg-[#9B8AFB]/90 transition-all cursor-pointer text-center shadow-md shadow-[#9B8AFB]/20 whitespace-nowrap"
           >
             <span>Illustrations</span>
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

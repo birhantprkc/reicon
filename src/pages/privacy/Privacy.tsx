@@ -79,7 +79,7 @@ export default function Privacy() {
         <div className="space-y-8 text-[15px] text-text-base/60 leading-relaxed">
           <section>
             <h2 className="text-lg font-semibold text-text-base mb-3">1. Overview</h2>
-            <p>Reicon (<a href="https://reicon.dev" className="text-[#6C5CE7] hover:underline">reicon.dev</a>) is committed to protecting your privacy. This policy explains what information we collect, how we use it, and your rights regarding that information.</p>
+            <p>Reicon (<a href="https://reicon.dev" className="text-[#9B8AFB] hover:underline">reicon.dev</a>) is committed to protecting your privacy. This policy explains what information we collect, how we use it, and your rights regarding that information.</p>
           </section>
 
           <section>
@@ -138,7 +138,7 @@ export default function Privacy() {
 
           <section>
             <h2 className="text-lg font-semibold text-text-base mb-3">9. Contact</h2>
-            <p>For privacy-related questions or requests, contact us at <a href="mailto:hello@reicon.dev" className="text-[#6C5CE7] hover:underline">hello@reicon.dev</a>.</p>
+            <p>For privacy-related questions or requests, contact us at <a href="mailto:hello@reicon.dev" className="text-[#9B8AFB] hover:underline">hello@reicon.dev</a>.</p>
           </section>
         </div>
 

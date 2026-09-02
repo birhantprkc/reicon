@@ -56,7 +56,7 @@ function Sidebar({
       >
         <span className="truncate">{label}</span>
         {isBeta && (
-          <span className="ml-auto shrink-0 px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-md bg-[#6C5CE7]/15 text-[#6C5CE7] border border-[#6C5CE7]/30 leading-none">
+          <span className="ml-auto shrink-0 px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-md bg-[#9B8AFB]/15 text-[#9B8AFB] border border-[#9B8AFB]/30 leading-none">
             Beta
           </span>
         )}
@@ -131,11 +131,12 @@ function Sidebar({
         }
         #nd-sidebar {
           width: 13.5rem;
-          height: calc(100vh - 3.5rem);
+          height: calc(100vh - 4.5rem);
           position: sticky;
-          top: 3.5rem;
+          top: 4.5rem;
+          align-self: flex-start;
           overflow-y: auto;
-          padding: 1.25rem 0.5rem 2rem 0;
+          padding: 1rem 0.5rem 2rem 0;
           margin-left: 0;
           z-index: 30;
           background-color: var(--bg-base);
@@ -222,7 +223,7 @@ function Sidebar({
           background: transparent;
         }
         .sidebar-item.active {
-          color: #6C5CE7;
+          color: #9B8AFB;
           font-weight: 600;
           background: transparent;
         }

@@ -79,7 +79,7 @@ export default function Terms() {
         <div className="space-y-8 text-[15px] text-text-base/60 leading-relaxed">
           <section>
             <h2 className="text-lg font-semibold text-text-base mb-3">1. Acceptance of Terms</h2>
-            <p>By accessing or using the Reicon website (<a href="https://reicon.dev" className="text-[#6C5CE7] hover:underline">reicon.dev</a>) and any related services, you agree to be bound by these Terms of Service. If you do not agree, please do not use the service.</p>
+            <p>By accessing or using the Reicon website (<a href="https://reicon.dev" className="text-[#9B8AFB] hover:underline">reicon.dev</a>) and any related services, you agree to be bound by these Terms of Service. If you do not agree, please do not use the service.</p>
           </section>
 
           <section>
@@ -89,7 +89,7 @@ export default function Terms() {
 
           <section>
             <h2 className="text-lg font-semibold text-text-base mb-3">3. License & Usage</h2>
-            <p>All icons and associated code in the Reicon library are released under the <a href="/license" className="text-[#6C5CE7] hover:underline">MIT License</a>. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the icons and software, subject to the conditions of the MIT License.</p>
+            <p>All icons and associated code in the Reicon library are released under the <a href="/license" className="text-[#9B8AFB] hover:underline">MIT License</a>. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the icons and software, subject to the conditions of the MIT License.</p>
           </section>
 
           <section>
@@ -125,7 +125,7 @@ export default function Terms() {
 
           <section>
             <h2 className="text-lg font-semibold text-text-base mb-3">9. Contact</h2>
-            <p>If you have questions about these terms, contact us at <a href="mailto:hello@reicon.dev" className="text-[#6C5CE7] hover:underline">hello@reicon.dev</a>.</p>
+            <p>If you have questions about these terms, contact us at <a href="mailto:hello@reicon.dev" className="text-[#9B8AFB] hover:underline">hello@reicon.dev</a>.</p>
           </section>
         </div>
 

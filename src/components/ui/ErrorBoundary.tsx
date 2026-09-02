@@ -32,7 +32,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               <p className="text-sm text-text-base/50 mb-4">{this.state.error?.message || 'A temporary error occurred.'}</p>
               <button
                 onClick={() => window.location.reload()}
-                className="px-4 py-2 rounded-lg bg-[#6C5CE7] text-white text-xs font-medium hover:bg-[#5a4bd1] transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-lg bg-[#9B8AFB] text-white text-xs font-medium hover:bg-[#8B7AFB] transition-colors cursor-pointer"
               >
                 Retry
               </button>

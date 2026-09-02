@@ -16,7 +16,7 @@ export default function SvgCard() {
             </div>
             <p className="text-text-base/50 text-[14px] leading-relaxed mb-6 flex-1">{pkg.description}</p>
             <div className="flex items-center gap-2">
-                <Link to={pkg.guideUrl} className="bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white text-[13px] font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer">
+                <Link to={pkg.guideUrl} className="bg-[#9B8AFB] hover:bg-[#8B7AFB] text-white text-[13px] font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer">
                     Guide
                 </Link>
                 <a href={pkg.downloadUrl} download className="bg-text-base/6 hover:bg-text-base/10 text-text-base/70 hover:text-text-base text-[13px] font-medium px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer">

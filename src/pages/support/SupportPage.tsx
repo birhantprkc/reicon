@@ -45,7 +45,7 @@ const IMPACT_CARDS = [
     description: 'Reicon is released under the permissive MIT license. Your support keeps all 2,700+ icons accessible to everyone worldwide without paywalls.',
   },
   {
-    icon: <Sparkles size={22} className="text-[#6C5CE7]" />,
+    icon: <Sparkles size={22} className="text-[#9B8AFB]" />,
     title: 'Handcrafted Precision',
     description: 'Every path and stroke is manually drawn on a 24×24 grid — never auto-generated. Contributions allow dedicated focus on icon detail and design quality.',
   },

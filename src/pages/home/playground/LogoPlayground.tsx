@@ -135,7 +135,7 @@ export default function LogoPlayground({ theme }: { theme: string }) {
                       onClick={() => setSelectedVariant(vKey)}
                       className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all cursor-pointer capitalize ${
                         selectedVariant === vKey
-                          ? 'bg-[#6C5CE7] text-white font-semibold'
+                          ? 'bg-[#9B8AFB] text-white font-semibold'
                           : 'bg-text-base/4 text-text-base/60 hover:text-text-base'
                       }`}
                     >
@@ -157,7 +157,7 @@ export default function LogoPlayground({ theme }: { theme: string }) {
                     onClick={() => setActiveCategory(cat.id)}
                     className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all cursor-pointer shrink-0 ${
                       activeCategory === cat.id
-                        ? 'bg-[#6C5CE7] text-white font-semibold'
+                        ? 'bg-[#9B8AFB] text-white font-semibold'
                         : 'bg-text-base/4 text-text-base/60 hover:text-text-base'
                     }`}
                   >
@@ -180,7 +180,7 @@ export default function LogoPlayground({ theme }: { theme: string }) {
                 step="4"
                 value={size}
                 onChange={(e) => setSize(Number(e.target.value))}
-                className="w-full accent-[#6C5CE7] cursor-pointer"
+                className="w-full accent-[#9B8AFB] cursor-pointer"
               />
             </div>
 
@@ -219,7 +219,7 @@ export default function LogoPlayground({ theme }: { theme: string }) {
                     title={item.name}
                     className={`aspect-square flex items-center justify-center p-1.5 sm:p-2 border-r border-b transition-colors cursor-pointer min-w-0 ${
                       isSelected
-                        ? 'bg-[#6C5CE7]/15 border-[#6C5CE7]/30'
+                        ? 'bg-[#9B8AFB]/15 border-[#9B8AFB]/30'
                         : 'border-text-base/4 hover:bg-text-base/3'
                     }`}
                   >

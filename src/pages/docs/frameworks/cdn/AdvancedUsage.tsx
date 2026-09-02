@@ -130,14 +130,14 @@ export default function AdvancedUsage({ copiedField, onCopy }: Props) {
 
       <SyntaxBlock
         title="CSS Styling"
-        onCopy={() => onCopy('<style>\n  .icon-primary {\n    color: #6C5CE7;\n  }\n</style>\n\n<re-icon icon="home" class="icon-primary"></re-icon>\n\n<!-- Inherits color from parent -->\n<div style="color: #ef4444;">\n  <re-icon icon="heart"></re-icon>\n</div>', 'cdn-css')}
+        onCopy={() => onCopy('<style>\n  .icon-primary {\n    color: #9B8AFB;\n  }\n</style>\n\n<re-icon icon="home" class="icon-primary"></re-icon>\n\n<!-- Inherits color from parent -->\n<div style="color: #ef4444;">\n  <re-icon icon="heart"></re-icon>\n</div>', 'cdn-css')}
         copied={copiedField === 'cdn-css'}
       >
         <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">style</span><span className="text-text-base/70">{'>'}</span>
         {'\n  '}
         <span className="text-[#d19a66]">.icon-primary</span><span className="text-text-base/70"> {'{'}</span>
         {'\n    '}
-        <span className="text-[#e06c75]">color</span><span className="text-text-base/50">: </span><span className="text-[#98c379]">#6C5CE7</span><span className="text-text-base/30">;</span>
+        <span className="text-[#e06c75]">color</span><span className="text-text-base/50">: </span><span className="text-[#98c379]">#9B8AFB</span><span className="text-text-base/30">;</span>
         {'\n  '}
         <span className="text-text-base/70">{'}'}</span>
         {'\n'}
@@ -162,7 +162,7 @@ export default function AdvancedUsage({ copiedField, onCopy }: Props) {
 
       <SyntaxBlock
         title="Complete HTML Page"
-        onCopy={() => onCopy('<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Reicon Page</title>\n  <script src="https://unpkg.com/reicon@latest/cdn/reicon.js"></script>\n</head>\n<body>\n  <nav>\n    <re-icon icon="home" size="20"></re-icon>\n    <re-icon icon="user" size="20"></re-icon>\n  </nav>\n  <main>\n    <h1>\n      <re-icon icon="shield-check" size="28" weight="filled" color="#6C5CE7"></re-icon>\n      App Verified\n    </h1>\n  </main>\n</body>\n</html>', 'cdn-full')}
+        onCopy={() => onCopy('<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Reicon Page</title>\n  <script src="https://unpkg.com/reicon@latest/cdn/reicon.js"></script>\n</head>\n<body>\n  <nav>\n    <re-icon icon="home" size="20"></re-icon>\n    <re-icon icon="user" size="20"></re-icon>\n  </nav>\n  <main>\n    <h1>\n      <re-icon icon="shield-check" size="28" weight="filled" color="#9B8AFB"></re-icon>\n      App Verified\n    </h1>\n  </main>\n</body>\n</html>', 'cdn-full')}
         copied={copiedField === 'cdn-full'}
       >
         <span className="text-text-base/30">{'<!DOCTYPE html>'}</span>
@@ -179,7 +179,7 @@ export default function AdvancedUsage({ copiedField, onCopy }: Props) {
         {'\n  '}<span className="text-text-base/70">{'</'}</span><span className="text-[#e06c75]">nav</span><span className="text-text-base/70">{'>'}</span>
         {'\n\n  '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">main</span><span className="text-text-base/70">{'>'}</span>
         {'\n    '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">h1</span><span className="text-text-base/70">{'>'}</span>
-        {'\n      '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">re-icon</span><span className="text-[#d19a66]"> icon</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"shield-check"</span><span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"28"</span><span className="text-[#d19a66]"> weight</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"filled"</span><span className="text-[#d19a66]"> color</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"#6C5CE7"</span><span className="text-text-base/70">{'></'}</span><span className="text-[#e06c75]">re-icon</span><span className="text-text-base/70">{'>'}</span>
+        {'\n      '}<span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">re-icon</span><span className="text-[#d19a66]"> icon</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"shield-check"</span><span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"28"</span><span className="text-[#d19a66]"> weight</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"filled"</span><span className="text-[#d19a66]"> color</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"#9B8AFB"</span><span className="text-text-base/70">{'></'}</span><span className="text-[#e06c75]">re-icon</span><span className="text-text-base/70">{'>'}</span>
         {'\n      '}<span className="text-text-base/60">App Verified</span>
         {'\n    '}<span className="text-text-base/70">{'</'}</span><span className="text-[#e06c75]">h1</span><span className="text-text-base/70">{'>'}</span>
         {'\n  '}<span className="text-text-base/70">{'</'}</span><span className="text-[#e06c75]">main</span><span className="text-text-base/70">{'>'}</span>

@@ -25,7 +25,7 @@ export default function McpDocs({ markdownContent, copiedField, onCopy }: Props)
 
       <p className="text-text-base/60 text-[15px] leading-[1.8] mb-6">
         The <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-mcp</code> package exposes Reicon icons to AI agents through the{' '}
-        <a href="https://modelcontextprotocol.io" className="text-[#6C5CE7] hover:underline" target="_blank" rel="noopener noreferrer">
+        <a href="https://modelcontextprotocol.io" className="text-[#9B8AFB] hover:underline" target="_blank" rel="noopener noreferrer">
           Model Context Protocol
         </a>
         . Agents can search, preview SVG markup, and generate copy-pasteable code snippets without human input.
@@ -120,8 +120,8 @@ export default function McpDocs({ markdownContent, copiedField, onCopy }: Props)
         <span className="text-[#98c379]"> "{'{/* ICON */}'}"</span>
       </SyntaxBlock>
 
-      <div className="mt-4 bg-[#6C5CE7]/5 border border-[#6C5CE7]/15 rounded-xl p-4 text-[13px] text-text-base/50 leading-relaxed mb-6">
-        <span className="text-[#6C5CE7] font-medium">Note:</span> Replaces the exact marker with the usage snippet and inserts the import at the top if missing. Exits non-zero if the marker is not found.
+      <div className="mt-4 bg-[#9B8AFB]/5 border border-[#9B8AFB]/15 rounded-xl p-4 text-[13px] text-text-base/50 leading-relaxed mb-6">
+        <span className="text-[#9B8AFB] font-medium">Note:</span> Replaces the exact marker with the usage snippet and inserts the import at the top if missing. Exits non-zero if the marker is not found.
       </div>
 
       {/* Offline Operation */}

@@ -29,7 +29,7 @@ export default function CodeTabs({
                 className={`relative flex items-center gap-1.5 h-full px-2.5 text-[13px] font-medium whitespace-nowrap transition-colors cursor-pointer ${isActive ? 'text-text-base' : 'text-text-base/40 hover:text-text-base/70'}`}>
                 <span className={isActive ? '' : 'opacity-50'}>{tab.icon}</span>
                 {tab.label}
-                {isActive && <motion.span layoutId="code-tab-underline" className="absolute bottom-0 left-2 right-2 h-[2px] rounded-t-full bg-[#6C5CE7]" style={{ boxShadow: '0 0 8px rgba(108,92,231,0.45)' }} />}
+                {isActive && <motion.span layoutId="code-tab-underline" className="absolute bottom-0 left-2 right-2 h-[2px] rounded-t-full bg-[#9B8AFB]" style={{ boxShadow: '0 0 8px rgba(155, 138, 251,0.45)' }} />}
               </button>
             );
           })}

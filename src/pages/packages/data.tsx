@@ -115,7 +115,7 @@ export const TOOLS: ToolItem[] = [
     {
         id: 'mcp',
         name: 'reicon-mcp',
-        badge: { label: 'MCP Server', color: '#6C5CE7' },
+        badge: { label: 'MCP Server', color: '#9B8AFB' },
         version: 'v1.1.101',
         description: 'Search, preview, and apply Reicon icons from AI agents and automation tools via MCP or CLI.',
         icon: <McpIcon size={48} />,

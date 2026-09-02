@@ -19,7 +19,7 @@ interface Props {
 
 /**
  * Tabbed installer block with animated underline highlight,
- * "card-in-card" chrome, and site's #6C5CE7 accent.
+ * "card-in-card" chrome, and site's #9B8AFB accent.
  */
 export default function InstallTabs({ packageName, copiedField, onCopy }: Props) {
   const [activeTab, setActiveTab] = useState<TabId>('pnpm');
@@ -51,8 +51,8 @@ export default function InstallTabs({ packageName, copiedField, onCopy }: Props)
           {highlight && (
             <span
               aria-hidden
-              className="pointer-events-none absolute bottom-0 h-[2px] rounded-t-full bg-[#6C5CE7] transition-all duration-300 ease-out"
-              style={{ left: highlight.left, width: highlight.width, boxShadow: '0 0 8px rgba(108, 92, 231, 0.45)' }}
+              className="pointer-events-none absolute bottom-0 h-[2px] rounded-t-full bg-[#9B8AFB] transition-all duration-300 ease-out"
+              style={{ left: highlight.left, width: highlight.width, boxShadow: '0 0 8px rgba(155, 138, 251, 0.45)' }}
             />
           )}
 

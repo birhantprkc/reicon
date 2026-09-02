@@ -100,7 +100,7 @@ export default function MobileMenu({ stars, theme, toggleTheme }: MobileMenuProp
                 className="flex items-center gap-2 font-semibold text-[15px]"
                 style={{ color: isDark ? '#ffffff' : '#111111' }}
               >
-                <img src={isDark ? '/icon-light.webp' : '/icon-dark.webp'} alt="Reicon" loading="lazy" className="w-5 h-5" />
+                <img src="/favicon/favicon.svg" alt="Reicon" loading="lazy" className="w-4.5 h-4.5 shrink-0 relative top-[-0.1px]" />
                 <span>Reicon</span>
               </Link>
 

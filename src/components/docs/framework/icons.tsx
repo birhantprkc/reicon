@@ -35,7 +35,7 @@ export const FigmaIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 export const McpIcon = ({ size = 16 }: { size?: number }) => (
-    <SiModelcontextprotocol className="text-[#6C5CE7]" size={size} />
+    <SiModelcontextprotocol className="text-[#9B8AFB]" size={size} />
 );
 
 export const FlutterIcon = ({ size = 16 }: { size?: number }) => (

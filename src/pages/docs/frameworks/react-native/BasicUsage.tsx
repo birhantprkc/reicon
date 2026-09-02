@@ -15,7 +15,7 @@ export default function BasicUsage({ onCopy, copiedField }: Props) {
 
             <SyntaxBlock
                 title="JSX"
-                onCopy={() => onCopy("import { View } from 'react-native';\nimport { Home, ShieldCheck, Bell } from 'reicon-react-native';\n\nfunction App() {\n  return (\n    <View>\n      <Home size={24} />\n      <ShieldCheck size={24} color=\"#6C5CE7\" />\n      <Bell size={24} weight=\"Filled\" />\n    </View>\n  );\n}", 'rn-basic')}
+                onCopy={() => onCopy("import { View } from 'react-native';\nimport { Home, ShieldCheck, Bell } from 'reicon-react-native';\n\nfunction App() {\n  return (\n    <View>\n      <Home size={24} />\n      <ShieldCheck size={24} color=\"#9B8AFB\" />\n      <Bell size={24} weight=\"Filled\" />\n    </View>\n  );\n}", 'rn-basic')}
                 copied={copiedField === 'rn-basic'}
             >
                 <span className="text-[#c678dd]">import</span>
@@ -49,7 +49,7 @@ export default function BasicUsage({ onCopy, copiedField }: Props) {
                 {'\n      '}
                 <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">Home</span><span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}24{'}'}</span><span className="text-text-base/70"> /{'>'}</span>
                 {'\n      '}
-                <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">ShieldCheck</span><span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}24{'}'}</span><span className="text-[#d19a66]"> color</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"#6C5CE7"</span><span className="text-text-base/70"> /{'>'}</span>
+                <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">ShieldCheck</span><span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}24{'}'}</span><span className="text-[#d19a66]"> color</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"#9B8AFB"</span><span className="text-text-base/70"> /{'>'}</span>
                 {'\n      '}
                 <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">Bell</span><span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}24{'}'}</span><span className="text-[#d19a66]"> weight</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"Filled"</span><span className="text-text-base/70"> /{'>'}</span>
                 {'\n    '}

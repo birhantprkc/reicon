@@ -49,7 +49,7 @@ export default function FigmaDocs({ markdownContent }: Props) {
           href="https://www.figma.com/community/plugin/1652983191908763066"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
+          className="inline-flex items-center bg-[#9B8AFB] hover:bg-[#8B7AFB] text-white text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
         >
           Open Figma Community Plugin
         </a>

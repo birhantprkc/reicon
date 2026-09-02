@@ -113,7 +113,7 @@ export default function IconGrid({
           <p className="text-sm mt-4">No icons found for &quot;{searchQuery}&quot;</p>
           <button
             onClick={onSearchClear}
-            className="mt-2 text-[#6C5CE7] text-sm hover:underline cursor-pointer"
+            className="mt-2 text-[#9B8AFB] text-sm hover:underline cursor-pointer"
           >
             Clear search
           </button>

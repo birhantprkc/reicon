@@ -40,7 +40,7 @@ export default function PlaygroundCode({
                             onClick={() => onSelect(name)}
                             title={(iconNamesData || {})[name] || name}
                             className={`aspect-square flex items-center justify-center border-r border-b transition-colors cursor-pointer ${name === selected
-                                ? 'bg-[#6C5CE7]/10 border-[#6C5CE7]/25'
+                                ? 'bg-[#9B8AFB]/10 border-[#9B8AFB]/25'
                                 : 'border-text-base/4 hover:bg-text-base/3'
                                 }`}
                         >

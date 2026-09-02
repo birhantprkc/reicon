@@ -54,11 +54,11 @@ export default function DocsMobileNav({
                                 key={item.id}
                                 onClick={() => onNavClick(item.id)}
                                 className={`w-full text-left px-3 py-2.5 rounded-xl text-[14px] font-medium transition-colors flex items-center gap-2.5 cursor-pointer ${activeSection === item.id
-                                    ? 'text-[#6C5CE7] bg-text-base/4'
+                                    ? 'text-[#9B8AFB] bg-text-base/4'
                                     : 'text-text-base/50 hover:text-text-base/70 hover:bg-text-base/2'
                                     }`}
                             >
-                                {activeSection === item.id && <span className="w-1.5 h-1.5 rounded-full bg-[#6C5CE7] shrink-0" />}
+                                {activeSection === item.id && <span className="w-1.5 h-1.5 rounded-full bg-[#9B8AFB] shrink-0" />}
                                 {item.label}
                             </button>
                         ))}

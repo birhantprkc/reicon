@@ -43,7 +43,7 @@ export default function LogoActions({
             whileTap={{ scale: 0.96 }}
             className={`flex-1 min-w-[120px] text-[12.5px] font-medium py-2.5 rounded-lg border transition-colors cursor-pointer ${
               copiedField === field
-                ? 'bg-[#6C5CE7]/20 border-[#6C5CE7]/40 text-[#6C5CE7]'
+                ? 'bg-[#9B8AFB]/20 border-[#9B8AFB]/40 text-[#9B8AFB]'
                 : 'bg-text-base/5 border-text-base/10 text-text-base/60 hover:text-text-base hover:bg-text-base/10'
             }`}
           >
@@ -65,7 +65,7 @@ export default function LogoActions({
               onClick={() => onSetExportSize(s)}
               className={`flex-1 min-w-[42px] text-[11px] font-medium py-1.5 rounded-lg border transition-colors cursor-pointer ${
                 exportSize === s
-                  ? 'bg-[#6C5CE7]/15 border-[#6C5CE7]/30 text-[#6C5CE7]'
+                  ? 'bg-[#9B8AFB]/15 border-[#9B8AFB]/30 text-[#9B8AFB]'
                   : 'bg-text-base/3 border-text-base/6 text-text-base/35 hover:text-text-base/60 hover:bg-text-base/6'
               }`}
             >

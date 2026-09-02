@@ -110,7 +110,7 @@ export default function Playground({ theme }: { theme: string }) {
   return (
     <section className="reveal max-w-[1160px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-16">
       <div className="text-center mb-8">
-        <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#6C5CE7] mb-2">Playground</div>
+        <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#9B8AFB] mb-2">Playground</div>
         <h2 className="font-serif text-[clamp(26px,3.6vw,46px)] text-text-base leading-[1.15] tracking-[-0.02em] mb-3">Pick one. Make it yours.</h2>
         <p className="text-[15px] text-text-base/45 leading-[1.65] max-w-[490px] mx-auto mb-6">
           Customize icons, 4,900+ brand logos, and handcrafted SVG illustrations in real-time.

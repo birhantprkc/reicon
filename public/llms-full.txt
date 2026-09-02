@@ -63,7 +63,7 @@ arrow-down-circle    → ArrowDownCircle
 import { Home, Search, Bell, ShieldCheck } from 'reicon-react';
 
 <Home size={24} weight="Outline" color="currentColor" />
-<Search size={20} color="#6C5CE7" />
+<Search size={20} color="#9B8AFB" />
 <Bell size={32} weight="Filled" />
 <ShieldCheck size={24} color="#10B981" strokeWidth={2} />
 ```
@@ -118,7 +118,7 @@ import { Home, Search, Bell } from 'reicon-vue';
 
 <template>
   <Home :size="24" weight="Outline" color="currentColor" />
-  <Search :size="20" color="#6C5CE7" />
+  <Search :size="20" color="#9B8AFB" />
   <Bell :size="32" weight="Filled" />
 </template>
 ```
@@ -168,7 +168,7 @@ import { Home, Search, Bell } from 'reicon-svelte';
 </script>
 
 <Home size={24} weight="Outline" color="currentColor" />
-<Search size={20} color="#6C5CE7" />
+<Search size={20} color="#9B8AFB" />
 <Bell size={32} weight="Filled" />
 ```
 
@@ -293,7 +293,7 @@ createIcon(displayName: string, iconData: Record<string, string>): IconFunction
 ```html
 <re-icon icon="home"></re-icon>
 <re-icon icon="heart" weight="filled" size="32" color="#ef4444"></re-icon>
-<re-icon icon="shield-check" weight="outline" size="28" color="#6C5CE7"></re-icon>
+<re-icon icon="shield-check" weight="outline" size="28" color="#9B8AFB"></re-icon>
 ```
 
 **All attributes:**
@@ -338,7 +338,7 @@ Reicon.contributorOf('wave-hand');             // GitHub username or null
 ```html
 <script src="https://unpkg.com/reicon"></script>
 <script>
-  const svg = reicon.Home({ size: 24, color: '#6C5CE7' });
+  const svg = reicon.Home({ size: 24, color: '#9B8AFB' });
   document.body.appendChild(svg);
 </script>
 ```

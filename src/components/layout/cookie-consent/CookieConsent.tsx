@@ -63,7 +63,7 @@ export default function CookieConsent() {
           <div className="p-3 sm:p-5">
             <div className="flex items-center gap-1 mb-2 sm:mb-3">
               <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
-                <Cookie size={16} className="text-[#6C5CE7]" />
+                <Cookie size={16} className="text-[#9B8AFB]" />
               </div>
               <h3 className="text-[14px] sm:text-[16px] font-semibold text-text-base">We use cookies</h3>
             </div>
@@ -71,7 +71,7 @@ export default function CookieConsent() {
             <p className="text-[11.5px] sm:text-[12.5px] text-text-base/50 leading-[1.6] mb-3 sm:mb-5">
               We use cookies to enhance your browsing experience and analyze site traffic.
               Read our{' '}
-              <Link to="/privacy" className="text-[#6C5CE7] hover:text-[#8B7CF7] transition-colors">
+              <Link to="/privacy" className="text-[#9B8AFB] hover:text-[#8B7CF7] transition-colors">
                 Privacy Policy
               </Link>
               .
@@ -80,7 +80,7 @@ export default function CookieConsent() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleAcceptAll}
-                className="flex-1 text-[12px] sm:text-[12.5px] font-semibold text-white bg-[#6C5CE7] hover:bg-[#5A4BD1] active:scale-[0.97] px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all duration-150 cursor-pointer"
+                className="flex-1 text-[12px] sm:text-[12.5px] font-semibold text-white bg-[#9B8AFB] hover:bg-[#8B7AFB] active:scale-[0.97] px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all duration-150 cursor-pointer"
               >
                 Accept All
               </button>
@@ -103,7 +103,7 @@ export default function CookieConsent() {
           <div className="p-3 sm:p-5">
             <div className="flex items-center gap-1 mb-3 sm:mb-4">
               <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
-                <Cookie size={16} className="text-[#6C5CE7]" />
+                <Cookie size={16} className="text-[#9B8AFB]" />
               </div>
               <h3 className="text-[14px] sm:text-[16px] font-semibold text-text-base">Cookie Preferences</h3>
             </div>
@@ -132,7 +132,7 @@ export default function CookieConsent() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleSavePreferences}
-                className="flex-1 text-[12px] sm:text-[12.5px] font-semibold text-white bg-[#6C5CE7] hover:bg-[#5A4BD1] active:scale-[0.97] px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all duration-150 cursor-pointer"
+                className="flex-1 text-[12px] sm:text-[12.5px] font-semibold text-white bg-[#9B8AFB] hover:bg-[#8B7AFB] active:scale-[0.97] px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all duration-150 cursor-pointer"
               >
                 Save
               </button>

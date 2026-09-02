@@ -120,7 +120,7 @@ export default function CTA() {
 
                         {/* Animated install pill */}
                         <div className="inline-flex items-center gap-3 bg-text-base/4 border border-text-base/6 rounded-xl px-4 py-2.5">
-                            <span className="text-[#6C5CE7] text-[13px] font-mono font-medium shrink-0">$</span>
+                            <span className="text-[#9B8AFB] text-[13px] font-mono font-medium shrink-0">$</span>
                             <code className="text-[13px] font-mono text-text-base/50 whitespace-nowrap">
                                 <span className="text-text-base/35">npm i </span>
                                 <AnimatedPackageName onIndexChange={setPkgIndex} />

@@ -26,7 +26,7 @@ export default function CookieToggle({
         aria-checked={checked}
         disabled={disabled}
         onClick={() => onChange?.(!checked)}
-        className={`relative shrink-0 ml-3 w-9 h-5 rounded-full transition-colors duration-200 ${checked ? 'bg-[#6C5CE7]' : 'bg-text-base/8'
+        className={`relative shrink-0 ml-3 w-9 h-5 rounded-full transition-colors duration-200 ${checked ? 'bg-[#9B8AFB]' : 'bg-text-base/8'
           } ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
       >
         <span

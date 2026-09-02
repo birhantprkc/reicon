@@ -35,7 +35,7 @@ export default function IconActions({
         ['Copy Name', () => onCopy(name || '', 'name'), 'name'],
         ['Copy SVG', onCopySvg, 'svg']] as const).map(([label, fn, field]) => (
           <motion.button key={field} onClick={fn} whileTap={{ scale: 0.96 }}
-            className={`flex-1 min-w-[120px] text-[12.5px] font-medium py-2.5 rounded-lg border transition-colors cursor-pointer ${copiedField === field ? 'bg-[#6C5CE7]/20 border-[#6C5CE7]/40 text-[#6C5CE7]' : 'bg-text-base/5 border-text-base/10 text-text-base/60 hover:text-text-base hover:bg-text-base/10'}`}>
+            className={`flex-1 min-w-[120px] text-[12.5px] font-medium py-2.5 rounded-lg border transition-colors cursor-pointer ${copiedField === field ? 'bg-[#9B8AFB]/20 border-[#9B8AFB]/40 text-[#9B8AFB]' : 'bg-text-base/5 border-text-base/10 text-text-base/60 hover:text-text-base hover:bg-text-base/10'}`}>
             {copiedField === field ? 'Copied!' : label}
           </motion.button>
         ))}
@@ -49,7 +49,7 @@ export default function IconActions({
         <div className="flex flex-wrap gap-1.5">
           {EXPORT_SIZES.map((s) => (
             <button key={s} onClick={() => onSetExportSize(s)}
-              className={`flex-1 min-w-[42px] text-[11px] font-medium py-1.5 rounded-lg border transition-colors cursor-pointer ${exportSize === s ? 'bg-[#6C5CE7]/15 border-[#6C5CE7]/30 text-[#6C5CE7]' : 'bg-text-base/3 border-text-base/6 text-text-base/35 hover:text-text-base/60 hover:bg-text-base/6'}`}>
+              className={`flex-1 min-w-[42px] text-[11px] font-medium py-1.5 rounded-lg border transition-colors cursor-pointer ${exportSize === s ? 'bg-[#9B8AFB]/15 border-[#9B8AFB]/30 text-[#9B8AFB]' : 'bg-text-base/3 border-text-base/6 text-text-base/35 hover:text-text-base/60 hover:bg-text-base/6'}`}>
               {s}
             </button>
           ))}
@@ -71,7 +71,7 @@ export default function IconActions({
           <span className="text-[12px] text-text-base/40 uppercase tracking-wider font-semibold">Custom Color</span>
           <button
             onClick={() => onSetUseCustomColor(!useCustomColor)}
-            className={`relative w-8 h-4.5 rounded-full transition-colors duration-200 focus:outline-none cursor-pointer ${useCustomColor ? 'bg-[#6C5CE7]' : 'bg-text-base/10'}`}
+            className={`relative w-8 h-4.5 rounded-full transition-colors duration-200 focus:outline-none cursor-pointer ${useCustomColor ? 'bg-[#9B8AFB]' : 'bg-text-base/10'}`}
             aria-label="Toggle custom color"
           >
             <div className={`w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200 shadow-sm absolute top-0.5 left-0.5 ${useCustomColor ? 'translate-x-3.5' : 'translate-x-0'}`} />
@@ -107,7 +107,7 @@ export default function IconActions({
                           if (val.length <= 6) onSetCustomColor('#' + val);
                         }
                       }}
-                      className="w-full bg-bg-base border border-text-base/8 rounded-lg px-2.5 py-1.5 text-[12px] font-mono text-text-base text-center focus:outline-none focus:border-[#6C5CE7]/60"
+                      className="w-full bg-bg-base border border-text-base/8 rounded-lg px-2.5 py-1.5 text-[12px] font-mono text-text-base text-center focus:outline-none focus:border-[#9B8AFB]/60"
                     />
                   </div>
                 </div>

@@ -39,7 +39,7 @@ export default function useIconDetail() {
   const [iconCategory, setIconCategory] = useState('');
   const [contributorGithub, setContributorGithub] = useState<string | null>(null);
   const [useCustomColor, setUseCustomColor] = useState(false);
-  const [customColor, setCustomColor] = useState('#6C5CE7');
+  const [customColor, setCustomColor] = useState('#9B8AFB');
   const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
   const [iconNames, setIconNames] = useState<Record<string, string> | null>(null);
 
@@ -80,7 +80,7 @@ export default function useIconDetail() {
     setActiveWeight('outline');
     setPreviewSize(128);
     setUseCustomColor(false);
-    setCustomColor('#6C5CE7');
+    setCustomColor('#9B8AFB');
     setIsColorPickerOpen(false);
   }, [setActiveWeight]);
 

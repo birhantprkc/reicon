@@ -94,7 +94,7 @@ export const docsSidebarStyles = `
   }
 
   .sidebar-item.active {
-    color: #6C5CE7;
+    color: #9B8AFB;
     font-weight: 500;
     background: transparent;
   }

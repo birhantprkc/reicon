@@ -16,7 +16,7 @@ export default function Features() {
     return (
         <section id="features" className="reveal max-w-[1160px] mx-auto px-5 md:px-10 py-13">
             <div className="text-center mb-14">
-                <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#6C5CE7] mb-2">Why Reicon</div>
+                <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#9B8AFB] mb-2">Why Reicon</div>
                 <h2 className="font-serif text-[clamp(26px,3.6vw,46px)] text-text-base leading-[1.15] tracking-[-0.02em] mb-3">Built different. By design.</h2>
                 <p className="text-[15px] text-text-base/45 leading-[1.65] max-w-[490px] mx-auto">
                     Every icon is hand-drawn on a precise grid. No auto-tracing, no AI shortcuts — just obsessive attention to detail.

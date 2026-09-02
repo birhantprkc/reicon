@@ -20,11 +20,15 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
     fetch('https://api.github.com/repos/dqev/reicon')
       .then((res) => res.json())
       .then((data) => {
-        if (data.stargazers_count) {
+        if (typeof data.stargazers_count === 'number') {
           setStars(data.stargazers_count);
+        } else {
+          setStars(120);
         }
       })
-      .catch(() => {});
+      .catch(() => {
+        setStars(120);
+      });
   }, []);
 
   return (
@@ -32,9 +36,9 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
       <div className="relative flex items-center justify-between pointer-events-auto">
         <Link
           to="/"
-          className="flex items-center gap-2 text-text-base font-semibold text-[14px] bg-text-base/[0.04] backdrop-blur-lg rounded-full px-3.5 py-[7px] hover:bg-text-base/10 transition-all duration-150 shadow-2xs shrink-0"
+          className="flex items-center gap-1 text-text-base font-semibold text-[14px] bg-text-base/[0.04] backdrop-blur-lg rounded-full px-3.5 py-[7px] hover:bg-text-base/10 transition-all duration-150 shadow-2xs shrink-0"
         >
-          <img src={theme === 'dark' ? '/icon-light.webp' : '/icon-dark.webp'} alt="Reicon" loading="lazy" className="w-4.5 h-4.5" />
+          <img src="/favicon/favicon.svg" alt="Reicon" loading="lazy" className="w-3.5 h-3.5 shrink-0 relative top-[-0.1px]" />
           <span>Reicon</span>
         </Link>
 

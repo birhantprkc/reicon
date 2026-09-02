@@ -13,8 +13,9 @@ export default function HomePage() {
   const { theme } = useTheme();
   const heroCardRef = useRef<HTMLDivElement>(null);
 
-  // Hero card parallax scroll effect
+  // Hero card parallax scroll effect (desktop only)
   useEffect(() => {
+    if (window.innerWidth < 768) return;
     const card = heroCardRef.current;
     if (!card) return;
     const tick = () => {
@@ -40,23 +41,23 @@ export default function HomePage() {
   return (
     <div className="flex-1">
       <Helmet>
-        <title>Reicon</title>
+        <title>Reicon — Open-Source Icon Library for Designers &amp; Developers</title>
         <meta name="description" content="Open-Source Icon Library for Designers &amp; Developers" />
         <link rel="canonical" href="https://reicon.dev/" />
         <meta name="keywords" content="free icon library, open source icons, SVG icons, React icons, Vue icons, Figma icons, reicon" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://reicon.dev/" />
         <meta property="og:site_name" content="Reicon" />
-        <meta property="og:title" content="Reicon" />
+        <meta property="og:title" content="Reicon — Open-Source Icon Library for Designers &amp; Developers" />
         <meta property="og:description" content="Open-Source Icon Library for Designers &amp; Developers" />
-        <meta property="og:image" content="https://reicon.dev/og/og.jpg" />
+        <meta property="og:image" content="https://reicon.dev/og/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@reicon_dev" />
-        <meta name="twitter:title" content="Reicon" />
+        <meta name="twitter:title" content="Reicon — Open-Source Icon Library for Designers &amp; Developers" />
         <meta name="twitter:description" content="Open-Source Icon Library for Designers &amp; Developers" />
-        <meta name="twitter:image" content="https://reicon.dev/og/og.jpg" />
+        <meta name="twitter:image" content="https://reicon.dev/og/og-image.png" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="ai-content-declaration" content="human-curated" />
         <script type="application/ld+json">{JSON.stringify({

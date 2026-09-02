@@ -36,7 +36,7 @@ export default function SvgDocs({ markdownContent, copiedField, onCopy }: Props)
         <a
           href="/reicon-icons.zip"
           download
-          className="inline-flex items-center gap-2 bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 bg-[#9B8AFB] hover:bg-[#8B7AFB] text-white text-[13px] font-semibold px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
         >
           <FiDownload size={15} />
           Download SVG Assets (.zip)
@@ -142,7 +142,7 @@ export default function SvgDocs({ markdownContent, copiedField, onCopy }: Props)
 
       <SyntaxBlock
         title="CSS Styling Example"
-        onCopy={() => onCopy(".icon-container {\n  color: #6C5CE7;\n  width: 32px;\n  height: 32px;\n  transition: color 0.2s;\n}\n.icon-container:hover {\n  color: #5A4BD1;\n}", "svg-css-code")}
+        onCopy={() => onCopy(".icon-container {\n  color: #9B8AFB;\n  width: 32px;\n  height: 32px;\n  transition: color 0.2s;\n}\n.icon-container:hover {\n  color: #8B7AFB;\n}", "svg-css-code")}
         copied={copiedField === 'svg-css-code'}
       >
         <span className="text-[#e5c07b]">.icon-container</span>
@@ -150,7 +150,7 @@ export default function SvgDocs({ markdownContent, copiedField, onCopy }: Props)
         {'\n  '}
         <span className="text-[#e06c75]">color</span>
         <span className="text-text-base/50">:</span>
-        <span className="text-[#98c379]"> #6C5CE7</span>
+        <span className="text-[#98c379]"> #9B8AFB</span>
         <span className="text-text-base/30">;</span>
         {'\n  '}
         <span className="text-[#e06c75]">width</span>

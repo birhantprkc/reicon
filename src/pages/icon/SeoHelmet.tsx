@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const DEFAULT_OG = 'https://reicon.dev/og/og.jpg';
+const DEFAULT_OG = 'https://reicon.dev/og/og-image.png';
 
 interface SeoHelmetProps {
   pageTitle: string;

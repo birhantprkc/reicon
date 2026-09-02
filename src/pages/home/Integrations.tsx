@@ -110,7 +110,7 @@ export default function Integrations() {
     return (
         <section id="integrations" className="reveal max-w-[1160px] mx-auto px-5 md:px-10 py-13">
             <div className="text-center mb-14">
-                <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#6C5CE7] mb-2">Integrations</div>
+                <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#9B8AFB] mb-2">Integrations</div>
                 <h2 className="font-serif text-[clamp(26px,3.6vw,46px)] text-text-base leading-[1.15] tracking-[-0.02em] mb-3">Works everywhere you do.</h2>
                 <p className="text-[15px] text-text-base/45 leading-[1.65] max-w-[490px] mx-auto">
                     Easy integration with CDN, React, React Native, Vue, Svelte, Flutter, JavaScript, and MCP Server for AI agents.
@@ -249,7 +249,7 @@ export default function Integrations() {
 
                 {/* MCP Server */}
                 <IntegrationCard
-                    icon={<SiModelcontextprotocol size={16} color="#6C5CE7" />}
+                    icon={<SiModelcontextprotocol size={16} color="#9B8AFB" />}
                     title="MCP Server"
                     guideUrl="/docs/mcp"
                     copyText={`{\n  "mcpServers": {\n    "reicon": {\n      "command": "npx",\n      "args": ["reicon-mcp"]\n    }\n  }\n}`}

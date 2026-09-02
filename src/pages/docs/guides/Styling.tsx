@@ -24,10 +24,10 @@ export default function Styling({ markdownContent, copiedField, onCopy }: Props)
 
       <SyntaxBlock
         title="Inheriting Color"
-        onCopy={() => onCopy('<div style={{ color: "#6C5CE7" }}>\n  <Home size={20} />       {/* purple */}\n  <Bell size={20} />        {/* purple */}\n</div>\n\n<div style={{ color: "#ef4444" }}>\n  <Heart size={20} />       {/* red */}\n</div>', 'style-inherit')}
+        onCopy={() => onCopy('<div style={{ color: "#9B8AFB" }}>\n  <Home size={20} />       {/* purple */}\n  <Bell size={20} />        {/* purple */}\n</div>\n\n<div style={{ color: "#ef4444" }}>\n  <Heart size={20} />       {/* red */}\n</div>', 'style-inherit')}
         copied={copiedField === 'style-inherit'}
       >
-        <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">div</span><span className="text-[#d19a66]"> style</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}{'{'} </span><span className="text-[#e06c75]">color</span><span className="text-text-base/50">: </span><span className="text-[#98c379]">"#6C5CE7"</span><span className="text-text-base/70"> {'}'}{'}'}{'>'}</span>
+        <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">div</span><span className="text-[#d19a66]"> style</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}{'{'} </span><span className="text-[#e06c75]">color</span><span className="text-text-base/50">: </span><span className="text-[#98c379]">"#9B8AFB"</span><span className="text-text-base/70"> {'}'}{'}'}{'>'}</span>
         {'\n  '}
         <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">Home</span><span className="text-[#d19a66]"> size</span><span className="text-text-base/50">=</span><span className="text-text-base/70">{'{'}20{'}'}</span><span className="text-text-base/70"> /{'>'}</span>
         <span className="text-text-base/30">{'       {/* purple */}'}</span>
