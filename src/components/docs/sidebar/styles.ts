@@ -5,6 +5,7 @@ export const docsSidebarStyles = `
     height: calc(100vh - 3.5rem);
     position: sticky;
     top: 3.5rem;
+    align-self: flex-start;
     overflow-y: auto;
     padding: 1.25rem 0.5rem 2rem 0;
     margin-left: 0;
@@ -105,6 +106,7 @@ export const docsSidebarStyles = `
     height: calc(100vh - 3.5rem);
     position: sticky;
     top: 3.5rem;
+    align-self: flex-start;
     overflow-y: auto;
     padding: 1.25rem 0 2rem 0.5rem;
     margin-right: 0;

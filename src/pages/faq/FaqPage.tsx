@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { motion } from 'motion/react';
 import { Search3 } from 'reicon-react';
 import DocsActionsBar from '../../components/docs/ActionsBar';
 import { docsSidebarStyles } from '../../components/docs/sidebar/styles';
@@ -310,12 +309,7 @@ export default function FaqPage() {
   };
 
   return (
-    <motion.div
-      className="flex-1"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="flex-1">
       <FaqHelmet />
 
       <div className="flex flex-1 pt-14 px-4 md:px-10">
@@ -428,6 +422,6 @@ export default function FaqPage() {
         />
       </div>
 
-    </motion.div>
+    </div>
   );
 }
