@@ -1,4 +1,4 @@
-import { Search3 } from 'reicon-react';
+import { Search3, SidebarLeft, SidebarRight } from 'reicon-react';
 import DesktopFilterDropdown, { SortOption } from '../../components/ui/DesktopFilterDropdown';
 
 interface IllustrationSearchBarProps {
@@ -32,7 +32,11 @@ export default function IllustrationSearchBar({
           title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          <re-icon icon="sidebar2" size="18" color="currentColor" />
+          {isCollapsed ? (
+            <SidebarRight size={18} color="currentColor" />
+          ) : (
+            <SidebarLeft size={18} color="currentColor" />
+          )}
         </button>
       )}
 

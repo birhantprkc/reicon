@@ -7,7 +7,7 @@ This file lists every icon in the Reicon SVG icon library by category. Use it to
 - **CDN**: use the kebab-case name as-is: `<re-icon icon="arrow-up-right">`
 
 ## Stats
-- **Total**: 2628 unique designs (5256 icons counting both weights)
+- **Total**: 2630 unique designs (5260 icons counting both weights)
 - **Weights**: "Outline" (default) | "Filled"
 - **Grid**: 24×24 px
 
@@ -1061,8 +1061,6 @@ This file lists every icon in the Reicon SVG icon library by category. Use it to
 - shopping-bag -> ShoppingBag
 - shopping-cart -> ShoppingCart
 - sidebar-bottom -> SidebarBottom
-- sidebar-left -> SidebarLeft
-- sidebar-right -> SidebarRight
 - sidebar-top -> SidebarTop
 - signal2 -> Signal2
 - simcard -> Simcard
@@ -1798,6 +1796,10 @@ This file lists every icon in the Reicon SVG icon library by category. Use it to
 - shield4 -> Shield4
 - shop5 -> Shop5
 - shuffle3 -> Shuffle3
+- sidebar-left -> SidebarLeft
+- sidebar-left2 -> SidebarLeft2
+- sidebar-right -> SidebarRight
+- sidebar-right2 -> SidebarRight2
 - signpost4 -> Signpost4
 - simcard2 -> Simcard2
 - slider-horizontal2 -> SliderHorizontal2

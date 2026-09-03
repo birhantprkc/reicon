@@ -19628,12 +19628,32 @@
     ]
   },
   {
+    "n": "sidebar-left2",
+    "c": "newicons",
+    "t": [
+      "sidebar-left2",
+      "sidebar",
+      "left",
+      "left2"
+    ]
+  },
+  {
     "n": "sidebar-right",
     "c": "newicons",
     "t": [
       "sidebar-right",
       "sidebar",
       "right"
+    ]
+  },
+  {
+    "n": "sidebar-right2",
+    "c": "newicons",
+    "t": [
+      "sidebar-right2",
+      "sidebar",
+      "right",
+      "right2"
     ]
   },
   {
