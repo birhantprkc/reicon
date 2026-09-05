@@ -3,7 +3,7 @@ import { useEffect, Suspense } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import SmoothScroll from './components/layout/SmoothScroll';
 import CookieConsent from './components/layout/CookieConsent';
-import IllustrationBanner from './components/layout/IllustrationBanner';
+import BrandsOverlay from './pages/home/BrandsOverlay';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ErrorBoundary from './components/ui/ErrorBoundary';
@@ -93,7 +93,7 @@ export default function App() {
           <ScrollToTop />
           <Layout />
           <CookieConsent />
-          <IllustrationBanner />
+          <BrandsOverlay />
           <SpeedInsights />
         </SmoothScroll>
       </BrowserRouter>
