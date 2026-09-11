@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { Star, Sun, Moon } from 'reicon-react';
+import { Star, Sun, Moon, Heart } from 'reicon-react';
 import ClayButton from '../../ui/Button';
-import BuyMeACoffeeIcon from '../../ui/BuyMeACoffeeIcon';
+import { openSponsorCheckout } from '../../../lib/sponsor';
 
 interface MobileMenuProps {
   stars: number | null;
@@ -153,15 +153,17 @@ export default function MobileMenu({ stars, theme, toggleTheme }: MobileMenuProp
               style={{ borderTop: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.1)' }}
             >
               <div className="flex items-center justify-between flex-wrap gap-3">
-                <Link
-                  to="/support"
-                  onClick={() => setMenuOpen(false)}
-                  className="text-[14px] flex items-center gap-2 font-medium opacity-80 hover:opacity-100 transition-opacity"
+                <button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    openSponsorCheckout();
+                  }}
+                  className="text-[14px] flex items-center gap-2 font-medium opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
                   style={{ color: isDark ? '#ffffff' : '#111111' }}
                 >
-                  <BuyMeACoffeeIcon size={16} />
-                  Support
-                </Link>
+                  <Heart size={16} className="text-rose-500 fill-rose-500/20" />
+                  Sponsor
+                </button>
 
                 <a
                   href="https://github.com/dqev/reicon"

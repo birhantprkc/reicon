@@ -31,7 +31,7 @@ function ScrollToTop() {
 }
 
 const VALID_ROUTES = [
-  '/', '/icons', '/packages', '/faq', '/support', '/donate', '/terms', '/privacy', '/license', '/pack'
+  '/', '/icons', '/packages', '/faq', '/support', '/sponsor', '/donate', '/terms', '/privacy', '/license', '/pack'
 ];
 
 function isKnownRoute(pathname: string) {
@@ -60,6 +60,7 @@ function Layout() {
             <Route path="/packages" element={<PackagesPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/support" element={<SupportPage />} />
+            <Route path="/sponsor" element={<SupportPage />} />
             <Route path="/donate" element={<SupportPage />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
@@ -74,6 +75,8 @@ function Layout() {
   );
 }
 
+import SponsorHandler from './components/sponsor/SponsorHandler';
+
 export default function App() {
   return (
     <ThemeProvider>
@@ -81,6 +84,7 @@ export default function App() {
         <SmoothScroll>
           <ScrollToTop />
           <Layout />
+          <SponsorHandler />
           <CookieConsent />
           <BrandsOverlay />
           <SpeedInsights />

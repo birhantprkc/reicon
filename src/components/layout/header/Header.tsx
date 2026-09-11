@@ -1,12 +1,11 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Sun, Moon } from 'reicon-react';
+import { Star, Sun, Moon, Heart } from 'reicon-react';
 import ClayButton from '../../ui/Button';
 import { useTheme } from '../ThemeContext';
 import NavLinks from './NavLinks';
 import MobileMenu from './MobileMenu';
-
-import BuyMeACoffeeIcon from '../../ui/BuyMeACoffeeIcon';
+import { openSponsorCheckout } from '../../../lib/sponsor';
 
 interface HeaderProps {
   className?: string;
@@ -59,13 +58,13 @@ const Header = forwardRef<HTMLElement, HeaderProps>(function Header({ className 
           </button>
           <MobileMenu stars={stars} theme={theme} toggleTheme={toggleTheme} />
           <div className="hidden md:flex gap-2">
-            <Link
-              to="/support"
+            <button
+              onClick={() => openSponsorCheckout()}
               className="text-[13px] text-text-base/80 bg-text-base/[0.04] backdrop-blur-lg rounded-full px-4 py-[7px] hover:bg-text-base/10 transition-colors cursor-pointer flex items-center gap-1.5"
             >
-              <BuyMeACoffeeIcon size={15} />
-              Support
-            </Link>
+              <Heart size={14} className="text-rose-500 fill-rose-500/20" />
+              Sponsor
+            </button>
             <a
               href="https://github.com/dqev/reicon"
               target="_blank"

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { openSponsorCheckout } from '../../lib/sponsor';
 
 const socials = [
   {
@@ -111,7 +112,7 @@ export default function Footer() {
             </div>
             <div className="relative flex flex-col gap-1">
               <div className="absolute left-[10px] top-[-4px] bottom-[4px] w-[1px] transform -translate-x-1/2 pointer-events-none" style={{ background: 'linear-gradient(to bottom, var(--border-base) 0%, var(--border-base) 60%, transparent 100%)' }} />
-              <Link to="/support" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Support Reicon</Link>
+              <button onClick={() => openSponsorCheckout()} className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer text-left">Sponsor Reicon</button>
               <Link to="/faq" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Questions & Answers</Link>
               <Link to="/license" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">MIT License</Link>
               <Link to="/terms" className="relative flex items-center gap-2 pl-[26px] py-1 text-[13px] text-text-base/70 hover:text-text-base transition-colors font-medium cursor-pointer">Terms of Service</Link>
