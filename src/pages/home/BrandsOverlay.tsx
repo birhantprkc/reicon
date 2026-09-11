@@ -4,8 +4,7 @@ import { Heart } from 'reicon-react';
 import DodoPaymentIcon from '../../components/ui/DodoPaymentIcon';
 import { openSponsorCheckout } from '../../lib/sponsor';
 
-const STORAGE_KEY = 'reicon-sponsor-overlay-v1';
-const COOKIE_KEY = 'reicon_cookie_consent';
+const STORAGE_KEY = 'reicon-sponsor-overlay-v3';
 
 export default function BrandsOverlay() {
   const { pathname } = useLocation();
@@ -32,28 +31,14 @@ export default function BrandsOverlay() {
     })();
     if (ownDismissed) { dismissedRef.current = true; return; }
 
-    let delayTimer: ReturnType<typeof setTimeout> | undefined;
-
-    const checkCookie = () => {
+    const delayTimer = setTimeout(() => {
       if (dismissedRef.current) return;
-      const consented = (() => {
-        try { return localStorage.getItem(COOKIE_KEY) !== null; }
-        catch { return false; }
-      })();
-      if (consented) {
-        delayTimer = setTimeout(() => {
-          if (dismissedRef.current) return;
-          setVisible(true);
-          requestAnimationFrame(() => setAnimateIn(true));
-        }, 1800);
-      }
-    };
+      setVisible(true);
+      requestAnimationFrame(() => setAnimateIn(true));
+    }, 1000);
 
-    checkCookie();
-    window.addEventListener('storage', checkCookie);
     return () => {
-      window.removeEventListener('storage', checkCookie);
-      if (delayTimer) clearTimeout(delayTimer);
+      clearTimeout(delayTimer);
     };
   }, [isAllowedPage]);
 
