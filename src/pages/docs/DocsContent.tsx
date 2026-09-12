@@ -2,7 +2,7 @@ import SectionHeader from '../../components/docs/SectionHeader';
 import { FrameworkIcon } from '../../components/docs/framework/icons';
 import { FRAMEWORKS } from '../../components/docs/framework/constants';
 import DocsActionsBar from '../../components/docs/ActionsBar';
-import { motion, AnimatePresence } from 'motion/react';
+
 
 import ReactDocs from './frameworks/ReactDocs';
 import ReactNativeDocs from './frameworks/ReactNativeDocs';
@@ -39,7 +39,11 @@ interface Props {
   githubUrl: string;
   handleCopyPageMarkdown: () => void;
   setOpenDropdown: (v: boolean) => void;
-  openInLLM: (platform: 'chatgpt' | 'claude' | 't3') => void;
+  openInLLM: (platform: 'markdown' | 'v0' | 'chatgpt' | 'claude' | 'scira') => void;
+  prevFw?: any;
+  nextFw?: any;
+  navigatePrevFw?: () => void;
+  navigateNextFw?: () => void;
   vanillaDocs: string;
   reactDocs: string;
   reactNativeDocs: string;
@@ -77,17 +81,21 @@ export default function DocsContent({
   handleCopyPageMarkdown,
   setOpenDropdown,
   openInLLM,
+  prevFw,
+  nextFw,
+  navigatePrevFw,
+  navigateNextFw,
   vanillaDocs,
   reactDocs,
   reactNativeDocs,
   vueDocs,
   svelteDocs,
   astroDocs,
-  flutterDocs,
   figmaDocs,
   vscodeDocs,
   mcpDocs,
   svgDocs,
+  flutterDocs,
   propsDocs,
   weightsDocs,
   typescriptDocs,
@@ -96,17 +104,24 @@ export default function DocsContent({
   performanceDocs,
   troubleshootingDocs,
 }: Props) {
+  const isVanilla = framework === 'vanilla';
+  const isReact = framework === 'react';
+  const isReactNative = framework === 'react-native';
+  const isVue = framework === 'vue';
+  const isSvelte = framework === 'svelte';
+  const isAstro = framework === 'astro';
+  const isFigma = framework === 'figma';
+  const isVscode = framework === 'vscode';
+  const isMcp = framework === 'mcp';
+  const isSvg = framework === 'svg';
+  const isFlutter = framework === 'flutter';
+
   return (
     <main ref={contentRef} className="flex-1 min-w-0 px-0 md:px-6 lg:px-8 xl:px-10 py-5 pb-36 lg:pb-12 overflow-x-hidden">
       <div className="max-w-5xl mx-auto">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={fwParam || framework || 'base'}
-            initial={{ opacity: 0, y: 12, filter: 'blur(4px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, y: -8, filter: 'blur(2px)' }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          >
+
+
+
             {/* What is Reicon — shown on base /docs route */}
             {!fwParam && (
               <>
@@ -176,8 +191,7 @@ export default function DocsContent({
                 <CdnDocs markdownContent={vanillaDocs} copiedField={copiedField} onCopy={copyToClipboard} />
               )
             )}
-          </motion.div>
-        </AnimatePresence>
+
 
         {/* Shared docs sections — shown ONLY on framework pages */}
         {fwParam && !isStandaloneFramework(framework) && (
@@ -199,21 +213,7 @@ export default function DocsContent({
           </>
         )}
 
-        {fwParam && (
-          <>
-            <hr className="border-text-base/6 my-12" />
-            <DocsActionsBar
-              copiedPage={copiedPage}
-              openDropdown={openDropdown}
-              openDropdownRef={openDropdownRef}
-              githubEditUrl={githubEditUrl}
-              githubUrl={githubUrl}
-              onCopyMarkdown={handleCopyPageMarkdown}
-              onOpenDropdown={setOpenDropdown}
-              onOpenInLLM={openInLLM}
-            />
-          </>
-        )}
+
 
         {toastMessage && (
           <div className="fixed bottom-6 right-6 z-[999] bg-[var(--dropdown-bg)] border border-text-base/8 text-text-base text-sm px-4 py-2.5 rounded-xl flex items-center gap-2">

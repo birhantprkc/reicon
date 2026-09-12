@@ -35,6 +35,10 @@ export default function DocsPage() {
     copyToClipboard,
     handleCopyPageMarkdown,
     openInLLM,
+    prevFw,
+    nextFw,
+    navigatePrevFw,
+    navigateNextFw,
     scrollTo,
     switchFramework,
     isStandaloneFramework,
@@ -108,6 +112,10 @@ export default function DocsPage() {
           handleCopyPageMarkdown={handleCopyPageMarkdown}
           setOpenDropdown={setOpenDropdown}
           openInLLM={openInLLM}
+          prevFw={prevFw}
+          nextFw={nextFw}
+          navigatePrevFw={navigatePrevFw}
+          navigateNextFw={navigateNextFw}
           vanillaDocs={vanillaDocs}
           reactDocs={reactDocs}
           reactNativeDocs={reactNativeDocs}

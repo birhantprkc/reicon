@@ -134,18 +134,46 @@ export function useDocs() {
     }
   };
 
-  const openInLLM = async (platform: 'chatgpt' | 'claude' | 't3') => {
+  const currentFwIndex = FRAMEWORKS.findIndex((f) => f.id === framework);
+  const prevFw = currentFwIndex > 0 ? FRAMEWORKS[currentFwIndex - 1] : null;
+  const nextFw = currentFwIndex >= 0 && currentFwIndex < FRAMEWORKS.length - 1 ? FRAMEWORKS[currentFwIndex + 1] : null;
+
+  const navigatePrevFw = () => {
+    if (prevFw) {
+      switchFramework(prevFw.id);
+    }
+  };
+
+  const navigateNextFw = () => {
+    if (nextFw) {
+      switchFramework(nextFw.id);
+    }
+  };
+
+  const openInLLM = async (platform: 'markdown' | 'v0' | 'chatgpt' | 'claude' | 'scira') => {
     const markdown = getFullMarkdown();
     try { await navigator.clipboard.writeText(markdown); } catch { /* silent */ }
+
+    if (platform === 'markdown') {
+      setCopiedPage(true);
+      showToast('Full page markdown copied!');
+      setTimeout(() => setCopiedPage(false), 2000);
+      setOpenDropdown(false);
+      return;
+    }
+
     const promptText = `Here is the Reicon documentation for ${frameworkLabel}. Please read it and help me use the library:\n\n${markdown}`;
-    const urls = {
+    const urls: Record<string, string> = {
+      v0: `https://v0.dev/chat?q=${encodeURIComponent(promptText)}`,
       chatgpt: `https://chatgpt.com/?hints=search&q=${encodeURIComponent(promptText)}`,
       claude: `https://claude.ai/new?q=${encodeURIComponent(promptText)}`,
-      t3: `https://t3.chat/new?q=${encodeURIComponent(promptText)}`,
+      scira: `https://scira.app/?q=${encodeURIComponent(promptText)}`,
     };
     setOpenDropdown(false);
-    showToast('Markdown copied! Opening AI Chat...');
-    window.open(urls[platform], '_blank');
+    showToast('Markdown copied! Opening AI...');
+    if (urls[platform]) {
+      window.open(urls[platform], '_blank');
+    }
   };
 
   const scrollTo = (id: string) => {
@@ -257,6 +285,10 @@ export function useDocs() {
     copyToClipboard,
     handleCopyPageMarkdown,
     openInLLM,
+    prevFw,
+    nextFw,
+    navigatePrevFw,
+    navigateNextFw,
     scrollTo,
     switchFramework,
     isStandaloneFramework,
