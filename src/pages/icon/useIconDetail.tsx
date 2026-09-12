@@ -3,7 +3,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import { FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { SiSvelte } from 'react-icons/si';
-import { VueLogo, FlutterLogo, AstroLogo } from './Snippets';
+import { VueLogo, FlutterLogo, AstroLogo, CdnLogo } from './Snippets';
 import { loadIconData } from '../../lib/icon-data';
 import { waitForReicon } from '../../lib/reicon-loader';
 import {
@@ -98,7 +98,7 @@ export default function useIconDetail() {
 
   const CODE_TABS = useMemo(() => [
     { id: 'vanilla' as const, label: 'JS', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: vanillaRaw },
-    { id: 'cdn' as const, label: 'CDN', icon: <IoLogoJavascript className="text-[#F7DF1E]" size={14} />, raw: cdnRaw },
+    { id: 'cdn' as const, label: 'CDN', icon: <CdnLogo />, raw: cdnRaw },
     { id: 'react' as const, label: 'React', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactRaw },
     { id: 'react-native' as const, label: 'React Native', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactNativeRaw },
     { id: 'vue' as const, label: 'Vue', icon: <VueLogo />, raw: vueRaw },

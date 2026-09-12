@@ -1,6 +1,9 @@
 import SectionHeader from '../../../components/docs/SectionHeader';
 import { AstroIcon } from '../../../components/docs/framework/icons';
-import CodeBlock from '../../../components/docs/CodeBlock';
+import Installation from './astro/Installation';
+import BasicUsage from './astro/BasicUsage';
+import ComponentApi from './astro/ComponentApi';
+import Theming from './astro/Theming';
 
 interface Props {
   markdownContent: string;
@@ -33,55 +36,10 @@ export default function AstroDocs({ markdownContent, copiedField, onCopy }: Prop
         <li>Apply CSS classes and inline styles directly</li>
       </ul>
 
-      {/* Installation */}
-      <div className="mb-8">
-        <h3 className="text-lg font-serif text-text-base mb-3">Installation</h3>
-        <CodeBlock
-          code="npm install reicon-astro"
-          language="bash"
-          copied={copiedField === 'astro-install'}
-          onCopy={() => onCopy('npm install reicon-astro', 'astro-install')}
-        />
-      </div>
-
-      {/* Basic Usage */}
-      <div className="mb-8">
-        <h3 className="text-lg font-serif text-text-base mb-3">Basic Usage</h3>
-        <p className="text-text-base/60 text-[14px] leading-relaxed mb-3">
-          Import icons by their PascalCase name from <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-astro</code> in your component script frontmatter (<code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">---</code>).
-        </p>
-        <CodeBlock
-          code={`---\nimport { Home, ShieldCheck, Bell } from 'reicon-astro';\n---\n\n<Home size={24} />\n<ShieldCheck size={24} color="#9B8AFB" />\n<Bell size={24} weight="Filled" />`}
-          language="astro"
-          copied={copiedField === 'astro-usage'}
-          onCopy={() => onCopy(`---\nimport { Home, ShieldCheck, Bell } from 'reicon-astro';\n---\n\n<Home size={24} />\n<ShieldCheck size={24} color="#9B8AFB" />\n<Bell size={24} weight="Filled" />`, 'astro-usage')}
-        />
-      </div>
-
-      {/* Direct Import */}
-      <div className="mb-8">
-        <h3 className="text-lg font-serif text-text-base mb-3">Direct Subpath Import</h3>
-        <p className="text-text-base/60 text-[14px] leading-relaxed mb-3">
-          For the absolute smallest bundle size, import icons directly from their subpath:
-        </p>
-        <CodeBlock
-          code={`---\nimport Home from 'reicon-astro/icons/Home.astro';\nimport ShieldCheck from 'reicon-astro/icons/ShieldCheck.astro';\n---`}
-          language="astro"
-          copied={copiedField === 'astro-direct'}
-          onCopy={() => onCopy(`---\nimport Home from 'reicon-astro/icons/Home.astro';\nimport ShieldCheck from 'reicon-astro/icons/ShieldCheck.astro';\n---`, 'astro-direct')}
-        />
-      </div>
-
-      {/* Tailwind CSS */}
-      <div className="mb-8">
-        <h3 className="text-lg font-serif text-text-base mb-3">Using with Tailwind CSS</h3>
-        <CodeBlock
-          code={`---\nimport { Home, ShieldCheck } from 'reicon-astro';\n---\n\n<Home class="text-gray-500 hover:text-gray-700 transition-colors" />\n\n<button class="flex items-center gap-2 text-white bg-indigo-600 px-4 py-2 rounded-lg">\n  <ShieldCheck size={20} class="text-green-400" />\n  <span>Verified</span>\n</button>`}
-          language="astro"
-          copied={copiedField === 'astro-tailwind'}
-          onCopy={() => onCopy(`---\nimport { Home, ShieldCheck } from 'reicon-astro';\n---\n\n<Home class="text-gray-500 hover:text-gray-700 transition-colors" />\n\n<button class="flex items-center gap-2 text-white bg-indigo-600 px-4 py-2 rounded-lg">\n  <ShieldCheck size={20} class="text-green-400" />\n  <span>Verified</span>\n</button>`, 'astro-tailwind')}
-        />
-      </div>
+      <Installation copiedField={copiedField} onCopy={onCopy} />
+      <BasicUsage copiedField={copiedField} onCopy={onCopy} />
+      <ComponentApi copiedField={copiedField} onCopy={onCopy} />
+      <Theming copiedField={copiedField} onCopy={onCopy} />
     </section>
   );
 }

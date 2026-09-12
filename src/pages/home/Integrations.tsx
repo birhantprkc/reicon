@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Copy } from 'reicon-react';
 import { SiHtml5, SiJavascript, SiModelcontextprotocol, SiReact, SiSvelte } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
+import { AstroIcon } from './icons';
 
 function IntegrationCard({ icon, title, lines, copyText, guideUrl }: {
     icon: React.ReactNode;
@@ -113,11 +114,11 @@ export default function Integrations() {
                 <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#9B8AFB] mb-2">Integrations</div>
                 <h2 className="font-serif text-[clamp(26px,3.6vw,46px)] text-text-base leading-[1.15] tracking-[-0.02em] mb-3">Works everywhere you do.</h2>
                 <p className="text-[15px] text-text-base/45 leading-[1.65] max-w-[490px] mx-auto">
-                    Easy integration with CDN, React, React Native, Vue, Svelte, Flutter, JavaScript, and MCP Server for AI agents.
+                    Easy integration with CDN, React, React Native, Vue, Astro, Svelte, Flutter, JavaScript, and MCP Server for AI agents.
                 </p>
             </div>
 
-            {/* 3 × 2 uniform grid */}
+            {/* Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[14px]">
 
                 {/* CDN / HTML */}
@@ -205,6 +206,19 @@ export default function Integrations() {
                         <NpmInstall pkg="reicon-vue" />
                         <ImportLine name="Home" from="reicon-vue" />
                         <JsxLine tag="Home" props={<><Prop name=":size" value="24" /><Prop name="weight" value="Outline" /></>} />
+                    </>}
+                />
+
+                {/* Astro */}
+                <IntegrationCard
+                    icon={<AstroIcon size={16} />}
+                    title="Astro"
+                    guideUrl="/docs/astro"
+                    copyText={`import { Home } from 'reicon-astro';\n\n<Home size={24} weight="Outline" />`}
+                    lines={<>
+                        <NpmInstall pkg="reicon-astro" />
+                        <ImportLine name="Home" from="reicon-astro" />
+                        <JsxLine tag="Home" props={<><Prop name="size" value="{24}" isExpr /><Prop name="weight" value="Outline" /></>} />
                     </>}
                 />
 

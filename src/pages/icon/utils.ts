@@ -32,11 +32,35 @@ export async function copyToClipboard(
   }
 }
 
+let duotoneDataCache: Record<string, { code: string }> | null = null;
+let duotoneLoadPromise: Promise<Record<string, { code: string }>> | null = null;
+
+async function loadDuotoneData(): Promise<Record<string, { code: string }>> {
+  if (duotoneDataCache) return duotoneDataCache;
+  if (!duotoneLoadPromise) {
+    duotoneLoadPromise = import('../../../data/icon-duotone.json').then((module) => {
+      const icons = (module.default as any)?.icons || {};
+      duotoneDataCache = icons;
+      return icons;
+    });
+  }
+  return duotoneLoadPromise;
+}
+
 export async function getSvgString(
   iconName: string,
   weight: string,
   size: number = 64
 ): Promise<string> {
+  if (weight.toLowerCase() === 'duotone') {
+    const map = await loadDuotoneData();
+    const duotoneInfo = map?.[iconName];
+    if (duotoneInfo?.code) {
+      const innerHtml = duotoneInfo.code.replace(/fill="#[A-Fa-f0-9]{6}"/gi, 'fill="currentColor"');
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">${innerHtml}</svg>`;
+    }
+  }
+
   const el = document.createElement('re-icon') as HTMLElement & { icon: string; weight: string; size: number };
   el.setAttribute('icon', iconName);
   el.setAttribute('weight', weight);

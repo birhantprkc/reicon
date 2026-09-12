@@ -4,7 +4,7 @@ import { SiJavascript, SiReact } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
 import Background from '../../components/layout/Background';
 import ClayButton from '../../components/ui/Button';
-import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon } from './icons';
+import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon, AstroIcon } from './icons';
 
 interface Props {
   theme?: string;
@@ -66,7 +66,7 @@ export default function Hero({ heroCardRef }: Props) {
             {/* Integrations row */}
             <div className="mt-8 md:mt-10 flex flex-col items-center justify-center gap-3 select-none">
               <span className="text-[10px] tracking-[0.15em] text-text-base/35 dark:text-text-base/30 uppercase font-semibold">Integrations</span>
-              <div className="flex items-center justify-center gap-x-5 gap-y-3 sm:gap-7 flex-wrap max-w-[250px] sm:max-w-[600px] mx-auto">
+              <div className="flex items-center justify-center gap-x-5 gap-y-3 sm:gap-7 flex-wrap max-w-[250px] sm:max-w-[700px] mx-auto">
                 <Link to="/docs/react" title="React" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                   <SiReact className="text-[#61DAFB]/70 hover:text-[#61DAFB] transition-colors" size={18} />
                   <span className="hidden sm:inline">React</span>
@@ -74,6 +74,10 @@ export default function Hero({ heroCardRef }: Props) {
                 <Link to="/docs/vue" title="Vue 3" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                   <VueIcon size={17} />
                   <span className="hidden sm:inline">Vue</span>
+                </Link>
+                <Link to="/docs/astro" title="Astro" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
+                  <AstroIcon size={16} />
+                  <span className="hidden sm:inline">Astro</span>
                 </Link>
                 <Link to="/docs/figma" title="Figma" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                   <FigmaIcon size={16} />
