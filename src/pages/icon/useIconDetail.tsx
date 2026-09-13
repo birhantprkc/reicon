@@ -3,6 +3,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import { FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { SiSvelte } from 'react-icons/si';
+import { AngularIcon } from '../../components/docs/framework/icons';
 import { VueLogo, FlutterLogo, AstroLogo, CdnLogo } from './Snippets';
 import { loadIconData } from '../../lib/icon-data';
 import { waitForReicon } from '../../lib/reicon-loader';
@@ -35,7 +36,7 @@ export default function useIconDetail() {
   const [previewSize, setPreviewSize] = useState(128);
   const [toast, setToast] = useState<string | null>(null);
   const [exportSize, setExportSize] = useState(64);
-  const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'react-native' | 'vue' | 'svelte' | 'astro' | 'flutter' | 'direct'>('vanilla');
+  const [codeTab, setCodeTab] = useState<'vanilla' | 'cdn' | 'react' | 'angular' | 'react-native' | 'vue' | 'svelte' | 'astro' | 'flutter' | 'direct'>('vanilla');
   const [iconCategory, setIconCategory] = useState('');
   const [contributorGithub, setContributorGithub] = useState<string | null>(null);
   const [useCustomColor, setUseCustomColor] = useState(false);
@@ -89,6 +90,7 @@ export default function useIconDetail() {
   const vanillaRaw = `import { ${pascalName} } from 'reicon';\n\nconst icon = ${pascalName}({ size: 24${fw ? ", weight: 'Filled'" : ''} });\ndocument.body.appendChild(icon);`;
   const cdnRaw = `<script src="https://unpkg.com/reicon@latest/cdn/reicon.js"><\/script>\n<re-icon icon="${name}"${fw ? ' weight="filled"' : ''}></re-icon>`;
   const reactRaw = `import { ${pascalName} } from 'reicon-react';\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
+  const angularRaw = `import { Component } from '@angular/core';\nimport { ${pascalName}Component } from 'reicon-angular';\n\n// Add ${pascalName}Component to @Component({ imports: [...] })\n<ri-${name} [size]="24"${fw ? ' weight="Filled"' : ''}></ri-${name}>`;
   const reactNativeRaw = `import { ${pascalName} } from 'reicon-react-native';\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
   const vueRaw = `import { ${pascalName} } from 'reicon-vue';\n\n<${pascalName} :size="24"${fw ? ' weight="Filled"' : ''} />`;
   const svelteRaw = `<script>\n  import { ${pascalName} } from 'reicon-svelte';\n</script>\n\n<${pascalName} size={24}${fw ? ' weight="Filled"' : ''} />`;
@@ -100,13 +102,14 @@ export default function useIconDetail() {
     { id: 'vanilla' as const, label: 'JS', icon: <IoLogoJavascript className="text-yellow-400" size={14} />, raw: vanillaRaw },
     { id: 'cdn' as const, label: 'CDN', icon: <CdnLogo />, raw: cdnRaw },
     { id: 'react' as const, label: 'React', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactRaw },
+    { id: 'angular' as const, label: 'Angular', icon: <AngularIcon size={14} />, raw: angularRaw },
     { id: 'react-native' as const, label: 'React Native', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: reactNativeRaw },
     { id: 'vue' as const, label: 'Vue', icon: <VueLogo />, raw: vueRaw },
     { id: 'svelte' as const, label: 'Svelte', icon: <SiSvelte className="text-[#FF3E00]" size={14} />, raw: svelteRaw },
     { id: 'astro' as const, label: 'Astro', icon: <AstroLogo />, raw: astroRaw },
     { id: 'flutter' as const, label: 'Flutter', icon: <FlutterLogo />, raw: flutterRaw },
     { id: 'direct' as const, label: 'Direct', icon: <FaReact className="text-[#61DAFB]" size={14} />, raw: directRaw },
-  ], [vanillaRaw, cdnRaw, reactRaw, reactNativeRaw, vueRaw, svelteRaw, astroRaw, flutterRaw, directRaw]);
+  ], [vanillaRaw, cdnRaw, reactRaw, angularRaw, reactNativeRaw, vueRaw, svelteRaw, astroRaw, flutterRaw, directRaw]);
 
   const activeTab = CODE_TABS.find((t) => t.id === codeTab) || CODE_TABS[0];
 

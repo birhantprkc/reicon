@@ -5,6 +5,7 @@ import DocsActionsBar from '../../components/docs/ActionsBar';
 
 
 import ReactDocs from './frameworks/ReactDocs';
+import AngularDocs from './frameworks/AngularDocs';
 import ReactNativeDocs from './frameworks/ReactNativeDocs';
 import VueDocs from './frameworks/VueDocs';
 import SvelteDocs from './frameworks/SvelteDocs';
@@ -46,6 +47,7 @@ interface Props {
   navigateNextFw?: () => void;
   vanillaDocs: string;
   reactDocs: string;
+  angularDocs: string;
   reactNativeDocs: string;
   vueDocs: string;
   svelteDocs: string;
@@ -87,6 +89,7 @@ export default function DocsContent({
   navigateNextFw,
   vanillaDocs,
   reactDocs,
+  angularDocs,
   reactNativeDocs,
   vueDocs,
   svelteDocs,
@@ -131,6 +134,7 @@ export default function DocsContent({
                     Reicon is a free, open-source SVG icon library featuring <strong>2,700+ handcrafted UI icons</strong>.
                     The ecosystem offers native packages for <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon</code> (vanilla JS &amp; CDN),{' '}
                     <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-react</code>,{' '}
+                    <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-angular</code>,{' '}
                     <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-react-native</code>,{' '}
                     <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-vue</code>,{' '}
                     <code className="text-text-base/70 bg-text-base/6 px-1.5 py-0.5 rounded text-[12px]">reicon-svelte</code>,{' '}
@@ -169,6 +173,8 @@ export default function DocsContent({
             ) : (
               framework === 'react' ? (
                 <ReactDocs markdownContent={reactDocs} copiedField={copiedField} onCopy={copyToClipboard} />
+              ) : framework === 'angular' ? (
+                <AngularDocs markdownContent={angularDocs} copiedField={copiedField} onCopy={copyToClipboard} />
               ) : framework === 'react-native' ? (
                 <ReactNativeDocs markdownContent={reactNativeDocs} copiedField={copiedField} onCopy={copyToClipboard} />
               ) : framework === 'vue' ? (

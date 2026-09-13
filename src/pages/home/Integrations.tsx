@@ -4,6 +4,7 @@ import { Copy } from 'reicon-react';
 import { SiHtml5, SiJavascript, SiModelcontextprotocol, SiReact, SiSvelte } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
 import { AstroIcon } from './icons';
+import { AngularIcon } from '../../components/docs/framework/icons';
 
 function IntegrationCard({ icon, title, lines, copyText, guideUrl }: {
     icon: React.ReactNode;
@@ -114,7 +115,7 @@ export default function Integrations() {
                 <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#9B8AFB] mb-2">Integrations</div>
                 <h2 className="font-serif text-[clamp(26px,3.6vw,46px)] text-text-base leading-[1.15] tracking-[-0.02em] mb-3">Works everywhere you do.</h2>
                 <p className="text-[15px] text-text-base/45 leading-[1.65] max-w-[490px] mx-auto">
-                    Easy integration with CDN, React, React Native, Vue, Astro, Svelte, Flutter, JavaScript, and MCP Server for AI agents.
+                    Easy integration with CDN, React, Angular, React Native, Vue, Astro, Svelte, Flutter, JavaScript, and MCP Server for AI agents.
                 </p>
             </div>
 
@@ -180,6 +181,27 @@ export default function Integrations() {
                         <NpmInstall pkg="reicon-react" />
                         <ImportLine name="Home" from="reicon-react" />
                         <JsxLine tag="Home" props={<><Prop name="size" value="{24}" isExpr /><Prop name="weight" value="Outline" /></>} />
+                    </>}
+                />
+
+                {/* Angular */}
+                <IntegrationCard
+                    icon={<AngularIcon size={16} />}
+                    title="Angular"
+                    guideUrl="/docs/angular"
+                    copyText={`import { Component } from '@angular/core';\nimport { HomeComponent } from 'reicon-angular';\n\n@Component({ imports: [HomeComponent] })\nexport class AppComponent {}\n\n<ri-home [size]="24" weight="Outline"></ri-home>`}
+                    lines={<>
+                        <NpmInstall pkg="reicon-angular" />
+                        <ImportLine name="HomeComponent" from="reicon-angular" />
+                        <div className="mt-3">
+                            <span className="text-text-base/20">&lt;</span>
+                            <span className="text-[#e06c75]">ri-home</span>
+                            <Prop name="[size]" value="24" />
+                            <Prop name="weight" value="Outline" />
+                            <span className="text-text-base/20">&gt;&lt;/</span>
+                            <span className="text-[#e06c75]">ri-home</span>
+                            <span className="text-text-base/20">&gt;</span>
+                        </div>
                     </>}
                 />
 

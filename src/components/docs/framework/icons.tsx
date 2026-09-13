@@ -60,6 +60,14 @@ export const SvgIcon = ({ size = 16 }: { size?: number }) => (
     </svg>
 );
 
+export const AngularIcon = ({ size = 16 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 250 250" role="img" aria-label="Angular">
+        <path fill="#dd0031" d="m125 0 125 44.5-19.1 165.7L125 250 19.1 210.2 0 44.5z" />
+        <path fill="#c3002f" d="M125 0v250l105.9-39.8L250 44.5z" />
+        <path fill="#fff" d="m125 29.2-77.9 174h29.1l15.7-39.2h66.1l15.7 39.2h29.1L125 29.2Zm0 50.6 22.8 57h-45.6l22.8-57Z" />
+    </svg>
+);
+
 export const VscodeIcon = ({ size = 16 }: { size?: number }) => (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill="#29b6f6" d="M44,11.11v25.78c0,1.27-0.79,2.4-1.98,2.82l-8.82,4.14L34,33V15L33.2,4.15l8.82,4.14 C43.21,8.71,44,9.84,44,11.11z"/>
@@ -85,6 +93,7 @@ export const AstroIcon = ({ size = 16 }: { size?: number }) => (
 export const FrameworkIcon = ({ id, size = 16 }: { id: string; size?: number }) => {
     if (id === 'react') return <FaReact className="text-[#61DAFB]" size={size} />;
     if (id === 'react-native') return <FaReact className="text-[#61DAFB]" size={size} />;
+    if (id === 'angular') return <AngularIcon size={size} />;
     if (id === 'vue') return <VueIcon size={size} />;
     if (id === 'svelte') return <SvelteIcon size={size} />;
     if (id === 'astro') return <AstroIcon size={size} />;

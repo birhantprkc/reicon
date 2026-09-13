@@ -5,6 +5,7 @@ import { getFrameworkSectionId, getFrameworkLabel, getOnThisPageSections, isStan
 
 import vanillaDocs from '../../../docs/javascript/index.md?raw';
 import reactDocs from '../../../docs/react/index.md?raw';
+import angularDocs from '../../../docs/angular/index.md?raw';
 import reactNativeDocs from '../../../docs/react-native/index.md?raw';
 import vueDocs from '../../../docs/vue/index.md?raw';
 import svelteDocs from '../../../docs/svelte/index.md?raw';
@@ -61,6 +62,7 @@ export function useDocs() {
   const getDocsPath = () => {
     switch (framework) {
       case 'react': return 'react/index.md';
+      case 'angular': return 'angular/index.md';
       case 'react-native': return 'react-native/index.md';
       case 'vue': return 'vue/index.md';
       case 'svelte': return 'svelte/index.md';
@@ -104,6 +106,7 @@ export function useDocs() {
   const getActiveFwDocs = () => {
     switch (framework) {
       case 'react': return reactDocs;
+      case 'angular': return angularDocs;
       case 'react-native': return reactNativeDocs;
       case 'vue': return vueDocs;
       case 'svelte': return svelteDocs;
@@ -294,6 +297,7 @@ export function useDocs() {
     isStandaloneFramework,
     vanillaDocs,
     reactDocs,
+    angularDocs,
     reactNativeDocs,
     vueDocs,
     svelteDocs,

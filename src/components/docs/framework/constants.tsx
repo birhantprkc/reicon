@@ -1,6 +1,7 @@
 export const FRAMEWORKS = [
     { id: 'vanilla', label: 'Vanilla', icon: 'js', color: '#f7df1e' },
     { id: 'react', label: 'React', icon: 'react', color: '#61DAFB' },
+    { id: 'angular', label: 'Angular', icon: 'angular', color: '#DD0031' },
     { id: 'react-native', label: 'React Native', icon: 'react-native', color: '#61DAFB' },
     { id: 'vue', label: 'Vue', icon: 'vue', color: '#4DBA87' },
     { id: 'svelte', label: 'Svelte', icon: 'svelte', color: '#FF3E00' },

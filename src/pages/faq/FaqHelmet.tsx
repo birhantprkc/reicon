@@ -52,10 +52,10 @@ export default function FaqHelmet() {
           },
           {
             '@type': 'Question',
-            'name': 'Does Reicon work with React, Vue, Svelte, and Figma?',
+            'name': 'Does Reicon work with React, Angular, Vue, Svelte, and Figma?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'Yes, Reicon icons are available as SVGs with first-class support for React, React Native, Vue, Svelte, Figma, and other popular design and development tools. Install via npm with reicon-react, reicon-react-native, reicon-vue, or reicon-svelte.'
+              'text': 'Yes, Reicon icons are available as SVGs with first-class support for React, Angular 20+, React Native, Vue, Svelte, Figma, and other popular design and development tools. Install via npm with reicon-react, reicon-angular, reicon-react-native, reicon-vue, or reicon-svelte.'
             }
           },
           {
@@ -71,7 +71,7 @@ export default function FaqHelmet() {
             'name': 'How do I install Reicon?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'Install via npm with \'npm install reicon\' for JavaScript projects, \'npm install reicon-react\' for React, \'npm install reicon-react-native\' for React Native, or use the CDN script tag. Visit reicon.dev/docs for full installation instructions.'
+              'text': 'Install via npm with \'npm install reicon\' for JavaScript projects, \'npm install reicon-react\' for React, \'npm install reicon-angular\' for Angular 20+, \'npm install reicon-react-native\' for React Native, or use the CDN script tag. Visit reicon.dev/docs for full installation instructions.'
             }
           },
           {
