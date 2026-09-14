@@ -127,6 +127,11 @@ export default function Performance({ markdownContent, copiedField, onCopy }: Pr
               <td className="px-4 py-3">Only used icons</td>
               <td className="px-4 py-3">Vue / Nuxt apps</td>
             </tr>
+            <tr className="border-b border-text-base/4">
+              <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#9B8AFB]/14 px-1.5 py-0.5 rounded text-[12px]">reicon-angular</code></td>
+              <td className="px-4 py-3">Only used icons</td>
+              <td className="px-4 py-3">Angular 20+ apps</td>
+            </tr>
             <tr>
               <td className="px-4 py-3"><code className="text-[#b3a8ff] bg-[#9B8AFB]/14 px-1.5 py-0.5 rounded text-[12px]">CDN script</code></td>
               <td className="px-4 py-3">On-demand fetching</td>

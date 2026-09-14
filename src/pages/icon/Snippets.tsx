@@ -90,6 +90,27 @@ export function ReactSnippet({ pascalName, filled }: { pascalName: string; fille
   );
 }
 
+export function AngularSnippet({ pascalName, name, filled }: { pascalName: string; name: string; filled: boolean }) {
+  return (
+    <>
+      <span className="text-[#c678dd]">import</span><span className="text-text-base/70">{' { '}</span>
+      <span className="text-[#e5c07b]">Component</span><span className="text-text-base/70">{' } '}</span>
+      <span className="text-[#c678dd]">from</span><span className="text-[#98c379]"> '@angular/core'</span><span className="text-text-base/30">;</span>
+      {'\n'}
+      <span className="text-[#c678dd]">import</span><span className="text-text-base/70">{' { '}</span>
+      <span className="text-[#e5c07b]">{pascalName}Component</span><span className="text-text-base/70">{' } '}</span>
+      <span className="text-[#c678dd]">from</span><span className="text-[#98c379]"> 'reicon-angular'</span><span className="text-text-base/30">;</span>
+      {'\n\n'}
+      <span className="text-text-base/70">{'// Add '}</span><span className="text-[#e5c07b]">{pascalName}Component</span><span className="text-text-base/70">{' to @Component({ imports: [...] })'}</span>
+      {'\n'}
+      <span className="text-text-base/70">{'<'}</span><span className="text-[#e06c75]">ri-{name}</span>
+      <span className="text-[#d19a66]"> [size]</span><span className="text-text-base/50">=</span><span className="text-text-base/70">"24"</span>
+      {filled && (<><span className="text-[#d19a66]"> weight</span><span className="text-text-base/50">=</span><span className="text-[#98c379]">"Filled"</span></>)}
+      <span className="text-text-base/70">{'></ri-'}</span><span className="text-[#e06c75]">{name}</span><span className="text-text-base/70">&gt;</span>
+    </>
+  );
+}
+
 export function ReactNativeSnippet({ pascalName, filled }: { pascalName: string; filled: boolean }) {
   return (
     <>

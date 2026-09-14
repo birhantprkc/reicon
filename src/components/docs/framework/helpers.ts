@@ -3,6 +3,7 @@ import { Framework } from './constants';
 export function getFrameworkSectionId(framework: Framework): string {
   switch (framework) {
     case 'react': return 'react-docs';
+    case 'angular': return 'angular-docs';
     case 'react-native': return 'react-native-docs';
     case 'vue': return 'vue-docs';
     case 'svelte': return 'svelte-docs';
@@ -19,6 +20,7 @@ export function getFrameworkSectionId(framework: Framework): string {
 export function getFrameworkLabel(framework: Framework): string {
   switch (framework) {
     case 'react': return 'React';
+    case 'angular': return 'Angular';
     case 'react-native': return 'React Native';
     case 'vue': return 'Vue';
     case 'svelte': return 'Svelte';

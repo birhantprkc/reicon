@@ -44,7 +44,7 @@ export default function HomePage() {
         <title>Reicon — Open-Source Icon Library for Designers &amp; Developers</title>
         <meta name="description" content="Open-Source Icon Library for Designers &amp; Developers" />
         <link rel="canonical" href="https://reicon.dev/" />
-        <meta name="keywords" content="free icon library, open source icons, SVG icons, React icons, Vue icons, Figma icons, reicon" />
+        <meta name="keywords" content="free icon library, open source icons, SVG icons, React icons, Angular icons, Vue icons, Figma icons, reicon" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://reicon.dev/" />
         <meta property="og:site_name" content="Reicon" />
@@ -68,11 +68,12 @@ export default function HomePage() {
           "url": "https://reicon.dev",
           "license": "https://opensource.org/licenses/MIT",
           "creator": { "@type": "Person", "name": "Dev Chauhan", "url": "https://devchauhan.in" },
-          "keywords": ["SVG icons", "React icons", "React Native icons", "Vue icons", "Svelte icons", "Figma icons", "open source", "MIT"],
+          "keywords": ["SVG icons", "React icons", "Angular icons", "React Native icons", "Vue icons", "Svelte icons", "Figma icons", "open source", "MIT"],
           "isAccessibleForFree": true,
           "distribution": [
             { "@type": "DataDownload", "encodingFormat": "application/zip", "contentUrl": "https://www.npmjs.com/package/reicon", "name": "reicon (npm)" },
             { "@type": "DataDownload", "encodingFormat": "application/zip", "contentUrl": "https://www.npmjs.com/package/reicon-react", "name": "reicon-react (npm)" },
+            { "@type": "DataDownload", "encodingFormat": "application/zip", "contentUrl": "https://www.npmjs.com/package/reicon-angular", "name": "reicon-angular (npm)" },
             { "@type": "DataDownload", "encodingFormat": "application/zip", "contentUrl": "https://www.npmjs.com/package/reicon-react-native", "name": "reicon-react-native (npm)" },
             { "@type": "DataDownload", "encodingFormat": "application/zip", "contentUrl": "https://www.npmjs.com/package/reicon-vue", "name": "reicon-vue (npm)" },
             { "@type": "DataDownload", "encodingFormat": "application/zip", "contentUrl": "https://www.npmjs.com/package/reicon-svelte", "name": "reicon-svelte (npm)" },
@@ -82,10 +83,10 @@ export default function HomePage() {
           "@context": "https://schema.org",
           "@type": "HowTo",
           "name": "How to install and use Reicon icons",
-          "description": "Install Reicon icons in a React, React Native, Vue, Svelte, or vanilla HTML project.",
+          "description": "Install Reicon icons in a React, Angular, React Native, Vue, Svelte, or vanilla HTML project.",
           "totalTime": "PT2M",
           "step": [
-            { "@type": "HowToStep", "name": "Install the package", "text": "Run 'npm install reicon-react' for React, 'npm install reicon-react-native' for React Native, 'npm install reicon-vue' for Vue 3, or 'npm install reicon-svelte' for Svelte.", "url": "https://reicon.dev/docs" },
+            { "@type": "HowToStep", "name": "Install the package", "text": "Run 'npm install reicon-react' for React, 'npm install reicon-angular' for Angular 20+, 'npm install reicon-react-native' for React Native, 'npm install reicon-vue' for Vue 3, or 'npm install reicon-svelte' for Svelte.", "url": "https://reicon.dev/docs" },
             { "@type": "HowToStep", "name": "Import the icon", "text": "Import by name: import { Home } from 'reicon-react';", "url": "https://reicon.dev/docs" },
             { "@type": "HowToStep", "name": "Render with props", "text": "Render: <Home size={24} weight=\"Outline\" color=\"currentColor\" />", "url": "https://reicon.dev/docs" },
           ],

@@ -25,6 +25,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://reicon.dev/docs/angular</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://reicon.dev/docs/react-native</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>

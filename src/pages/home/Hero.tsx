@@ -5,6 +5,7 @@ import { FaReact } from 'react-icons/fa';
 import Background from '../../components/layout/Background';
 import ClayButton from '../../components/ui/Button';
 import { FigmaIcon, VscodeIcon, VueIcon, SvelteIcon, McpIcon, FlutterIcon, AstroIcon } from './icons';
+import { AngularIcon } from '../../components/docs/framework/icons';
 
 interface Props {
   theme?: string;
@@ -70,6 +71,10 @@ export default function Hero({ heroCardRef }: Props) {
                 <Link to="/docs/react" title="React" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                   <SiReact className="text-[#61DAFB]/70 hover:text-[#61DAFB] transition-colors" size={18} />
                   <span className="hidden sm:inline">React</span>
+                </Link>
+                <Link to="/docs/angular" title="Angular 20+" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
+                  <AngularIcon size={17} />
+                  <span className="hidden sm:inline">Angular</span>
                 </Link>
                 <Link to="/docs/vue" title="Vue 3" className="flex items-center gap-1.5 text-text-base/50 hover:text-text-base/90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer text-[13px] font-medium">
                   <VueIcon size={17} />

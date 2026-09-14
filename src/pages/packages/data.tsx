@@ -1,7 +1,7 @@
 import { FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { VscVscodeInsiders } from 'react-icons/vsc';
-import { AstroIcon, FigmaIcon, FlutterIcon, McpIcon, SvelteIcon, VueIcon, SvgIcon } from '../../components/docs/framework/icons';
+import { AngularIcon, AstroIcon, FigmaIcon, FlutterIcon, McpIcon, SvelteIcon, VueIcon, SvgIcon } from '../../components/docs/framework/icons';
 
 export interface PackageItem {
     id: string;
@@ -34,6 +34,16 @@ export const PACKAGES: PackageItem[] = [
         npmUrl: 'https://www.npmjs.com/package/reicon-react',
         sourceUrl: 'https://github.com/dqev/reicon',
         guideUrl: '/docs/react',
+    },
+    {
+        id: 'angular',
+        name: 'reicon-angular',
+        npmPkg: 'reicon-angular',
+        description: 'Angular 20+ standalone icon components for Reicon. Tree-shakeable, TypeScript-ready, and generated from the shared icon dataset.',
+        icon: <AngularIcon size={48} />,
+        npmUrl: 'https://www.npmjs.com/package/reicon-angular',
+        sourceUrl: 'https://github.com/dqev/reicon/tree/main/packages/reicon-angular',
+        guideUrl: '/docs/angular',
     },
     {
         id: 'react-native',

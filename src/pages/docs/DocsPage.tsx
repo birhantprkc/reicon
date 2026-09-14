@@ -44,6 +44,7 @@ export default function DocsPage() {
     isStandaloneFramework,
     vanillaDocs,
     reactDocs,
+    angularDocs,
     reactNativeDocs,
     vueDocs,
     svelteDocs,
@@ -118,6 +119,7 @@ export default function DocsPage() {
           navigateNextFw={navigateNextFw}
           vanillaDocs={vanillaDocs}
           reactDocs={reactDocs}
+          angularDocs={angularDocs}
           reactNativeDocs={reactNativeDocs}
           vueDocs={vueDocs}
           svelteDocs={svelteDocs}
